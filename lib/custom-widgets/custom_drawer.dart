@@ -5,11 +5,13 @@ import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import '../global-methods/methods.dart';
 
 Widget customDrawer(BuildContext context) {
+
   return Drawer(
     backgroundColor: Colors.white,
     child: ListView(
@@ -26,12 +28,12 @@ Widget customDrawer(BuildContext context) {
               trailing: customIcon(iconData: Icons.arrow_forward_ios),
               leading: cutomImageIcon(imagePath: 'user.png'),
               title: customText(
-                  text: "My  profile",
+                  text: AppLocalizations.of(context)!.myProfile,
                   textAlign: TextAlign.justify,
                   textFontSize: 18.0,
                   textWeight: FontWeight.bold),
               subtitle: customText(
-                  text: '(UserName)',
+                  text: AppLocalizations.of(context)!.unRigister,
                   textAlign: TextAlign.justify,
                   textFontSize: 12.0,
                   textColor: Colors.black38),
@@ -41,12 +43,12 @@ Widget customDrawer(BuildContext context) {
               trailing: customIcon(iconData: Icons.arrow_forward_ios),
               leading: cutomImageIcon(imagePath: 'plus.png'),
               title: customText(
-                  text: "Puplish ads",
+                  text: AppLocalizations.of(context)!.newAds,
                   textAlign: TextAlign.justify,
                   textFontSize: 18.0,
                   textWeight: FontWeight.bold),
               subtitle: customText(
-                  text: '(new ads)',
+                  text: '(${AppLocalizations.of(context)!.subNewAds})',
                   textAlign: TextAlign.justify,
                   textFontSize: 12.0,
                   textColor: Colors.black38),
@@ -57,12 +59,12 @@ Widget customDrawer(BuildContext context) {
               leading: cutomImageIcon(imagePath: 'homepage.png'),
               trailing: customIcon(iconData: Icons.arrow_forward_ios),
               title: customText(
-                  text: "Home page",
+                  text: AppLocalizations.of(context)!.homePage,
                   textAlign: TextAlign.justify,
                   textFontSize: 18.0,
                   textWeight: FontWeight.bold),
               subtitle: customText(
-                  text: '(close)',
+                  text: '(${AppLocalizations.of(context)!.subhomePage})',
                   textAlign: TextAlign.justify,
                   textFontSize: 12.0,
                   textColor: Colors.black38),

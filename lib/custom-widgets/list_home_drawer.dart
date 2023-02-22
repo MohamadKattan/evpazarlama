@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../global-methods/methods.dart';
 
@@ -15,15 +16,16 @@ Widget mainItemsHomeDrawer(BuildContext context) {
         trailing:
             customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
         title: customText(
-            text: "Homes",
+            text: AppLocalizations.of(context)!.realestate,
             textAlign: TextAlign.justify,
             textColor: mainColor,
             textFontSize: 18.0,
             textWeight: FontWeight.bold),
         subtitle: customText(
-            text: '(sale-rent)',
+            text: AppLocalizations.of(context)!.subRealestate,
             textAlign: TextAlign.justify,
             textFontSize: 12.0,
+            overflow: TextOverflow.ellipsis,
             textColor: Colors.black38),
       ),
       ListTile(
@@ -33,15 +35,16 @@ Widget mainItemsHomeDrawer(BuildContext context) {
         trailing:
             customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
         title: customText(
-            text: "Cars",
+            text: AppLocalizations.of(context)!.vehicles,
             textAlign: TextAlign.justify,
             textFontSize: 18.0,
             textColor: mainColor,
             textWeight: FontWeight.bold),
         subtitle: customText(
-            text: '(sale-rent)',
+            text: AppLocalizations.of(context)!.subVehicles,
             textAlign: TextAlign.justify,
             textFontSize: 12.0,
+            overflow: TextOverflow.ellipsis,
             textColor: Colors.black38),
       ),
       ListTile(
@@ -51,15 +54,16 @@ Widget mainItemsHomeDrawer(BuildContext context) {
         trailing:
             customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
         title: customText(
-            text: "Hotels",
+            text: AppLocalizations.of(context)!.hotel,
             textAlign: TextAlign.justify,
             textFontSize: 18.0,
             textColor: mainColor,
             textWeight: FontWeight.bold),
         subtitle: customText(
-            text: '(rent-sale)',
+            text: AppLocalizations.of(context)!.subHotel,
             textAlign: TextAlign.justify,
             textFontSize: 12.0,
+            overflow: TextOverflow.ellipsis,
             textColor: Colors.black38),
       ),
       ListTile(
@@ -69,15 +73,16 @@ Widget mainItemsHomeDrawer(BuildContext context) {
         trailing:
             customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
         title: customText(
-            text: "Newest ads",
+            text: AppLocalizations.of(context)!.newstAds,
             textAlign: TextAlign.justify,
             textColor: mainColor,
             textFontSize: 18.0,
             textWeight: FontWeight.bold),
         subtitle: customText(
-            text: '(Last 48 houer)',
+            text: AppLocalizations.of(context)!.subNewstAds,
             textAlign: TextAlign.justify,
             textFontSize: 12.0,
+            overflow: TextOverflow.ellipsis,
             textColor: Colors.black38),
       ),
       ListTile(
@@ -87,15 +92,16 @@ Widget mainItemsHomeDrawer(BuildContext context) {
         trailing:
             customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
         title: customText(
-            text: "Funds Funds !!",
+            text: AppLocalizations.of(context)!.urgent,
             textAlign: TextAlign.justify,
             textColor: mainColor,
             textFontSize: 18.0,
             textWeight: FontWeight.bold),
         subtitle: customText(
-            text: '(Emargancy sale with discount)',
+            text: AppLocalizations.of(context)!.subUrgent,
             textAlign: TextAlign.justify,
             textFontSize: 12.0,
+            overflow: TextOverflow.ellipsis,
             textColor: Colors.black38),
       ),
     ],

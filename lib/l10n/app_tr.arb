@@ -1,0 +1,20 @@
+{
+    "myProfile": "Bana özel",
+    "unRigister": "Kayıtlı değil",
+    "newAds": "İlan Ver",
+    "subNewAds": "Yeni ilan ekle",
+    "homePage": "Ana sayfaya",
+    "subhomePage": "Ana sayfaya geri dön",
+    "realestate": "Emlak",
+    "subRealestate": "Konut,Bına,Arsa,Iş Yeri,...",
+    "vehicles": "Vasıta",
+    "subVehicles": "Otomotiv , Arazı , Suv , Motosıklet , Minivan...",
+    "hotel": "Oteller",
+    "subHotel": "Oteller , tatil köyleri , yazlık tatil köyleri , turistik evler...",
+    "newstAds": "Son ılan",
+    "subNewstAds": "Son 48 Saat",
+    "urgent": "Acıl Acıl!!",
+    "subUrgent": "Acil satılık veya kiralik, uygun fiyat",
+    "allAdsVitrin": "Anasayfa Vitrin",
+    "lastAdsVisted": "Son Gezdiğiniz İlanlar"
+}

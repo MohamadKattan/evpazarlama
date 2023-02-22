@@ -1,10 +1,12 @@
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/custom-widgets/list_home_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
+import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,6 +20,7 @@ class HomeScreen extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: mainColor,
               title: customText(text: "evpazarlama.com", textColor: defColor),
+              centerTitle: false,
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -26,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         customText(
-                          text: "New ads",
+                          text: AppLocalizations.of(context)!.newAds,
                           textFontSize: 14.0,
                         ),
                         customSpacer(width: 8.0),
@@ -41,7 +44,36 @@ class HomeScreen extends StatelessWidget {
             body: ListView(
               padding: EdgeInsets.zero,
               children: [
+                // main sections
                 mainItemsHomeDrawer(context),
+                // titel all ads
+                customContainer(
+                  alignment: Alignment.centerLeft,
+                  colorBack: greyColor,
+                  child: customText(
+                      text: AppLocalizations.of(context)!.allAdsVitrin,
+                      textColor: mainColor),
+                ),
+                // grid 20 item from all ads
+                customContainer(
+                    spaceAroundTop: 100.0,
+                    spaceAroundBottomMargin: 20.0,
+                    colorBack: Colors.red,
+                    child: customText(text: "dev")),
+                // title last visted ads
+                customContainer(
+                  alignment: Alignment.centerLeft,
+                  colorBack: greyColor,
+                  child: customText(
+                      text: AppLocalizations.of(context)!.lastAdsVisted,
+                      textColor: mainColor),
+                ),
+                // grid from last visted ads
+                customContainer(
+                    spaceAroundTop: 100.0,
+                    spaceAroundBottomMargin: 100.0,
+                    colorBack: Colors.red,
+                    child: customText(text: "dev")),
               ],
             )),
       ),

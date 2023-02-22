@@ -1,0 +1,74 @@
+{
+  "myProfile": "My Profile",
+  "@myProfile": {
+    "description": "profile"
+  },
+  "unRigister": "Not Rigister",
+  "@unRigister": {
+    "description": "unRigister"
+  },
+  "newAds": "New Ad",
+  "@newAds": {
+    "description": "New ad"
+  },
+  "subNewAds": "Add new ad",
+  "@subNewAds": {
+    "description": "Add new ad"
+  },
+  "homePage": "Home Page",
+  "@homePage": {
+    "description": "homePage"
+  },
+  "subhomePage": "back to home page",
+  "@subhomePage": {
+    "description": "back to home page"
+  },
+  "realestate": "Real Estate",
+  "@realestate": {
+    "description": "realestate"
+  },
+  "subRealestate": "Homes , Offices , Lands , Factor , Buildings...",
+  "@subRealestate": {
+    "description": "subRealestate"
+  },
+  "vehicles": "vehicles",
+  "@vehicles": {
+    "description": "vehicles"
+  },
+  "subVehicles": "Cars , buses , trucks , machinery...",
+  "@subVehicles": {
+    "description": "subRealestate"
+  },
+  "hotel": "Hotels",
+  "@hotel": {
+    "description": "hotel"
+  },
+  "subHotel": "Hotels , Resorts , Summer Resorts , Tourist Cottages...",
+  "@subHotel": {
+    "description": "subHotel"
+  },
+  "newstAds": "The ads are new",
+  "@newstAds": {
+    "description": "newstAds"
+  },
+  "subNewstAds": "Last 48 hours",
+  "@subNewstAds": {
+    "description": "subNewstAds"
+  },
+  "urgent": "Urgent urgent !!",
+  "@urgent": {
+    "description": "urgent urgent"
+  },
+  "subUrgent": "Urgent sale or rent , reasonable price",
+  "@subUrgent": {
+    "description": "subUrgent"
+  },
+  "allAdsVitrin": "All Ads",
+  "@allAdsVitrin": {
+    "description": "All Ads"
+  },
+  "lastAdsVisted": "Last  Visits ",
+  "@lastAdsVisted": {
+    "description": "lastAdsVisted"
+  }
+}

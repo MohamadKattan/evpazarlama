@@ -31,10 +31,10 @@ Widget customContainer(
       bottom: spaceAroundBottomMargin ?? 4.0,
     ),
     padding: EdgeInsets.only(
-      left: spaceAroundLeft ?? 4.0,
-      right: spaceAroundRight ?? 4.0,
-      top: spaceAroundTop ?? 4.0,
-      bottom: spaceAroundBottom ?? 4.0,
+      left: spaceAroundLeft ?? 8.0,
+      right: spaceAroundRight ?? 8.0,
+      top: spaceAroundTop ?? 8.0,
+      bottom: spaceAroundBottom ?? 8.0,
     ),
     decoration: BoxDecoration(
       color: colorBack ?? Colors.transparent,
