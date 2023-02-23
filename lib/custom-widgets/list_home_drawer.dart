@@ -6,11 +6,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../global-methods/methods.dart';
 
+// this widget for display list of items on drawer and home screen
 Widget mainItemsHomeDrawer(BuildContext context) {
   return Column(
     children: [
       ListTile(
-        onTap: () => popFromScreen(context),
+        onTap: () async {
+          pushToNewScreen(context: context, routeName: toRealCategory);
+        },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'home.png'),
         trailing:
@@ -29,7 +32,9 @@ Widget mainItemsHomeDrawer(BuildContext context) {
             textColor: Colors.black38),
       ),
       ListTile(
-        onTap: () => popFromScreen(context),
+        onTap: () {
+          pushToNewScreen(context: context, routeName: toVehicleCategory);
+        },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'steering-wheel.png'),
         trailing:
@@ -48,7 +53,9 @@ Widget mainItemsHomeDrawer(BuildContext context) {
             textColor: Colors.black38),
       ),
       ListTile(
-        onTap: () => popFromScreen(context),
+        onTap: () {
+          pushToNewScreen(context: context, routeName: toHotelsCategory);
+        },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'hotel.png'),
         trailing:
@@ -67,7 +74,9 @@ Widget mainItemsHomeDrawer(BuildContext context) {
             textColor: Colors.black38),
       ),
       ListTile(
-        onTap: () => popFromScreen(context),
+        onTap: () {
+          pushToNewScreen(context: context, routeName: toLastAds);
+        },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: '24-hours.png'),
         trailing:
@@ -86,7 +95,9 @@ Widget mainItemsHomeDrawer(BuildContext context) {
             textColor: Colors.black38),
       ),
       ListTile(
-        onTap: () => popFromScreen(context),
+        onTap: () {
+          pushToNewScreen(context: context, routeName: toUrgentScrren);
+        },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'funds.png'),
         trailing:

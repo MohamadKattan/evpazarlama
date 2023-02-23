@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () => null,
+                    onTap: (){},
                     child: Row(
                       children: [
                         customText(

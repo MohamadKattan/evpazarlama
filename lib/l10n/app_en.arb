@@ -70,5 +70,85 @@
   "lastAdsVisted": "Last  Visits ",
   "@lastAdsVisted": {
     "description": "lastAdsVisted"
+  },
+  "categorySelection": "Category Selection",
+  "@categorySelection": {
+    "description": "categorySelection"
+  },
+  "allReal": "All rael state ads",
+  "@allReal": {
+    "description": "allReal"
+  },
+  "allHome": "Housing",
+  "@allHome": {
+    "description": "allHome"
+  },
+  "workPlace": "Work place",
+  "@workPlace": {
+    "description": "workPlace"
+  },
+  "land": "Land",
+  "@land": {
+    "description": "land"
+  },
+  "building": "Building",
+  "@building": {
+    "description": "building"
+  },
+  "switchReal": "Transfer of Ownership",
+  "@switchReal": {
+    "description": "switchReal"
+  },
+  "allVehicle": "All Vehicle ads",
+  "@allVehicle": {
+    "description": "allVehicle"
+  },
+  "cars": "Cars",
+  "@cars": {
+    "description": "cars"
+  },
+  "motorCycle": "MotorCycle",
+  "@motorCycle": {
+    "description": "motorCycle"
+  },
+  "minBus": "MiniBus",
+  "@minBus": {
+    "description": "minBus"
+  },
+  "commercialCar": "Commercial car",
+  "@commercialCar": {
+    "description": "commercialCar"
+  },
+  "electricCars": "Electric cars",
+  "@electricCars": {
+    "description": "electricCars"
+  },
+  "rentCars": "Cars for Rent",
+  "@rentCars": {
+    "description": "rentCars"
+  },
+  "damagedVehicles": "Damaged Vehicles",
+  "@damagedVehicles": {
+    "description": "damagedVehicles"
+  },
+  "allHotels": "All hotels ads",
+  "@allHotels": {
+    "description": "allHotels"
+  },
+  "allHotels": "All hotels ads",
+  "@allHotels": {
+    "description": "allHotels"
+  },
+  "resorts": "Resorts",
+  "@resorts": {
+    "description": "resorts"
+  },
+  "touristCottages": "Tourist Cottages",
+  "@touristCottages": {
+    "description": "touristCottages"
+  },
+  "hotelAppartments": "Hotel Appartments",
+  "@hotelAppartments": {
+    "description": "hotelAppartments"
   }
 }

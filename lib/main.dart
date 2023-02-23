@@ -1,5 +1,10 @@
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/pages/home_screen.dart';
+import 'package:evpazarlama/pages/hotels_category.dart';
+import 'package:evpazarlama/pages/last_ads.dart';
+import 'package:evpazarlama/pages/realestate_category.dart';
+import 'package:evpazarlama/pages/urgent_screen.dart';
+import 'package:evpazarlama/pages/vehicle_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,7 +22,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //  onGenerateTitle: (context) => DemoLocalizations.of(context).title,
       debugShowCheckedModeBanner: false,
       title: 'Ev Pazarlama',
       localizationsDelegates: const [
@@ -35,6 +39,11 @@ class MyApp extends StatelessWidget {
       routes: {
         toSplash: (context) => const SplashScreen(),
         toHomeScreen: (context) => const HomeScreen(),
+        toRealCategory: (context) => const RealEstateCategory(),
+        toVehicleCategory: (context) => const VehicleCategory(),
+        toHotelsCategory:(context) => const HotelsCategory(),
+        toLastAds:(context) => const LastAds(),
+        toUrgentScrren:(context) => const UrgentScrren(),
       },
     );
   }

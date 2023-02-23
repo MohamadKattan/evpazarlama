@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import '../global-methods/methods.dart';
 
 Widget customDrawer(BuildContext context) {
-
   return Drawer(
     backgroundColor: Colors.white,
     child: ListView(
@@ -54,7 +53,8 @@ Widget customDrawer(BuildContext context) {
                   textColor: Colors.black38),
             ),
             ListTile(
-              onTap: () => popFromScreen(context),
+              onTap: () => pushReplaceToNewScreen(
+                  context: context, routeName: toHomeScreen),
               minLeadingWidth: 10.0,
               leading: cutomImageIcon(imagePath: 'homepage.png'),
               trailing: customIcon(iconData: Icons.arrow_forward_ios),
