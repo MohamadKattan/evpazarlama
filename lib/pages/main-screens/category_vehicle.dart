@@ -1,10 +1,12 @@
+// this screen for diplay items of vehicle category
+
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../helper/custom_icon.dart';
+import '../../helper/custom_icon.dart';
 
 class VehicleCategory extends StatelessWidget {
   const VehicleCategory({super.key});

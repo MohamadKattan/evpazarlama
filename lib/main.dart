@@ -1,15 +1,17 @@
 import 'package:evpazarlama/helper/config.dart';
-import 'package:evpazarlama/pages/home_screen.dart';
-import 'package:evpazarlama/pages/hotels_category.dart';
-import 'package:evpazarlama/pages/last_ads.dart';
-import 'package:evpazarlama/pages/realestate_category.dart';
-import 'package:evpazarlama/pages/urgent_screen.dart';
-import 'package:evpazarlama/pages/vehicle_category.dart';
+import 'package:evpazarlama/pages/main-screens/category_hotels.dart';
+import 'package:evpazarlama/pages/main-screens/category_realstate.dart';
+import 'package:evpazarlama/pages/main-screens/home_screen.dart';
+import 'package:evpazarlama/pages/main-screens/last_ads.dart';
+import 'package:evpazarlama/pages/sub-realEstatae/list_of_item.dart';
+import 'package:evpazarlama/pages/sub-realEstatae/result_all_real.dart';
+import 'package:evpazarlama/pages/main-screens/urgent_screen.dart';
+import 'package:evpazarlama/pages/main-screens/category_vehicle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'pages/splash_screen.dart';
+import 'pages/main-screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,9 +43,11 @@ class MyApp extends StatelessWidget {
         toHomeScreen: (context) => const HomeScreen(),
         toRealCategory: (context) => const RealEstateCategory(),
         toVehicleCategory: (context) => const VehicleCategory(),
-        toHotelsCategory:(context) => const HotelsCategory(),
-        toLastAds:(context) => const LastAds(),
-        toUrgentScrren:(context) => const UrgentScrren(),
+        toHotelsCategory: (context) => const HotelsCategory(),
+        toLastAds: (context) => const LastAds(),
+        toUrgentScrren: (context) => const UrgentScrren(),
+        toResAllReal: (context) => const ResAllRealState(),
+        toListOfIteamRealEstate: (context) => const ListOfIteamRealEstate(),
       },
     );
   }

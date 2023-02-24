@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget customContainer(
     {
+    double? height,  
     double? width,
     Alignment? alignment,
     double? spaceAroundLeft,
@@ -23,12 +24,13 @@ Widget customContainer(
     Widget? child}) {
   return Container(
     width: width,
+    height: height,
     alignment: alignment ?? Alignment.center,
     margin: EdgeInsets.only(
-      left: spaceAroundLeftMargin ?? 4.0,
-      right: spaceAroundRightMargin ?? 4.0,
-      top: spaceAroundTopMargin ?? 4.0,
-      bottom: spaceAroundBottomMargin ?? 4.0,
+      left: spaceAroundLeftMargin ?? 0.0,
+      right: spaceAroundRightMargin ?? 0.0,
+      top: spaceAroundTopMargin ?? 0.0,
+      bottom: spaceAroundBottomMargin ?? 0.0,
     ),
     padding: EdgeInsets.only(
       left: spaceAroundLeft ?? 8.0,

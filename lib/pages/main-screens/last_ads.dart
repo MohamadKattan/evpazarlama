@@ -1,9 +1,11 @@
+// this screen for diplay last 48 hour ads from data base 
+
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../helper/custom_text.dart';
+import '../../helper/custom_text.dart';
 
 class LastAds extends StatelessWidget {
   const LastAds({super.key});

@@ -35,5 +35,9 @@
     "allHotels": "جميع اعلانات الفنادق",
     "resorts": "منتجعات",
     "touristCottages": "أكواخ سياحية",
-    "hotelAppartments": "شقق فندقية "
+    "hotelAppartments": "شقق فندقية ",
+    "sale": "للبيع",
+    "rent": "للإيجار",
+    "daylyRent": "أجار يومي",
+    "transferSale": "تحويل للبيع"
 }

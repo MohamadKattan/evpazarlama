@@ -35,5 +35,9 @@
     "allHotels": "Tüm otel ilanları",
     "resorts": "tatil köyleri",
     "touristCottages": "Turistik Kulübeler",
-    "hotelAppartments": "Otel Apartmanları"
+    "hotelAppartments": "Otel Apartmanları",
+    "sale": "Satılık",
+    "rent": "Kiralık",
+    "daylyRent": "Günlük kiralık",
+    "transferSale": "Devren Satılık "
 }

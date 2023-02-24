@@ -1,10 +1,12 @@
+// this screen for hotels category
+
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../helper/custom_icon.dart';
-import '../helper/custom_text.dart';
+import '../../helper/custom_icon.dart';
+import '../../helper/custom_text.dart';
 
 class HotelsCategory extends StatelessWidget {
   const HotelsCategory({super.key});

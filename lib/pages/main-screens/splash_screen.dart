@@ -3,8 +3,8 @@
 import 'package:evpazarlama/helper/config.dart';
 import 'package:flutter/material.dart';
 
-import '../global-methods/methods.dart';
-import '../helper/custom_text.dart';
+import '../../global-methods/methods.dart';
+import '../../helper/custom_text.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);

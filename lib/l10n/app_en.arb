@@ -150,5 +150,21 @@
   "hotelAppartments": "Hotel Appartments",
   "@hotelAppartments": {
     "description": "hotelAppartments"
+  },
+  "sale": "For Sale",
+  "@sale": {
+    "description": "sale"
+  },
+  "rent": "For Rent",
+  "@rent": {
+    "description": "rent"
+  },
+  "daylyRent": "Daily rent",
+  "@daylyRent": {
+    "description": "daylyRent"
+  },
+  "transferSale": "Transfer Sale",
+  "@transferSale": {
+    "description": "transferSale"
   }
 }
