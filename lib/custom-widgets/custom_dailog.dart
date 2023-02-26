@@ -9,6 +9,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../global-methods/methods.dart';
 import '../helper/custom_icon.dart';
 
+// not typeOfList parmetr for knows any list iterm will diplay (homw item or workPlacIte or ,,,)
+
 Widget customDailogSaleRentElse(BuildContext context, List item) {
   return Dialog(
     elevation: 0.9,
@@ -44,12 +46,8 @@ Widget customDailogSaleRentElse(BuildContext context, List item) {
             itemBuilder: (_, index) {
               if (item.isNotEmpty) {
                 return ListTile(
-                  onTap: () async {
-                    await switchToAnyTypeRealEstate(index).whenComplete(() {
-                      popFromScreen(context);
-                      pushToNewScreen(
-                          context: context, routeName: toListOfIteamRealEstate);
-                    });
+                  onTap: ()  {
+                     switchToAnyTypeRealEstate(context,index);
                   },
                   minLeadingWidth: 10.0,
                   trailing: customIcon(
@@ -72,23 +70,33 @@ Widget customDailogSaleRentElse(BuildContext context, List item) {
 }
 
 // this method to know user any type he want sale / rent / daily rent or else
-Future<void> switchToAnyTypeRealEstate(int index) async {
+void switchToAnyTypeRealEstate(BuildContext context, int index)  {
   // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
   switch (index) {
     case 0:
-      valOfTyperealEstate = 0;
+      saleRentElseVal = 0;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
       break;
     case 1:
-      valOfTyperealEstate = 1;
+      saleRentElseVal = 1;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
       break;
     case 2:
-      valOfTyperealEstate = 2;
+      saleRentElseVal = 2;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
       break;
     case 3:
-      valOfTyperealEstate = 3;
+      saleRentElseVal = 3;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
       break;
     default:
-      valOfTyperealEstate = 0;
+      saleRentElseVal = 0;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
       break;
   }
 }

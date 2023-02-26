@@ -166,5 +166,89 @@
   "transferSale": "Transfer Sale",
   "@transferSale": {
     "description": "transferSale"
+  },
+  "apart1": "Apartman",
+  "@home1": {
+    "description": "home1"
+  },
+  "residence": "Residence",
+  "@residence": {
+    "description": "residence"
+  },
+  "detachedHouse": "Detached House",
+  "@detachedHouse": {
+    "description": "detachedHouse"
+  },
+  "villa": "Villa",
+  "@villa": {
+    "villa": "detachedHouse"
+  },
+  "farmHouse": "Farm House",
+  "@farmHouse": {
+    "description": "detachedHouse"
+  },
+  "mansion": "Mansion",
+  "@mansion": {
+    "description": "mansion"
+  },
+  "summerhouse": "Summer House",
+  "@summerhouse": {
+    "description": "summerhouse"
+  },
+  "prefabricatedHouse": "Prefabricated House",
+  "@prefabricatedHouse": {
+    "description": "prefabricatedHouse"
+  },
+  "cooperative": "Cooperative",
+  "@cooperative": {
+    "description": "cooperative"
+  },
+  "gasStation": "Gas Station",
+  "@gasStation": {
+    "description": "gasStation"
+  },
+  "workshop": "Workshop",
+  "@workshop": {
+    "description": "workshop"
+  },
+  "mall": "Mall",
+  "@mall": {
+    "description": "mall"
+  },
+  "buffet": "Buffet",
+  "@buffet": {
+    "description": "buffet"
+  },
+  "office": "Office",
+  "@office": {
+    "description": "office"
+  },
+  "cafe": "Cafe",
+  "@cafe": {
+    "description": "cafe"
+  },
+  "warehouse": "Ware house",
+  "@warehouse": {
+    "description": "warehouse"
+  },
+  "weddingHall": "Wedding Hall",
+  "@weddingHall": {
+    "description": "weddingHall"
+  },
+  "store": "Store",
+  "@store": {
+    "description": "store"
+  },
+  "factory": "Factory",
+  "@factory": {
+    "description": "factory"
+  },
+  "fullbuilding": "full Building",
+  "@fullbuilding": {
+    "description": "fullbuilding"
+  },
+  "parking": "Parking",
+  "@parking": {
+    "description": "parking"
   }
 }

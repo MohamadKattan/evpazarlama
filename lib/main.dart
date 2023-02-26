@@ -1,17 +1,18 @@
 import 'package:evpazarlama/helper/config.dart';
-import 'package:evpazarlama/pages/main-screens/category_hotels.dart';
-import 'package:evpazarlama/pages/main-screens/category_realstate.dart';
-import 'package:evpazarlama/pages/main-screens/home_screen.dart';
-import 'package:evpazarlama/pages/main-screens/last_ads.dart';
-import 'package:evpazarlama/pages/sub-realEstatae/list_of_item.dart';
 import 'package:evpazarlama/pages/sub-realEstatae/result_all_real.dart';
-import 'package:evpazarlama/pages/main-screens/urgent_screen.dart';
-import 'package:evpazarlama/pages/main-screens/category_vehicle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'pages/main-screens/splash_screen.dart';
+import 'pages/category_hotels.dart';
+import 'pages/category_realstate.dart';
+import 'pages/category_vehicle.dart';
+import 'pages/home_screen.dart';
+import 'pages/last_ads.dart';
+import 'pages/list_of_item.dart';
+import 'pages/splash_screen.dart';
+import 'pages/urgent_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
         toLastAds: (context) => const LastAds(),
         toUrgentScrren: (context) => const UrgentScrren(),
         toResAllReal: (context) => const ResAllRealState(),
-        toListOfIteamRealEstate: (context) => const ListOfIteamRealEstate(),
+        toListOfIteamRealEstate: (context) => const ListOfIteam(),
       },
     );
   }
