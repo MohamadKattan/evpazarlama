@@ -46,6 +46,34 @@ class HomeScreen extends StatelessWidget {
             body: ListView(
               padding: EdgeInsets.zero,
               children: [
+                customContainer(
+                  spaceAroundTopMargin: 15.0,
+                  spaceAroundBottomMargin: 15.0,
+                  spaceAroundLeftMargin: 20.0,
+                  spaceAroundRightMargin: 20.0,
+                  borderColor: mainColor,
+                  borderWidth: 1.5,
+                  alignment: Alignment.centerLeft,
+                  colorBack: defColor,
+                  child: Row(
+                    children: [
+                      customIcon(
+                          iconData: Icons.search,
+                          color: Colors.grey,
+                          size: 30.0),
+                      customSpacer(width: 10.0),
+                      customText(
+                          text: AppLocalizations.of(context)!.serchAdsNum,
+                          textColor: Colors.grey),
+                    ],
+                  ),
+                ),
+                //emptyContiner
+                customContainer(
+                  alignment: Alignment.center,
+                  colorBack: greyColor,
+                  child: customText(text: "", textColor: mainColor),
+                ),
                 // main sections
                 mainItemsHomeDrawer(context),
                 // titel all ads

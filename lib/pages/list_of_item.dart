@@ -1,4 +1,5 @@
-// this screen will display list of items after choces catpgry housing,workPlace and sale,rent or else
+/* this screen will display list of items after choces catpgry
+ housing,workPlace,land,bulding,cars, else.... and sale,rent or else*/
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

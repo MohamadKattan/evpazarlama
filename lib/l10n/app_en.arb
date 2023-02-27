@@ -250,5 +250,17 @@
   "parking": "Parking",
   "@parking": {
     "description": "parking"
+  },
+  "resultSearching": "Result Searching",
+  "@resultSearching": {
+    "description": "resultSearching"
+  },
+  "filter": "Filter",
+  "@filter": {
+    "description": "filter"
+  },
+  "serchAdsNum": "Ad No.Than Search",
+  "@serchAdsNum": {
+    "serchAdsNum": "serchAdsNum"
   }
 }

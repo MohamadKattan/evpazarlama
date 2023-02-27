@@ -20,6 +20,62 @@ void pushReplaceToNewScreen(
   Navigator.pushReplacementNamed(context, routeName);
 }
 
+// this metod for retrin list of main catogry (Estate,Vehicle,Hotel)
+
+List typeOfListMainCatogry(BuildContext context) {
+  final list = [];
+
+  final listofEstateCategory = [
+    AppLocalizations.of(context)!.allReal,
+    AppLocalizations.of(context)!.allHome,
+    AppLocalizations.of(context)!.workPlace,
+    AppLocalizations.of(context)!.land,
+    AppLocalizations.of(context)!.building,
+    AppLocalizations.of(context)!.hotel,
+  ];
+
+  final listOfVehicleCategory = [
+    AppLocalizations.of(context)!.allVehicle,
+    AppLocalizations.of(context)!.motorCycle,
+    AppLocalizations.of(context)!.cars,
+    AppLocalizations.of(context)!.minBus,
+    AppLocalizations.of(context)!.electricCars,
+    AppLocalizations.of(context)!.commercialCar,
+    AppLocalizations.of(context)!.damagedVehicles,
+  ];
+
+  final listOfHotelCategory = [
+    AppLocalizations.of(context)!.allHotels,
+    AppLocalizations.of(context)!.hotel,
+    AppLocalizations.of(context)!.resorts,
+    AppLocalizations.of(context)!.touristCottages,
+    AppLocalizations.of(context)!.hotelAppartments,
+  ];
+
+  switch (mainCatogry) {
+    case 0:
+      list.addAll(listofEstateCategory);
+      break;
+    case 1:
+      list.addAll(listOfVehicleCategory);
+      break;
+    case 2:
+      list.addAll(listOfHotelCategory);
+      break;
+    case 3:
+     null;
+      break;
+    case 4:
+      null;
+      break;
+    default:
+      null;
+      break;
+  }
+
+  return list;
+}
+
 // this method for check val what user slect (housing,workPlace,car..) (sale,rent ...)
 List typeOfListItem(BuildContext context) {
   final list = [];
@@ -107,7 +163,7 @@ List typeOfListItem(BuildContext context) {
     'Porsche',
     'Proton',
     'Renault',
-    'Rolls-Royce', 
+    'Rolls-Royce',
     'Seat',
     'Skoda',
     'Smart',
@@ -167,8 +223,8 @@ List typeOfListItem(BuildContext context) {
       list.addAll(listOfWorkPlacItem);
       break;
     case 2:
-     list.addAll(listOfMotor);
-     
+      list.addAll(listOfMotor);
+
       break;
     case 3:
       list.addAll(listOfCars);

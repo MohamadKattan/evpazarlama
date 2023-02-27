@@ -60,5 +60,9 @@
     "store": "محل",
     "factory": "مصنع",
     "fullbuilding": "مبنى كامل",
-    "parking": "موقف سيارات"
+    "parking": "موقف سيارات",
+    "resultSearching": "نتيجة البحث",
+    "filter": "فلتر",
+    "serchAdsNum": "رقم الإعلان ، ثم ابحث"
+    
 }

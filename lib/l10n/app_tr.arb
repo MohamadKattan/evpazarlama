@@ -60,5 +60,8 @@
     "store": "Mağaza",
     "factory": "Fabrika",
     "fullbuilding": "komple bina",
-    "parking": "otopark"
+    "parking": "otopark",
+    "resultSearching": "Sonuç Arama",
+    "filter": "Filterle",
+    "serchAdsNum": "ilan No. ile ara"
 }

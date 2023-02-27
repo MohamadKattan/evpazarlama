@@ -1,18 +1,15 @@
 import 'package:evpazarlama/helper/config.dart';
-import 'package:evpazarlama/pages/sub-realEstatae/result_all_real.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'pages/category_hotels.dart';
-import 'pages/category_realstate.dart';
-import 'pages/category_vehicle.dart';
+import 'pages/main_category.dart';
 import 'pages/home_screen.dart';
 import 'pages/last_ads.dart';
 import 'pages/list_of_item.dart';
+import 'pages/result_all_real.dart';
 import 'pages/splash_screen.dart';
 import 'pages/urgent_screen.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -35,16 +32,16 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [
         Locale('en'), // English
-        Locale('ar'), // aribic
-        Locale('tr'), // aribic
+        Locale('ar'), // ar
+        Locale('tr'), // tr
       ],
       initialRoute: '/',
       routes: {
         toSplash: (context) => const SplashScreen(),
         toHomeScreen: (context) => const HomeScreen(),
-        toRealCategory: (context) => const RealEstateCategory(),
-        toVehicleCategory: (context) => const VehicleCategory(),
-        toHotelsCategory: (context) => const HotelsCategory(),
+        toMainCategory: (context) => const MainCategory(),
+        // toVehicleCategory: (context) => const VehicleCategory(),
+        // toHotelsCategory: (context) => const HotelsCategory(),
         toLastAds: (context) => const LastAds(),
         toUrgentScrren: (context) => const UrgentScrren(),
         toResAllReal: (context) => const ResAllRealState(),

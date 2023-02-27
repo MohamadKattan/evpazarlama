@@ -10,8 +10,8 @@ Widget cutomImageIcon(
   );
 }
 
-Widget cutomImage({required String imagePath}) {
-  return Image.asset('assets/imgs/$imagePath');
+Widget cutomImage({required String imagePath,double?height,double?width}) {
+  return Image.asset('assets/imgs/$imagePath',width: width??250,height: height??250.0,);
 }
 
 Widget customIcon({required IconData iconData, Color? color, double? size}) {

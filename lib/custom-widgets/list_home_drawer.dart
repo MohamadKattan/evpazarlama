@@ -12,7 +12,8 @@ Widget mainItemsHomeDrawer(BuildContext context) {
     children: [
       ListTile(
         onTap: () async {
-          pushToNewScreen(context: context, routeName: toRealCategory);
+           mainCatogry = 0;
+          pushToNewScreen(context: context, routeName: toMainCategory);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'home.png'),
@@ -33,7 +34,8 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ),
       ListTile(
         onTap: () {
-          pushToNewScreen(context: context, routeName: toVehicleCategory);
+           mainCatogry = 1;
+          pushToNewScreen(context: context, routeName: toMainCategory);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'steering-wheel.png'),
@@ -54,7 +56,8 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ),
       ListTile(
         onTap: () {
-          pushToNewScreen(context: context, routeName: toHotelsCategory);
+          mainCatogry = 2;
+          pushToNewScreen(context: context, routeName: toMainCategory);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'hotel.png'),
@@ -75,6 +78,7 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ),
       ListTile(
         onTap: () {
+          mainCatogry = 3;
           pushToNewScreen(context: context, routeName: toLastAds);
         },
         minLeadingWidth: 10.0,
@@ -96,6 +100,7 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ),
       ListTile(
         onTap: () {
+          mainCatogry = 4;
           pushToNewScreen(context: context, routeName: toUrgentScrren);
         },
         minLeadingWidth: 10.0,
