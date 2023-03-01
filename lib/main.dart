@@ -1,7 +1,11 @@
 import 'package:evpazarlama/helper/config.dart';
+import 'package:evpazarlama/pages/login_screen.dart';
+import 'package:evpazarlama/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 import 'pages/main_category.dart';
 import 'pages/home_screen.dart';
@@ -11,7 +15,9 @@ import 'pages/result_all_real.dart';
 import 'pages/splash_screen.dart';
 import 'pages/urgent_screen.dart';
 
-void main() {
+void main() async{
+    WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -40,12 +46,12 @@ class MyApp extends StatelessWidget {
         toSplash: (context) => const SplashScreen(),
         toHomeScreen: (context) => const HomeScreen(),
         toMainCategory: (context) => const MainCategory(),
-        // toVehicleCategory: (context) => const VehicleCategory(),
-        // toHotelsCategory: (context) => const HotelsCategory(),
         toLastAds: (context) => const LastAds(),
         toUrgentScrren: (context) => const UrgentScrren(),
         toResAllReal: (context) => const ResAllRealState(),
         toListOfIteamRealEstate: (context) => const ListOfIteam(),
+        toProfileScreen:(context) => const ProfileScreen(),
+        toLoginScreen:(context) => const LoginScreen()
       },
     );
   }

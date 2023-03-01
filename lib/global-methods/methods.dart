@@ -244,3 +244,13 @@ List typeOfListItem(BuildContext context) {
   }
   return list;
 }
+ 
+// nav to loginScren or profileScreen conect to user id 
+
+navToLoginOrProfile(BuildContext context){
+  if(userId!=null){
+    pushToNewScreen(context: context,routeName: toProfileScreen);
+  }else{
+    pushToNewScreen(context: context,routeName: toLoginScreen);
+  }
+}

@@ -23,6 +23,9 @@ Widget customDrawer(BuildContext context) {
           child: Column(children: [
             customSpacer(height: 10.0),
             ListTile(
+              onTap: (){
+                navToLoginOrProfile(context);
+              },
               minLeadingWidth: 10.0,
               trailing: customIcon(iconData: Icons.arrow_forward_ios),
               leading: cutomImageIcon(imagePath: 'user.png'),

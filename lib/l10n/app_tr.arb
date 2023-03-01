@@ -63,5 +63,10 @@
     "parking": "otopark",
     "resultSearching": "Sonuç Arama",
     "filter": "Filterle",
-    "serchAdsNum": "ilan No. ile ara"
+    "serchAdsNum": "ilan No. ile ara",
+    "singup": "Üye Ol",
+    "sighUPExplain": "Uygulamanın tüm hizmetlerinden faydalanmak için cep numaranızı girerek bize kayıt olunuz. Kayıt işlemini onaylamak için bir mesaj alacaksınız",
+    "codeContryPhone": "Ülke kodunuzu seçin, ardından cep telefonu numaranızı girin",
+    "phoneNumbe": "Cep numarası",
+    "typephoneNumbe": "Cep numaranızı yazın"
 }

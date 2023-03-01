@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "784531995178",
+    "project_id": "evpazarlama-53bc6",
+    "storage_bucket": "evpazarlama-53bc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784531995178:android:c75b15827626a00472e153",
+        "android_client_info": {
+          "package_name": "com.nizam.evpazarlama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784531995178-gra4015ttne1m6eijsf4pqnc3kjob7ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784531995178-gra4015ttne1m6eijsf4pqnc3kjob7ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

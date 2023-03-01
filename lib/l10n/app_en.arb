@@ -261,6 +261,26 @@
   },
   "serchAdsNum": "Ad No.Than Search",
   "@serchAdsNum": {
-    "serchAdsNum": "serchAdsNum"
+    "description": "serchAdsNum"
+  },
+  "singup": "Sing Up",
+  "@singup": {
+    "description": "SingUp"
+  },
+  "sighUPExplain": "In order to benefit from all the services of the application, register with us by entering your mobile number. You will receive a message to confirm the registration process",
+  "@sighUPExplain": {
+    "description": "SingUp"
+  },
+  "codeContryPhone": "Choose your country code, then enter your mobile number",
+  "@codeContryPhone": {
+    "description": "codeContryPhone"
+  },
+  "phoneNumbe": "Mobile Number",
+  "@phoneNumbe": {
+    "description": "phoneNumbe"
+  },
+  "typephoneNumbe": "Type your mobile number",
+  "@typephoneNumbe": {
+    "description": "TypephoneNumbe"
   }
 }
