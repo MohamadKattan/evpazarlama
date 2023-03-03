@@ -68,5 +68,15 @@
     "sighUPExplain": "Uygulamanın tüm hizmetlerinden faydalanmak için cep numaranızı girerek bize kayıt olunuz. Kayıt işlemini onaylamak için bir mesaj alacaksınız",
     "codeContryPhone": "Ülke kodunuzu seçin, ardından cep telefonu numaranızı girin",
     "phoneNumbe": "Cep numarası",
-    "typephoneNumbe": "Cep numaranızı yazın"
+    "typephoneNumbe": "Cep numaranızı yazın",
+    "vervectioPhone": "Doğrulama",
+    "verificationExplain": "Cep telefonu numarasını doğrulamak için bir kod içeren bir metin mesajı gönderilecektir.",
+    "typeCodeBelow": "Aşağıdaki alana kodu girin",
+    "phoneNotValeid": "Sağlanan telefon numarası geçerli değil.",
+    "timeOut": "Zaman aşımı tekrar dene",
+    "phoneIsReq": "Telefon numarası gerekli",
+    "someWrong": "Bir şeyler ters gitti tekrar deneyin",
+    "codeWrong": "Kod geçerli değil tekrar deneyin",
+    "codeIsReq": "Kod numarası gerekli",
+    "lan": "tr"
 }

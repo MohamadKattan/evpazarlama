@@ -20,6 +20,16 @@ void pushReplaceToNewScreen(
   Navigator.pushReplacementNamed(context, routeName);
 }
 
+// nav to loginScren or profileScreen conect to user id
+
+navToLoginOrProfile(BuildContext context) {
+  if (userId != 'null') {
+    pushToNewScreen(context: context, routeName: toProfileScreen);
+  } else {
+    pushToNewScreen(context: context, routeName: toLoginScreen);
+  }
+}
+
 // this metod for retrin list of main catogry (Estate,Vehicle,Hotel)
 
 List typeOfListMainCatogry(BuildContext context) {
@@ -63,7 +73,7 @@ List typeOfListMainCatogry(BuildContext context) {
       list.addAll(listOfHotelCategory);
       break;
     case 3:
-     null;
+      null;
       break;
     case 4:
       null;
@@ -244,13 +254,35 @@ List typeOfListItem(BuildContext context) {
   }
   return list;
 }
- 
-// nav to loginScren or profileScreen conect to user id 
 
-navToLoginOrProfile(BuildContext context){
-  if(userId!=null){
-    pushToNewScreen(context: context,routeName: toProfileScreen);
-  }else{
-    pushToNewScreen(context: context,routeName: toLoginScreen);
+// this method to know user any type he want sale / rent / daily rent or else
+void switchToAnyTypeRealEstate(BuildContext context, int index) {
+  // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
+  switch (index) {
+    case 0:
+      saleRentElseVal = 0;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
+      break;
+    case 1:
+      saleRentElseVal = 1;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
+      break;
+    case 2:
+      saleRentElseVal = 2;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
+      break;
+    case 3:
+      saleRentElseVal = 3;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
+      break;
+    default:
+      saleRentElseVal = 0;
+      popFromScreen(context);
+      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
+      break;
   }
 }

@@ -46,8 +46,8 @@ Widget customDailogSaleRentElse(BuildContext context, List item) {
             itemBuilder: (_, index) {
               if (item.isNotEmpty) {
                 return ListTile(
-                  onTap: ()  {
-                     switchToAnyTypeRealEstate(context,index);
+                  onTap: () {
+                    switchToAnyTypeRealEstate(context, index);
                   },
                   minLeadingWidth: 10.0,
                   trailing: customIcon(
@@ -69,34 +69,9 @@ Widget customDailogSaleRentElse(BuildContext context, List item) {
   );
 }
 
-// this method to know user any type he want sale / rent / daily rent or else
-void switchToAnyTypeRealEstate(BuildContext context, int index)  {
-  // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
-  switch (index) {
-    case 0:
-      saleRentElseVal = 0;
-      popFromScreen(context);
-      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
-      break;
-    case 1:
-      saleRentElseVal = 1;
-      popFromScreen(context);
-      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
-      break;
-    case 2:
-      saleRentElseVal = 2;
-      popFromScreen(context);
-      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
-      break;
-    case 3:
-      saleRentElseVal = 3;
-      popFromScreen(context);
-      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
-      break;
-    default:
-      saleRentElseVal = 0;
-      popFromScreen(context);
-      pushToNewScreen(context: context, routeName: toListOfIteamRealEstate);
-      break;
-  }
+void customSnackBar({required BuildContext context, required String text,Color? color}) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(text),
+    backgroundColor:color,
+  ));
 }

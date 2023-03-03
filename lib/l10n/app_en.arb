@@ -282,5 +282,45 @@
   "typephoneNumbe": "Type your mobile number",
   "@typephoneNumbe": {
     "description": "TypephoneNumbe"
+  },
+  "vervectioPhone": "Verification",
+  "@vervectioPhone": {
+    "description": "vervectioPhone"
+  },
+  "verificationExplain": "A sms message will be sent containing a code to verify the mobile number",
+  "@verificationExplain": {
+    "description": "verificationExplain"
+  },
+  "typeCodeBelow": "Enter the code in the field below",
+  "@typeCodeBelow": {
+    "description": "typeCodeBelow"
+  },
+  "phoneNotValeid": "The provided phone number is not valid.",
+  "@phoneNotValeid": {
+    "description": "typeCodeBelow"
+  },
+  "timeOut": "Time out try again",
+  "@timeOut": {
+    "description": "timeOut"
+  },
+  "phoneIsReq": "Phone number is required",
+  "@phoneIsReq": {
+    "description": "phoneIsReq"
+  },
+  "someWrong": "Some thing went wrong try again",
+  "@someWrong": {
+    "description": "someWrong"
+  },
+  "codeWrong": "Code is not valid try again",
+  "@codeWrong": {
+    "description": "codeWrong"
+  },
+  "codeIsReq": "Code number is required",
+  "@codeIsReq": {
+    "description": "codeIsReq"
+  },
+  "lan": "en",
+  "@lan": {
+    "description": "lan"
   }
 }

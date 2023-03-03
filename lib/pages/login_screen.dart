@@ -4,17 +4,22 @@ import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
+import '../client-srv/auth_srv.dart';
+import '../custom-widgets/custom_dailog.dart';
 import '../custom-widgets/custom_drawer.dart';
 import '../helper/config.dart';
 import '../helper/custom_positioned.dart';
 import '../helper/custom_text_field.dart';
+import '../state-maneg/booling_val.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   static TextEditingController phoneControla = TextEditingController();
-   static String? contryCode;
-   static String? resultPhoneNimber;
+  static String? contryCode = '+90';
+  static String? resultPhoneNimber;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,26 +90,19 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        if(phoneControla.text.isNotEmpty){
-                         resultPhoneNimber = '$contryCode${phoneControla.text.trim()}';
-                           print(resultPhoneNimber);
-                        }
-                      
-                      },
+                      onTap: () => startSinup(context),
                       child: customContainer(
-                          // spaceAroundBottomMargin: 15.0,
-                          spaceAroundTopMargin: 15.0,
-                          colorBack: mainColor,
-                          ridusBL: 12.0,
-                          ridusBR: 12.0,
-                          ridusR: 12.0,
-                          ridusl: 12.0,
-                          width: 220.0,
-                          height: 60.0,
-                          child: customText(
-                              text: AppLocalizations.of(context)!.singup,
-                              textWeight: FontWeight.bold)),
+                        // spaceAroundBottomMargin: 15.0,
+                        spaceAroundTopMargin: 15.0,
+                        colorBack: mainColor,
+                        ridusBL: 12.0,
+                        ridusBR: 12.0,
+                        ridusR: 12.0,
+                        ridusl: 12.0,
+                        width: 220.0,
+                        height: 60.0,
+                        child: textOrIndector(context),
+                      ),
                     )
                   ],
                 ),
@@ -116,6 +114,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
+// this widget for contry code list
   Widget contryListWidget() {
     return CountryListPick(
       appBar: AppBar(
@@ -134,10 +133,45 @@ class LoginScreen extends StatelessWidget {
       useSafeArea: false,
       onChanged: (CountryCode? code) {
         if (code != null) {
-          contryCode=code.dialCode;
-          print(contryCode);
+          contryCode = code.dialCode ?? '+90';
         }
       },
     );
+  }
+  // this widget for display text sinUp or circleIndector if loading start
+
+  Widget textOrIndector(BuildContext context) {
+    bool val = context.watch<BoolingVal>().isLodingAuth;
+    return val
+        ? const Center(
+            child: CircularProgressIndicator(
+            color: Colors.white,
+          ))
+        : customText(
+            text: AppLocalizations.of(context)!.singup,
+            textWeight: FontWeight.bold);
+  }
+
+  // this method for start singUp after user typed his phone number
+  Future<void> startSinup(BuildContext context) async {
+    bool valLoading =
+        Provider.of<BoolingVal>(context, listen: false).isLodingAuth;
+
+    if (phoneControla.text.isNotEmpty) {
+      resultPhoneNimber = '$contryCode${phoneControla.text.trim()}';
+      if (!valLoading) {
+        context.read<BoolingVal>().loadingAuth(true);
+        await authInstance
+            .setLanguageCode(AppLocalizations.of(context)!.lan)
+            .whenComplete(() {
+          AuthSrv().authByPhoneNumber(context, resultPhoneNimber);
+        });
+      }
+    } else {
+      customSnackBar(
+          context: context,
+          text: AppLocalizations.of(context)!.phoneIsReq,
+          color: Colors.red.shade700);
+    }
   }
 }
