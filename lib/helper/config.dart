@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../models/user_info.dart';
+
 //0==============UserConfig===============
 FirebaseAuth authInstance = FirebaseAuth.instance;
 String userId = authInstance.currentUser?.uid ?? 'null';
+UserInfoProfile userInfoProfile = UserInfoProfile();
 
 // 1_============proprty===================
 const Color mainColor = Color(0xFF00A3E0);
@@ -32,3 +35,4 @@ const toListOfIteamRealEstate = '/ListOfIteamRealEstate';
 const toProfileScreen = '/ProfileScreen';
 const toLoginScreen = '/LoginScreen';
 const toCodePhone = '/CodePhone';
+const toProfileInfo = '/ProfileInfo';

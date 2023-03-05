@@ -24,7 +24,7 @@ Widget customDrawer(BuildContext context) {
             customSpacer(height: 10.0),
             ListTile(
               onTap: () {
-                navToLoginOrProfile(context);
+                GlobalMethods().navToLoginOrProfile(context);
               },
               minLeadingWidth: 10.0,
               trailing: customIcon(iconData: Icons.arrow_forward_ios),
@@ -38,8 +38,8 @@ Widget customDrawer(BuildContext context) {
                   textWeight: FontWeight.bold),
               subtitle: customText(
                   text: userId == 'null'
-                  ? AppLocalizations.of(context)!.unRigister
-                  :'User Name',
+                      ? AppLocalizations.of(context)!.unRigister
+                      : 'User Name',
                   textAlign: TextAlign.justify,
                   textFontSize: 12.0,
                   textColor: Colors.black38),
@@ -60,8 +60,10 @@ Widget customDrawer(BuildContext context) {
                   textColor: Colors.black38),
             ),
             ListTile(
-              onTap: () => pushReplaceToNewScreen(
-                  context: context, routeName: toHomeScreen),
+              onTap: () {
+                GlobalMethods().pushReplaceToNewScreen(
+                    context: context, routeName: toHomeScreen);
+              },
               minLeadingWidth: 10.0,
               leading: cutomImageIcon(imagePath: 'homepage.png'),
               trailing: customIcon(iconData: Icons.arrow_forward_ios),

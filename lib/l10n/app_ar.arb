@@ -78,6 +78,17 @@
     "someWrong": "حدث خطأ ما حاول مرة أخرى",
     "codeWrong": "الرمز غير صالح حاول مرة أخرى",
     "codeIsReq": "رقم الكود مطلوب",
-    "lan": "ar"
+    "lan": "ar",
+    "addPhotot": "أضف صورة ملفك الشخصي",
+    "name": "اسم",
+    "hintName": "إكتب الإسم والكنية",
+    "mail": "عنوان البريد الإلكتروني",
+    "hintMail": "اكتب البريد الالكتروني الخاص بك",
+    "personalAccount": "حساب شخصي",
+    "commercialAccount": "حساب تجاري",
+    "pickImage": "اختر صورة",
+    "byCamera": "بواسطة الكاميرا",
+    "fromGallary": "من المعرض",
+    "cancle": "إلغاء"
     
 }

@@ -322,5 +322,49 @@
   "lan": "en",
   "@lan": {
     "description": "lan"
+  },
+  "addPhotot": "Add your profile photo",
+  "@addPhotot": {
+    "description": "addPhotot"
+  },
+  "name": "Name",
+  "@name": {
+    "description": "name"
+  },
+  "hintName": "Type your frist & last name",
+  "@hintName": {
+    "description": "hintName"
+  },
+  "mail": "Email address",
+  "@mail": {
+    "description": "mail"
+  },
+  "hintMail": "type your Email address",
+  "@hintMail": {
+    "description": "hintMail"
+  },
+  "personalAccount": "Personal Account",
+  "@personalAccount": {
+    "description": "personalAccount"
+  },
+  "commercialAccount": "commercial Account",
+  "@commercialAccount": {
+    "description": "commercialAccount"
+  },
+  "pickImage": "Pick an image",
+  "@pickImage": {
+    "description": "pickImage"
+  },
+  "byCamera": "By camera",
+  "@byCamera": {
+    "description": "byCamera"
+  },
+  "fromGallary": "From gallery",
+  "@fromGallary": {
+    "description": "fromGallary"
+  },
+  "cancle": "Cancel",
+  "@cancle": {
+    "description": "cancle"
   }
 }

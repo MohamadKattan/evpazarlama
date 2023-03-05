@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-import '../custom-widgets/custom_dailog.dart';
+import '../helper/custom_dailog.dart';
 import '../helper/config.dart';
 import '../state-maneg/booling_val.dart';
 
@@ -21,9 +21,10 @@ class AuthSrv {
           if (value.user!.uid.isNotEmpty) {
             final id = value.user!.uid.toString();
             userId = id;
-            pushToNewScreen(context: context, routeName: toProfileScreen);
+            GlobalMethods()
+                .pushToNewScreen(context: context, routeName: toProfileInfo);
           } else {
-            customSnackBar(
+            CustomDailog().customSnackBar(
                 context: context,
                 text: AppLocalizations.of(context)!.someWrong,
                 color: Colors.red);
@@ -31,22 +32,22 @@ class AuthSrv {
         });
       },
       verificationFailed: (FirebaseAuthException e) {
-            context.read<BoolingVal>().loadingAuth(false);
+        context.read<BoolingVal>().loadingAuth(false);
         if (e.code == 'invalid-phone-number') {
-          customSnackBar(
+          CustomDailog().customSnackBar(
               context: context,
               text: AppLocalizations.of(context)!.phoneNotValeid,
               color: Colors.red);
         }
         if (e.code == 'invalid-verification-code') {
-          customSnackBar(
+          CustomDailog().customSnackBar(
               context: context,
               text: AppLocalizations.of(context)!.codeWrong,
               color: Colors.red);
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
-         context.read<BoolingVal>().loadingAuth(false);
+        context.read<BoolingVal>().loadingAuth(false);
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return CodePhone(
             verId: verificationId,
@@ -54,9 +55,9 @@ class AuthSrv {
         }));
       },
       codeAutoRetrievalTimeout: (String verificationId) {
-            context.read<BoolingVal>().loadingAuth(false);
+        context.read<BoolingVal>().loadingAuth(false);
         if (userId == 'null') {
-          customSnackBar(
+          CustomDailog().customSnackBar(
               context: context,
               text: AppLocalizations.of(context)!.timeOut,
               color: Colors.red);
@@ -78,16 +79,17 @@ class AuthSrv {
         if (value.user!.uid.isNotEmpty) {
           final id = value.user!.uid.toString();
           userId = id;
-          pushToNewScreen(context: context, routeName: toProfileScreen);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toProfileInfo);
         } else {
-          customSnackBar(
+          CustomDailog().customSnackBar(
               context: context,
               text: AppLocalizations.of(context)!.someWrong,
               color: Colors.red);
         }
       });
     } catch (ex) {
-      customSnackBar(
+      CustomDailog().customSnackBar(
           context: context, text: ex.toString(), color: Colors.red.shade700);
     }
   }

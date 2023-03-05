@@ -12,8 +12,9 @@ Widget mainItemsHomeDrawer(BuildContext context) {
     children: [
       ListTile(
         onTap: () async {
-           mainCatogry = 0;
-          pushToNewScreen(context: context, routeName: toMainCategory);
+          mainCatogry = 0;
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toMainCategory);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'home.png'),
@@ -34,8 +35,9 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ),
       ListTile(
         onTap: () {
-           mainCatogry = 1;
-          pushToNewScreen(context: context, routeName: toMainCategory);
+          mainCatogry = 1;
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toMainCategory);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'steering-wheel.png'),
@@ -57,7 +59,8 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ListTile(
         onTap: () {
           mainCatogry = 2;
-          pushToNewScreen(context: context, routeName: toMainCategory);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toMainCategory);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'hotel.png'),
@@ -79,7 +82,8 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ListTile(
         onTap: () {
           mainCatogry = 3;
-          pushToNewScreen(context: context, routeName: toLastAds);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toLastAds);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: '24-hours.png'),
@@ -101,7 +105,8 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ListTile(
         onTap: () {
           mainCatogry = 4;
-          pushToNewScreen(context: context, routeName: toUrgentScrren);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toUrgentScrren);
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'funds.png'),

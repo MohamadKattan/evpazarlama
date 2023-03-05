@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../client-srv/auth_srv.dart';
-import '../custom-widgets/custom_dailog.dart';
+import '../helper/custom_dailog.dart';
 import '../custom-widgets/custom_drawer.dart';
 import '../helper/config.dart';
 import '../helper/custom_positioned.dart';
@@ -92,7 +92,6 @@ class LoginScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => startSinup(context),
                       child: customContainer(
-                        // spaceAroundBottomMargin: 15.0,
                         spaceAroundTopMargin: 15.0,
                         colorBack: mainColor,
                         ridusBL: 12.0,
@@ -168,7 +167,7 @@ class LoginScreen extends StatelessWidget {
         });
       }
     } else {
-      customSnackBar(
+      CustomDailog().customSnackBar(
           context: context,
           text: AppLocalizations.of(context)!.phoneIsReq,
           color: Colors.red.shade700);

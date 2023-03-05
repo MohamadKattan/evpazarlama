@@ -78,5 +78,16 @@
     "someWrong": "Bir şeyler ters gitti tekrar deneyin",
     "codeWrong": "Kod geçerli değil tekrar deneyin",
     "codeIsReq": "Kod numarası gerekli",
-    "lan": "tr"
+    "lan": "tr",
+    "addPhotot": "profil fotoğrafını ekle",
+    "name": "İsim",
+    "hintName": "Adınızı ve soyadınızı yazın",
+    "mail": "E-posta adresi",
+    "hintMail": "E-posta adresinizi yazın",
+    "personalAccount": "Kişisel hesap",
+    "commercialAccount": "Ticari hesap",
+    "pickImage": "Bir resim seç",
+    "byCamera": "Kamerayla",
+    "fromGallary": "Galeriden",
+    "cancle": "İptal"
 }

@@ -1,5 +1,6 @@
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
+import 'package:evpazarlama/pages/profile_info.dart';
 import 'package:evpazarlama/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,6 +16,8 @@ import 'pages/result_all_real.dart';
 import 'pages/splash_screen.dart';
 import 'pages/urgent_screen.dart';
 import 'state-maneg/booling_val.dart';
+import 'state-maneg/image_val.dart';
+import 'state-maneg/string_val.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +33,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-         ChangeNotifierProvider(create: (_) => BoolingVal()),
+        ChangeNotifierProvider(create: (_) => BoolingVal()),
+        ChangeNotifierProvider(create: (_) => StringVal()),
+        ChangeNotifierProvider(create: (_) => ImageVal()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -55,8 +60,9 @@ class MyApp extends StatelessWidget {
           toUrgentScrren: (context) => const UrgentScrren(),
           toResAllReal: (context) => const ResAllRealState(),
           toListOfIteamRealEstate: (context) => const ListOfIteam(),
-          toProfileScreen: (context) => const ProfileScreen(),
           toLoginScreen: (context) => const LoginScreen(),
+          toProfileInfo: (context) => const ProfileInfo(),
+          toProfileScreen: (context) => const ProfileScreen()
         },
       ),
     );

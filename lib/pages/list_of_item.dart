@@ -27,20 +27,21 @@ class ListOfIteam extends StatelessWidget {
             drawer: customDrawer(context),
             body: ListView.builder(
                 padding: EdgeInsets.zero,
-                itemCount: typeOfListItem(context).length,
+                itemCount: GlobalMethods().typeOfListItem(context).length,
                 itemBuilder: (_, index) {
-                  if (typeOfListItem(context).isNotEmpty) {
+                  if (GlobalMethods().typeOfListItem(context).isNotEmpty) {
                     return ListTile(
                       onTap: () {},
                       minLeadingWidth: 10.0,
                       leading: listOfItemVal > 2
-                          ? cutomImageIcon(imagePath: '${typeOfListItem(context)[index]}.png'
-                         )
+                          ? cutomImageIcon(
+                              imagePath:
+                                  '${GlobalMethods().typeOfListItem(context)[index]}.png')
                           : const SizedBox(),
                       trailing: customIcon(
                           iconData: Icons.arrow_forward_ios, color: mainColor),
                       title: customText(
-                          text: typeOfListItem(context)[index],
+                          text: GlobalMethods().typeOfListItem(context)[index],
                           textAlign: TextAlign.justify,
                           textFontSize: 18.0,
                           textColor: mainColor,

@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pinput/pinput.dart';
 
 import '../client-srv/auth_srv.dart';
-import '../custom-widgets/custom_dailog.dart';
+import '../helper/custom_dailog.dart';
 import '../custom-widgets/custom_drawer.dart';
 import '../helper/config.dart';
 import '../helper/custom_container.dart';
@@ -84,7 +84,7 @@ class CodePhone extends StatelessWidget {
                             await AuthSrv()
                                 .codeSent(verId, codeController, context);
                           } else {
-                            customSnackBar(
+                            CustomDailog().customSnackBar(
                                 context: context,
                                 text: AppLocalizations.of(context)!.codeIsReq,
                                 color: Colors.red.shade700);

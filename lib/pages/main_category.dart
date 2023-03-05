@@ -1,6 +1,6 @@
 // this screen for display realSatae category
 
-import 'package:evpazarlama/custom-widgets/custom_dailog.dart';
+import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
@@ -33,11 +33,13 @@ class MainCategory extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 55 / 100,
               child: ListView.builder(
-                
                 padding: EdgeInsets.zero,
-                itemCount: typeOfListMainCatogry(context).length,
+                itemCount:
+                    GlobalMethods().typeOfListMainCatogry(context).length,
                 itemBuilder: (context, index) {
-                  if (typeOfListMainCatogry(context).isNotEmpty) {
+                  if (GlobalMethods()
+                      .typeOfListMainCatogry(context)
+                      .isNotEmpty) {
                     return ListTile(
                       onTap: () async {
                         navToPageOrShowDailogRenSaleList(context, index);
@@ -46,7 +48,8 @@ class MainCategory extends StatelessWidget {
                       trailing: customIcon(
                           iconData: Icons.arrow_forward_ios, color: mainColor),
                       title: customText(
-                          text: typeOfListMainCatogry(context)[index],
+                          text: GlobalMethods()
+                              .typeOfListMainCatogry(context)[index],
                           textAlign: TextAlign.justify,
                           textColor: mainColor,
                           textFontSize: 18.0,
@@ -58,22 +61,22 @@ class MainCategory extends StatelessWidget {
                 },
               ),
             ),
-                     customSpacer(height: 20.0),
-                  // titel all ads
-                  customContainer(
-                    alignment: Alignment.centerLeft,
-                    colorBack: greyColor,
-                    child: customText(
-                        text: AppLocalizations.of(context)!.allAdsVitrin,
-                        textColor: mainColor),
-                  ),
-                  customSpacer(height: 20.0),
-                  // grid 20 item from all ads
-                  customContainer(
-                      spaceAroundTop: 100.0,
-                      spaceAroundBottomMargin: 20.0,
-                      colorBack: Colors.red,
-                      child: customText(text: "dev")),
+            customSpacer(height: 20.0),
+            // titel all ads
+            customContainer(
+              alignment: Alignment.centerLeft,
+              colorBack: greyColor,
+              child: customText(
+                  text: AppLocalizations.of(context)!.allAdsVitrin,
+                  textColor: mainColor),
+            ),
+            customSpacer(height: 20.0),
+            // grid 20 item from all ads
+            customContainer(
+                spaceAroundTop: 100.0,
+                spaceAroundBottomMargin: 20.0,
+                colorBack: Colors.red,
+                child: customText(text: "dev")),
           ],
         ),
       ),
@@ -221,7 +224,7 @@ class MainCategory extends StatelessWidget {
 
   // this method for check if will nav to specifc screen or show dailog rent sale list
   void navToPageOrShowDailogRenSaleList(BuildContext context, int index) {
-    int length = typeOfListMainCatogry(context).length;
+    int length = GlobalMethods().typeOfListMainCatogry(context).length;
     final list4Item = [
       AppLocalizations.of(context)!.sale,
       AppLocalizations.of(context)!.rent,
@@ -236,7 +239,8 @@ class MainCategory extends StatelessWidget {
       //Estata
       switch (index) {
         case 0:
-          pushToNewScreen(context: context, routeName: toResAllReal);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toResAllReal);
           break;
         case 1:
           listOfItemVal = 0;
@@ -244,7 +248,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list4Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list4Item);
               });
           break;
         case 2:
@@ -253,7 +258,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 3:
@@ -262,7 +268,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 4:
@@ -271,7 +278,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 5:
@@ -285,7 +293,8 @@ class MainCategory extends StatelessWidget {
       //vehicle
       switch (index) {
         case 0:
-          pushToNewScreen(context: context, routeName: toResAllReal);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toResAllReal);
           break;
         case 1:
           listOfItemVal = 2;
@@ -293,7 +302,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 2:
@@ -302,7 +312,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 3:
@@ -311,7 +322,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 4:
@@ -320,7 +332,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 5:
@@ -329,11 +342,13 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 6:
-          pushToNewScreen(context: context, routeName: toResAllReal);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toResAllReal);
           break;
         default:
           null;
@@ -343,7 +358,8 @@ class MainCategory extends StatelessWidget {
       //hotels
       switch (index) {
         case 0:
-          pushToNewScreen(context: context, routeName: toResAllReal);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toResAllReal);
           break;
         case 1:
           listOfItemVal = 7;
@@ -351,7 +367,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
 
           break;
@@ -361,7 +378,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 3:
@@ -370,7 +388,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
         case 4:
@@ -379,7 +398,8 @@ class MainCategory extends StatelessWidget {
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return customDailogSaleRentElse(context, list2Item);
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
               });
           break;
       }

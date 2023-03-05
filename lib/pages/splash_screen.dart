@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../../global-methods/methods.dart';
 import '../../helper/custom_icon.dart';
 
-
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -15,13 +14,14 @@ class SplashScreen extends StatelessWidget {
     pushAftrer3Second(context);
     return SafeArea(
         child: Scaffold(
-      backgroundColor: mainColor,
-      body:Center(child: cutomImage(imagePath:'splash.png'))
-    ));
+            backgroundColor: mainColor,
+            body: Center(child: cutomImage(imagePath: 'splash.png'))));
   }
 }
 
 void pushAftrer3Second(BuildContext context) {
-  Future.delayed(const Duration(seconds: 4)).whenComplete(
-      () => pushReplaceToNewScreen(context: context, routeName: toHomeScreen));
+  Future.delayed(const Duration(seconds: 4)).whenComplete(() {
+    GlobalMethods()
+        .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
+  });
 }
