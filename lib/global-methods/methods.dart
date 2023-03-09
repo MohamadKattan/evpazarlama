@@ -71,7 +71,7 @@ class GlobalMethods {
 
 // nav to loginScren or profileScreen conect to user id
   navToLoginOrProfile(BuildContext context) {
-    String userName = userInfoProfile.userName ?? 'null';
+    String userName = userInfoProfile?.userName ?? 'null';
     if (userId != 'null') {
       if (userName != 'null') {
         pushToNewScreen(context: context, routeName: toProfileScreen);

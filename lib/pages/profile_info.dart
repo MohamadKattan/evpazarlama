@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
@@ -7,8 +8,6 @@ import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/helper/custom_text_field.dart';
-import 'package:evpazarlama/models/user_info.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -83,7 +82,7 @@ class ProfileInfo extends StatelessWidget {
                 customSpacer(height: 20.0),
                 GestureDetector(
                   onTap: () {
-                    check(context);
+                    checkBeforSetToDataBase(context);
                   },
                   child: customContainer(
                       spaceAroundTopMargin: 15.0,
@@ -108,7 +107,7 @@ class ProfileInfo extends StatelessWidget {
     return val
         ? const Center(child: CircularProgressIndicator(color: mainColor))
         : customText(
-            text: AppLocalizations.of(context)!.singup,
+            text: AppLocalizations.of(context)!.uploadUserInfo,
             textColor: mainColor,
             textWeight: FontWeight.bold);
   }
@@ -121,10 +120,29 @@ class ProfileInfo extends StatelessWidget {
         : cutomImageIcon(imagePath: 'addphotot.png', width: 50.0, height: 50.0);
   }
 
-  void check(BuildContext context) {
-    final ty =
-        Provider.of<StringVal>(context, listen: false).dropdownValue.toString();
-     final name = nameController.text.toString();
-     print(UserInfoProfile().toJson(name));
+  void checkBeforSetToDataBase(BuildContext context) {
+    final valDropBotton =
+        Provider.of<StringVal>(context, listen: false).dropdownValue;
+    bool valLoading =
+        Provider.of<BoolingVal>(context, listen: false).isLodingAuth;
+
+    if (nameController.text.isEmpty) {
+      CustomDailog().customSnackBar(
+          context: context, text: AppLocalizations.of(context)!.nameReq);
+    } else if (emailController.text.isEmpty) {
+      CustomDailog().customSnackBar(
+          context: context, text: AppLocalizations.of(context)!.emailReq);
+    } else {
+      if (!valLoading) {
+        context.read<BoolingVal>().loadingAuth(true);
+        String name = nameController.text;
+        String email = emailController.text.trim();
+        String typeAcount =
+            valDropBotton ?? AppLocalizations.of(context)!.personalAccount;
+        String phone = authInstance.currentUser?.phoneNumber ?? 'null';
+        DataBaseSrv().setUserInfoProfileToDataBase(
+            name, email, typeAcount, phone, context);
+      }
+    }
   }
 }

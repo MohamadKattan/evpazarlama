@@ -89,5 +89,8 @@
     "pickImage": "Bir resim seç",
     "byCamera": "Kamerayla",
     "fromGallary": "Galeriden",
-    "cancle": "İptal"
+    "cancle": "İptal",
+    "nameReq": "İsim gereklidir boş bırakılamaz",
+    "emailReq": "E-posta gereklidir boş bırakılamaz",
+    "uploadUserInfo": "bilgi yükle"
 }

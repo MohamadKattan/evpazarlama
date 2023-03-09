@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
 
+import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:flutter/material.dart';
-
 import '../../global-methods/methods.dart';
 import '../../helper/custom_icon.dart';
 
@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
 }
 
 void pushAftrer3Second(BuildContext context) {
-  Future.delayed(const Duration(seconds: 4)).whenComplete(() {
+  DataBaseSrv().getUserProfileInfo(context).whenComplete(() {
     GlobalMethods()
         .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
   });

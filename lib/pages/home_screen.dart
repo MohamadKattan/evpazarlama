@@ -1,5 +1,6 @@
 // Home screen of app
 
+import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/custom-widgets/list_home_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
@@ -27,7 +28,9 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                     print( userInfoProfile?.userMail);
+                    },
                     child: Row(
                       children: [
                         customText(

@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../helper/custom_dailog.dart';
 import '../helper/config.dart';
 import '../state-maneg/booling_val.dart';
+import 'database_srv.dart';
 
 class AuthSrv {
   // this method for start singUp by phone Nummber
@@ -75,12 +76,20 @@ class AuthSrv {
       String smsCode = codeController.text.trim();
       PhoneAuthCredential credential =
           PhoneAuthProvider.credential(verificationId: verId, smsCode: smsCode);
-      await authInstance.signInWithCredential(credential).then((value) {
+      await authInstance.signInWithCredential(credential).then((value) async {
         if (value.user!.uid.isNotEmpty) {
+          context.read<BoolingVal>().loadingAuth(false);
           final id = value.user!.uid.toString();
           userId = id;
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toProfileInfo);
+          await DataBaseSrv().getUserProfileInfo(context).whenComplete(() {
+            if (userInfoProfile?.userName != null) {
+              GlobalMethods().pushReplaceToNewScreen(
+                  context: context, routeName: toHomeScreen);
+            } else {
+              GlobalMethods().pushReplaceToNewScreen(
+                  context: context, routeName: toProfileInfo);
+            }
+          });
         } else {
           CustomDailog().customSnackBar(
               context: context,

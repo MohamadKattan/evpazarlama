@@ -1,5 +1,3 @@
-import 'package:evpazarlama/helper/config.dart';
-
 class UserInfoProfile {
   String? userid;
   String? userName;
@@ -15,22 +13,29 @@ class UserInfoProfile {
       this.userImage,
       this.userAccountType});
 
-  UserInfoProfile.fromMap(Map<String, dynamic> map) {
-    UserInfoProfile(
-      userid: map['id'].toString(),
-      userName: map['name'].toString(),
-      userPhone: map['phone'].toString(),
-      userImage: map['image'].toString(),
-      userMail: map['mail'].toString(),
-      userAccountType: map['type'].toString(),
-    );
-  }
-  Map<String, dynamic> toJson(String name) => {
-        'id': userId,
+  UserInfoProfile.fromJson(Map<String, Object?> map)
+      : this(
+          userid: map['id'].toString(),
+          userName: map['name'].toString(),
+          userPhone: map['phone'].toString(),
+          userMail: map['email'].toString(),
+          userAccountType: map['type'].toString(),
+          userImage: map['image'].toString(),
+        );
+
+  Map<String, dynamic> toJson(
+          {required String id,
+          required String name,
+          required String phone,
+          required String email,
+          required String type,
+          required String url}) =>
+      {
+        'id': id,
         'name': name,
-        'phone': authInstance.currentUser?.phoneNumber ?? 'null',
-        'image': userImage,
-        'mail': userMail,
-        'type': userAccountType,
+        'phone': phone,
+        'email': email,
+        'type': type,
+        'image': url,
       };
 }

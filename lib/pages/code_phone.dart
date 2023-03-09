@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pinput/pinput.dart';
+import 'package:provider/provider.dart';
 
 import '../client-srv/auth_srv.dart';
 import '../helper/custom_dailog.dart';
@@ -10,6 +11,7 @@ import '../helper/custom_container.dart';
 import '../helper/custom_icon.dart';
 import '../helper/custom_positioned.dart';
 import '../helper/custom_text.dart';
+import '../state-maneg/booling_val.dart';
 
 class CodePhone extends StatelessWidget {
   final String verId;
@@ -80,9 +82,15 @@ class CodePhone extends StatelessWidget {
                       pinOutput(),
                       GestureDetector(
                         onTap: () async {
+                          bool valLoading =
+                              Provider.of<BoolingVal>(context, listen: false)
+                                  .isLodingAuth;
                           if (codeController.text.isNotEmpty) {
-                            await AuthSrv()
-                                .codeSent(verId, codeController, context);
+                            if (!valLoading) {
+                              context.read<BoolingVal>().loadingAuth(true);
+                              await AuthSrv()
+                                  .codeSent(verId, codeController, context);
+                            }
                           } else {
                             CustomDailog().customSnackBar(
                                 context: context,
@@ -100,10 +108,7 @@ class CodePhone extends StatelessWidget {
                             ridusl: 12.0,
                             width: 220.0,
                             height: 60.0,
-                            child: customText(
-                                text: AppLocalizations.of(context)!
-                                    .vervectioPhone,
-                                textWeight: FontWeight.bold)),
+                            child: textOrIndector(context)),
                       )
                     ],
                   ),
@@ -166,5 +171,17 @@ class CodePhone extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget textOrIndector(BuildContext context) {
+    bool val = context.watch<BoolingVal>().isLodingAuth;
+    return val
+        ? const Center(
+            child: CircularProgressIndicator(
+            color: Colors.white,
+          ))
+        : customText(
+            text: AppLocalizations.of(context)!.vervectioPhone,
+            textWeight: FontWeight.bold);
   }
 }

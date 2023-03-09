@@ -39,7 +39,7 @@ Widget customDrawer(BuildContext context) {
               subtitle: customText(
                   text: userId == 'null'
                       ? AppLocalizations.of(context)!.unRigister
-                      : 'User Name',
+                      : '(${userInfoProfile?.userName ?? '...***...'})',
                   textAlign: TextAlign.justify,
                   textFontSize: 12.0,
                   textColor: Colors.black38),

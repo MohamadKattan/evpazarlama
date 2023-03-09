@@ -17,7 +17,7 @@ class CustomDailog {
       {required BuildContext context, required String text, Color? color}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(text),
-      backgroundColor: color,
+      backgroundColor: color ?? Colors.red,
     ));
   }
 
@@ -98,10 +98,14 @@ class CustomDailog {
           ),
           ListTile(
             onTap: () async {
-              await GlobalMethods().pickImagesMethod(
+              await GlobalMethods()
+                  .pickImagesMethod(
                 ImageSource.camera,
                 context,
-              );
+              )
+                  .whenComplete(() {
+                GlobalMethods().popFromScreen(context);
+              });
             },
             leading: customIcon(iconData: Icons.camera, color: mainColor),
             trailing: customIcon(
@@ -113,10 +117,14 @@ class CustomDailog {
           ),
           ListTile(
             onTap: () async {
-              await GlobalMethods().pickImagesMethod(
+              await GlobalMethods()
+                  .pickImagesMethod(
                 ImageSource.gallery,
                 context,
-              );
+              )
+                  .whenComplete(() {
+                GlobalMethods().popFromScreen(context);
+              });
             },
             leading: customIcon(
                 iconData: Icons.photo_library_outlined, color: mainColor),

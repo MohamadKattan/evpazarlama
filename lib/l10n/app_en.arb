@@ -366,5 +366,17 @@
   "cancle": "Cancel",
   "@cancle": {
     "description": "cancle"
+  },
+  "nameReq": "Name is required can not be empty",
+  "@nameReq": {
+    "description": "nameReq"
+  },
+  "emailReq": "Email is required can not be empty",
+  "@emailReq": {
+    "description": "emailReq"
+  },
+  "uploadUserInfo": "Upload info",
+  "@uploadUserInfo": {
+    "description": "uploadUserInfo"
   }
 }
