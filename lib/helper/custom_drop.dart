@@ -6,8 +6,8 @@ import '../state-maneg/string_val.dart';
 
 Widget customDropButton(
     {required List<String> list, required BuildContext context}) {
-  String? dropdownValue =context.watch<StringVal>().dropdownValue;
-    // Provider.of<StringVal>(context).dropdownValue;
+  String? dropdownValue = context.watch<StringVal>().dropdownValue;
+  // Provider.of<StringVal>(context).dropdownValue;
   return Container(
     margin: const EdgeInsets.all(8.0),
     padding: const EdgeInsets.only(left: 12.0, right: 12.0),
@@ -15,7 +15,7 @@ Widget customDropButton(
         color: Colors.white, borderRadius: BorderRadius.circular(4.0)),
     child: DropdownButton<String>(
       isExpanded: true,
-      value:dropdownValue?? list.first,
+      value: dropdownValue ?? list.first,
       dropdownColor: Colors.white,
       icon: const Icon(Icons.arrow_drop_down),
       iconSize: 35.0,

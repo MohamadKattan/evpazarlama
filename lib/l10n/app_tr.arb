@@ -92,5 +92,19 @@
     "cancle": "İptal",
     "nameReq": "İsim gereklidir boş bırakılamaz",
     "emailReq": "E-posta gereklidir boş bırakılamaz",
-    "uploadUserInfo": "bilgi yükle"
+    "uploadUserInfo": "bilgi yükle",
+    "adsManger": "Reklam Yöneticisi",
+    "compliteAds": "Tamamlanmış reklamlar",
+    "subCompliteAds": "Yayınlama tamamlandı",
+    "notCompliteAds": "Tamamlanmamış Reklamlar",
+    "subNotCompliteAds": "Yayınlanmayı bekliyor",
+    "messagesNotif": "Mesaj ve Bildirim",
+    "myMessages": "Mesajlarım",
+    "submyMessages": "Reklamlarımdaki mesajlar",
+    "myNotifictions": "Bildirimler",
+    "subMyNotifictions": "Uygulama bildirimleri",
+    "signOut": "çıkış yap",
+    "fievort": "Favori",
+    "subfievort": "Favori reklamlarım",
+    "beforAddNewAds": "İlan verebilmek için uygulamaya kayıt olmalısınız."
 }

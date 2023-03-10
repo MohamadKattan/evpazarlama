@@ -378,5 +378,61 @@
   "uploadUserInfo": "Upload info",
   "@uploadUserInfo": {
     "description": "uploadUserInfo"
+  },
+  "adsManger": "Ads Manager",
+  "@adsManger": {
+    "description": "adsManger"
+  },
+  "compliteAds": "Completed Ads",
+  "@compliteAds": {
+    "description": "compliteAds"
+  },
+  "subCompliteAds": "Publish done",
+  "@subCompliteAds": {
+    "description": "subCompliteAds"
+  },
+  "notCompliteAds": "Not completed Ads",
+  "@notCompliteAds": {
+    "description": "notCompliteAds"
+  },
+  "subNotCompliteAds": "Waiting for publishing",
+  "@subNotCompliteAds": {
+    "description": "subNotCompliteAds"
+  },
+  "messagesNotif": "Messages & Notifications",
+  "@messagesNotif": {
+    "description": "messagesNotif"
+  },
+  "myMessages": "My messages",
+  "@myMessages": {
+    "description": "myMessages"
+  },
+  "submyMessages": "Messages on my ads",
+  "@submyMessages": {
+    "description": "submyMessages"
+  },
+  "myNotifictions": "Notifications",
+  "@myNotifictions": {
+    "description": "myNotifictions"
+  },
+  "subMyNotifictions": "Application notifications",
+  "@subMyNotifictions": {
+    "description": "subMyNotifictions"
+  },
+  "signOut": "Sign out",
+  "@signOut": {
+    "description": "signOut"
+  },
+  "fievort": "Favorite",
+  "@fievort": {
+    "description": "fievort"
+  },
+  "subfievort": "My favorite ads",
+  "@subfievort": {
+    "description": "subfievort"
+  },
+  "beforAddNewAds": "In order to post an ad, you must register in the application",
+  "@beforAddNewAds": {
+    "description": "beforAddNewAds"
   }
 }

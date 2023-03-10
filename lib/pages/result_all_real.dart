@@ -8,7 +8,6 @@ import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 import '../helper/custom_spacer.dart';
 
 class ResAllRealState extends StatelessWidget {

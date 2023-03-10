@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
-Widget customText({String? text, TextAlign? textAlign, TextOverflow? overflow,
-    Color? textColor, double? textFontSize, FontWeight? textWeight}) {
+Widget customText(
+    {String? text,
+    TextAlign? textAlign,
+    TextOverflow? overflow,
+    Color? textColor,
+    double? textFontSize,
+    FontWeight? textWeight}) {
   return Text(
     text ?? "No val",
     textAlign: textAlign ?? TextAlign.center,

@@ -1,4 +1,4 @@
-// this screen for display ads of type urgent from database 
+// this screen for display ads of type urgent from database
 
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';

@@ -45,6 +45,9 @@ Widget customDrawer(BuildContext context) {
                   textColor: Colors.black38),
             ),
             ListTile(
+              onTap: () {
+                GlobalMethods().navToAddNewAdsIfSingIn(context);
+              },
               minLeadingWidth: 10.0,
               trailing: customIcon(iconData: Icons.arrow_forward_ios),
               leading: cutomImageIcon(imagePath: 'plus.png'),

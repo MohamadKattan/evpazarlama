@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget customContainer(
-    {
-    double? height,  
+    {double? height,
     double? width,
     Alignment? alignment,
     double? spaceAroundLeft,

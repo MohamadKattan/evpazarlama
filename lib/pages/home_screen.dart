@@ -1,8 +1,8 @@
 // Home screen of app
 
-import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/custom-widgets/list_home_drawer.dart';
+import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                     print( userInfoProfile?.userMail);
+                      GlobalMethods().navToAddNewAdsIfSingIn(context);
                     },
                     child: Row(
                       children: [
@@ -49,6 +49,7 @@ class HomeScreen extends StatelessWidget {
             body: ListView(
               padding: EdgeInsets.zero,
               children: [
+                // search container
                 customContainer(
                   spaceAroundTopMargin: 15.0,
                   spaceAroundBottomMargin: 15.0,

@@ -3,7 +3,6 @@ import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
-import 'package:evpazarlama/helper/custom_positioned.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +111,9 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      customText(text: 'Ads manger', textColor: mainColor),
+                      customText(
+                          text: AppLocalizations.of(context)!.adsManger,
+                          textColor: mainColor),
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         minLeadingWidth: 0.0,
@@ -125,11 +126,12 @@ class ProfileScreen extends StatelessWidget {
                             iconData: Icons.arrow_forward_ios,
                             color: mainColor),
                         title: customText(
-                            text: 'Completed ads',
+                            text: AppLocalizations.of(context)!.compliteAds,
                             textColor: mainColor,
                             textAlign: TextAlign.justify),
                         subtitle: customText(
-                            text: '(ADS published)',
+                            text:
+                                '(${AppLocalizations.of(context)!.subCompliteAds})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
@@ -146,11 +148,12 @@ class ProfileScreen extends StatelessWidget {
                             iconData: Icons.arrow_forward_ios,
                             color: mainColor),
                         title: customText(
-                            text: 'Not Completed ads',
+                            text: AppLocalizations.of(context)!.notCompliteAds,
                             textColor: mainColor,
                             textAlign: TextAlign.justify),
                         subtitle: customText(
-                            text: '(ADS not published)',
+                            text:
+                                '(${AppLocalizations.of(context)!.subNotCompliteAds})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
@@ -167,11 +170,12 @@ class ProfileScreen extends StatelessWidget {
                             iconData: Icons.arrow_forward_ios,
                             color: mainColor),
                         title: customText(
-                            text: 'Favorts',
+                            text: AppLocalizations.of(context)!.fievort,
                             textColor: mainColor,
                             textAlign: TextAlign.justify),
                         subtitle: customText(
-                            text: '(My Faveort ads)',
+                            text:
+                                '(${AppLocalizations.of(context)!.subfievort})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
@@ -194,7 +198,9 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      customText(text: 'Messages', textColor: mainColor),
+                      customText(
+                          text: AppLocalizations.of(context)!.messagesNotif,
+                          textColor: mainColor),
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         minLeadingWidth: 0.0,
@@ -207,11 +213,12 @@ class ProfileScreen extends StatelessWidget {
                             iconData: Icons.arrow_forward_ios,
                             color: mainColor),
                         title: customText(
-                            text: 'My Messages',
+                            text: AppLocalizations.of(context)!.myMessages,
                             textColor: mainColor,
                             textAlign: TextAlign.justify),
                         subtitle: customText(
-                            text: '(Massages for ads)',
+                            text:
+                                '(${AppLocalizations.of(context)!.submyMessages})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
@@ -228,11 +235,12 @@ class ProfileScreen extends StatelessWidget {
                             iconData: Icons.arrow_forward_ios,
                             color: mainColor),
                         title: customText(
-                            text: 'Notifiction',
+                            text: AppLocalizations.of(context)!.myNotifictions,
                             textColor: mainColor,
                             textAlign: TextAlign.justify),
                         subtitle: customText(
-                            text: '(App Notifiction )',
+                            text:
+                                '(${AppLocalizations.of(context)!.subMyNotifictions})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
@@ -241,7 +249,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 // SingOut
-                customSpacer(height: 15.0),
+                customSpacer(height: 25.0),
                 GestureDetector(
                   onTap: () async {
                     await authInstance.signOut().whenComplete(() {
@@ -256,16 +264,18 @@ class ProfileScreen extends StatelessWidget {
                       ridusBR: 12.0,
                       ridusR: 12.0,
                       ridusl: 12.0,
-                      colorBack: Colors.white,
+                      colorBack: Colors.red.shade300,
                       child: Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: customText(
-                            text: 'SiginOut',
-                            textColor: Colors.red,
+                            text: AppLocalizations.of(context)!.signOut,
+                            textColor: Colors.white,
+                            textFontSize: 20.0,
+                            textWeight: FontWeight.bold,
                             textAlign: TextAlign.center),
                       )),
                 ),
-                customSpacer(height: 15.0),
+                customSpacer(height: 25.0),
               ]),
             )));
   }

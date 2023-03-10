@@ -1,4 +1,7 @@
 import 'package:evpazarlama/helper/config.dart';
+import 'package:evpazarlama/pages/add_new_ads.dart';
+import 'package:evpazarlama/pages/ads_listofitem.dart';
+import 'package:evpazarlama/pages/ads_main_cateegory.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
 import 'package:evpazarlama/pages/profile_info.dart';
 import 'package:evpazarlama/pages/profile_screen.dart';
@@ -47,7 +50,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [
-          Locale('en'), // enÍ
+          Locale('en'), // en
           Locale('ar'), // ar
           Locale('tr'), // tr
         ],
@@ -59,10 +62,13 @@ class MyApp extends StatelessWidget {
           toLastAds: (context) => const LastAds(),
           toUrgentScrren: (context) => const UrgentScrren(),
           toResAllReal: (context) => const ResAllRealState(),
-          toListOfIteamRealEstate: (context) => const ListOfIteam(),
+          toListOfIteam: (context) => const ListOfIteam(),
           toLoginScreen: (context) => const LoginScreen(),
           toProfileInfo: (context) => const ProfileInfo(),
-          toProfileScreen: (context) => const ProfileScreen()
+          toProfileScreen: (context) => const ProfileScreen(),
+          toAddNewAds: (context) => const AddNewAds(),
+          toAdsMainCategory: (context) => const AdsMainCategory(),
+          toAdsListOfItems: (context) => const AdsListOfItem()
         },
       ),
     );

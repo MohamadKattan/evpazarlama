@@ -1,4 +1,4 @@
-// this screen for diplay last 48 hour ads from data base 
+// this screen for diplay last 48 hour ads from data base
 
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';

@@ -1,22 +1,19 @@
-// this screen for display realSatae category
-
-import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
+import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../global-methods/methods.dart';
-import '../../helper/custom_icon.dart';
-import '../helper/custom_container.dart';
-import '../helper/custom_spacer.dart';
+import '../helper/custom_dailog.dart';
+import '../helper/custom_icon.dart';
 
-class MainCategory extends StatelessWidget {
-  const MainCategory({super.key});
+class AdsMainCategory extends StatelessWidget {
+  const AdsMainCategory({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List list = GlobalMethods().listCatogryAddNewAds(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -28,56 +25,32 @@ class MainCategory extends StatelessWidget {
           ),
         ),
         drawer: customDrawer(context),
-        body: ListView(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 55 / 100,
-              child: ListView.builder(
-                padding: EdgeInsets.zero,
-                itemCount:
-                    GlobalMethods().typeOfListMainCatogry(context).length,
-                itemBuilder: (context, index) {
-                  if (GlobalMethods()
-                      .typeOfListMainCatogry(context)
-                      .isNotEmpty) {
-                    return ListTile(
-                      onTap: () async {
-                        navToPageOrShowDailogRenSaleList(context, index);
-                      },
-                      minLeadingWidth: 10.0,
-                      trailing: customIcon(
-                          iconData: Icons.arrow_forward_ios, color: mainColor),
-                      title: customText(
-                          text: GlobalMethods()
-                              .typeOfListMainCatogry(context)[index],
-                          textAlign: TextAlign.justify,
-                          textColor: mainColor,
-                          textFontSize: 18.0,
-                          textWeight: FontWeight.bold),
-                    );
-                  } else {
-                    return const CircularProgressIndicator(color: mainColor);
-                  }
+        body: ListView.builder(
+          padding: EdgeInsets.zero,
+          itemCount: list.length,
+          itemBuilder: (context, index) {
+            if (list.isNotEmpty) {
+              return ListTile(
+                onTap: () {
+                  navToPageOrShowDailogRenSaleList(context, index);
                 },
-              ),
-            ),
-            customSpacer(height: 20.0),
-            // titel all ads
-            customContainer(
-              alignment: Alignment.centerLeft,
-              colorBack: greyColor,
-              child: customText(
-                  text: AppLocalizations.of(context)!.allAdsVitrin,
-                  textColor: mainColor),
-            ),
-            customSpacer(height: 20.0),
-            // grid 20 item from all ads
-            customContainer(
-                spaceAroundTop: 100.0,
-                spaceAroundBottomMargin: 20.0,
-                colorBack: Colors.red,
-                child: customText(text: "dev")),
-          ],
+                minVerticalPadding: 20.0,
+                trailing: customIcon(
+                    iconData: Icons.arrow_forward_ios, color: mainColor),
+                title: customText(
+                    text: list[index],
+                    textAlign: TextAlign.justify,
+                    textColor: mainColor,
+                    textFontSize: 18.0,
+                    textWeight: FontWeight.bold),
+              );
+            } else {
+              return const Center(
+                  child: CircularProgressIndicator(
+                color: mainColor,
+              ));
+            }
+          },
         ),
       ),
     );
@@ -85,7 +58,7 @@ class MainCategory extends StatelessWidget {
 
   // this method for check if will nav to specifc screen or show dailog rent sale list
   void navToPageOrShowDailogRenSaleList(BuildContext context, int index) {
-    int length = GlobalMethods().typeOfListMainCatogry(context).length;
+    int length = GlobalMethods().listCatogryAddNewAds(context).length;
     final list4Item = [
       AppLocalizations.of(context)!.sale,
       AppLocalizations.of(context)!.rent,
@@ -96,68 +69,57 @@ class MainCategory extends StatelessWidget {
       AppLocalizations.of(context)!.sale,
       AppLocalizations.of(context)!.rent
     ];
-    if (length == 6) {
+    if (length == 5) {
       //Estata
       switch (index) {
         case 0:
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toResAllReal);
-          break;
-        case 1:
           listOfItemVal = 0;
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list4Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list4Item);
               });
           break;
-        case 2:
+        case 1:
           listOfItemVal = 1;
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
-        case 3:
+        case 2:
           listOfItemVal = 20;
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
-        case 4:
+        case 3:
           listOfItemVal = 21;
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
-        case 5:
+        case 4:
+          // hotel
           null;
           break;
         default:
           null;
           break;
       }
-    } else if (length == 7) {
+    } else if (length == 6) {
       //vehicle
       switch (index) {
         case 0:
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toResAllReal);
-          break;
-        case 1:
           listOfItemVal = 2;
           showDialog(
               context: context,
@@ -167,7 +129,7 @@ class MainCategory extends StatelessWidget {
                     .customDailogSaleRentElse(context, list2Item);
               });
           break;
-        case 2:
+        case 1:
           listOfItemVal = 3;
           showDialog(
               context: context,
@@ -177,7 +139,7 @@ class MainCategory extends StatelessWidget {
                     .customDailogSaleRentElse(context, list2Item);
               });
           break;
-        case 3:
+        case 2:
           listOfItemVal = 4;
           showDialog(
               context: context,
@@ -187,7 +149,7 @@ class MainCategory extends StatelessWidget {
                     .customDailogSaleRentElse(context, list2Item);
               });
           break;
-        case 4:
+        case 3:
           listOfItemVal = 5;
           showDialog(
               context: context,
@@ -197,7 +159,7 @@ class MainCategory extends StatelessWidget {
                     .customDailogSaleRentElse(context, list2Item);
               });
           break;
-        case 5:
+        case 4:
           listOfItemVal = 6;
           showDialog(
               context: context,
@@ -207,7 +169,7 @@ class MainCategory extends StatelessWidget {
                     .customDailogSaleRentElse(context, list2Item);
               });
           break;
-        case 6:
+        case 5:
           GlobalMethods()
               .pushToNewScreen(context: context, routeName: toResAllReal);
           break;
@@ -215,14 +177,10 @@ class MainCategory extends StatelessWidget {
           null;
           break;
       }
-    } else if (length == 5) {
+    } else if (length == 4) {
       //hotels
       switch (index) {
         case 0:
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toResAllReal);
-          break;
-        case 1:
           listOfItemVal = 7;
           showDialog(
               context: context,
@@ -233,7 +191,7 @@ class MainCategory extends StatelessWidget {
               });
 
           break;
-        case 2:
+        case 1:
           listOfItemVal = 8;
           showDialog(
               context: context,
@@ -243,7 +201,7 @@ class MainCategory extends StatelessWidget {
                     .customDailogSaleRentElse(context, list2Item);
               });
           break;
-        case 3:
+        case 2:
           listOfItemVal = 9;
           showDialog(
               context: context,
@@ -253,7 +211,7 @@ class MainCategory extends StatelessWidget {
                     .customDailogSaleRentElse(context, list2Item);
               });
           break;
-        case 4:
+        case 3:
           listOfItemVal = 10;
           showDialog(
               context: context,

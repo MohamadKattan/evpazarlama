@@ -92,6 +92,19 @@
     "cancle": "إلغاء",
     "nameReq": "الاسم مطلوب لا يمكن أن يكون فارغًا",
     "emailReq": "البريد الإلكتروني مطلوب لا يمكن أن يكون فارغًا",
-    "uploadUserInfo": "تحميل المعلومات"
-    
+    "uploadUserInfo": "تحميل المعلومات",
+    "adsManger": "مدير الإعلانات",
+    "compliteAds": "الإعلانات المكتملة",
+    "subCompliteAds": "تم النشر",
+    "notCompliteAds": "إعلانات غير مكتملة",
+    "subNotCompliteAds": "في انتظار النشر",
+    "messagesNotif": "رسائل والإشعارات",
+    "myMessages": "رسائلي",
+    "submyMessages": "الرسائل على إعلاناتي",
+    "myNotifictions": "الإشعارات",
+    "subMyNotifictions": "إشعارات التطبيق",
+    "signOut": "تسجيل الخروج",
+    "fievort": "المفضلة",
+    "subfievort": "إعلاناتي المفضلة",
+    "beforAddNewAds": "من أجل نشر إعلان يجب التسجيل في التطبيق"
 }
