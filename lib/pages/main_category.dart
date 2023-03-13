@@ -96,7 +96,7 @@ class MainCategory extends StatelessWidget {
       AppLocalizations.of(context)!.sale,
       AppLocalizations.of(context)!.rent
     ];
-    if (length == 6) {
+    if (length == 5) {
       //Estata
       switch (index) {
         case 0:
@@ -142,9 +142,6 @@ class MainCategory extends StatelessWidget {
                 return CustomDailog()
                     .customDailogSaleRentElse(context, list2Item);
               });
-          break;
-        case 5:
-          null;
           break;
         default:
           null;
@@ -215,7 +212,7 @@ class MainCategory extends StatelessWidget {
           null;
           break;
       }
-    } else if (length == 5) {
+    } else if (length == 6) {
       //hotels
       switch (index) {
         case 0:
@@ -255,6 +252,16 @@ class MainCategory extends StatelessWidget {
           break;
         case 4:
           listOfItemVal = 10;
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (_) {
+                return CustomDailog()
+                    .customDailogSaleRentElse(context, list2Item);
+              });
+          break;
+        case 5:
+          listOfItemVal = 11;
           showDialog(
               context: context,
               barrierDismissible: false,

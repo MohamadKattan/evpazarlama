@@ -1,5 +1,11 @@
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/pages/add_new_ads.dart';
+import 'package:evpazarlama/pages/ads_dat_bulding.dart';
+import 'package:evpazarlama/pages/ads_dat_hotel.dart';
+import 'package:evpazarlama/pages/ads_dat_house.dart';
+import 'package:evpazarlama/pages/ads_dat_land.dart';
+import 'package:evpazarlama/pages/ads_dat_vehicles.dart';
+import 'package:evpazarlama/pages/ads_dat_work.dart';
 import 'package:evpazarlama/pages/ads_listofitem.dart';
 import 'package:evpazarlama/pages/ads_main_cateegory.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
@@ -68,7 +74,13 @@ class MyApp extends StatelessWidget {
           toProfileScreen: (context) => const ProfileScreen(),
           toAddNewAds: (context) => const AddNewAds(),
           toAdsMainCategory: (context) => const AdsMainCategory(),
-          toAdsListOfItems: (context) => const AdsListOfItem()
+          toAdsListOfItems: (context) => const AdsListOfItem(),
+          toAdsDetailsHoseing: (context) => const AdsDetailsHoseing(),
+          toAdsDetailsWorkPlace: (context) => const AdsDetailsWorkPlace(),
+          toAdsDetailsLand: (context) => const AdsDetailsLand(),
+          toAdsDetailsBulding: (context) => const AdsDetailsBulding(),
+          toAdsDetailsVehicles: (context) => const AdsDetailsVehicles(),
+          toAdsDetailsHotels: (context) => const AdsDetailsHotels()
         },
       ),
     );

@@ -88,11 +88,8 @@ car min bus
 
   /* 
 this dilog sale, rent , else . when user chose any type he
-is going to push ads as rent or sale or else  then mehtod switch any type
-of list item we will display to him as apratmant shop  motro
-car min bus
+is going to push ads as rent or sale or else
 */
-
   Widget saleRentElseAdsNewAdd(BuildContext context, List item) {
     return Dialog(
       elevation: 0.9,

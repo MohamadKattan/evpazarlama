@@ -132,7 +132,7 @@ class GlobalMethods {
       AppLocalizations.of(context)!.workPlace,
       AppLocalizations.of(context)!.land,
       AppLocalizations.of(context)!.building,
-      AppLocalizations.of(context)!.hotel,
+      // AppLocalizations.of(context)!.hotel,
     ];
 
     final listOfVehicleCategory = [
@@ -151,6 +151,7 @@ class GlobalMethods {
       AppLocalizations.of(context)!.resorts,
       AppLocalizations.of(context)!.touristCottages,
       AppLocalizations.of(context)!.hotelAppartments,
+      AppLocalizations.of(context)!.touristVillas,
     ];
 
     switch (mainCatogry) {
@@ -186,7 +187,7 @@ class GlobalMethods {
       AppLocalizations.of(context)!.workPlace,
       AppLocalizations.of(context)!.land,
       AppLocalizations.of(context)!.building,
-      AppLocalizations.of(context)!.hotel,
+      // AppLocalizations.of(context)!.hotel,
     ];
 
     final listOfVehicleCategory = [
@@ -203,6 +204,7 @@ class GlobalMethods {
       AppLocalizations.of(context)!.resorts,
       AppLocalizations.of(context)!.touristCottages,
       AppLocalizations.of(context)!.hotelAppartments,
+      AppLocalizations.of(context)!.touristVillas,
     ];
 
     switch (mainCatogry) {
@@ -229,6 +231,106 @@ class GlobalMethods {
     return list;
   }
 
+  /*
+   this method to know user any type he is searching sale / rent / daily rent or else
+  after that will nav to ListOfIteam screen will display items if realEstatae
+  or vichel or hotel ... 
+  */
+  void switchToAnyTypeListItem(BuildContext context, int index) {
+    // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
+    switch (index) {
+      case 0:
+        saleRentElseVal = 0;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toListOfIteam);
+        break;
+      case 1:
+        saleRentElseVal = 1;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toListOfIteam);
+        break;
+      case 2:
+        saleRentElseVal = 2;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toListOfIteam);
+        break;
+      case 3:
+        saleRentElseVal = 3;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toListOfIteam);
+        break;
+      default:
+        saleRentElseVal = 0;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toListOfIteam);
+        break;
+    }
+  }
+
+  /* 
+  this method to know user any type he is searching sale / rent / daily rent or else
+  after that will nav to ListOfIteam screen will display items if realEstatae
+  or vichel or hotel ... while user going to push new ads
+  */
+  void switchToAnyTypeListItemAdsNewadd(BuildContext context, int index) {
+    // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
+    switch (index) {
+      case 0:
+        saleRentElseVal = 0;
+        popFromScreen(context);
+        if (listOfItemVal == 20) {
+          // lands
+          GlobalMethods().pushReplaceToNewScreen(
+              context: context, routeName: toAdsDetailsLand);
+        } else if (listOfItemVal == 21) {
+          // Bulding
+          GlobalMethods().pushReplaceToNewScreen(
+              context: context, routeName: toAdsDetailsBulding);
+        } else if (listOfItemVal > 6 && listOfItemVal < 12) {
+          // hotoles
+          GlobalMethods().pushReplaceToNewScreen(
+              context: context, routeName: toAdsDetailsHotels);
+        } else {
+          pushToNewScreen(context: context, routeName: toAdsListOfItems);
+        }
+        break;
+      case 1:
+        saleRentElseVal = 1;
+        popFromScreen(context);
+        if (listOfItemVal == 20) {
+          // lands
+          GlobalMethods().pushReplaceToNewScreen(
+              context: context, routeName: toAdsDetailsLand);
+        } else if (listOfItemVal == 21) {
+          // Bulding
+          GlobalMethods().pushReplaceToNewScreen(
+              context: context, routeName: toAdsDetailsBulding);
+        } else if (listOfItemVal > 6 && listOfItemVal < 12) {
+          // hotoles
+          GlobalMethods().pushReplaceToNewScreen(
+              context: context, routeName: toAdsDetailsHotels);
+        } else {
+          pushToNewScreen(context: context, routeName: toAdsListOfItems);
+        }
+        break;
+      case 2:
+        saleRentElseVal = 2;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toAdsListOfItems);
+        break;
+      case 3:
+        saleRentElseVal = 3;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toAdsListOfItems);
+        break;
+      default:
+        saleRentElseVal = 0;
+        popFromScreen(context);
+        pushToNewScreen(context: context, routeName: toAdsListOfItems);
+        break;
+    }
+  }
+
   // this method for check val what user slect (housing,workPlace,car..) (sale,rent ...)
   List typeOfListItem(BuildContext context) {
     final list = [];
@@ -237,7 +339,6 @@ class GlobalMethods {
       AppLocalizations.of(context)!.apart1,
       AppLocalizations.of(context)!.residence,
       AppLocalizations.of(context)!.detachedHouse,
-      AppLocalizations.of(context)!.categorySelection,
       AppLocalizations.of(context)!.villa,
       AppLocalizations.of(context)!.farmHouse,
       AppLocalizations.of(context)!.mansion,
@@ -368,6 +469,8 @@ class GlobalMethods {
       'Yamaha',
     ];
 
+    const listNull = ['null'];
+
     switch (listOfItemVal) {
       case 0:
         list.addAll(lsitOfHousingItem);
@@ -392,81 +495,9 @@ class GlobalMethods {
         list.addAll(listOfCars);
         break;
       default:
-        //todo some code if none of above
+        list.addAll(listNull);
         break;
     }
     return list;
-  }
-
-  /*
-   this method to know user any type he is searching sale / rent / daily rent or else
-  after that will nav to ListOfIteam screen will display items if realEstatae
-  or vichel or hotel ... 
-  */
-  void switchToAnyTypeListItem(BuildContext context, int index) {
-    // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
-    switch (index) {
-      case 0:
-        saleRentElseVal = 0;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      case 1:
-        saleRentElseVal = 1;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      case 2:
-        saleRentElseVal = 2;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      case 3:
-        saleRentElseVal = 3;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      default:
-        saleRentElseVal = 0;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-    }
-  }
-
-  /* 
-  this method to know user any type he is searching sale / rent / daily rent or else
-  after that will nav to ListOfIteam screen will display items if realEstatae
-  or vichel or hotel ... while user going to push new ads
-  */
-  void switchToAnyTypeListItemAdsNewadd(BuildContext context, int index) {
-    // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
-    switch (index) {
-      case 0:
-        saleRentElseVal = 0;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toAdsListOfItems);
-        break;
-      case 1:
-        saleRentElseVal = 1;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toAdsListOfItems);
-        break;
-      case 2:
-        saleRentElseVal = 2;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toAdsListOfItems);
-        break;
-      case 3:
-        saleRentElseVal = 3;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toAdsListOfItems);
-        break;
-      default:
-        saleRentElseVal = 0;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toAdsListOfItems);
-        break;
-    }
   }
 }

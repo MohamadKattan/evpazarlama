@@ -15,41 +15,68 @@ class AdsListOfItem extends StatelessWidget {
     List list = GlobalMethods().typeOfListItem(context);
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: mainColor,
-            centerTitle: false,
-            title: customText(
-              textAlign: TextAlign.start,
-              text: AppLocalizations.of(context)!.categorySelection,
-            ),
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          centerTitle: false,
+          title: customText(
+            textAlign: TextAlign.start,
+            text: AppLocalizations.of(context)!.categorySelection,
           ),
-          drawer: customDrawer(context),
-          body: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: list.length,
-              itemBuilder: (_, index) {
-                if (list.isNotEmpty) {
-                  return ListTile(
-                    onTap: () {},
-                    minLeadingWidth: 10.0,
-                    leading: listOfItemVal > 2
-                        ? cutomImageIcon(
-                            imagePath:
-                                '${GlobalMethods().typeOfListItem(context)[index]}.png')
-                        : const SizedBox(),
-                    trailing: customIcon(
-                        iconData: Icons.arrow_forward_ios, color: mainColor),
-                    title: customText(
-                        text: GlobalMethods().typeOfListItem(context)[index],
-                        textAlign: TextAlign.justify,
-                        textFontSize: 18.0,
-                        textColor: mainColor,
-                        textWeight: FontWeight.bold),
-                  );
-                } else {
-                  return const CircularProgressIndicator(color: mainColor);
-                }
-              })),
+        ),
+        drawer: customDrawer(context),
+        body: ListView.builder(
+            padding: EdgeInsets.zero,
+            itemCount: list.length,
+            itemBuilder: (_, index) {
+              if (list.isNotEmpty) {
+                return ListTile(
+                  onTap: () {
+                    navToDaitelsPage(context);
+                  },
+                  minLeadingWidth: 10.0,
+                  leading: listOfItemVal > 2
+                      ? cutomImageIcon(
+                          imagePath:
+                              '${GlobalMethods().typeOfListItem(context)[index]}.png')
+                      : const SizedBox(),
+                  trailing: customIcon(
+                      iconData: Icons.arrow_forward_ios, color: mainColor),
+                  title: customText(
+                      text: list[index],
+                      textAlign: TextAlign.justify,
+                      textFontSize: 18.0,
+                      textColor: mainColor,
+                      textWeight: FontWeight.bold),
+                );
+              } else {
+                return const Center(
+                    child: CircularProgressIndicator(color: mainColor));
+              }
+            }),
+      ),
     );
+  }
+
+  /* 
+  this method for push to daitels page after check listOfItemVal 
+  if listOfItemVal = 0 => houseing , if listOfItemVal = 1 => workPlace 
+  if listOfItemVal = 2 motor , if listOfItemVal = 1 => cars ......
+  */
+  void navToDaitelsPage(BuildContext context) {
+    if (listOfItemVal == 0) {
+      // houseing item
+      GlobalMethods().pushReplaceToNewScreen(
+          context: context, routeName: toAdsDetailsHoseing);
+    } else if (listOfItemVal == 1) {
+      // work place items
+      GlobalMethods().pushReplaceToNewScreen(
+          context: context, routeName: toAdsDetailsWorkPlace);
+    } else if (listOfItemVal > 1 && listOfItemVal < 7) {
+      // motor and cars items
+      GlobalMethods().pushReplaceToNewScreen(
+          context: context, routeName: toAdsDetailsVehicles);
+    } else {
+      return;
+    }
   }
 }

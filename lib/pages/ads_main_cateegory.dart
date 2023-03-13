@@ -17,7 +17,7 @@ class AdsMainCategory extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: mainColor,
+          backgroundColor: Colors.amber,
           centerTitle: false,
           title: customText(
             textAlign: TextAlign.start,
@@ -31,9 +31,7 @@ class AdsMainCategory extends StatelessWidget {
           itemBuilder: (context, index) {
             if (list.isNotEmpty) {
               return ListTile(
-                onTap: () {
-                  navToPageOrShowDailogRenSaleList(context, index);
-                },
+                onTap: () => navToPageOrShowDailogRenSaleList(context, index),
                 minVerticalPadding: 20.0,
                 trailing: customIcon(
                     iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -57,7 +55,7 @@ class AdsMainCategory extends StatelessWidget {
   }
 
   // this method for check if will nav to specifc screen or show dailog rent sale list
-  void navToPageOrShowDailogRenSaleList(BuildContext context, int index) {
+ void navToPageOrShowDailogRenSaleList(BuildContext context, int index) async {
     int length = GlobalMethods().listCatogryAddNewAds(context).length;
     final list4Item = [
       AppLocalizations.of(context)!.sale,
@@ -69,20 +67,20 @@ class AdsMainCategory extends StatelessWidget {
       AppLocalizations.of(context)!.sale,
       AppLocalizations.of(context)!.rent
     ];
-    if (length == 5) {
-      //Estata
+    if (length == 4) {
+      //main Estata
       switch (index) {
         case 0:
-          listOfItemVal = 0;
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
                 return CustomDailog().saleRentElseAdsNewAdd(context, list4Item);
               });
+          listOfItemVal = 0; //houseing
           break;
         case 1:
-          listOfItemVal = 1;
+          listOfItemVal = 1; //workplace
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -91,7 +89,7 @@ class AdsMainCategory extends StatelessWidget {
               });
           break;
         case 2:
-          listOfItemVal = 20;
+          listOfItemVal = 20; //lands
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -100,76 +98,68 @@ class AdsMainCategory extends StatelessWidget {
               });
           break;
         case 3:
-          listOfItemVal = 21;
+          listOfItemVal = 21; //building
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
                 return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
-          break;
-        case 4:
-          // hotel
-          null;
           break;
         default:
           null;
           break;
       }
     } else if (length == 6) {
-      //vehicle
+      // main vehicle
       switch (index) {
         case 0:
-          listOfItemVal = 2;
+          listOfItemVal = 2; //motor
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
         case 1:
-          listOfItemVal = 3;
+          listOfItemVal = 3; //car
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
         case 2:
-          listOfItemVal = 4;
+          listOfItemVal = 4; // minBuse
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
         case 3:
-          listOfItemVal = 5;
+          listOfItemVal = 5; //electric car
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
         case 4:
-          listOfItemVal = 6;
+          listOfItemVal = 6; // comricle car
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
         case 5:
+          //damged car
           GlobalMethods()
               .pushToNewScreen(context: context, routeName: toResAllReal);
           break;
@@ -177,49 +167,57 @@ class AdsMainCategory extends StatelessWidget {
           null;
           break;
       }
-    } else if (length == 4) {
-      //hotels
+    } else if (length == 5) {
+      //main hotels
       switch (index) {
         case 0:
-          listOfItemVal = 7;
+          listOfItemVal = 7; // hotels
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
 
           break;
         case 1:
-          listOfItemVal = 8;
+          listOfItemVal = 8; // resorts
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
         case 2:
-          listOfItemVal = 9;
+          listOfItemVal = 9; // touristCottages
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
           break;
         case 3:
-          listOfItemVal = 10;
+          listOfItemVal = 10; //hotelAppartments
           showDialog(
               context: context,
               barrierDismissible: false,
               builder: (_) {
-                return CustomDailog()
-                    .customDailogSaleRentElse(context, list2Item);
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
               });
+          break;
+        case 4:
+          listOfItemVal = 11; //touristVillas
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (_) {
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
+              });
+          break;
+        default:
+          null;
           break;
       }
     } else {

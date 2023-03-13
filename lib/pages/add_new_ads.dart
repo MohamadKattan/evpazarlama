@@ -15,7 +15,7 @@ class AddNewAds extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: mainColor,
+          backgroundColor: Colors.amber,
           centerTitle: false,
           title: customText(
               text: AppLocalizations.of(context)!.newAds,

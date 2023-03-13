@@ -13,6 +13,7 @@ Widget customTextFailed(
     keyboardType: inputType,
     enabled: true,
     decoration: InputDecoration(
+      contentPadding:const EdgeInsets.all(15.0),
       filled: true,
       fillColor: fillColor ?? Colors.transparent,
       labelText: lable ?? 'Lable',

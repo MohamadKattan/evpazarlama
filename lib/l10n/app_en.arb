@@ -434,5 +434,93 @@
   "beforAddNewAds": "In order to post an ad, you must register in the application",
   "@beforAddNewAds": {
     "description": "beforAddNewAds"
+  },
+  "touristVillas": "Tourist Villas",
+  "@touristVillas": {
+    "description": "touristVillas"
+  },
+  "basicInformation": "Enter basic information",
+  "@basicInformation": {
+    "description": "basicInformation"
+  },
+  "advertTitle": "Advert title",
+  "@advertTitle": {
+    "description": "advertTitle"
+  },
+  "explanation": "Explanation",
+  "@explanation": {
+    "description": "explanation"
+  },
+  "price": "Price",
+  "@price": {
+    "description": "price"
+  },
+  "grossMeters": "Meters(gross)",
+  "@grossMeters": {
+    "description": "grossMeters"
+  },
+  "netMeters": "Meter(Net)",
+  "@netMeters": {
+    "description": "netMeters"
+  },
+  "roomNum": "Number of Rooms",
+  "@roomNum": {
+    "description": "roomNum"
+  },
+  "buldingAge": "Building Age",
+  "@buldingAge": {
+    "description": "buldingAge"
+  },
+  "floorLocation": "Floor location",
+  "@floorLocation": {
+    "description": "floorLocation"
+  },
+  "numOfFloors": "Number of floors",
+  "@numOfFloors": {
+    "description": "numOfFloors"
+  },
+  "heating": "Heating",
+  "@heating": {
+    "description": "heating"
+  },
+  "pathNum": "Number of bathrooms",
+  "@pathNum": {
+    "description": "pathNum"
+  },
+  "balcony": "Balcony",
+  "@balcony": {
+    "description": "balcony"
+  },
+  "furnished": "Furnished",
+  "@furnished": {
+    "description": "furnished"
+  },
+  "usingStatus": "Using status",
+  "@usingStatus": {
+    "description": "usingStatus"
+  },
+  "dues": "Dues",
+  "@dues": {
+    "description": "dues"
+  },
+  "deed": "Title Deed Status",
+  "@deed": {
+    "description": "deed"
+  },
+  "watching": "Show by Video Call",
+  "@watching": {
+    "description": "watching"
+  },
+  "bartered": "Bartered",
+  "@bartered": {
+    "description": "bartered"
+  },
+  "requiredField": "Required field",
+  "@requiredField": {
+    "description": "requiredField"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "next"
   }
 }
