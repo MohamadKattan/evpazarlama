@@ -10,11 +10,12 @@ Widget cutomImageIcon(
   );
 }
 
-Widget cutomImage({required String imagePath, double? height, double? width}) {
+Widget cutomImage({required String imagePath, double? height, double? width,BoxFit? fit}) {
   return Image.asset(
     'assets/imgs/$imagePath',
     width: width ?? 250,
     height: height ?? 250.0,
+    fit: fit ??  BoxFit.contain,
   );
 }
 

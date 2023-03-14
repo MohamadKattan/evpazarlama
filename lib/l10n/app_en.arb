@@ -522,5 +522,29 @@
   "next": "Next",
   "@next": {
     "description": "next"
+  },
+  "front": "Front",
+  "@front": {
+    "description": "front"
+  },
+  "pickLocation": "Pick a location",
+  "@pickLocation": {
+    "description": "pickLocation"
+  },
+  "choesePickLocaton": "Choose a location method from the options available below",
+  "@choesePickLocaton": {
+    "description": "choesePickLocaton"
+  },
+  "pickCurrentLocation": "The current location you are currently in",
+  "@pickCurrentLocation": {
+    "description": "pickCurrentLocation"
+  },
+  "pickLocationOnMap": "Choose a location from the map",
+  "@pickLocationOnMap": {
+    "description": "pickLocationOnMap"
+  },
+  "locationManaul": "Write the address manually",
+  "@locationManaul": {
+    "description": "locationManaul"
   }
 }

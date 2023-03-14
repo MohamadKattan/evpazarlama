@@ -11,6 +11,7 @@ import 'package:evpazarlama/pages/ads_main_cateegory.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
 import 'package:evpazarlama/pages/profile_info.dart';
 import 'package:evpazarlama/pages/profile_screen.dart';
+import 'package:evpazarlama/pages/start_pick_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -80,7 +81,8 @@ class MyApp extends StatelessWidget {
           toAdsDetailsLand: (context) => const AdsDetailsLand(),
           toAdsDetailsBulding: (context) => const AdsDetailsBulding(),
           toAdsDetailsVehicles: (context) => const AdsDetailsVehicles(),
-          toAdsDetailsHotels: (context) => const AdsDetailsHotels()
+          toAdsDetailsHotels: (context) => const AdsDetailsHotels(),
+          toStartPickLocation: (context) => const StartPickLocation()
         },
       ),
     );

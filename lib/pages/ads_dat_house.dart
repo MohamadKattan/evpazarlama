@@ -1,4 +1,5 @@
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
+import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
@@ -8,31 +9,88 @@ import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/helper/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-class AdsDetailsHoseing extends StatelessWidget {
+import '../state-maneg/booling_val.dart';
+import '../state-maneg/string_val.dart';
+
+class AdsDetailsHoseing extends StatefulWidget {
   const AdsDetailsHoseing({super.key});
+  @override
+  State<AdsDetailsHoseing> createState() => _AdsDetailsHoseingState();
+}
 
-  static TextEditingController advertTitle = TextEditingController();
-  static TextEditingController explanation = TextEditingController();
-  static TextEditingController price = TextEditingController();
-  static TextEditingController grossMeters = TextEditingController();
-  static TextEditingController netMeters = TextEditingController();
-  static TextEditingController roomNum = TextEditingController();
-  static TextEditingController buldingAge = TextEditingController();
-  static TextEditingController floorLocation = TextEditingController();
-  static TextEditingController numOfFloors = TextEditingController();
-  static TextEditingController heating = TextEditingController();
-  static TextEditingController numberofPath = TextEditingController();
-  static TextEditingController balcony = TextEditingController();
-  static TextEditingController furnished = TextEditingController();
-  static TextEditingController usingStatus = TextEditingController();
-  static TextEditingController dues = TextEditingController();
-  static TextEditingController deed = TextEditingController();
-  static TextEditingController watching = TextEditingController();
-  static TextEditingController bartered = TextEditingController();
+class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
+  late TextEditingController advertTitle;
+  late TextEditingController explanation;
+  late TextEditingController price;
+  late TextEditingController front;
+  late TextEditingController grossMeters;
+  late TextEditingController netMeters;
+  late TextEditingController roomNum;
+  late TextEditingController buldingAge;
+  late TextEditingController floorLocation;
+  late TextEditingController numOfFloors;
+  late TextEditingController heating;
+  late TextEditingController numberofPath;
+  late TextEditingController balcony;
+  late TextEditingController furnished;
+  late TextEditingController usingStatus;
+  late TextEditingController dues;
+  late TextEditingController deed;
+  late TextEditingController watching;
+  late TextEditingController bartered;
+  @override
+  void initState() {
+    advertTitle = TextEditingController();
+    explanation = TextEditingController();
+    price = TextEditingController();
+    front = TextEditingController();
+    grossMeters = TextEditingController();
+    netMeters = TextEditingController();
+    roomNum = TextEditingController();
+    buldingAge = TextEditingController();
+    floorLocation = TextEditingController();
+    numOfFloors = TextEditingController();
+    heating = TextEditingController();
+    numberofPath = TextEditingController();
+    balcony = TextEditingController();
+    furnished = TextEditingController();
+    usingStatus = TextEditingController();
+    dues = TextEditingController();
+    deed = TextEditingController();
+    watching = TextEditingController();
+    bartered = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    advertTitle.dispose();
+    explanation.dispose();
+    price.dispose();
+    front.dispose();
+    grossMeters.dispose();
+    netMeters.dispose();
+    roomNum.dispose();
+    buldingAge.dispose();
+    floorLocation.dispose();
+    numOfFloors.dispose();
+    heating.dispose();
+    numberofPath.dispose();
+    furnished.dispose();
+    usingStatus.dispose();
+    dues.dispose();
+    deed.dispose();
+    watching.dispose();
+    bartered.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    checkValSubCategory(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blueGrey.shade100,
@@ -71,7 +129,7 @@ class AdsDetailsHoseing extends StatelessWidget {
                     customText(
                         text: '${AppLocalizations.of(context)!.requiredField}*',
                         textColor: Colors.red,
-                         textFontSize: 14,
+                        textFontSize: 14,
                         textAlign: TextAlign.start),
                     customSpacer(height: 6.0),
                     customTextFailed(
@@ -85,13 +143,23 @@ class AdsDetailsHoseing extends StatelessWidget {
                     customText(
                         text: '${AppLocalizations.of(context)!.requiredField}*',
                         textColor: Colors.red,
-                         textFontSize: 14,
+                        textFontSize: 14,
                         textAlign: TextAlign.start),
                     customSpacer(height: 6.0),
                     customTextFailed(
                         controller: price,
                         lable: AppLocalizations.of(context)!.price,
                         hintText: AppLocalizations.of(context)!.price,
+                        inputType: TextInputType.number,
+                        labelColor: mainColor,
+                        fillColor: Colors.white),
+
+                    ///
+                    customSpacer(height: 20.0),
+                    customTextFailed(
+                        controller: front,
+                        lable: AppLocalizations.of(context)!.front,
+                        hintText: AppLocalizations.of(context)!.front,
                         inputType: TextInputType.number,
                         labelColor: mainColor,
                         fillColor: Colors.white),
@@ -235,7 +303,7 @@ class AdsDetailsHoseing extends StatelessWidget {
                 bottom: 0.0,
                 child: customContainer(
                   height: 60,
-                  colorBack: Colors.white,
+                  colorBack: Colors.black.withOpacity(0.4),
                   width: MediaQuery.of(context).size.width,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -267,7 +335,10 @@ class AdsDetailsHoseing extends StatelessWidget {
                         ],
                       ),
                       GestureDetector(
-                        onTap: () => checkBefore(context),
+                        onTap: () {
+                          context.read<BoolingVal>().loadingAuth(true);
+                          checkBefore(context);
+                        },
                         child: customContainer(
                           colorBack: mainColor,
                           width: MediaQuery.of(context).size.width * 45 / 100,
@@ -275,9 +346,7 @@ class AdsDetailsHoseing extends StatelessWidget {
                           ridusBR: 12.0,
                           ridusR: 12.0,
                           ridusl: 12.0,
-                          child: customText(
-                              text: AppLocalizations.of(context)!.next,
-                              textColor: Colors.white),
+                          child: circleOrText(),
                         ),
                       ),
                     ],
@@ -289,6 +358,30 @@ class AdsDetailsHoseing extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // this method for exstued val of list item and set to en val just
+  void checkValSubCategory(BuildContext context) {
+    String? val = context.watch<StringVal>().subCategoryValue ?? 'null';
+    if (val.contains(AppLocalizations.of(context)!.apart1)) {
+      subCatToDtabase = 'apart1';
+    } else if (val.contains(AppLocalizations.of(context)!.residence)) {
+      subCatToDtabase = 'residence';
+    } else if (val.contains(AppLocalizations.of(context)!.detachedHouse)) {
+      subCatToDtabase = 'detachedHouse';
+    } else if (val.contains(AppLocalizations.of(context)!.villa)) {
+      subCatToDtabase = 'villa';
+    } else if (val.contains(AppLocalizations.of(context)!.farmHouse)) {
+      subCatToDtabase = 'farmHouse';
+    } else if (val.contains(AppLocalizations.of(context)!.mansion)) {
+      subCatToDtabase = 'mansion';
+    } else if (val.contains(AppLocalizations.of(context)!.summerhouse)) {
+      subCatToDtabase = 'summerhouse';
+    } else if (val.contains(AppLocalizations.of(context)!.prefabricatedHouse)) {
+      subCatToDtabase = 'prefabricatedHouse';
+    } else {
+      subCatToDtabase = 'cooperative';
+    }
   }
 
   // this method for check required Field befor nav to next page
@@ -312,9 +405,46 @@ class AdsDetailsHoseing extends StatelessWidget {
               '${AppLocalizations.of(context)!.price} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
     } else {
-      final main = advertTitle.text;
-      final bb = explanation.text;
-      final cc = price.text;
+      setAllVal();
     }
+    Future.delayed(const Duration(seconds: 2)).whenComplete(() {
+      context.read<BoolingVal>().loadingAuth(false);
+    });
+  }
+
+  void setAllVal() {
+    mainCatToDtbase = mainCatogry.toString();
+    operationtypeToDatBase = saleRentElseVal.toString();
+    advTitleToDtbase = advertTitle.text;
+    explanationToDtbase = explanation.text;
+    priceToDtbase = price.text;
+    frontToDtbase = front.text;
+    grossMetersToDtabase = grossMeters.text;
+    netMetersToDtabase = netMeters.text;
+    roomNumToDtabase = roomNum.text;
+    buldingAgeToDtabase = buldingAge.text;
+    floorLocationToDtabase = floorLocation.text;
+    numOfFloorsToDtabase = numOfFloors.text;
+    heatingToDtabase = heating.text;
+    numberofPathToDtabase = numberofPath.text;
+    balconyToDtabase = balcony.text;
+    furnishedToDtabase = furnished.text;
+    usingStatusToDtabase = usingStatus.text;
+    duesToDtabase = dues.text;
+    deedToDtabase = deed.text;
+    watchingToDtabase = watching.text;
+    barteredToDtabase = bartered.text;
+    GlobalMethods()
+        .pushToNewScreen(context: context, routeName: toStartPickLocation);
+  }
+
+  Widget circleOrText() {
+    bool val = context.watch<BoolingVal>().isLodingAuth;
+    return val
+        ? const CircularProgressIndicator(
+            color: Colors.white,
+          )
+        : customText(
+            text: AppLocalizations.of(context)!.next, textColor: Colors.white);
   }
 }

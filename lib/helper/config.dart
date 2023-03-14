@@ -7,29 +7,30 @@ import '../models/model_ads_hoseing.dart';
 import '../models/user_info.dart';
 
 //0==============UserConfig===============
-FirebaseAuth authInstance = FirebaseAuth.instance;
-FirebaseFirestore firestore = FirebaseFirestore.instance;
-final storage = FirebaseStorage.instance.ref();
+FirebaseAuth authInstance = FirebaseAuth.instance; //auth
+String userId = authInstance.currentUser?.uid ?? 'null'; //auth
+final storage = FirebaseStorage.instance.ref(); //storage
+FirebaseFirestore firestore = FirebaseFirestore.instance; //cloud
 CollectionReference usersProfileCollection =
-    firestore.collection('users').doc(userId).collection('profile');
-String userId = authInstance.currentUser?.uid ?? 'null';
+    firestore.collection('users').doc(userId).collection('profile'); //cloud
+String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth
+
 UserInfoProfile? userInfoProfile;
 AdsHoseingModel? adsHoseingModel;
-
 // 1_============proprty===================
 const Color mainColor = Color(0xFF00A3E0);
 const Color secondColor = Color(0xFFFBC408);
 const Color defColor = Colors.white;
 final Color greyColor = Colors.grey.shade300;
-const double spacePadding = 15.0;
-const double spaceMarging = 15.0;
 //2_===========val for condtions============
 
 //for chose main catogry realEstate,Vehicle,Hotels,lastADS,UrgentUrgent
-int mainCatogry = 0; // Estate0,Vehicle1,Hotel2,last38Ads3,Urgent4
+// Estate0,Vehicle1,Hotel2,last38Ads3,Urgent4
+int mainCatogry = 0;
 // housItems 0,workPlace1,Motor2,car3,Mini4,Electric5,commer6
 int listOfItemVal = 0;
-int saleRentElseVal = 0; // sale 0, rent 1, daily 2,trans 3 for send to data
+// sale 0, rent 1, daily 2,trans 3 for send to data
+int saleRentElseVal = 0;
 //3===============_root====================
 const toSplash = '/';
 const toHomeScreen = '/HomeScreen';
@@ -53,3 +54,28 @@ const toAdsDetailsLand = '/AdsDetailsland';
 const toAdsDetailsBulding = '/AdsDetailsBulding';
 const toAdsDetailsVehicles = '/AdsDetailsVehicles';
 const toAdsDetailsHotels = '/AdsDetailsHotels';
+const toStartPickLocation = '/StartPickLocation';
+
+//==================values ads to database===============
+String? mainCatToDtbase;
+String? subCatToDtabase;
+String? operationtypeToDatBase;
+String? advTitleToDtbase;
+String? explanationToDtbase;
+String? priceToDtbase;
+String? frontToDtbase;
+String? grossMetersToDtabase;
+String? netMetersToDtabase;
+String? roomNumToDtabase;
+String? buldingAgeToDtabase;
+String? floorLocationToDtabase;
+String? numOfFloorsToDtabase;
+String? heatingToDtabase;
+String? numberofPathToDtabase;
+String? balconyToDtabase;
+String? furnishedToDtabase;
+String? usingStatusToDtabase;
+String? duesToDtabase;
+String? deedToDtabase;
+String? watchingToDtabase;
+String? barteredToDtabase;

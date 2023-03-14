@@ -128,5 +128,11 @@
     "watching": "Görüntülü Arama İle Gezilebilir",
     "bartered": "Takaslı",
     "requiredField": "Zorunlu alan",
-    "next": "Devam et"
+    "next": "Devam et",
+    "front": "Cephe",
+    "pickLocation": "Bir konum seçin",
+    "choesePickLocaton": "Aşağıda sunulan seçeneklerden bir konum yöntemi seçin",
+    "pickCurrentLocation": "Mevcut konumumu kullanmak istiyorum",
+    "pickLocationOnMap": "Haritadaki konumu seçin",
+    "locationManaul": "Adresi manuel olarak yazın"
 }

@@ -1,11 +1,14 @@
+// for display list of item while start push ads
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../custom-widgets/custom_drawer.dart';
 import '../global-methods/methods.dart';
 import '../helper/config.dart';
 import '../helper/custom_icon.dart';
 import '../helper/custom_text.dart';
+import '../state-maneg/string_val.dart';
 
 class AdsListOfItem extends StatelessWidget {
   const AdsListOfItem({super.key});
@@ -32,12 +35,11 @@ class AdsListOfItem extends StatelessWidget {
                 return ListTile(
                   onTap: () {
                     navToDaitelsPage(context);
+                    context.read<StringVal>().updateSubCatogryVal(list[index]);
                   },
                   minLeadingWidth: 10.0,
                   leading: listOfItemVal > 2
-                      ? cutomImageIcon(
-                          imagePath:
-                              '${GlobalMethods().typeOfListItem(context)[index]}.png')
+                      ? cutomImageIcon(imagePath: '${list[index]}.png')
                       : const SizedBox(),
                   trailing: customIcon(
                       iconData: Icons.arrow_forward_ios, color: mainColor),

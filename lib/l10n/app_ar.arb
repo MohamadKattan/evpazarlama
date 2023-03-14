@@ -128,5 +128,11 @@
     "watching": "إظهار من خلال مكالمة الفيديو",
     "bartered": "المقايضة",
     "requiredField": "اجباري",
-    "next": "التالي"
+    "next": "التالي",
+    "front": "جبهة",
+    "pickLocation": "اختر الموقع",
+    "choesePickLocaton": "إختر طريقة تحديد الموقع من الاختيارات المتاحة في الأسفل",
+    "pickCurrentLocation": "الموقع الحالي المتواجد فيه الأن",
+    "pickLocationOnMap": "اختيار الموقع من على الخريطة",
+    "locationManaul": "كتابة العنوان يدويا"
 }
