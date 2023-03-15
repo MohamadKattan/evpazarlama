@@ -1,4 +1,6 @@
+import 'package:evpazarlama/client-srv/https_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
+import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
@@ -6,8 +8,10 @@ import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../helper/custom_positioned.dart';
+import '../state-maneg/booling_val.dart';
 
 class StartPickLocation extends StatelessWidget {
   const StartPickLocation({super.key});
@@ -47,30 +51,33 @@ class StartPickLocation extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   customSpacer(height: 15.0),
-                  customContainer(
-                    colorBack: mainColor,
-                    spaceAroundLeftMargin: 15.0,
-                    spaceAroundRightMargin: 15.0,
-                    spaceAroundTop: 20.0,
-                    spaceAroundBottom: 20.0,
-                    ridusBL: 12.0,
-                    ridusBR: 12.0,
-                    ridusR: 12.0,
-                    ridusl: 12.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        customIcon(
-                            iconData: Icons.my_location_rounded, size: 25.0),
-                        customSpacer(width: 12.0),
-                        customText(
-                          text:
-                              AppLocalizations.of(context)!.pickCurrentLocation,
-                          textFontSize: 13,
-                          textWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                  GestureDetector(
+                    onTap: () => setMycureentLocation(context),
+                    child: customContainer(
+                      colorBack: mainColor,
+                      spaceAroundLeftMargin: 15.0,
+                      spaceAroundRightMargin: 15.0,
+                      spaceAroundTop: 20.0,
+                      spaceAroundBottom: 20.0,
+                      ridusBL: 12.0,
+                      ridusBR: 12.0,
+                      ridusR: 12.0,
+                      ridusl: 12.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          customIcon(
+                              iconData: Icons.my_location_rounded, size: 25.0),
+                          customSpacer(width: 12.0),
+                          customText(
+                            text: AppLocalizations.of(context)!
+                                .pickCurrentLocation,
+                            textFontSize: 13,
+                            textWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   customSpacer(height: 15.0),
@@ -160,10 +167,61 @@ class StartPickLocation extends StatelessWidget {
                   ),
                 ),
               ),
+              Consumer<BoolingVal>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return value.isLodingAuth
+                      ? Container(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.black.withOpacity(0.3),
+                          child: const Center(
+                              child: CircularProgressIndicator(
+                            color: mainColor,
+                          )),
+                        )
+                      : const SizedBox();
+                },
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  // this method for use current device location
+  Future<void> setMycureentLocation(BuildContext context) async {
+    context.read<BoolingVal>().loadingAuth(true);
+    await GlobalMethods().getLocations(context).whenComplete(() async {
+      var res = await ClintHttpSrv()
+          .getDataFromApi(context: context, urlApi: geocodingUrl);
+      if (res != 'failed') {
+        Map<String, dynamic> map = Map<String, dynamic>.from(res as Map);
+        if (map['status'] == 'OK') {
+          List listRes = map['results'][0]['address_components'];
+          streatNumberToDtBase = listRes[0]['long_name'];
+          streatToDtbase = listRes[1]['long_name'];
+          for (var i = 0; i < listRes.length; i++) {
+            if (listRes[i]['types'][0] == 'administrative_area_level_2') {
+              areaToDtbase = listRes[i]['long_name'];
+            } else if (listRes[i]['types'][0] ==
+                'administrative_area_level_1') {
+              cityToDtbase = listRes[i]['long_name'];
+            } else if (listRes[i]['types'][0] == 'country') {
+              countryToDtbase = listRes[i]['long_name'];
+            }
+          }
+          print('No:$streatNumberToDtBase');
+          print('strat is : $streatToDtbase');
+          print('areay is : $areaToDtbase');
+          print('city is : $cityToDtbase');
+          print('country is : $countryToDtbase');
+          latitudeToDtbase = currentPosition?.latitude;
+          longitudeToDtbase = currentPosition?.longitude;
+        }
+      }
+    }).whenComplete(() {
+      context.read<BoolingVal>().loadingAuth(false);
+    });
   }
 }

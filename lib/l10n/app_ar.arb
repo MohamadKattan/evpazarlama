@@ -134,5 +134,9 @@
     "choesePickLocaton": "إختر طريقة تحديد الموقع من الاختيارات المتاحة في الأسفل",
     "pickCurrentLocation": "الموقع الحالي المتواجد فيه الأن",
     "pickLocationOnMap": "اختيار الموقع من على الخريطة",
-    "locationManaul": "كتابة العنوان يدويا"
+    "locationManaul": "كتابة العنوان يدويا",
+    "locationdisabled": "خدمات الموقع معطلة.",
+    "locationDenied": "تم رفض أذونات الموقع",
+    "openLocSitting": "افتح إعدادات الموقع",
+    "httpReqFaild": "فشل الطلب مع الحالة"
 }

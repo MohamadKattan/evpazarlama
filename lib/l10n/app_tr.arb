@@ -134,5 +134,9 @@
     "choesePickLocaton": "Aşağıda sunulan seçeneklerden bir konum yöntemi seçin",
     "pickCurrentLocation": "Mevcut konumumu kullanmak istiyorum",
     "pickLocationOnMap": "Haritadaki konumu seçin",
-    "locationManaul": "Adresi manuel olarak yazın"
+    "locationManaul": "Adresi manuel olarak yazın",
+    "locationdisabled": "Konum servisleri devre dışı.",
+    "locationDenied": "Konum izinleri reddedildi",
+    "openLocSitting": "Konum ayarını aç",
+    "httpReqFaild": "İstek şu durumla başarısız oldu:"
 }

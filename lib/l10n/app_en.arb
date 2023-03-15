@@ -546,5 +546,21 @@
   "locationManaul": "Write the address manually",
   "@locationManaul": {
     "description": "locationManaul"
+  },
+  "locationdisabled": "Location services are disabled.",
+  "@locationdisabled": {
+    "description": "locationdisabled"
+  },
+  "locationDenied": "Location permissions are denied",
+  "@locationDenied": {
+    "description": "locationDenied"
+  },
+  "openLocSitting": "Open location setting",
+  "@openLocSitting": {
+    "description": "openLocSitting"
+  },
+  "httpReqFaild": "Request failed with status:",
+  "@httpReqFaild": {
+    "description": "httpReqFaild"
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../helper/config.dart';
 import '../state-maneg/image_val.dart';
@@ -499,5 +500,94 @@ class GlobalMethods {
         break;
     }
     return list;
+  }
+  //=====================================================================
+  //=========================Location methods============================
+  //=====================================================================
+
+  // this method for location requestPermission
+
+  Future<void> requestPermission(BuildContext? context) async {
+    LocationPermission permission;
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error(' permissions denied').whenComplete(() {
+          CustomDailog().customSnackBar(
+            context: context!,
+            text: AppLocalizations.of(context)!.locationDenied,
+          );
+        });
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      showDialog(
+          context: context!,
+          barrierDismissible: false,
+          builder: (_) {
+            return CustomDailog().globalDailog(
+                context: context,
+                title: AppLocalizations.of(context)!.locationDenied,
+                textBtn1: AppLocalizations.of(context)!.openLocSitting,
+                function: () async {
+                  await Geolocator.openLocationSettings();
+                });
+          });
+      return Future.error('we cannot request permissions.');
+    }
+  }
+
+  // this method for got current location
+  Future<void> getLocations(BuildContext? context) async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      showDialog(
+          context: context!,
+          barrierDismissible: false,
+          builder: (_) {
+            return CustomDailog().globalDailog(
+                context: context,
+                title: AppLocalizations.of(context)!.locationdisabled,
+                textBtn1: AppLocalizations.of(context)!.openLocSitting,
+                function: () async {
+                  await Geolocator.openLocationSettings();
+                });
+          });
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location denied').whenComplete(() {
+          CustomDailog().customSnackBar(
+            context: context!,
+            text: AppLocalizations.of(context)!.locationDenied,
+          );
+        });
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      showDialog(
+          context: context!,
+          barrierDismissible: false,
+          builder: (_) {
+            return CustomDailog().globalDailog(
+                context: context,
+                title: AppLocalizations.of(context)!.locationDenied,
+                textBtn1: AppLocalizations.of(context)!.openLocSitting,
+                function: () async {
+                  await Geolocator.openLocationSettings();
+                });
+          });
+
+      return Future.error('we cannot request permissions.');
+    }
+    currentPosition = await Geolocator.getCurrentPosition();
   }
 }

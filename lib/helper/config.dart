@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../models/model_ads_hoseing.dart';
 import '../models/user_info.dart';
@@ -13,8 +14,6 @@ final storage = FirebaseStorage.instance.ref(); //storage
 FirebaseFirestore firestore = FirebaseFirestore.instance; //cloud
 CollectionReference usersProfileCollection =
     firestore.collection('users').doc(userId).collection('profile'); //cloud
-String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth
-
 UserInfoProfile? userInfoProfile;
 AdsHoseingModel? adsHoseingModel;
 // 1_============proprty===================
@@ -22,6 +21,7 @@ const Color mainColor = Color(0xFF00A3E0);
 const Color secondColor = Color(0xFFFBC408);
 const Color defColor = Colors.white;
 final Color greyColor = Colors.grey.shade300;
+Position? currentPosition;
 //2_===========val for condtions============
 
 //for chose main catogry realEstate,Vehicle,Hotels,lastADS,UrgentUrgent
@@ -79,3 +79,15 @@ String? duesToDtabase;
 String? deedToDtabase;
 String? watchingToDtabase;
 String? barteredToDtabase;
+String? streatNumberToDtBase;
+String? streatToDtbase;
+String? areaToDtbase;
+String? cityToDtbase;
+String? countryToDtbase;
+double? latitudeToDtbase;
+double? longitudeToDtbase;
+
+//================================GoogleApi================================
+String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth
+String geocodingUrl =
+    'https://maps.googleapis.com/maps/api/geocode/json?latlng=${currentPosition?.latitude},${currentPosition?.longitude}&key=$mapKey';

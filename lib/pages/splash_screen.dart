@@ -13,15 +13,22 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     pushAftrer3Second(context);
     return SafeArea(
-        child: Scaffold(
-            backgroundColor: mainColor,
-            body: Center(child: cutomImage(imagePath: 'splash.png'))));
+      child: Scaffold(
+        backgroundColor: mainColor,
+        body: Center(
+          child: cutomImage(imagePath: 'splash.png'),
+        ),
+      ),
+    );
   }
 }
 
-void pushAftrer3Second(BuildContext context) {
-  DataBaseSrv().getUserProfileInfo(context).whenComplete(() {
-    GlobalMethods()
-        .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
-  });
+void pushAftrer3Second(BuildContext context) async {
+  await DataBaseSrv().getUserProfileInfo(context);
+  if (context.mounted) {
+    await GlobalMethods().requestPermission(context).whenComplete(() {
+      GlobalMethods()
+          .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
+    });
+  }
 }
