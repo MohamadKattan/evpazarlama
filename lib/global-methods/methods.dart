@@ -507,7 +507,7 @@ class GlobalMethods {
 
   // this method for location requestPermission
 
-  Future<void> requestPermission(BuildContext? context) async {
+  Future<void> requestPermission(BuildContext context) async {
     LocationPermission permission;
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -515,57 +515,82 @@ class GlobalMethods {
       if (permission == LocationPermission.denied) {
         return Future.error(' permissions denied').whenComplete(() {
           CustomDailog().customSnackBar(
-            context: context!,
+            context: context,
             text: AppLocalizations.of(context)!.locationDenied,
           );
         });
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      showDialog(
-          context: context!,
-          barrierDismissible: false,
-          builder: (_) {
-            return CustomDailog().globalDailog(
-                context: context,
-                title: AppLocalizations.of(context)!.locationDenied,
-                textBtn1: AppLocalizations.of(context)!.openLocSitting,
-                function: () async {
-                  await Geolocator.openLocationSettings();
-                });
-          });
-      return Future.error('we cannot request permissions.');
+      return Future.error('we cannot request permissions.').whenComplete(() {
+        showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) {
+              return CustomDailog().globalDailog(
+                  context: context,
+                  title: AppLocalizations.of(context)!.locationDenied,
+                  textBtn1: AppLocalizations.of(context)!.openLocSitting,
+                  function: () async {
+                    await Geolocator.openLocationSettings();
+                  });
+            });
+      });
+    }
+  }
+
+  Future<void> locatioServiceEnabled(BuildContext context) async {
+    bool serviceEnabled;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.').whenComplete(() {
+        showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) {
+              return CustomDailog().globalDailog(
+                  context: context,
+                  title: AppLocalizations.of(context)!.locationdisabled,
+                  textBtn1: AppLocalizations.of(context)!.openLocSitting,
+                  function: () async {
+                    await Geolocator.openLocationSettings();
+                  });
+            });
+      });
+    } else {
+      return;
     }
   }
 
   // this method for got current location
-  Future<void> getLocations(BuildContext? context) async {
+  Future<void> getLocations(BuildContext context) async {
     bool serviceEnabled;
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      showDialog(
-          context: context!,
-          barrierDismissible: false,
-          builder: (_) {
-            return CustomDailog().globalDailog(
-                context: context,
-                title: AppLocalizations.of(context)!.locationdisabled,
-                textBtn1: AppLocalizations.of(context)!.openLocSitting,
-                function: () async {
-                  await Geolocator.openLocationSettings();
-                });
-          });
-      return Future.error('Location services are disabled.');
+      return Future.error('Location services are disabled.').whenComplete(() {
+        showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) {
+              return CustomDailog().globalDailog(
+                  context: context,
+                  title: AppLocalizations.of(context)!.locationdisabled,
+                  textBtn1: AppLocalizations.of(context)!.openLocSitting,
+                  function: () async {
+                    await Geolocator.openLocationSettings();
+                  });
+            });
+      });
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Future.error('Location denied').whenComplete(() {
+        return Future.error(' permissions denied.').whenComplete(() {
           CustomDailog().customSnackBar(
-            context: context!,
+            context: context,
             text: AppLocalizations.of(context)!.locationDenied,
           );
         });
@@ -573,21 +598,23 @@ class GlobalMethods {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      showDialog(
-          context: context!,
-          barrierDismissible: false,
-          builder: (_) {
-            return CustomDailog().globalDailog(
-                context: context,
-                title: AppLocalizations.of(context)!.locationDenied,
-                textBtn1: AppLocalizations.of(context)!.openLocSitting,
-                function: () async {
-                  await Geolocator.openLocationSettings();
-                });
-          });
-
-      return Future.error('we cannot request permissions.');
+      return Future.error('we cannot request permissions.').whenComplete(() {
+        showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) {
+              return CustomDailog().globalDailog(
+                  context: context,
+                  title: AppLocalizations.of(context)!.locationDenied,
+                  textBtn1: AppLocalizations.of(context)!.openLocSitting,
+                  function: () async {
+                    await Geolocator.openLocationSettings();
+                  });
+            });
+      });
     }
     currentPosition = await Geolocator.getCurrentPosition();
+    latitudeVal = currentPosition?.latitude ?? 0.0;
+    longitudeVal = currentPosition?.longitude ?? 0.0;
   }
 }

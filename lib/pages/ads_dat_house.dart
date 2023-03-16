@@ -42,6 +42,7 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
   late TextEditingController bartered;
   @override
   void initState() {
+    GlobalMethods().locatioServiceEnabled(context);
     advertTitle = TextEditingController();
     explanation = TextEditingController();
     price = TextEditingController();

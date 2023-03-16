@@ -138,5 +138,6 @@
     "locationdisabled": "خدمات الموقع معطلة.",
     "locationDenied": "تم رفض أذونات الموقع",
     "openLocSitting": "افتح إعدادات الموقع",
-    "httpReqFaild": "فشل الطلب مع الحالة"
+    "httpReqFaild": "فشل الطلب مع الحالة",
+    "pickOnMap": "حدد موقعك على الخريطة"
 }

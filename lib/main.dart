@@ -1,5 +1,6 @@
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/pages/add_new_ads.dart';
+import 'package:evpazarlama/pages/add_photo.dart';
 import 'package:evpazarlama/pages/ads_dat_bulding.dart';
 import 'package:evpazarlama/pages/ads_dat_hotel.dart';
 import 'package:evpazarlama/pages/ads_dat_house.dart';
@@ -8,6 +9,7 @@ import 'package:evpazarlama/pages/ads_dat_vehicles.dart';
 import 'package:evpazarlama/pages/ads_dat_work.dart';
 import 'package:evpazarlama/pages/ads_listofitem.dart';
 import 'package:evpazarlama/pages/ads_main_cateegory.dart';
+import 'package:evpazarlama/pages/google_map.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
 import 'package:evpazarlama/pages/profile_info.dart';
 import 'package:evpazarlama/pages/profile_screen.dart';
@@ -82,13 +84,14 @@ class MyApp extends StatelessWidget {
           toAdsDetailsBulding: (context) => const AdsDetailsBulding(),
           toAdsDetailsVehicles: (context) => const AdsDetailsVehicles(),
           toAdsDetailsHotels: (context) => const AdsDetailsHotels(),
-          toStartPickLocation: (context) => const StartPickLocation()
+          toStartPickLocation: (context) => const StartPickLocation(),
+          toAddPhoto: (context) => const AddPhotos(),
+          toGoogleMapScreen: (context) => const GoogleMapScreen()
         },
       ),
     );
   }
 }
-
 /*
 git init
 git add README.md

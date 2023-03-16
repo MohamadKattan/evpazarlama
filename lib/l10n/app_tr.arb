@@ -138,5 +138,6 @@
     "locationdisabled": "Konum servisleri devre dışı.",
     "locationDenied": "Konum izinleri reddedildi",
     "openLocSitting": "Konum ayarını aç",
-    "httpReqFaild": "İstek şu durumla başarısız oldu:"
+    "httpReqFaild": "İstek şu durumla başarısız oldu:",
+    "pickOnMap": "Konumunuzu harita üzerinde bulun"
 }

@@ -81,28 +81,35 @@ class StartPickLocation extends StatelessWidget {
                     ),
                   ),
                   customSpacer(height: 15.0),
-                  customContainer(
-                    colorBack: mainColor,
-                    spaceAroundLeftMargin: 15.0,
-                    spaceAroundRightMargin: 15.0,
-                    spaceAroundTop: 20.0,
-                    spaceAroundBottom: 20.0,
-                    ridusBL: 12.0,
-                    ridusBR: 12.0,
-                    ridusR: 12.0,
-                    ridusl: 12.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        customIcon(iconData: Icons.map, size: 25.0),
-                        customSpacer(width: 12.0),
-                        customText(
-                          text: AppLocalizations.of(context)!.pickLocationOnMap,
-                          textFontSize: 16,
-                          textWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      GlobalMethods().pushToNewScreen(
+                          context: context, routeName: toGoogleMapScreen);
+                    },
+                    child: customContainer(
+                      colorBack: mainColor,
+                      spaceAroundLeftMargin: 15.0,
+                      spaceAroundRightMargin: 15.0,
+                      spaceAroundTop: 20.0,
+                      spaceAroundBottom: 20.0,
+                      ridusBL: 12.0,
+                      ridusBR: 12.0,
+                      ridusR: 12.0,
+                      ridusl: 12.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          customIcon(iconData: Icons.map, size: 25.0),
+                          customSpacer(width: 12.0),
+                          customText(
+                            text:
+                                AppLocalizations.of(context)!.pickLocationOnMap,
+                            textFontSize: 16,
+                            textWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   customSpacer(height: 15.0),
@@ -198,7 +205,7 @@ class StartPickLocation extends StatelessWidget {
       if (res != 'failed') {
         Map<String, dynamic> map = Map<String, dynamic>.from(res as Map);
         if (map['status'] == 'OK') {
-          List listRes = map['results'][0]['address_components'];
+          final listRes = map['results'][0]['address_components'];
           streatNumberToDtBase = listRes[0]['long_name'];
           streatToDtbase = listRes[1]['long_name'];
           for (var i = 0; i < listRes.length; i++) {
@@ -211,17 +218,24 @@ class StartPickLocation extends StatelessWidget {
               countryToDtbase = listRes[i]['long_name'];
             }
           }
+          latitudeToDtbase = latitudeVal;
+          longitudeToDtbase = longitudeVal;
           print('No:$streatNumberToDtBase');
           print('strat is : $streatToDtbase');
           print('areay is : $areaToDtbase');
           print('city is : $cityToDtbase');
           print('country is : $countryToDtbase');
-          latitudeToDtbase = currentPosition?.latitude;
-          longitudeToDtbase = currentPosition?.longitude;
+          if (context.mounted) {
+            context.read<BoolingVal>().loadingAuth(false);
+            GlobalMethods()
+                .pushToNewScreen(context: context, routeName: toAddPhoto);
+          }
+        }
+      } else {
+        if (context.mounted) {
+          context.read<BoolingVal>().loadingAuth(false);
         }
       }
-    }).whenComplete(() {
-      context.read<BoolingVal>().loadingAuth(false);
     });
   }
 }

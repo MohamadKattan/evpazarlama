@@ -562,5 +562,9 @@
   "httpReqFaild": "Request failed with status:",
   "@httpReqFaild": {
     "description": "httpReqFaild"
+  },
+  "pickOnMap": "Locate your location on the map",
+  "@pickOnMap": {
+    "description": "pickOnMap"
   }
 }

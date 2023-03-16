@@ -22,6 +22,9 @@ const Color secondColor = Color(0xFFFBC408);
 const Color defColor = Colors.white;
 final Color greyColor = Colors.grey.shade300;
 Position? currentPosition;
+double?latitudeVal;
+double?longitudeVal;
+
 //2_===========val for condtions============
 
 //for chose main catogry realEstate,Vehicle,Hotels,lastADS,UrgentUrgent
@@ -55,6 +58,8 @@ const toAdsDetailsBulding = '/AdsDetailsBulding';
 const toAdsDetailsVehicles = '/AdsDetailsVehicles';
 const toAdsDetailsHotels = '/AdsDetailsHotels';
 const toStartPickLocation = '/StartPickLocation';
+const toAddPhoto = '/AddPhotos';
+const toGoogleMapScreen = '/oogleMapScreen';
 
 //==================values ads to database===============
 String? mainCatToDtbase;
@@ -90,4 +95,4 @@ double? longitudeToDtbase;
 //================================GoogleApi================================
 String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth
 String geocodingUrl =
-    'https://maps.googleapis.com/maps/api/geocode/json?latlng=${currentPosition?.latitude},${currentPosition?.longitude}&key=$mapKey';
+    'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitudeVal,$longitudeVal&key=$mapKey';
