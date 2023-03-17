@@ -566,5 +566,33 @@
   "pickOnMap": "Locate your location on the map",
   "@pickOnMap": {
     "description": "pickOnMap"
+  },
+  "choseCountry": "Country",
+  "@choseCountry": {
+    "description": "choseCountry"
+  },
+  "choseCity": "City",
+  "@choseCity": {
+    "description": "choseCity"
+  },
+  "choseArea": "Area",
+  "@choseArea": {
+    "description": "choseArea"
+  },
+  "choseStreat": "Street",
+  "@choseStreat": {
+    "description": "choseStreat"
+  },
+  "choseStreatNo": "Street No :",
+  "@choseStreatNo": {
+    "description": "choseStreatNo"
+  },
+  "pickImagesAds": "Pick some images",
+  "@pickImagesAds": {
+    "description": "Pick some images"
+  },
+  "pickImagesAdsDsc": "Choose some photos from the photo gallery before posting the ad",
+  "@pickImagesAdsDsc": {
+    "description": "pickImagesAdsDsc"
   }
 }

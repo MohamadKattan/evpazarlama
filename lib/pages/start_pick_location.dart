@@ -84,7 +84,7 @@ class StartPickLocation extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       GlobalMethods().pushToNewScreen(
-                          context: context, routeName: toGoogleMapScreen);
+                          context: context, routeName: toStartMapLocation);
                     },
                     child: customContainer(
                       colorBack: mainColor,
@@ -113,28 +113,35 @@ class StartPickLocation extends StatelessWidget {
                     ),
                   ),
                   customSpacer(height: 15.0),
-                  customContainer(
-                    colorBack: mainColor,
-                    spaceAroundLeftMargin: 15.0,
-                    spaceAroundRightMargin: 15.0,
-                    spaceAroundTop: 20.0,
-                    spaceAroundBottom: 20.0,
-                    ridusBL: 12.0,
-                    ridusBR: 12.0,
-                    ridusR: 12.0,
-                    ridusl: 12.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        customIcon(iconData: Icons.edit_note_sharp, size: 25.0),
-                        customSpacer(width: 12.0),
-                        customText(
-                          text: AppLocalizations.of(context)!.locationManaul,
-                          textFontSize: 16,
-                          textWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      GlobalMethods().pushToNewScreen(
+                          context: context, routeName: toSatrtWriteLocation);
+                    },
+                    child: customContainer(
+                      colorBack: mainColor,
+                      spaceAroundLeftMargin: 15.0,
+                      spaceAroundRightMargin: 15.0,
+                      spaceAroundTop: 20.0,
+                      spaceAroundBottom: 20.0,
+                      ridusBL: 12.0,
+                      ridusBR: 12.0,
+                      ridusR: 12.0,
+                      ridusl: 12.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          customIcon(
+                              iconData: Icons.edit_note_sharp, size: 25.0),
+                          customSpacer(width: 12.0),
+                          customText(
+                            text: AppLocalizations.of(context)!.locationManaul,
+                            textFontSize: 16,
+                            textWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -220,11 +227,7 @@ class StartPickLocation extends StatelessWidget {
           }
           latitudeToDtbase = latitudeVal;
           longitudeToDtbase = longitudeVal;
-          print('No:$streatNumberToDtBase');
-          print('strat is : $streatToDtbase');
-          print('areay is : $areaToDtbase');
-          print('city is : $cityToDtbase');
-          print('country is : $countryToDtbase');
+  
           if (context.mounted) {
             context.read<BoolingVal>().loadingAuth(false);
             GlobalMethods()

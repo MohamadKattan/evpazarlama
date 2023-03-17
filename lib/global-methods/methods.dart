@@ -96,8 +96,7 @@ class GlobalMethods {
                 title: AppLocalizations.of(context)!.beforAddNewAds,
                 textBtn1: AppLocalizations.of(context)!.singup,
                 function: () {
-                  pushReplaceToNewScreen(
-                      context: context, routeName: toLoginScreen);
+                  pushToNewScreen(context: context, routeName: toLoginScreen);
                 });
           });
     } else if (userInfoProfile?.userName == null) {
@@ -110,8 +109,7 @@ class GlobalMethods {
                 title: AppLocalizations.of(context)!.beforAddNewAds,
                 textBtn1: AppLocalizations.of(context)!.singup,
                 function: () {
-                  pushReplaceToNewScreen(
-                      context: context, routeName: toProfileInfo);
+                  pushToNewScreen(context: context, routeName: toProfileInfo);
                 });
           });
     } else {
@@ -553,7 +551,9 @@ class GlobalMethods {
                   title: AppLocalizations.of(context)!.locationdisabled,
                   textBtn1: AppLocalizations.of(context)!.openLocSitting,
                   function: () async {
-                    await Geolocator.openLocationSettings();
+                    await Geolocator.openLocationSettings().whenComplete(() {
+                      GlobalMethods().popFromScreen(context);
+                    });
                   });
             });
       });

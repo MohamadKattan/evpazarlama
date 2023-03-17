@@ -9,11 +9,12 @@ import 'package:evpazarlama/pages/ads_dat_vehicles.dart';
 import 'package:evpazarlama/pages/ads_dat_work.dart';
 import 'package:evpazarlama/pages/ads_listofitem.dart';
 import 'package:evpazarlama/pages/ads_main_cateegory.dart';
-import 'package:evpazarlama/pages/google_map.dart';
+import 'package:evpazarlama/pages/start_map_location.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
 import 'package:evpazarlama/pages/profile_info.dart';
 import 'package:evpazarlama/pages/profile_screen.dart';
 import 'package:evpazarlama/pages/start_pick_location.dart';
+import 'package:evpazarlama/pages/start_write_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -86,7 +87,8 @@ class MyApp extends StatelessWidget {
           toAdsDetailsHotels: (context) => const AdsDetailsHotels(),
           toStartPickLocation: (context) => const StartPickLocation(),
           toAddPhoto: (context) => const AddPhotos(),
-          toGoogleMapScreen: (context) => const GoogleMapScreen()
+          toStartMapLocation: (context) => const StartMapLocation(),
+          toSatrtWriteLocation: (context) => const StartWriteLocation()
         },
       ),
     );

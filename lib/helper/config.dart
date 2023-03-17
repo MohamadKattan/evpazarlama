@@ -22,8 +22,8 @@ const Color secondColor = Color(0xFFFBC408);
 const Color defColor = Colors.white;
 final Color greyColor = Colors.grey.shade300;
 Position? currentPosition;
-double?latitudeVal;
-double?longitudeVal;
+double? latitudeVal;
+double? longitudeVal;
 
 //2_===========val for condtions============
 
@@ -59,7 +59,8 @@ const toAdsDetailsVehicles = '/AdsDetailsVehicles';
 const toAdsDetailsHotels = '/AdsDetailsHotels';
 const toStartPickLocation = '/StartPickLocation';
 const toAddPhoto = '/AddPhotos';
-const toGoogleMapScreen = '/oogleMapScreen';
+const toStartMapLocation = '/StartMapLocation';
+const toSatrtWriteLocation = "/StartWriteLocation";
 
 //==================values ads to database===============
 String? mainCatToDtbase;

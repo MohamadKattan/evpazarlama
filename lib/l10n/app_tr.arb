@@ -139,5 +139,12 @@
     "locationDenied": "Konum izinleri reddedildi",
     "openLocSitting": "Konum ayarını aç",
     "httpReqFaild": "İstek şu durumla başarısız oldu:",
-    "pickOnMap": "Konumunuzu harita üzerinde bulun"
+    "pickOnMap": "Konumunuzu harita üzerinde bulun",
+    "choseCountry": "ülke",
+    "choseCity": "Şehir",
+    "choseArea": "bölge",
+    "choseStreat": "Sokak",
+    "choseStreatNo": "Sokak No",
+    "pickImagesAds": "Bazı resimler seçin",
+    "pickImagesAdsDsc": "Reklamı yayınlamadan önce fotoğraf galerisinden bazı fotoğraflar seçin."
 }

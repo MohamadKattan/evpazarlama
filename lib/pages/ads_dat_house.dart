@@ -294,7 +294,7 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                       labelColor: mainColor,
                       fillColor: Colors.white,
                     ),
-                    customSpacer(height: 20.0),
+                    customSpacer(height: 120.0),
                   ],
                 ),
               ),
@@ -337,7 +337,6 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          context.read<BoolingVal>().loadingAuth(true);
                           checkBefore(context);
                         },
                         child: customContainer(
@@ -413,7 +412,9 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
     });
   }
 
+// this method for set value to varbile dataBase
   void setAllVal() {
+    context.read<BoolingVal>().loadingAuth(true);
     mainCatToDtbase = mainCatogry.toString();
     operationtypeToDatBase = saleRentElseVal.toString();
     advTitleToDtbase = advertTitle.text;

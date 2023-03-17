@@ -139,5 +139,12 @@
     "locationDenied": "تم رفض أذونات الموقع",
     "openLocSitting": "افتح إعدادات الموقع",
     "httpReqFaild": "فشل الطلب مع الحالة",
-    "pickOnMap": "حدد موقعك على الخريطة"
+    "pickOnMap": "حدد موقعك على الخريطة",
+    "choseCountry": "بلد",
+    "choseCity": "المدينة",
+    "choseArea": "المنطقة",
+    "choseStreat": "شارع",
+    "choseStreatNo": "رقم الشارع",
+    "pickImagesAds": "اختر بعض الصور",
+    "pickImagesAdsDsc": "إختر بعض الصور من معرض الصور قبل نشر الإعلان"
 }

@@ -14,14 +14,14 @@ import '../client-srv/https_srv.dart';
 import '../helper/custom_positioned.dart';
 import '../state-maneg/booling_val.dart';
 
-class GoogleMapScreen extends StatefulWidget {
-  const GoogleMapScreen({super.key});
+class StartMapLocation extends StatefulWidget {
+  const StartMapLocation({super.key});
 
   @override
-  State<GoogleMapScreen> createState() => _GoogleMapScreenState();
+  State<StartMapLocation> createState() => _StartMapLocationState();
 }
 
-class _GoogleMapScreenState extends State<GoogleMapScreen> {
+class _StartMapLocationState extends State<StartMapLocation> {
   final marker = <Marker>{};
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
@@ -184,9 +184,9 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
 
   // this method for call gecodin api after move location on map
   Future<void> _getAdreesInfo() async {
+    context.read<BoolingVal>().loadingAuth(true);
     String url =
         'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitudeVal,$longitudeVal&key=$mapKey';
-    context.read<BoolingVal>().loadingAuth(true);
     var res =
         await ClintHttpSrv().getDataFromApi(context: context, urlApi: url);
     if (res != 'failed') {
@@ -206,6 +206,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         }
         latitudeToDtbase = latitudeVal;
         longitudeToDtbase = longitudeVal;
+
         if (context.mounted) {
           context.read<BoolingVal>().loadingAuth(false);
           GlobalMethods()
