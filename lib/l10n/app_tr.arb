@@ -146,5 +146,17 @@
     "choseStreat": "Sokak",
     "choseStreatNo": "Sokak No",
     "pickImagesAds": "Bazı resimler seçin",
-    "pickImagesAdsDsc": "Reklamı yayınlamadan önce fotoğraf galerisinden bazı fotoğraflar seçin."
+    "pickImagesAdsDsc": "Reklamı yayınlamadan önce fotoğraf galerisinden bazı fotoğraflar seçin.",
+    "planScreen": "ödemeler",
+    "checkInfoAds": "ilan bilgisi",
+    "checkInfoAdsDce": "İlan vermeden önce bilgileri kontrol edin.",
+    "year": "Yıl :",
+    "unKnow": "Bilmiyorum",
+    "found": "Var",
+    "noFound": "yok",
+    "yes": "Evet",
+    "no": "Hayır",
+    "empty": "Boş",
+    "rented": "kiracı",
+    "ownerLiving": "sahibi"
 }

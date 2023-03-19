@@ -34,6 +34,7 @@ int mainCatogry = 0;
 int listOfItemVal = 0;
 // sale 0, rent 1, daily 2,trans 3 for send to data
 int saleRentElseVal = 0;
+List listCheckInfoAds=[];
 //3===============_root====================
 const toSplash = '/';
 const toHomeScreen = '/HomeScreen';
@@ -61,6 +62,8 @@ const toStartPickLocation = '/StartPickLocation';
 const toAddPhoto = '/AddPhotos';
 const toStartMapLocation = '/StartMapLocation';
 const toSatrtWriteLocation = "/StartWriteLocation";
+const toPlanScreen = '/PlanScreen';
+const toCheckInfoAds = '/CheckInfoAds';
 
 //==================values ads to database===============
 String? mainCatToDtbase;
@@ -69,27 +72,28 @@ String? operationtypeToDatBase;
 String? advTitleToDtbase;
 String? explanationToDtbase;
 String? priceToDtbase;
+String? curencyToDtbase;
 String? frontToDtbase;
 String? grossMetersToDtabase;
 String? netMetersToDtabase;
 String? roomNumToDtabase;
 String? buldingAgeToDtabase;
-String? floorLocationToDtabase;
-String? numOfFloorsToDtabase;
+String? flLocaToDtabase;
+String? nFloorsToDtabase;
 String? heatingToDtabase;
-String? numberofPathToDtabase;
+String? nPathToDtabase;
 String? balconyToDtabase;
 String? furnishedToDtabase;
-String? usingStatusToDtabase;
+String? usingStatToDtabase;
 String? duesToDtabase;
 String? deedToDtabase;
 String? watchingToDtabase;
 String? barteredToDtabase;
-String? streatNumberToDtBase;
-String? streatToDtbase;
-String? areaToDtbase;
-String? cityToDtbase;
 String? countryToDtbase;
+String? cityToDtbase;
+String? areaToDtbase;
+String? streatToDtbase;
+String? streatNumberToDtBase;
 double? latitudeToDtbase;
 double? longitudeToDtbase;
 

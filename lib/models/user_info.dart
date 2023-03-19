@@ -5,15 +5,18 @@ class UserInfoProfile {
   String? userMail;
   String? userImage;
   String? userAccountType;
+  int?plan;
   UserInfoProfile(
       {this.userid,
       this.userName,
       this.userPhone,
       this.userMail,
       this.userImage,
-      this.userAccountType});
+      this.userAccountType,
+      this.plan
+      });
 
-  UserInfoProfile.fromJson(Map<String, Object?> map)
+  UserInfoProfile.fromJson(Map<String, dynamic> map)
       : this(
           userid: map['id'].toString(),
           userName: map['name'].toString(),
@@ -21,6 +24,7 @@ class UserInfoProfile {
           userMail: map['email'].toString(),
           userAccountType: map['type'].toString(),
           userImage: map['image'].toString(),
+          plan: map['plan'],
         );
 
   Map<String, dynamic> toJson(
@@ -29,7 +33,9 @@ class UserInfoProfile {
           required String phone,
           required String email,
           required String type,
-          required String url}) =>
+          required String url,
+          required int plan
+          }) =>
       {
         'id': id,
         'name': name,
@@ -37,5 +43,6 @@ class UserInfoProfile {
         'email': email,
         'type': type,
         'image': url,
+        'plan':plan
       };
 }

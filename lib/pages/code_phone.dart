@@ -141,10 +141,10 @@ class CodePhone extends StatelessWidget {
       child: Pinput(
         length: 6,
         controller: codeController,
-        androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
-        listenForMultipleSmsOnAndroid: true,
+        androidSmsAutofillMethod: AndroidSmsAutofillMethod.none,
+        listenForMultipleSmsOnAndroid: false,
         defaultPinTheme: defaultPinTheme,
-        hapticFeedbackType: HapticFeedbackType.lightImpact,
+        hapticFeedbackType: HapticFeedbackType.disabled,
         cursor: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

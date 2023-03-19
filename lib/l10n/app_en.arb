@@ -594,5 +594,53 @@
   "pickImagesAdsDsc": "Choose some photos from the photo gallery before posting the ad",
   "@pickImagesAdsDsc": {
     "description": "pickImagesAdsDsc"
+  },
+  "planScreen": "Payments",
+  "@planScreen": {
+    "description": "planScreen"
+  },
+  "checkInfoAds": " Ad info",
+  "@checkInfoAds": {
+    "description": "checkInfoAds"
+  },
+  "checkInfoAdsDce": "Check info before posting an ad",
+  "@checkInfoAdsDce": {
+    "description": "checkInfoAdsDce"
+  },
+  "year": "Year : ",
+  "@year": {
+    "description": "year"
+  },
+  "unKnow": "unknown",
+  "@unKnow": {
+    "description": "unKnow"
+  },
+  "found": "Existing",
+  "@found": {
+    "description": "found"
+  },
+  "noFound": "Not Existing",
+  "@noFound": {
+    "description": "noFound"
+  },
+  "yes": "Yes",
+  "@yes": {
+    "description": "yes"
+  },
+  "no": "No",
+  "@no": {
+    "description": "no"
+  },
+  "empty": "Empty",
+  "@empty": {
+    "description": "empty"
+  },
+  "rented": "Tenant",
+  "@rented": {
+    "description": "rented"
+  },
+  "ownerLiving": "The owner lives",
+  "@ownerLiving": {
+    "description": "ownerLiving"
   }
 }

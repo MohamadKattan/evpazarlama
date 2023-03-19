@@ -50,14 +50,16 @@ class DataBaseSrv {
             await storage
                 .child("users/$userId")
                 .getDownloadURL()
-                .then((val) async {
+                .then((valUrl) async {
               final map = UserInfoProfile().toJson(
                   id: userId,
                   name: name,
                   phone: phone,
                   email: email,
                   type: typeAcount,
-                  url: val);
+                  url: valUrl,
+                  plan: 1
+                  );
               await usersProfileCollection
                   .doc(userId)
                   .set(map)
@@ -81,7 +83,9 @@ class DataBaseSrv {
           phone: phone,
           email: email,
           type: typeAcount,
-          url: 'null');
+          url: 'null',
+          plan: 1
+          );
       await usersProfileCollection.doc(userId).set(map).whenComplete(() {
         context.read<BoolingVal>().loadingAuth(false);
         GlobalMethods()
@@ -94,7 +98,6 @@ class DataBaseSrv {
   }
 
   // this meth for got user profile info from user/useid/profile colection
-
   Future<void> getUserProfileInfo(BuildContext context) async {
     if (userId != 'null') {
       await usersProfileCollection

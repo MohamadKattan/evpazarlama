@@ -3,6 +3,7 @@ import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
+import 'package:evpazarlama/helper/custom_drop.dart';
 import 'package:evpazarlama/helper/custom_positioned.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
@@ -11,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-import '../state-maneg/booling_val.dart';
 import '../state-maneg/string_val.dart';
 
 class AdsDetailsHoseing extends StatefulWidget {
@@ -24,22 +24,12 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
   late TextEditingController advertTitle;
   late TextEditingController explanation;
   late TextEditingController price;
-  late TextEditingController front;
-  late TextEditingController grossMeters;
-  late TextEditingController netMeters;
-  late TextEditingController roomNum;
-  late TextEditingController buldingAge;
-  late TextEditingController floorLocation;
-  late TextEditingController numOfFloors;
-  late TextEditingController heating;
-  late TextEditingController numberofPath;
-  late TextEditingController balcony;
-  late TextEditingController furnished;
-  late TextEditingController usingStatus;
-  late TextEditingController dues;
-  late TextEditingController deed;
-  late TextEditingController watching;
-  late TextEditingController bartered;
+  TextEditingController? front;
+  TextEditingController? grossMeters;
+  TextEditingController? netMeters;
+  TextEditingController? heating;
+  TextEditingController? dues;
+  TextEditingController? deed;
   @override
   void initState() {
     GlobalMethods().locatioServiceEnabled(context);
@@ -49,19 +39,9 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
     front = TextEditingController();
     grossMeters = TextEditingController();
     netMeters = TextEditingController();
-    roomNum = TextEditingController();
-    buldingAge = TextEditingController();
-    floorLocation = TextEditingController();
-    numOfFloors = TextEditingController();
     heating = TextEditingController();
-    numberofPath = TextEditingController();
-    balcony = TextEditingController();
-    furnished = TextEditingController();
-    usingStatus = TextEditingController();
     dues = TextEditingController();
     deed = TextEditingController();
-    watching = TextEditingController();
-    bartered = TextEditingController();
     super.initState();
   }
 
@@ -70,28 +50,17 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
     advertTitle.dispose();
     explanation.dispose();
     price.dispose();
-    front.dispose();
-    grossMeters.dispose();
-    netMeters.dispose();
-    roomNum.dispose();
-    buldingAge.dispose();
-    floorLocation.dispose();
-    numOfFloors.dispose();
-    heating.dispose();
-    numberofPath.dispose();
-    furnished.dispose();
-    usingStatus.dispose();
-    dues.dispose();
-    deed.dispose();
-    watching.dispose();
-    bartered.dispose();
-
+    front!.dispose();
+    grossMeters!.dispose();
+    netMeters!.dispose();
+    heating!.dispose();
+    dues!.dispose();
+    deed!.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    checkValSubCategory(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blueGrey.shade100,
@@ -147,15 +116,34 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                         textFontSize: 14,
                         textAlign: TextAlign.start),
                     customSpacer(height: 6.0),
-                    customTextFailed(
-                        controller: price,
-                        lable: AppLocalizations.of(context)!.price,
-                        hintText: AppLocalizations.of(context)!.price,
-                        inputType: TextInputType.number,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-
-                    ///
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Expanded(
+                          child: customTextFailed(
+                              controller: price,
+                              lable: AppLocalizations.of(context)!.price,
+                              hintText: AppLocalizations.of(context)!.price,
+                              inputType: TextInputType.number,
+                              labelColor: mainColor,
+                              fillColor: Colors.white),
+                        ),
+                        MyDropButton().customDropButton(
+                          context: context,
+                          width: 80.0,
+                          margin: 8.0,
+                          fontSizeC: 24,
+                          dropdownValue:
+                              context.watch<StringVal>().currancyType,
+                          list: ['\$', '€', '₺', '£', '₽', '﷼', 'د.ك', 'د.إ'],
+                          function: (String? valueChange) {
+                            context
+                                .read<StringVal>()
+                                .updateCurancyState(valueChange!);
+                          },
+                        ),
+                      ],
+                    ),
                     customSpacer(height: 20.0),
                     customTextFailed(
                         controller: front,
@@ -182,39 +170,6 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                         fillColor: Colors.white),
                     customSpacer(height: 20.0),
                     customTextFailed(
-                        controller: roomNum,
-                        lable: AppLocalizations.of(context)!.roomNum,
-                        hintText: AppLocalizations.of(context)!.roomNum,
-                        inputType: TextInputType.number,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                        controller: buldingAge,
-                        lable: AppLocalizations.of(context)!.buldingAge,
-                        hintText: AppLocalizations.of(context)!.buldingAge,
-                        inputType: TextInputType.number,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                        controller: floorLocation,
-                        lable: AppLocalizations.of(context)!.floorLocation,
-                        hintText: AppLocalizations.of(context)!.floorLocation,
-                        inputType: TextInputType.number,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: numOfFloors,
-                      lable: AppLocalizations.of(context)!.numOfFloors,
-                      hintText: AppLocalizations.of(context)!.numOfFloors,
-                      inputType: TextInputType.number,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
-                    ),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
                       controller: heating,
                       lable: AppLocalizations.of(context)!.heating,
                       hintText: AppLocalizations.of(context)!.heating,
@@ -223,40 +178,185 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                       fillColor: Colors.white,
                     ),
                     customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: numberofPath,
-                      lable: AppLocalizations.of(context)!.pathNum,
-                      hintText: AppLocalizations.of(context)!.pathNum,
-                      inputType: TextInputType.number,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().numOfRomms,
+                      list: [
+                        AppLocalizations.of(context)!.roomNum,
+                        '0+1',
+                        '1+1',
+                        '2+1',
+                        '3+1',
+                        '4+1',
+                        '5+1',
+                        '6+1',
+                        '7+1',
+                        '8+1',
+                        '9+1',
+                        '10+1',
+                        '20+1'
+                      ],
+                      function: (String? valueChange) {
+                        context
+                            .read<StringVal>()
+                            .updateNumOfRoomsState(valueChange!);
+                      },
                     ),
                     customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: balcony,
-                      lable: AppLocalizations.of(context)!.balcony,
-                      hintText: AppLocalizations.of(context)!.balcony,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().buildingAge,
+                      list: [
+                        AppLocalizations.of(context)!.buldingAge,
+                        '${AppLocalizations.of(context)!.year}0',
+                        '${AppLocalizations.of(context)!.year}1',
+                        '${AppLocalizations.of(context)!.year}2',
+                        '${AppLocalizations.of(context)!.year}3',
+                        '${AppLocalizations.of(context)!.year}4',
+                        '${AppLocalizations.of(context)!.year}5',
+                        '${AppLocalizations.of(context)!.year}6',
+                        '${AppLocalizations.of(context)!.year}7',
+                        '${AppLocalizations.of(context)!.year}8',
+                        '${AppLocalizations.of(context)!.year}9',
+                        '${AppLocalizations.of(context)!.year}10',
+                        '${AppLocalizations.of(context)!.year}(10/15)',
+                        '${AppLocalizations.of(context)!.year}(15/20)',
+                        '${AppLocalizations.of(context)!.year}(20/25)',
+                        '${AppLocalizations.of(context)!.year}(25/30)',
+                        '${AppLocalizations.of(context)!.year}(30/...)',
+                      ],
+                      function: (String? valueChange) {
+                        context
+                            .read<StringVal>()
+                            .updateBuildingAgeState(valueChange!);
+                      },
                     ),
                     customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: furnished,
-                      lable: AppLocalizations.of(context)!.furnished,
-                      hintText: AppLocalizations.of(context)!.furnished,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().floorLocation,
+                      list: [
+                        AppLocalizations.of(context)!.floorLocation,
+                        '-4',
+                        '-3',
+                        '-2',
+                        '-1',
+                        '0',
+                        '1',
+                        '2',
+                        '3',
+                        '4',
+                        '5',
+                        '6',
+                        '7',
+                        '8',
+                        '9',
+                        '10',
+                        '11',
+                        '12',
+                        '13',
+                        '14',
+                        '15',
+                        '16',
+                        '17',
+                        '18',
+                        '19',
+                        '20',
+                        '(20/30)',
+                      ],
+                      function: (String? valueChange) {
+                        context
+                            .read<StringVal>()
+                            .updateFloorLocation(valueChange!);
+                      },
                     ),
                     customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: usingStatus,
-                      lable: AppLocalizations.of(context)!.usingStatus,
-                      hintText: AppLocalizations.of(context)!.usingStatus,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().numOfFloors,
+                      list: [
+                        AppLocalizations.of(context)!.numOfFloors,
+                        '1',
+                        '2',
+                        '3',
+                        '4',
+                        '5',
+                        '6',
+                        '7',
+                        '8',
+                        '9',
+                        '10',
+                        '(10/15)',
+                        '(15/20)',
+                        '(20/25)',
+                        '(25/30)',
+                        '(30/...)'
+                      ],
+                      function: (String? valueChange) {
+                        context
+                            .read<StringVal>()
+                            .updateNumOfFloors(valueChange!);
+                      },
+                    ),
+                    customSpacer(height: 20.0),
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().numOfPathRoom,
+                      list: [
+                        AppLocalizations.of(context)!.pathNum,
+                        '1',
+                        '2',
+                        '3',
+                        '4',
+                        '5',
+                      ],
+                      function: (String? valueChange) {
+                        context
+                            .read<StringVal>()
+                            .updateNumOfPathRoom(valueChange!);
+                      },
+                    ),
+                    customSpacer(height: 20.0),
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().balcony,
+                      list: [
+                        AppLocalizations.of(context)!.balcony,
+                        AppLocalizations.of(context)!.found,
+                        AppLocalizations.of(context)!.noFound,
+                      ],
+                      function: (String? valueChange) {
+                        context.read<StringVal>().updateBalcony(valueChange!);
+                      },
+                    ),
+                    customSpacer(height: 20.0),
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().furnished,
+                      list: [
+                        AppLocalizations.of(context)!.furnished,
+                        AppLocalizations.of(context)!.yes,
+                        AppLocalizations.of(context)!.no,
+                      ],
+                      function: (String? valueChange) {
+                        context.read<StringVal>().updateFurnshed(valueChange!);
+                      },
+                    ),
+                    customSpacer(height: 20.0),
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().usingStatus,
+                      list: [
+                        AppLocalizations.of(context)!.usingStatus,
+                        AppLocalizations.of(context)!.empty,
+                        AppLocalizations.of(context)!.ownerLiving,
+                        AppLocalizations.of(context)!.rented,
+                      ],
+                      function: (String? valueChange) {
+                        context
+                            .read<StringVal>()
+                            .updateUsingStatus(valueChange!);
+                      },
                     ),
                     customSpacer(height: 20.0),
                     customTextFailed(
@@ -277,22 +377,30 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                       fillColor: Colors.white,
                     ),
                     customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: watching,
-                      lable: AppLocalizations.of(context)!.watching,
-                      hintText: AppLocalizations.of(context)!.watching,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().watching,
+                      list: [
+                        AppLocalizations.of(context)!.watching,
+                        AppLocalizations.of(context)!.yes,
+                        AppLocalizations.of(context)!.no,
+                      ],
+                      function: (String? valueChange) {
+                        context.read<StringVal>().updateWatching(valueChange!);
+                      },
                     ),
                     customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: bartered,
-                      lable: AppLocalizations.of(context)!.bartered,
-                      hintText: AppLocalizations.of(context)!.bartered,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
+                    MyDropButton().customDropButton(
+                      context: context,
+                      dropdownValue: context.watch<StringVal>().bartered,
+                      list: [
+                        AppLocalizations.of(context)!.bartered,
+                        AppLocalizations.of(context)!.yes,
+                        AppLocalizations.of(context)!.no,
+                      ],
+                      function: (String? valueChange) {
+                        context.read<StringVal>().updateBartered(valueChange!);
+                      },
                     ),
                     customSpacer(height: 120.0),
                   ],
@@ -346,7 +454,9 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                           ridusBR: 12.0,
                           ridusR: 12.0,
                           ridusl: 12.0,
-                          child: circleOrText(),
+                          child: customText(
+                              text: AppLocalizations.of(context)!.next,
+                              textColor: Colors.white),
                         ),
                       ),
                     ],
@@ -362,7 +472,9 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
 
   // this method for exstued val of list item and set to en val just
   void checkValSubCategory(BuildContext context) {
-    String? val = context.watch<StringVal>().subCategoryValue ?? 'null';
+    String? val =
+        Provider.of<StringVal>(context, listen: false).subCategoryValue ??
+            'null';
     if (val.contains(AppLocalizations.of(context)!.apart1)) {
       subCatToDtabase = 'apart1';
     } else if (val.contains(AppLocalizations.of(context)!.residence)) {
@@ -405,48 +517,38 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
               '${AppLocalizations.of(context)!.price} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
     } else {
+      checkValSubCategory(context);
       setAllVal();
     }
-    Future.delayed(const Duration(seconds: 2)).whenComplete(() {
-      context.read<BoolingVal>().loadingAuth(false);
-    });
   }
 
 // this method for set value to varbile dataBase
   void setAllVal() {
-    context.read<BoolingVal>().loadingAuth(true);
+    String unKnowText = AppLocalizations.of(context)!.unKnow;
     mainCatToDtbase = mainCatogry.toString();
     operationtypeToDatBase = saleRentElseVal.toString();
     advTitleToDtbase = advertTitle.text;
     explanationToDtbase = explanation.text;
     priceToDtbase = price.text;
-    frontToDtbase = front.text;
-    grossMetersToDtabase = grossMeters.text;
-    netMetersToDtabase = netMeters.text;
-    roomNumToDtabase = roomNum.text;
-    buldingAgeToDtabase = buldingAge.text;
-    floorLocationToDtabase = floorLocation.text;
-    numOfFloorsToDtabase = numOfFloors.text;
-    heatingToDtabase = heating.text;
-    numberofPathToDtabase = numberofPath.text;
-    balconyToDtabase = balcony.text;
-    furnishedToDtabase = furnished.text;
-    usingStatusToDtabase = usingStatus.text;
-    duesToDtabase = dues.text;
-    deedToDtabase = deed.text;
-    watchingToDtabase = watching.text;
-    barteredToDtabase = bartered.text;
+    frontToDtbase = front?.text != null ? front!.text : unKnowText;
+    grossMetersToDtabase =
+        grossMeters?.text != null ? grossMeters!.text : unKnowText;
+    netMetersToDtabase = netMeters?.text != null ? netMeters!.text : unKnowText;
+    duesToDtabase = dues?.text != null ? dues!.text : unKnowText;
+    deedToDtabase = deed?.text != null ? deed!.text : unKnowText;
+    heatingToDtabase = heating?.text != null ? heating!.text : unKnowText;
+    curencyToDtbase =Provider.of<StringVal>(context,listen: false).currancyType ?? '\$';
+    roomNumToDtabase = Provider.of<StringVal>(context,listen: false).numOfRomms ?? unKnowText;
+    buldingAgeToDtabase =Provider.of<StringVal>(context,listen: false).buildingAge ?? unKnowText;
+    flLocaToDtabase = Provider.of<StringVal>(context,listen: false).floorLocation ?? unKnowText;
+    nFloorsToDtabase = Provider.of<StringVal>(context,listen: false).numOfFloors ?? unKnowText;
+    nPathToDtabase = Provider.of<StringVal>(context,listen: false).numOfPathRoom ?? unKnowText;
+    balconyToDtabase = Provider.of<StringVal>(context,listen: false).balcony ?? unKnowText;
+    furnishedToDtabase =Provider.of<StringVal>(context,listen: false).furnished ?? unKnowText;
+    usingStatToDtabase = Provider.of<StringVal>(context,listen: false).usingStatus ?? unKnowText;
+    watchingToDtabase =Provider.of<StringVal>(context,listen: false).watching ?? unKnowText;
+    barteredToDtabase = Provider.of<StringVal>(context,listen: false).bartered ?? unKnowText;
     GlobalMethods()
         .pushToNewScreen(context: context, routeName: toStartPickLocation);
-  }
-
-  Widget circleOrText() {
-    bool val = context.watch<BoolingVal>().isLodingAuth;
-    return val
-        ? const CircularProgressIndicator(
-            color: Colors.white,
-          )
-        : customText(
-            text: AppLocalizations.of(context)!.next, textColor: Colors.white);
   }
 }

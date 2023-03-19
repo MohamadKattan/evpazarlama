@@ -9,6 +9,8 @@ import 'package:evpazarlama/pages/ads_dat_vehicles.dart';
 import 'package:evpazarlama/pages/ads_dat_work.dart';
 import 'package:evpazarlama/pages/ads_listofitem.dart';
 import 'package:evpazarlama/pages/ads_main_cateegory.dart';
+import 'package:evpazarlama/pages/check_info_ads.dart';
+import 'package:evpazarlama/pages/plan_screen.dart';
 import 'package:evpazarlama/pages/start_map_location.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
 import 'package:evpazarlama/pages/profile_info.dart';
@@ -88,7 +90,9 @@ class MyApp extends StatelessWidget {
           toStartPickLocation: (context) => const StartPickLocation(),
           toAddPhoto: (context) => const AddPhotos(),
           toStartMapLocation: (context) => const StartMapLocation(),
-          toSatrtWriteLocation: (context) => const StartWriteLocation()
+          toSatrtWriteLocation: (context) => const StartWriteLocation(),
+          toPlanScreen:(context) => const PlanScreen(),
+          toCheckInfoAds:(context) => const CheckInfoAds()
         },
       ),
     );

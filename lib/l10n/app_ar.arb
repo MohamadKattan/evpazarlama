@@ -146,5 +146,17 @@
     "choseStreat": "شارع",
     "choseStreatNo": "رقم الشارع",
     "pickImagesAds": "اختر بعض الصور",
-    "pickImagesAdsDsc": "إختر بعض الصور من معرض الصور قبل نشر الإعلان"
+    "pickImagesAdsDsc": "إختر بعض الصور من معرض الصور قبل نشر الإعلان",
+    "planScreen": "المدفوعات",
+    "checkInfoAds": "معلومات الإعلان",
+    "checkInfoAdsDce": "تحقق من معلومات قبل نشر الإعلان",
+    "year": "سنة",
+    "unKnow": "غير معروف",
+    "found": "موجود",
+    "noFound": "غير موجود",
+    "yes": "نعم",
+    "no": "لا",
+    "empty": "فارغ",
+    "rented": "مستأجر يسكن",
+    "ownerLiving": "المالك يسكن"
 }

@@ -75,10 +75,19 @@ class ProfileInfo extends StatelessWidget {
                       fillColor: Colors.white),
                 ),
                 customSpacer(height: 20.0),
-                customDropButton(list: [
-                  AppLocalizations.of(context)!.personalAccount,
-                  AppLocalizations.of(context)!.commercialAccount
-                ], context: context),
+                MyDropButton().customDropButton(
+                  context: context,
+                  dropdownValue: context.watch<StringVal>().dropdownValue,
+                  margin: 8.0,
+                  list: [
+                    AppLocalizations.of(context)!.personalAccount,
+                    AppLocalizations.of(context)!.commercialAccount
+                  ],
+                  function: (String? valueChange) {
+                    Provider.of<StringVal>(context, listen: false)
+                        .updateDropdownVal(valueChange!);
+                  },
+                ),
                 customSpacer(height: 20.0),
                 GestureDetector(
                   onTap: () {

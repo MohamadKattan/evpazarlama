@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
+import 'package:evpazarlama/state-maneg/booling_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -139,6 +141,21 @@ class AddPhotos extends StatelessWidget {
                   ),
                 ),
               ),
+              Consumer<BoolingVal>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return value.isLodingAuth
+                      ? Container(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.black.withOpacity(0.3),
+                          child: const Center(
+                              child: CircularProgressIndicator(
+                            color: mainColor,
+                          )),
+                        )
+                      : const SizedBox();
+                },
+              ),
             ],
           ),
         ),
@@ -153,37 +170,40 @@ class AddPhotos extends StatelessWidget {
     return text;
   }
 
+// this widget will display if list image not empty
   Widget prviewOfImage(BuildContext context) {
     final list = context.watch<ImageVal>().imageFileList;
-    return list!= null?
-     customPositioned(
-      right: 0.0,
-      left: 0.0,
-      top: 100,
-      child: Container(
-        color: Colors.brown.shade100.withOpacity(0.3),
-        height: 200.0,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.all(20.0),
-            itemCount: 10,
-            itemBuilder: (_, index) {
-              if (list.isNotEmpty) {
-                return Container(
-                    height: 120.0,
-                    margin: const EdgeInsets.all(12.0),
-                    color: Colors.brown.shade200,
-                    child: Image.file(File(list[index].path),
-                    fit: BoxFit.cover,
-                    height: 150,
-                    width: 150,
-                       ));
-              } else {
-                return const SizedBox();
-              }
-            }),
-      ),
-    ): const SizedBox();
+    return list != null
+        ? customPositioned(
+            right: 0.0,
+            left: 0.0,
+            top: 100,
+            child: Container(
+              color: Colors.brown.shade100.withOpacity(0.3),
+              height: 200.0,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.all(20.0),
+                  itemCount: list.length > 10 ? 10 : list.length,
+                  itemBuilder: (_, index) {
+                    if (list.isNotEmpty) {
+                      return Container(
+                          height: 120.0,
+                          margin: const EdgeInsets.all(12.0),
+                          color: Colors.brown.shade200,
+                          child: Image.file(
+                            File(list[index].path),
+                            fit: BoxFit.cover,
+                            height: 150,
+                            width: 150,
+                          ));
+                    } else {
+                      return const SizedBox();
+                    }
+                  }),
+            ),
+          )
+        : const SizedBox();
   }
 
   // this method for check if image list Not empty
@@ -194,11 +214,61 @@ class AddPhotos extends StatelessWidget {
           context: context,
           text: '*** ${AppLocalizations.of(context)!.pickImage} ***');
     } else if (list.length > 10) {
+      context.read<BoolingVal>().loadingAuth(true);
       list.removeRange(10, list.length);
       Provider.of<ImageVal>(context, listen: false).updatImagePickerState(list);
-      print('after delete == ${list.length}');
+      navToPlanScreenOrPushAds(context);
+      context.read<BoolingVal>().loadingAuth(false);
     } else {
-      print(list.length);
+      context.read<BoolingVal>().loadingAuth(true);
+      navToPlanScreenOrPushAds(context);
+      context.read<BoolingVal>().loadingAuth(false);
+    }
+  }
+
+  // this method to nav to plan screen if 0 or push ads
+  Future<void> navToPlanScreenOrPushAds(BuildContext context) async {
+    final listOfItemsHousing = [
+      subCatToDtabase,
+      advTitleToDtbase,
+      explanationToDtbase,
+      priceToDtbase,
+      frontToDtbase ,
+      grossMetersToDtabase,
+      netMetersToDtabase,
+      roomNumToDtabase,
+      buldingAgeToDtabase,
+      flLocaToDtabase,
+      nFloorsToDtabase,
+      heatingToDtabase ,
+      nPathToDtabase,
+      balconyToDtabase,
+      furnishedToDtabase,
+      usingStatToDtabase,
+      duesToDtabase,
+      deedToDtabase,
+      watchingToDtabase,
+      barteredToDtabase,
+      countryToDtbase,
+      cityToDtbase,
+      areaToDtbase,
+      streatToDtbase,
+      streatNumberToDtBase,
+    ];
+     listCheckInfoAds.clear();
+    listCheckInfoAds.addAll(listOfItemsHousing);
+    await DataBaseSrv().getUserProfileInfo(context);
+    int planNo = userInfoProfile?.plan ?? 0;
+    if (planNo == 0) {
+      if (context.mounted) {
+        GlobalMethods()
+            .pushToNewScreen(context: context, routeName: toPlanScreen);
+      }
+    } else {
+      if (context.mounted) {
+        GlobalMethods()
+            .pushToNewScreen(context: context, routeName: toCheckInfoAds);
+      }
     }
   }
 }

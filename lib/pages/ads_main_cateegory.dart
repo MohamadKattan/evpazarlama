@@ -17,7 +17,7 @@ class AdsMainCategory extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amber,
+          backgroundColor: mainColor,
           centerTitle: false,
           title: customText(
             textAlign: TextAlign.start,

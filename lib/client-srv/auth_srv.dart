@@ -18,12 +18,19 @@ class AuthSrv {
       phoneNumber: userPhone,
       timeout: const Duration(seconds: 120),
       verificationCompleted: (PhoneAuthCredential credential) async {
-        await authInstance.signInWithCredential(credential).then((value) {
+        await authInstance.signInWithCredential(credential).then((value) async {
           if (value.user!.uid.isNotEmpty) {
             final id = value.user!.uid.toString();
             userId = id;
-            GlobalMethods()
-                .pushToNewScreen(context: context, routeName: toProfileInfo);
+            await DataBaseSrv().getUserProfileInfo(context).whenComplete(() {
+              if (userInfoProfile?.userName != null) {
+                GlobalMethods().pushReplaceToNewScreen(
+                    context: context, routeName: toHomeScreen);
+              } else {
+                GlobalMethods().pushReplaceToNewScreen(
+                    context: context, routeName: toProfileInfo);
+              }
+            });
           } else {
             CustomDailog().customSnackBar(
                 context: context,

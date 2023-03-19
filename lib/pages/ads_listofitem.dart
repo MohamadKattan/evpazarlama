@@ -19,7 +19,7 @@ class AdsListOfItem extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amber,
+          backgroundColor: mainColor,
           centerTitle: false,
           title: customText(
             textAlign: TextAlign.start,
@@ -58,6 +58,8 @@ class AdsListOfItem extends StatelessWidget {
       ),
     );
   }
+
+  
 
   /* 
   this method for push to daitels page after check listOfItemVal 
