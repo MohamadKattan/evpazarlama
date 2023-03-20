@@ -642,5 +642,21 @@
   "ownerLiving": "The owner lives",
   "@ownerLiving": {
     "description": "ownerLiving"
+  },
+  "title": "Title ad : ",
+  "@title": {
+    "description": "title"
+  },
+  "space": "Space : ",
+  "@space": {
+    "description": "space"
+  },
+  "details": "Details : ",
+  "@details": {
+    "description": "details"
+  },
+  "adress": "Adress : ",
+  "@adress": {
+    "description": "adress"
   }
 }

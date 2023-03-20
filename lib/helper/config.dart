@@ -101,3 +101,6 @@ double? longitudeToDtbase;
 String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth
 String geocodingUrl =
     'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitudeVal,$longitudeVal&key=$mapKey';
+
+
+//https://maps.googleapis.com/maps/api/geocode/json?latlng=41.0205301,28.695434&key=AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY

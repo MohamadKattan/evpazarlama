@@ -13,6 +13,8 @@ import 'package:provider/provider.dart';
 import '../client-srv/https_srv.dart';
 import '../helper/custom_positioned.dart';
 import '../state-maneg/booling_val.dart';
+import '../state-maneg/double_val.dart';
+import '../state-maneg/string_val.dart';
 
 class StartMapLocation extends StatefulWidget {
   const StartMapLocation({super.key});
@@ -184,6 +186,7 @@ class _StartMapLocationState extends State<StartMapLocation> {
 
   // this method for call gecodin api after move location on map
   Future<void> _getAdreesInfo() async {
+    String? country, city, area, mainStreat, streat, strestNo;
     context.read<BoolingVal>().loadingAuth(true);
     String url =
         'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitudeVal,$longitudeVal&key=$mapKey';
@@ -193,21 +196,31 @@ class _StartMapLocationState extends State<StartMapLocation> {
       Map<String, dynamic> map = Map<String, dynamic>.from(res as Map);
       if (map['status'] == 'OK') {
         final listRes = map['results'][0]['address_components'];
-        streatNumberToDtBase = listRes[0]['long_name'];
-        streatToDtbase = listRes[1]['long_name'];
+        strestNo = listRes[0]['long_name'];
+        streat = listRes[1]['long_name'];
         for (var i = 0; i < listRes.length; i++) {
-          if (listRes[i]['types'][0] == 'administrative_area_level_2') {
-            areaToDtbase = listRes[i]['long_name'];
+          if (listRes[i]['types'][0] == 'administrative_area_level_3') {
+            mainStreat = listRes[i]['long_name'];
+          } else if (listRes[i]['types'][0] == 'administrative_area_level_2') {
+            area = listRes[i]['long_name'];
           } else if (listRes[i]['types'][0] == 'administrative_area_level_1') {
-            cityToDtbase = listRes[i]['long_name'];
+            city = listRes[i]['long_name'];
           } else if (listRes[i]['types'][0] == 'country') {
-            countryToDtbase = listRes[i]['long_name'];
+            country = listRes[i]['long_name'];
           }
         }
-        latitudeToDtbase = latitudeVal;
-        longitudeToDtbase = longitudeVal;
+        // latitudeToDtbase = latitudeVal;
+        // longitudeToDtbase = longitudeVal;
 
         if (context.mounted) {
+          context.read<DoubleVal>().updateLatLon(latitudeVal!, longitudeVal!);
+          context.read<StringVal>().updatAdresse(
+              country ?? 'Unknow',
+              city ?? 'Unknow',
+              area ?? 'Unknow',
+              mainStreat ?? 'Unknow',
+              streat ?? 'Unknow',
+              strestNo ?? 'Unknow');
           context.read<BoolingVal>().loadingAuth(false);
           GlobalMethods()
               .pushToNewScreen(context: context, routeName: toAddPhoto);

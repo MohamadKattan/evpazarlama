@@ -86,7 +86,10 @@ class LoginScreen extends StatelessWidget {
                         controller: phoneControla,
                         lable: AppLocalizations.of(context)!.phoneNumbe,
                         hintText: AppLocalizations.of(context)!.typephoneNumbe,
-                        inputType: TextInputType.phone,
+                        inputType: TextInputType.phone, 
+                        function: (String onchngeVal) { 
+                       
+                         },
                       ),
                     ),
                     GestureDetector(

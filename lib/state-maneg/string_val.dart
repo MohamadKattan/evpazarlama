@@ -1,9 +1,18 @@
 import 'package:flutter/foundation.dart';
 
 class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
+  //0
   String? _dropdownValue;
+  //1
   String? _subCategoryValue;
+  String? _advertTitle;
+  String? _explanation;
+  String? _price;
   String? _currancyType;
+  String? _front;
+  String? _grossMeter;
+  String? _netMeter;
+  String? _heating;
   String? _numOfRooms;
   String? _buildingAge;
   String? _floorLocation;
@@ -12,11 +21,29 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? _balcony;
   String? _furnished;
   String? _usingStatus;
+  String? _dues;
+  String? _deed;
   String? _watching;
   String? _bartered;
+  //2
+  String? _country;
+  String? _city;
+  String? _area;
+  String? _mainStreat;
+  String? _streat;
+  String? _streatNo;
+  //0
   String? get dropdownValue => _dropdownValue;
+  //1
   String? get subCategoryValue => _subCategoryValue;
+  String? get advertTitle => _advertTitle;
+  String? get explanation => _explanation;
+  String? get price => _price;
   String? get currancyType => _currancyType;
+  String? get front => _front;
+  String? get grossMeter => _grossMeter;
+  String? get netMeter => _netMeter;
+  String? get heating => _heating;
   String? get numOfRomms => _numOfRooms;
   String? get buildingAge => _buildingAge;
   String? get floorLocation => _floorLocation;
@@ -25,24 +52,77 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? get balcony => _balcony;
   String? get furnished => _furnished;
   String? get usingStatus => _usingStatus;
+  String? get dues => _dues;
+  String? get deed => _deed;
   String? get watching => _watching;
   String? get bartered => _bartered;
+  //2
+  String? get country => _country;
+  String? get city => _city;
+  String? get area => _area;
+  String? get mainStraet => _mainStreat;
+  String? get straet => _streat;
+  String? get straetNo => _streatNo;
 
+//======================0========================
   // this method for got  dropdownValue
   void updateDropdownVal(String state) {
     _dropdownValue = state;
     notifyListeners();
   }
 
+//=====================1=========================
   // this method for got sub catogry of item as apartment or eles base on index
   void updateSubCatogryVal(String state) {
     _subCategoryValue = state;
     notifyListeners();
   }
 
+  // this method for update AdvertTitle
+  void updateAdvertTitle(String state) {
+    _advertTitle = state;
+    notifyListeners();
+  }
+
+  // this method for update Explanation
+  void updateExplanation(String state) {
+    _explanation = state;
+    notifyListeners();
+  }
+
+  // this method for update Price
+  void updatePrice(String state) {
+    _price = state;
+    notifyListeners();
+  }
+
   // this method for updata curancy in drop Button
   void updateCurancyState(String state) {
     _currancyType = state;
+    notifyListeners();
+  }
+
+  // this method for update Front
+  void updateFront(String state) {
+    _front = state;
+    notifyListeners();
+  }
+
+  // this method for update groos Meter
+  void updateGroosMeter(String state) {
+    _grossMeter = state;
+    notifyListeners();
+  }
+
+  // this method for update Net Meter
+  void updateNetMeter(String state) {
+    _netMeter = state;
+    notifyListeners();
+  }
+
+  // this method for update Heating
+  void updateHeating(String state) {
+    _heating = state;
     notifyListeners();
   }
 
@@ -94,6 +174,18 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
     notifyListeners();
   }
 
+  // this method for update dues
+  void updateDues(String state) {
+    _dues = state;
+    notifyListeners();
+  }
+
+  // this method for update deed
+  void updateDeed(String state) {
+    _deed = state;
+    notifyListeners();
+  }
+
   // this method for update furnshed dropButton
   void updateWatching(String state) {
     _watching = state;
@@ -103,6 +195,19 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   // this method for  update Bartered dropButton
   void updateBartered(String state) {
     _bartered = state;
+    notifyListeners();
+  }
+
+  //=========================2=====================
+  //this method for update adrres location api or manule
+  void updatAdresse(String counSt, String citySt, String areaSt,
+      String mainStratSt, String streatST, String straetNoSt) {
+    _country = counSt;
+    _city = citySt;
+    _area = areaSt;
+    _mainStreat = mainStratSt;
+    _streat = streatST;
+    _streatNo = straetNoSt;
     notifyListeners();
   }
 }

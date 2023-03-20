@@ -17,6 +17,7 @@ class CheckInfoAds extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.blueGrey.shade100,
         appBar: AppBar(
           backgroundColor: mainColor,
           centerTitle: false,
@@ -75,9 +76,9 @@ class CheckInfoAds extends StatelessWidget {
         ? customPositioned(
             right: 0.0,
             left: 0.0,
-            top: 100,
+            top: 75,
             child: Container(
-              color: Colors.brown.shade100.withOpacity(0.3),
+              color:const Color.fromARGB(108, 100, 95, 92),
               height: 100.0,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,

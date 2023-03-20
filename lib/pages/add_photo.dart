@@ -5,6 +5,7 @@ import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/state-maneg/booling_val.dart';
+import 'package:evpazarlama/state-maneg/string_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -228,34 +229,13 @@ class AddPhotos extends StatelessWidget {
 
   // this method to nav to plan screen if 0 or push ads
   Future<void> navToPlanScreenOrPushAds(BuildContext context) async {
+    String text = AppLocalizations.of(context)!.unKnow;
     final listOfItemsHousing = [
-      subCatToDtabase,
-      advTitleToDtbase,
-      explanationToDtbase,
-      priceToDtbase,
-      frontToDtbase ,
-      grossMetersToDtabase,
-      netMetersToDtabase,
-      roomNumToDtabase,
-      buldingAgeToDtabase,
-      flLocaToDtabase,
-      nFloorsToDtabase,
-      heatingToDtabase ,
-      nPathToDtabase,
-      balconyToDtabase,
-      furnishedToDtabase,
-      usingStatToDtabase,
-      duesToDtabase,
-      deedToDtabase,
-      watchingToDtabase,
-      barteredToDtabase,
-      countryToDtbase,
-      cityToDtbase,
-      areaToDtbase,
-      streatToDtbase,
-      streatNumberToDtBase,
+      '${AppLocalizations.of(context)!.adress} \n${context.read<StringVal>().country ?? text} - ${context.read<StringVal>().city ?? text}\n'
+          '${context.read<StringVal>().area ?? text} - ${context.read<StringVal>().mainStraet ?? text}\n'
+          '${context.read<StringVal>().straet ?? text} - ${context.read<StringVal>().straetNo ?? text}'
     ];
-     listCheckInfoAds.clear();
+    listCheckInfoAds.removeLast();
     listCheckInfoAds.addAll(listOfItemsHousing);
     await DataBaseSrv().getUserProfileInfo(context);
     int planNo = userInfoProfile?.plan ?? 0;

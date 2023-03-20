@@ -62,7 +62,7 @@ class ProfileInfo extends StatelessWidget {
                       lable: AppLocalizations.of(context)!.name,
                       hintText: AppLocalizations.of(context)!.hintName,
                       inputType: TextInputType.name,
-                      fillColor: Colors.white),
+                      fillColor: Colors.white, function: (String onchngeVal) {  }),
                 ),
                 customSpacer(height: 20.0),
                 Padding(
@@ -72,7 +72,7 @@ class ProfileInfo extends StatelessWidget {
                       lable: AppLocalizations.of(context)!.mail,
                       hintText: AppLocalizations.of(context)!.hintMail,
                       inputType: TextInputType.emailAddress,
-                      fillColor: Colors.white),
+                      fillColor: Colors.white, function: (String onchngeVal) {  }),
                 ),
                 customSpacer(height: 20.0),
                 MyDropButton().customDropButton(

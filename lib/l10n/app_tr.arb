@@ -158,5 +158,9 @@
     "no": "Hayır",
     "empty": "Boş",
     "rented": "kiracı",
-    "ownerLiving": "sahibi"
+    "ownerLiving": "sahibi",
+    "title": "Başlık reklamı : ",
+    "space": "Alan : ",
+    "details": "detay : ",
+    "adress": "adres : "
 }

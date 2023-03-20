@@ -17,6 +17,7 @@ import 'package:evpazarlama/pages/profile_info.dart';
 import 'package:evpazarlama/pages/profile_screen.dart';
 import 'package:evpazarlama/pages/start_pick_location.dart';
 import 'package:evpazarlama/pages/start_write_location.dart';
+import 'package:evpazarlama/state-maneg/double_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => BoolingVal()),
         ChangeNotifierProvider(create: (_) => StringVal()),
         ChangeNotifierProvider(create: (_) => ImageVal()),
+        ChangeNotifierProvider(create: (_) => DoubleVal()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -91,8 +93,8 @@ class MyApp extends StatelessWidget {
           toAddPhoto: (context) => const AddPhotos(),
           toStartMapLocation: (context) => const StartMapLocation(),
           toSatrtWriteLocation: (context) => const StartWriteLocation(),
-          toPlanScreen:(context) => const PlanScreen(),
-          toCheckInfoAds:(context) => const CheckInfoAds()
+          toPlanScreen: (context) => const PlanScreen(),
+          toCheckInfoAds: (context) => const CheckInfoAds()
         },
       ),
     );

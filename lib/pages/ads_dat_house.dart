@@ -21,9 +21,9 @@ class AdsDetailsHoseing extends StatefulWidget {
 }
 
 class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
-  late TextEditingController advertTitle;
-  late TextEditingController explanation;
-  late TextEditingController price;
+  TextEditingController? advertTitle;
+  TextEditingController? explanation;
+  TextEditingController? price;
   TextEditingController? front;
   TextEditingController? grossMeters;
   TextEditingController? netMeters;
@@ -47,20 +47,21 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
 
   @override
   void dispose() {
-    advertTitle.dispose();
-    explanation.dispose();
-    price.dispose();
-    front!.dispose();
-    grossMeters!.dispose();
-    netMeters!.dispose();
-    heating!.dispose();
-    dues!.dispose();
-    deed!.dispose();
+    advertTitle?.dispose();
+    explanation?.dispose();
+    price?.dispose();
+    front?.dispose();
+    grossMeters?.dispose();
+    netMeters?.dispose();
+    heating?.dispose();
+    dues?.dispose();
+    deed?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    checkValSubCategory(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blueGrey.shade100,
@@ -74,393 +75,403 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
         drawer: customDrawer(context),
         body: SizedBox(
           height: MediaQuery.of(context).size.height * 100 / 100,
-          child: Stack(
+          child: ListView(
+            padding: EdgeInsets.zero,
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 80 / 100,
-                child: ListView(
-                  padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                  children: [
-                    customSpacer(height: 20.0),
-                    customText(
-                        text: '${AppLocalizations.of(context)!.requiredField}*',
-                        textColor: Colors.red,
-                        textFontSize: 14,
-                        textAlign: TextAlign.start),
-                    customSpacer(height: 6.0),
-                    customTextFailed(
-                        controller: advertTitle,
-                        lable: AppLocalizations.of(context)!.advertTitle,
-                        hintText: AppLocalizations.of(context)!.advertTitle,
-                        inputType: TextInputType.text,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customText(
-                        text: '${AppLocalizations.of(context)!.requiredField}*',
-                        textColor: Colors.red,
-                        textFontSize: 14,
-                        textAlign: TextAlign.start),
-                    customSpacer(height: 6.0),
-                    customTextFailed(
-                        controller: explanation,
-                        lable: AppLocalizations.of(context)!.explanation,
-                        hintText: AppLocalizations.of(context)!.explanation,
-                        inputType: TextInputType.text,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customText(
-                        text: '${AppLocalizations.of(context)!.requiredField}*',
-                        textColor: Colors.red,
-                        textFontSize: 14,
-                        textAlign: TextAlign.start),
-                    customSpacer(height: 6.0),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Expanded(
-                          child: customTextFailed(
-                              controller: price,
-                              lable: AppLocalizations.of(context)!.price,
-                              hintText: AppLocalizations.of(context)!.price,
-                              inputType: TextInputType.number,
-                              labelColor: mainColor,
-                              fillColor: Colors.white),
-                        ),
-                        MyDropButton().customDropButton(
-                          context: context,
-                          width: 80.0,
-                          margin: 8.0,
-                          fontSizeC: 24,
-                          dropdownValue:
-                              context.watch<StringVal>().currancyType,
-                          list: ['\$', '€', '₺', '£', '₽', '﷼', 'د.ك', 'د.إ'],
-                          function: (String? valueChange) {
-                            context
-                                .read<StringVal>()
-                                .updateCurancyState(valueChange!);
-                          },
-                        ),
-                      ],
-                    ),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                        controller: front,
-                        lable: AppLocalizations.of(context)!.front,
-                        hintText: AppLocalizations.of(context)!.front,
-                        inputType: TextInputType.number,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                        controller: grossMeters,
-                        lable: AppLocalizations.of(context)!.grossMeters,
-                        hintText: AppLocalizations.of(context)!.grossMeters,
-                        inputType: TextInputType.number,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                        controller: netMeters,
-                        lable: AppLocalizations.of(context)!.netMeters,
-                        hintText: AppLocalizations.of(context)!.netMeters,
-                        inputType: TextInputType.number,
-                        labelColor: mainColor,
-                        fillColor: Colors.white),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: heating,
-                      lable: AppLocalizations.of(context)!.heating,
-                      hintText: AppLocalizations.of(context)!.heating,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().numOfRomms,
-                      list: [
-                        AppLocalizations.of(context)!.roomNum,
-                        '0+1',
-                        '1+1',
-                        '2+1',
-                        '3+1',
-                        '4+1',
-                        '5+1',
-                        '6+1',
-                        '7+1',
-                        '8+1',
-                        '9+1',
-                        '10+1',
-                        '20+1'
-                      ],
-                      function: (String? valueChange) {
-                        context
-                            .read<StringVal>()
-                            .updateNumOfRoomsState(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().buildingAge,
-                      list: [
-                        AppLocalizations.of(context)!.buldingAge,
-                        '${AppLocalizations.of(context)!.year}0',
-                        '${AppLocalizations.of(context)!.year}1',
-                        '${AppLocalizations.of(context)!.year}2',
-                        '${AppLocalizations.of(context)!.year}3',
-                        '${AppLocalizations.of(context)!.year}4',
-                        '${AppLocalizations.of(context)!.year}5',
-                        '${AppLocalizations.of(context)!.year}6',
-                        '${AppLocalizations.of(context)!.year}7',
-                        '${AppLocalizations.of(context)!.year}8',
-                        '${AppLocalizations.of(context)!.year}9',
-                        '${AppLocalizations.of(context)!.year}10',
-                        '${AppLocalizations.of(context)!.year}(10/15)',
-                        '${AppLocalizations.of(context)!.year}(15/20)',
-                        '${AppLocalizations.of(context)!.year}(20/25)',
-                        '${AppLocalizations.of(context)!.year}(25/30)',
-                        '${AppLocalizations.of(context)!.year}(30/...)',
-                      ],
-                      function: (String? valueChange) {
-                        context
-                            .read<StringVal>()
-                            .updateBuildingAgeState(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().floorLocation,
-                      list: [
-                        AppLocalizations.of(context)!.floorLocation,
-                        '-4',
-                        '-3',
-                        '-2',
-                        '-1',
-                        '0',
-                        '1',
-                        '2',
-                        '3',
-                        '4',
-                        '5',
-                        '6',
-                        '7',
-                        '8',
-                        '9',
-                        '10',
-                        '11',
-                        '12',
-                        '13',
-                        '14',
-                        '15',
-                        '16',
-                        '17',
-                        '18',
-                        '19',
-                        '20',
-                        '(20/30)',
-                      ],
-                      function: (String? valueChange) {
-                        context
-                            .read<StringVal>()
-                            .updateFloorLocation(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().numOfFloors,
-                      list: [
-                        AppLocalizations.of(context)!.numOfFloors,
-                        '1',
-                        '2',
-                        '3',
-                        '4',
-                        '5',
-                        '6',
-                        '7',
-                        '8',
-                        '9',
-                        '10',
-                        '(10/15)',
-                        '(15/20)',
-                        '(20/25)',
-                        '(25/30)',
-                        '(30/...)'
-                      ],
-                      function: (String? valueChange) {
-                        context
-                            .read<StringVal>()
-                            .updateNumOfFloors(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().numOfPathRoom,
-                      list: [
-                        AppLocalizations.of(context)!.pathNum,
-                        '1',
-                        '2',
-                        '3',
-                        '4',
-                        '5',
-                      ],
-                      function: (String? valueChange) {
-                        context
-                            .read<StringVal>()
-                            .updateNumOfPathRoom(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().balcony,
-                      list: [
-                        AppLocalizations.of(context)!.balcony,
-                        AppLocalizations.of(context)!.found,
-                        AppLocalizations.of(context)!.noFound,
-                      ],
-                      function: (String? valueChange) {
-                        context.read<StringVal>().updateBalcony(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().furnished,
-                      list: [
-                        AppLocalizations.of(context)!.furnished,
-                        AppLocalizations.of(context)!.yes,
-                        AppLocalizations.of(context)!.no,
-                      ],
-                      function: (String? valueChange) {
-                        context.read<StringVal>().updateFurnshed(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().usingStatus,
-                      list: [
-                        AppLocalizations.of(context)!.usingStatus,
-                        AppLocalizations.of(context)!.empty,
-                        AppLocalizations.of(context)!.ownerLiving,
-                        AppLocalizations.of(context)!.rented,
-                      ],
-                      function: (String? valueChange) {
-                        context
-                            .read<StringVal>()
-                            .updateUsingStatus(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: dues,
-                      lable: AppLocalizations.of(context)!.dues,
-                      hintText: AppLocalizations.of(context)!.dues,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
-                    ),
-                    customSpacer(height: 20.0),
-                    customTextFailed(
-                      controller: deed,
-                      lable: AppLocalizations.of(context)!.deed,
-                      hintText: AppLocalizations.of(context)!.deed,
-                      inputType: TextInputType.text,
-                      labelColor: mainColor,
-                      fillColor: Colors.white,
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().watching,
-                      list: [
-                        AppLocalizations.of(context)!.watching,
-                        AppLocalizations.of(context)!.yes,
-                        AppLocalizations.of(context)!.no,
-                      ],
-                      function: (String? valueChange) {
-                        context.read<StringVal>().updateWatching(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 20.0),
-                    MyDropButton().customDropButton(
-                      context: context,
-                      dropdownValue: context.watch<StringVal>().bartered,
-                      list: [
-                        AppLocalizations.of(context)!.bartered,
-                        AppLocalizations.of(context)!.yes,
-                        AppLocalizations.of(context)!.no,
-                      ],
-                      function: (String? valueChange) {
-                        context.read<StringVal>().updateBartered(valueChange!);
-                      },
-                    ),
-                    customSpacer(height: 120.0),
-                  ],
-                ),
+              customSpacer(height: 20.0),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: customText(
+                    text: '${AppLocalizations.of(context)!.requiredField}*',
+                    textColor: Colors.red,
+                    textFontSize: 14,
+                    textAlign: TextAlign.start),
               ),
-              customPositioned(
-                right: 0.0,
-                left: 0.0,
-                bottom: 0.0,
-                child: customContainer(
-                  height: 60,
-                  colorBack: Colors.black.withOpacity(0.4),
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Stack(
-                        children: [
-                          customContainer(
-                              colorBack: Colors.blueGrey.shade100,
-                              ridusBL: 12.0,
-                              ridusBR: 12.0,
-                              ridusR: 12.0,
-                              ridusl: 12.0,
-                              width:
-                                  MediaQuery.of(context).size.width * 40 / 100,
-                              height: 20.0),
-                          customContainer(
-                            colorBack: mainColor,
-                            width: MediaQuery.of(context).size.width * 12 / 100,
-                            height: 20,
+              customTextFailed(
+                  controller: advertTitle,
+                  lable: AppLocalizations.of(context)!.advertTitle,
+                  hintText: AppLocalizations.of(context)!.advertTitle,
+                  inputType: TextInputType.text,
+                  labelColor: mainColor,
+                  fillColor: Colors.white,
+                  margin: 8.0,
+                  function: (String onchngeVal) {
+                    context.read<StringVal>().updateAdvertTitle(onchngeVal);
+                  }),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: customText(
+                    text: '${AppLocalizations.of(context)!.requiredField}*',
+                    textColor: Colors.red,
+                    textFontSize: 14,
+                    textAlign: TextAlign.start),
+              ),
+              customTextFailed(
+                  controller: explanation,
+                  lable: AppLocalizations.of(context)!.explanation,
+                  hintText: AppLocalizations.of(context)!.explanation,
+                  inputType: TextInputType.text,
+                  labelColor: mainColor,
+                  margin: 8.0,
+                  fillColor: Colors.white,
+                  function: (String onchngeVal) {
+                    context.read<StringVal>().updateExplanation(onchngeVal);
+                  }),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: customText(
+                    text: '${AppLocalizations.of(context)!.requiredField}*',
+                    textColor: Colors.red,
+                    textFontSize: 14,
+                    textAlign: TextAlign.start),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: customTextFailed(
+                        controller: price,
+                        lable: AppLocalizations.of(context)!.price,
+                        hintText: AppLocalizations.of(context)!.price,
+                        inputType: TextInputType.number,
+                        labelColor: mainColor,
+                        fillColor: Colors.white,
+                        margin: 8.0,
+                        function: (String onchngeVal) {
+                          context.read<StringVal>().updatePrice(onchngeVal);
+                        }),
+                  ),
+                  MyDropButton().customDropButton(
+                    context: context,
+                    width: 80.0,
+                    margin: 8.0,
+                    fontSizeC: 24,
+                    dropdownValue: context.watch<StringVal>().currancyType,
+                    list: ['\$', '€', '₺', '£', '₽', '﷼', 'د.ك', 'د.إ'],
+                    function: (String? valueChange) {
+                      context
+                          .read<StringVal>()
+                          .updateCurancyState(valueChange!);
+                    },
+                  ),
+                ],
+              ),
+              customTextFailed(
+                  controller: front,
+                  lable: AppLocalizations.of(context)!.front,
+                  hintText: AppLocalizations.of(context)!.front,
+                  inputType: TextInputType.text,
+                  labelColor: mainColor,
+                  fillColor: Colors.white,
+                  margin: 8.0,
+                  function: (String onchngeVal) {
+                    context.read<StringVal>().updateFront(onchngeVal);
+                  }),
+              customTextFailed(
+                  controller: grossMeters,
+                  lable: AppLocalizations.of(context)!.grossMeters,
+                  hintText: AppLocalizations.of(context)!.grossMeters,
+                  inputType: TextInputType.number,
+                  labelColor: mainColor,
+                  fillColor: Colors.white,
+                  margin: 8.0,
+                  function: (String onchngeVal) {
+                    context.read<StringVal>().updateGroosMeter(onchngeVal);
+                  }),
+              customTextFailed(
+                  controller: netMeters,
+                  lable: AppLocalizations.of(context)!.netMeters,
+                  hintText: AppLocalizations.of(context)!.netMeters,
+                  inputType: TextInputType.number,
+                  labelColor: mainColor,
+                  fillColor: Colors.white,
+                  margin: 8.0,
+                  function: (String onchngeVal) {
+                    context.read<StringVal>().updateNetMeter(onchngeVal);
+                  }),
+              customTextFailed(
+                controller: heating,
+                lable: AppLocalizations.of(context)!.heating,
+                hintText: AppLocalizations.of(context)!.heating,
+                inputType: TextInputType.text,
+                labelColor: mainColor,
+                fillColor: Colors.white,
+                margin: 8.0,
+                function: (String onchngeVal) {
+                  context.read<StringVal>().updateHeating(onchngeVal);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().numOfRomms,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.roomNum,
+                  '0+1',
+                  '1+1',
+                  '2+1',
+                  '3+1',
+                  '4+1',
+                  '5+1',
+                  '6+1',
+                  '7+1',
+                  '8+1',
+                  '9+1',
+                  '10+1',
+                  '20+1'
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateNumOfRoomsState(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().buildingAge,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.buldingAge,
+                  '${AppLocalizations.of(context)!.year}0',
+                  '${AppLocalizations.of(context)!.year}1',
+                  '${AppLocalizations.of(context)!.year}2',
+                  '${AppLocalizations.of(context)!.year}3',
+                  '${AppLocalizations.of(context)!.year}4',
+                  '${AppLocalizations.of(context)!.year}5',
+                  '${AppLocalizations.of(context)!.year}6',
+                  '${AppLocalizations.of(context)!.year}7',
+                  '${AppLocalizations.of(context)!.year}8',
+                  '${AppLocalizations.of(context)!.year}9',
+                  '${AppLocalizations.of(context)!.year}10',
+                  '${AppLocalizations.of(context)!.year}(10/15)',
+                  '${AppLocalizations.of(context)!.year}(15/20)',
+                  '${AppLocalizations.of(context)!.year}(20/25)',
+                  '${AppLocalizations.of(context)!.year}(25/30)',
+                  '${AppLocalizations.of(context)!.year}(30/...)',
+                ],
+                function: (String? valueChange) {
+                  context
+                      .read<StringVal>()
+                      .updateBuildingAgeState(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().floorLocation,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.floorLocation,
+                  '-4',
+                  '-3',
+                  '-2',
+                  '-1',
+                  '0',
+                  '1',
+                  '2',
+                  '3',
+                  '4',
+                  '5',
+                  '6',
+                  '7',
+                  '8',
+                  '9',
+                  '10',
+                  '11',
+                  '12',
+                  '13',
+                  '14',
+                  '15',
+                  '16',
+                  '17',
+                  '18',
+                  '19',
+                  '20',
+                  '(20/30)',
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateFloorLocation(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().numOfFloors,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.numOfFloors,
+                  '1',
+                  '2',
+                  '3',
+                  '4',
+                  '5',
+                  '6',
+                  '7',
+                  '8',
+                  '9',
+                  '10',
+                  '(10/15)',
+                  '(15/20)',
+                  '(20/25)',
+                  '(25/30)',
+                  '(30/...)'
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateNumOfFloors(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().numOfPathRoom,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.pathNum,
+                  '1',
+                  '2',
+                  '3',
+                  '4',
+                  '5',
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateNumOfPathRoom(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().balcony,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.balcony,
+                  AppLocalizations.of(context)!.found,
+                  AppLocalizations.of(context)!.noFound,
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateBalcony(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().furnished,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.furnished,
+                  AppLocalizations.of(context)!.yes,
+                  AppLocalizations.of(context)!.no,
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateFurnshed(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().usingStatus,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.usingStatus,
+                  AppLocalizations.of(context)!.empty,
+                  AppLocalizations.of(context)!.ownerLiving,
+                  AppLocalizations.of(context)!.rented,
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateUsingStatus(valueChange!);
+                },
+              ),
+              customTextFailed(
+                controller: dues,
+                lable: AppLocalizations.of(context)!.dues,
+                hintText: AppLocalizations.of(context)!.dues,
+                inputType: TextInputType.text,
+                labelColor: mainColor,
+                fillColor: Colors.white,
+                margin: 8.0,
+                function: (String onchngeVal) {
+                  context.read<StringVal>().updateDues(onchngeVal);
+                },
+              ),
+              customTextFailed(
+                controller: deed,
+                lable: AppLocalizations.of(context)!.deed,
+                hintText: AppLocalizations.of(context)!.deed,
+                inputType: TextInputType.text,
+                labelColor: mainColor,
+                fillColor: Colors.white,
+                margin: 8.0,
+                function: (String onchngeVal) {
+                  context.read<StringVal>().updateDeed(onchngeVal);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().watching,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.watching,
+                  AppLocalizations.of(context)!.yes,
+                  AppLocalizations.of(context)!.no,
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateWatching(valueChange!);
+                },
+              ),
+              MyDropButton().customDropButton(
+                context: context,
+                dropdownValue: context.watch<StringVal>().bartered,
+                margin: 8.0,
+                list: [
+                  AppLocalizations.of(context)!.bartered,
+                  AppLocalizations.of(context)!.yes,
+                  AppLocalizations.of(context)!.no,
+                ],
+                function: (String? valueChange) {
+                  context.read<StringVal>().updateBartered(valueChange!);
+                },
+              ),
+              customSpacer(height: 40.0),
+              customContainer(
+                height: 60,
+                colorBack: Colors.black.withOpacity(0.4),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Stack(
+                      children: [
+                        customContainer(
+                            colorBack: Colors.blueGrey.shade100,
                             ridusBL: 12.0,
                             ridusBR: 12.0,
                             ridusR: 12.0,
                             ridusl: 12.0,
-                          ),
-                          customPositioned(
-                              left: 0.0,
-                              right: 0.0,
-                              child: customText(text: '(1/5)'))
-                        ],
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          checkBefore(context);
-                        },
-                        child: customContainer(
+                            width: MediaQuery.of(context).size.width * 40 / 100,
+                            height: 20.0),
+                        customContainer(
                           colorBack: mainColor,
-                          width: MediaQuery.of(context).size.width * 45 / 100,
+                          width: MediaQuery.of(context).size.width * 12 / 100,
+                          height: 20,
                           ridusBL: 12.0,
                           ridusBR: 12.0,
                           ridusR: 12.0,
                           ridusl: 12.0,
-                          child: customText(
-                              text: AppLocalizations.of(context)!.next,
-                              textColor: Colors.white),
                         ),
+                        customPositioned(
+                            left: 0.0,
+                            right: 0.0,
+                            child: customText(text: '(1/5)'))
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        checkBefore(context);
+                      },
+                      child: customContainer(
+                        colorBack: mainColor,
+                        width: MediaQuery.of(context).size.width * 45 / 100,
+                        ridusBL: 12.0,
+                        ridusBR: 12.0,
+                        ridusR: 12.0,
+                        ridusl: 12.0,
+                        child: customText(
+                            text: AppLocalizations.of(context)!.next,
+                            textColor: Colors.white),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -496,59 +507,103 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
     }
   }
 
+  // this is item for list in checkInfo add
+  void listOfItemsHousing() {
+    listCheckInfoAds.clear();
+    String text = AppLocalizations.of(context)!.unKnow;
+    final list = [
+      subCatToDtabase,
+      '${AppLocalizations.of(context)!.title}  ${context.read<StringVal>().advertTitle ?? text}\n${context.read<StringVal>().explanation ?? text}',
+      '${AppLocalizations.of(context)!.price}:  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
+      '${AppLocalizations.of(context)!.space} ${context.read<StringVal>().grossMeter ?? text} - ${context.read<StringVal>().netMeter ?? text}',
+      '${AppLocalizations.of(context)!.details} ${context.read<StringVal>().front ?? text} - ${context.read<StringVal>().heating ?? text}',
+      '${AppLocalizations.of(context)!.roomNum}:  ${context.read<StringVal>().numOfRomms ?? text}',
+      '${AppLocalizations.of(context)!.buldingAge}:  ${context.read<StringVal>().buildingAge ?? text}',
+      '${AppLocalizations.of(context)!.floorLocation}:  ${context.read<StringVal>().floorLocation ?? text}',
+      '${AppLocalizations.of(context)!.numOfFloors}:  ${context.read<StringVal>().numOfFloors ?? text}',
+      '${AppLocalizations.of(context)!.pathNum}:  ${context.read<StringVal>().numOfPathRoom ?? text}',
+      '${AppLocalizations.of(context)!.balcony}:  ${context.read<StringVal>().balcony ?? text}',
+      '${AppLocalizations.of(context)!.furnished}:  ${context.read<StringVal>().furnished ?? text}',
+      '${AppLocalizations.of(context)!.usingStatus}:  ${context.read<StringVal>().usingStatus ?? text}',
+      '${AppLocalizations.of(context)!.dues}:  ${context.read<StringVal>().dues ?? text}',
+      '${AppLocalizations.of(context)!.deed}:  ${context.read<StringVal>().deed ?? text}',
+      '${AppLocalizations.of(context)!.watching}:  ${context.read<StringVal>().watching ?? text}',
+      '${AppLocalizations.of(context)!.bartered}:  ${context.read<StringVal>().bartered ?? text}',
+      '${AppLocalizations.of(context)!.adress} \n${context.read<StringVal>().country ?? text} - ${context.read<StringVal>().city ?? text}\n'
+          '${context.read<StringVal>().area ?? text} - ${context.read<StringVal>().mainStraet ?? text}\n'
+          '${context.read<StringVal>().straet ?? text} - ${context.read<StringVal>().straetNo ?? text}'
+    ];
+    listCheckInfoAds.addAll(list);
+  }
+
   // this method for check required Field befor nav to next page
   checkBefore(BuildContext context) {
-    if (advertTitle.text.isEmpty) {
+    if (advertTitle!.text.isEmpty) {
       CustomDailog().customSnackBar(
           context: context,
           text:
               '${AppLocalizations.of(context)!.advertTitle} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
-    } else if (explanation.text.isEmpty) {
+    } else if (explanation!.text.isEmpty) {
       CustomDailog().customSnackBar(
           context: context,
           text:
               '${AppLocalizations.of(context)!.explanation} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
-    } else if (price.text.isEmpty) {
+    } else if (price!.text.isEmpty) {
       CustomDailog().customSnackBar(
           context: context,
           text:
               '${AppLocalizations.of(context)!.price} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
     } else {
-      checkValSubCategory(context);
-      setAllVal();
+      listOfItemsHousing();
+      GlobalMethods()
+          .pushToNewScreen(context: context, routeName: toStartPickLocation);
     }
   }
 
 // this method for set value to varbile dataBase
-  void setAllVal() {
-    String unKnowText = AppLocalizations.of(context)!.unKnow;
-    mainCatToDtbase = mainCatogry.toString();
-    operationtypeToDatBase = saleRentElseVal.toString();
-    advTitleToDtbase = advertTitle.text;
-    explanationToDtbase = explanation.text;
-    priceToDtbase = price.text;
-    frontToDtbase = front?.text != null ? front!.text : unKnowText;
-    grossMetersToDtabase =
-        grossMeters?.text != null ? grossMeters!.text : unKnowText;
-    netMetersToDtabase = netMeters?.text != null ? netMeters!.text : unKnowText;
-    duesToDtabase = dues?.text != null ? dues!.text : unKnowText;
-    deedToDtabase = deed?.text != null ? deed!.text : unKnowText;
-    heatingToDtabase = heating?.text != null ? heating!.text : unKnowText;
-    curencyToDtbase =Provider.of<StringVal>(context,listen: false).currancyType ?? '\$';
-    roomNumToDtabase = Provider.of<StringVal>(context,listen: false).numOfRomms ?? unKnowText;
-    buldingAgeToDtabase =Provider.of<StringVal>(context,listen: false).buildingAge ?? unKnowText;
-    flLocaToDtabase = Provider.of<StringVal>(context,listen: false).floorLocation ?? unKnowText;
-    nFloorsToDtabase = Provider.of<StringVal>(context,listen: false).numOfFloors ?? unKnowText;
-    nPathToDtabase = Provider.of<StringVal>(context,listen: false).numOfPathRoom ?? unKnowText;
-    balconyToDtabase = Provider.of<StringVal>(context,listen: false).balcony ?? unKnowText;
-    furnishedToDtabase =Provider.of<StringVal>(context,listen: false).furnished ?? unKnowText;
-    usingStatToDtabase = Provider.of<StringVal>(context,listen: false).usingStatus ?? unKnowText;
-    watchingToDtabase =Provider.of<StringVal>(context,listen: false).watching ?? unKnowText;
-    barteredToDtabase = Provider.of<StringVal>(context,listen: false).bartered ?? unKnowText;
-    GlobalMethods()
-        .pushToNewScreen(context: context, routeName: toStartPickLocation);
-  }
+  // void setAllVal() {
+  //   // String unKnowText = AppLocalizations.of(context)!.unKnow;
+  //   // mainCatToDtbase = mainCatogry.toString();
+  //   // operationtypeToDatBase = saleRentElseVal.toString();
+  //   // advTitleToDtbase = advertTitle.text;
+  //   // explanationToDtbase = explanation.text;
+  //   // priceToDtbase = price.text;
+  //   // frontToDtbase = front?.text != null ? front!.text : unKnowText;
+  //   // grossMetersToDtabase =
+  //   //     grossMeters?.text != null ? grossMeters!.text : unKnowText;
+  //   // netMetersToDtabase = netMeters?.text != null ? netMeters!.text : unKnowText;
+  //   // duesToDtabase = dues?.text != null ? dues!.text : unKnowText;
+  //   // deedToDtabase = deed?.text != null ? deed!.text : unKnowText;
+  //   // heatingToDtabase = heating?.text != null ? heating!.text : unKnowText;
+  //   // curencyToDtbase =
+  //   //     Provider.of<StringVal>(context, listen: false).currancyType ?? '\$';
+  //   // roomNumToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).numOfRomms ?? unKnowText;
+  //   // buldingAgeToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).buildingAge ??
+  //   //         unKnowText;
+  //   // flLocaToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).floorLocation ??
+  //   //         unKnowText;
+  //   // nFloorsToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).numOfFloors ??
+  //   //         unKnowText;
+  //   // nPathToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).numOfPathRoom ??
+  //   //         unKnowText;
+  //   // balconyToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).balcony ?? unKnowText;
+  //   // furnishedToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).furnished ?? unKnowText;
+  //   // usingStatToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).usingStatus ??
+  //   //         unKnowText;
+  //   // watchingToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).watching ?? unKnowText;
+  //   // barteredToDtabase =
+  //   //     Provider.of<StringVal>(context, listen: false).bartered ?? unKnowText;
+  // }
 }

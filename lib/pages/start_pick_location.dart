@@ -6,6 +6,8 @@ import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
+import 'package:evpazarlama/state-maneg/double_val.dart';
+import 'package:evpazarlama/state-maneg/string_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -205,6 +207,7 @@ class StartPickLocation extends StatelessWidget {
 
   // this method for use current device location
   Future<void> setMycureentLocation(BuildContext context) async {
+    String? country, city, area, mainStreat, streat, strestNo;
     context.read<BoolingVal>().loadingAuth(true);
     await GlobalMethods().getLocations(context).whenComplete(() async {
       var res = await ClintHttpSrv()
@@ -213,22 +216,31 @@ class StartPickLocation extends StatelessWidget {
         Map<String, dynamic> map = Map<String, dynamic>.from(res as Map);
         if (map['status'] == 'OK') {
           final listRes = map['results'][0]['address_components'];
-          streatNumberToDtBase = listRes[0]['long_name'];
-          streatToDtbase = listRes[1]['long_name'];
+          streat = listRes[0]['long_name'];
+          strestNo = listRes[1]['long_name'];
           for (var i = 0; i < listRes.length; i++) {
-            if (listRes[i]['types'][0] == 'administrative_area_level_2') {
-              areaToDtbase = listRes[i]['long_name'];
+            if (listRes[i]['types'][0] == 'administrative_area_level_3') {
+              mainStreat = listRes[i]['long_name'];
+            } else if (listRes[i]['types'][0] ==
+                'administrative_area_level_2') {
+              area = listRes[i]['long_name'];
             } else if (listRes[i]['types'][0] ==
                 'administrative_area_level_1') {
-              cityToDtbase = listRes[i]['long_name'];
+              city = listRes[i]['long_name'];
             } else if (listRes[i]['types'][0] == 'country') {
-              countryToDtbase = listRes[i]['long_name'];
+              country = listRes[i]['long_name'];
             }
           }
-          latitudeToDtbase = latitudeVal;
-          longitudeToDtbase = longitudeVal;
-  
+
           if (context.mounted) {
+            context.read<DoubleVal>().updateLatLon(latitudeVal!, longitudeVal!);
+            context.read<StringVal>().updatAdresse(
+                country ?? 'Unknow',
+                city ?? 'Unknow',
+                area ?? 'Unknow',
+                mainStreat ?? 'Unknow',
+                streat ?? 'Unknow',
+                strestNo ?? 'Unknow');
             context.read<BoolingVal>().loadingAuth(false);
             GlobalMethods()
                 .pushToNewScreen(context: context, routeName: toAddPhoto);
