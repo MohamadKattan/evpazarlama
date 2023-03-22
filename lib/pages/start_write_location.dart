@@ -182,7 +182,7 @@ class StartWriteLocation extends StatelessWidget {
                           customPositioned(
                               left: 0.0,
                               right: 0.0,
-                              child: customText(text: '(2/5)'))
+                              child: customText(text: '(2/4)'))
                         ],
                       ),
                       GestureDetector(

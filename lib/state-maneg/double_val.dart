@@ -8,7 +8,7 @@ class DoubleVal with ChangeNotifier, DiagnosticableTreeMixin {
 
   void updateLatLon(double lat, double lon) {
     _latitude = lat;
-    _longitude = longitude;
+    _longitude = lon;
     notifyListeners();
   }
 }

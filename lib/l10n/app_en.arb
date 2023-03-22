@@ -607,7 +607,7 @@
   "@checkInfoAdsDce": {
     "description": "checkInfoAdsDce"
   },
-  "year": "Year : ",
+  "year": "Year",
   "@year": {
     "description": "year"
   },
@@ -643,20 +643,41 @@
   "@ownerLiving": {
     "description": "ownerLiving"
   },
-  "title": "Title ad : ",
+  "title": "Title ad",
   "@title": {
     "description": "title"
   },
-  "space": "Space : ",
+  "space": "Space",
   "@space": {
     "description": "space"
   },
-  "details": "Details : ",
+  "details": "Details",
   "@details": {
     "description": "details"
   },
-  "adress": "Adress : ",
+  "adress": "Adress",
   "@adress": {
     "description": "adress"
+  },
+  "dailySale": "Daily sale",
+  "@dailySale": {
+    "description": "dailySale"
+  },
+  "zoningStatus": "Zoning status",
+  "@zoningStatus": {
+    "description": "zoningStatus"
+  },
+  "islandNo": "Island No",
+  "@islandNo": {
+    "description": "islandNo"
+  },
+  "parcelNo": "Parcel No",
+  "@parcelNo": {
+    "description": "parcelNo"
+  },
+  "sheetNo": "sheet No",
+  "@sheetNo": {
+    "description": "sheetNo"
   }
+  
 }

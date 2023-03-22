@@ -25,6 +25,11 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? _deed;
   String? _watching;
   String? _bartered;
+  String? _dailySale;
+  String? _dailyCurrancyT;
+  String? _islandNo;
+  String? _parcelNo;
+  String? _sheetNo;
   //2
   String? _country;
   String? _city;
@@ -56,6 +61,11 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? get deed => _deed;
   String? get watching => _watching;
   String? get bartered => _bartered;
+  String? get dailySale => _dailySale;
+  String? get dailyCurrancyT => _dailyCurrancyT;
+  String? get islandNo => _islandNo;
+  String? get parcelNo => _parcelNo;
+  String? get sheetNo => _sheetNo;
   //2
   String? get country => _country;
   String? get city => _city;
@@ -195,6 +205,36 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   // this method for  update Bartered dropButton
   void updateBartered(String state) {
     _bartered = state;
+    notifyListeners();
+  }
+
+  // this method for  updat eDaily Sale
+  void updateDailySale(String state) {
+    _dailySale = state;
+    notifyListeners();
+  }
+
+  // this method for  update Daily CurrancyT
+  void updateDailyCurrancyT(String state) {
+    _dailyCurrancyT = state;
+    notifyListeners();
+  }
+
+  // this method for  update IslandNo
+  void updateIslandNo(String state) {
+    _islandNo = state;
+    notifyListeners();
+  }
+
+  // this method for update Parcel
+  void updateParcelNo(String state) {
+    _parcelNo = state;
+    notifyListeners();
+  }
+
+  // this method for update sheetNo
+  void updateSheetNo(String state) {
+    _sheetNo = state;
     notifyListeners();
   }
 

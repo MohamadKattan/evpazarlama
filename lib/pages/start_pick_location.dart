@@ -45,12 +45,15 @@ class StartPickLocation extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  customText(
-                    text: AppLocalizations.of(context)!.choesePickLocaton,
-                    textColor: Colors.white,
-                    textFontSize: 20.0,
-                    textWeight: FontWeight.bold,
-                    textAlign: TextAlign.center,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: customText(
+                      text: AppLocalizations.of(context)!.choesePickLocaton,
+                      textColor: Colors.white,
+                      textFontSize: 20.0,
+                      textWeight: FontWeight.bold,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   customSpacer(height: 15.0),
                   GestureDetector(
@@ -178,7 +181,7 @@ class StartPickLocation extends StatelessWidget {
                       customPositioned(
                           left: 0.0,
                           right: 0.0,
-                          child: customText(text: '(2/5)'))
+                          child: customText(text: '(2/4)'))
                     ],
                   ),
                 ),

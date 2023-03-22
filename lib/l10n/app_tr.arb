@@ -150,7 +150,7 @@
     "planScreen": "ödemeler",
     "checkInfoAds": "ilan bilgisi",
     "checkInfoAdsDce": "İlan vermeden önce bilgileri kontrol edin.",
-    "year": "Yıl :",
+    "year": "Yıl",
     "unKnow": "Bilmiyorum",
     "found": "Var",
     "noFound": "yok",
@@ -159,8 +159,13 @@
     "empty": "Boş",
     "rented": "kiracı",
     "ownerLiving": "sahibi",
-    "title": "Başlık reklamı : ",
-    "space": "Alan : ",
-    "details": "detay : ",
-    "adress": "adres : "
+    "title": "Başlık reklamı",
+    "space": "Alan",
+    "details": "detay",
+    "adress": "adres",
+    "dailySale": "Günlük satış",
+    "zoningStatus": "İmar durumu",
+    "islandNo": "Ada No",
+    "parcelNo": "Parsel No",
+    "sheetNo": "Pafta No"
 }

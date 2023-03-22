@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
+import 'package:evpazarlama/models/ads_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -58,8 +60,7 @@ class DataBaseSrv {
                   email: email,
                   type: typeAcount,
                   url: valUrl,
-                  plan: 1
-                  );
+                  plan: 1);
               await usersProfileCollection
                   .doc(userId)
                   .set(map)
@@ -84,8 +85,7 @@ class DataBaseSrv {
           email: email,
           type: typeAcount,
           url: 'null',
-          plan: 1
-          );
+          plan: 1);
       await usersProfileCollection.doc(userId).set(map).whenComplete(() {
         context.read<BoolingVal>().loadingAuth(false);
         GlobalMethods()
@@ -119,4 +119,101 @@ class DataBaseSrv {
       return;
     }
   }
+
+  // this method for set new ads to storage then to cloud ads colection then to user ad colloction
+  Future<void> puplishNewAds(BuildContext context) async {
+    final image = Provider.of<ImageVal>(context, listen: false).imageFileList;
+    List urlList = [];
+    if (image != null) {
+      context.read<BoolingVal>().loadingAuth(true);
+      for (var i = 0; i < image.length; i++) {
+        final file = File(image[i].path);
+        int randomId = Random().nextInt(10000);
+        final uploadTask = storage
+            .child('allAds')
+            .child(userId)
+            .child(randomId.toString())
+            .putFile(file, metadata);
+        uploadTask.snapshotEvents.listen((TaskSnapshot taskSnapshot) async {
+          switch (taskSnapshot.state) {
+            case TaskState.running:
+              break;
+            case TaskState.paused:
+              context.read<BoolingVal>().loadingAuth(false);
+              CustomDailog().customSnackBar(
+                  context: context,
+                  text: TaskState.canceled.name,
+                  color: Colors.amberAccent);
+              break;
+            case TaskState.canceled:
+              context.read<BoolingVal>().loadingAuth(false);
+              CustomDailog().customSnackBar(
+                  context: context, text: TaskState.canceled.name);
+              break;
+            case TaskState.error:
+              context.read<BoolingVal>().loadingAuth(false);
+              CustomDailog()
+                  .customSnackBar(context: context, text: TaskState.error.name);
+              break;
+            case TaskState.success:
+              await storage
+                  .child("allAds/$userId/${randomId.toString()}")
+                  .getDownloadURL()
+                  .then((valUrl) async {
+                urlList.addAll([valUrl]);
+                if (urlList.length == image.length) {
+                  setDataToAllAds(context, urlList).whenComplete(() {
+                    context.read<BoolingVal>().loadingAuth(false);
+                  });
+                }
+                // final map = UserInfoProfile().toJson(
+                //     id: userId,
+                //     name: name,
+                //     phone: phone,
+                //     email: email,
+                //     type: typeAcount,
+                //     url: valUrl,
+                //     plan: 1);
+                // await usersProfileCollection
+                //     .doc(userId)
+                //     .set(map)
+                //     .whenComplete(() {
+                //   context.read<BoolingVal>().loadingAuth(false);
+                //   GlobalMethods().pushReplaceToNewScreen(
+                //       context: context, routeName: toSplash);
+                // }).catchError((e) {
+                //   CustomDailog().customSnackBar(
+                //       context: context,
+                //       text: AppLocalizations.of(context)!.someWrong);
+                // });
+              });
+              break;
+          }
+        });
+      }
+    }
+  }
+
+// this method for set all data to cloud all ads after uplod to storage and got list of url
+  Future<void> setDataToAllAds(BuildContext context, List urlList) async {
+    int randomId = Random().nextInt(10000);
+    Map<String, dynamic> map = AdsModel()
+        .toJson(context: context, adsNumber: randomId, urlImages: urlList);
+    await adsCollection.add(map).catchError((e) {
+      CustomDailog().customSnackBar(
+          context: context, text: AppLocalizations.of(context)!.someWrong);
+      throw (e.toString());
+    }).whenComplete(() async {
+      await myAdsCollection.add(map).catchError((e) {
+        CustomDailog().customSnackBar(
+            context: context, text: AppLocalizations.of(context)!.someWrong);
+        throw (e.toString());
+      });
+    }).whenComplete(() {
+      int? plan = userInfoProfile?.plan ?? 0;
+      plan = plan - 1;
+      usersProfileCollection.doc(userId).update({"plan": plan});
+    });
+  }
 }
+

@@ -230,22 +230,22 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                 margin: 8.0,
                 list: [
                   AppLocalizations.of(context)!.buldingAge,
-                  '${AppLocalizations.of(context)!.year}0',
-                  '${AppLocalizations.of(context)!.year}1',
-                  '${AppLocalizations.of(context)!.year}2',
-                  '${AppLocalizations.of(context)!.year}3',
-                  '${AppLocalizations.of(context)!.year}4',
-                  '${AppLocalizations.of(context)!.year}5',
-                  '${AppLocalizations.of(context)!.year}6',
-                  '${AppLocalizations.of(context)!.year}7',
-                  '${AppLocalizations.of(context)!.year}8',
-                  '${AppLocalizations.of(context)!.year}9',
-                  '${AppLocalizations.of(context)!.year}10',
-                  '${AppLocalizations.of(context)!.year}(10/15)',
-                  '${AppLocalizations.of(context)!.year}(15/20)',
-                  '${AppLocalizations.of(context)!.year}(20/25)',
-                  '${AppLocalizations.of(context)!.year}(25/30)',
-                  '${AppLocalizations.of(context)!.year}(30/...)',
+                  '${AppLocalizations.of(context)!.year}: 0',
+                  '${AppLocalizations.of(context)!.year}: 1',
+                  '${AppLocalizations.of(context)!.year}: 2',
+                  '${AppLocalizations.of(context)!.year}: 3',
+                  '${AppLocalizations.of(context)!.year}: 4',
+                  '${AppLocalizations.of(context)!.year}: 5',
+                  '${AppLocalizations.of(context)!.year}: 6',
+                  '${AppLocalizations.of(context)!.year}: 7',
+                  '${AppLocalizations.of(context)!.year}: 8',
+                  '${AppLocalizations.of(context)!.year}: 9',
+                  '${AppLocalizations.of(context)!.year}: 10',
+                  '${AppLocalizations.of(context)!.year}: (10/15)',
+                  '${AppLocalizations.of(context)!.year}: (15/20)',
+                  '${AppLocalizations.of(context)!.year}: (20/25)',
+                  '${AppLocalizations.of(context)!.year}: (25/30)',
+                  '${AppLocalizations.of(context)!.year}: (30/...)',
                 ],
                 function: (String? valueChange) {
                   context
@@ -452,7 +452,7 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
                         customPositioned(
                             left: 0.0,
                             right: 0.0,
-                            child: customText(text: '(1/5)'))
+                            child: customText(text: '(1/4)'))
                       ],
                     ),
                     GestureDetector(
@@ -487,51 +487,51 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
         Provider.of<StringVal>(context, listen: false).subCategoryValue ??
             'null';
     if (val.contains(AppLocalizations.of(context)!.apart1)) {
-      subCatToDtabase = 'apart1';
+      sub2CatToDtabase = 'apart';
     } else if (val.contains(AppLocalizations.of(context)!.residence)) {
-      subCatToDtabase = 'residence';
+      sub2CatToDtabase = 'residence';
     } else if (val.contains(AppLocalizations.of(context)!.detachedHouse)) {
-      subCatToDtabase = 'detachedHouse';
+      sub2CatToDtabase = 'detachedHouse';
     } else if (val.contains(AppLocalizations.of(context)!.villa)) {
-      subCatToDtabase = 'villa';
+      sub2CatToDtabase = 'villa';
     } else if (val.contains(AppLocalizations.of(context)!.farmHouse)) {
-      subCatToDtabase = 'farmHouse';
+      sub2CatToDtabase = 'farmHouse';
     } else if (val.contains(AppLocalizations.of(context)!.mansion)) {
-      subCatToDtabase = 'mansion';
+      sub2CatToDtabase = 'mansion';
     } else if (val.contains(AppLocalizations.of(context)!.summerhouse)) {
-      subCatToDtabase = 'summerhouse';
+      sub2CatToDtabase = 'summerhouse';
     } else if (val.contains(AppLocalizations.of(context)!.prefabricatedHouse)) {
-      subCatToDtabase = 'prefabricatedHouse';
+      sub2CatToDtabase = 'prefabricatedHouse';
     } else {
-      subCatToDtabase = 'cooperative';
+      sub2CatToDtabase = 'cooperative';
     }
   }
 
-  // this is item for list in checkInfo add
+  // this is item for list in checkInfo add for push to database
   void listOfItemsHousing() {
+    // subCatToDtabase,
     listCheckInfoAds.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
-      subCatToDtabase,
-      '${AppLocalizations.of(context)!.title}  ${context.read<StringVal>().advertTitle ?? text}\n${context.read<StringVal>().explanation ?? text}',
-      '${AppLocalizations.of(context)!.price}:  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
-      '${AppLocalizations.of(context)!.space} ${context.read<StringVal>().grossMeter ?? text} - ${context.read<StringVal>().netMeter ?? text}',
-      '${AppLocalizations.of(context)!.details} ${context.read<StringVal>().front ?? text} - ${context.read<StringVal>().heating ?? text}',
-      '${AppLocalizations.of(context)!.roomNum}:  ${context.read<StringVal>().numOfRomms ?? text}',
-      '${AppLocalizations.of(context)!.buldingAge}:  ${context.read<StringVal>().buildingAge ?? text}',
-      '${AppLocalizations.of(context)!.floorLocation}:  ${context.read<StringVal>().floorLocation ?? text}',
-      '${AppLocalizations.of(context)!.numOfFloors}:  ${context.read<StringVal>().numOfFloors ?? text}',
-      '${AppLocalizations.of(context)!.pathNum}:  ${context.read<StringVal>().numOfPathRoom ?? text}',
-      '${AppLocalizations.of(context)!.balcony}:  ${context.read<StringVal>().balcony ?? text}',
-      '${AppLocalizations.of(context)!.furnished}:  ${context.read<StringVal>().furnished ?? text}',
-      '${AppLocalizations.of(context)!.usingStatus}:  ${context.read<StringVal>().usingStatus ?? text}',
-      '${AppLocalizations.of(context)!.dues}:  ${context.read<StringVal>().dues ?? text}',
-      '${AppLocalizations.of(context)!.deed}:  ${context.read<StringVal>().deed ?? text}',
-      '${AppLocalizations.of(context)!.watching}:  ${context.read<StringVal>().watching ?? text}',
-      '${AppLocalizations.of(context)!.bartered}:  ${context.read<StringVal>().bartered ?? text}',
-      '${AppLocalizations.of(context)!.adress} \n${context.read<StringVal>().country ?? text} - ${context.read<StringVal>().city ?? text}\n'
-          '${context.read<StringVal>().area ?? text} - ${context.read<StringVal>().mainStraet ?? text}\n'
-          '${context.read<StringVal>().straet ?? text} - ${context.read<StringVal>().straetNo ?? text}'
+      '${AppLocalizations.of(context)!.title} : ${context.read<StringVal>().advertTitle ?? text}',
+      '${AppLocalizations.of(context)!.explanation} : ${context.read<StringVal>().explanation ?? text}',
+      '${AppLocalizations.of(context)!.price} :  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
+      '${AppLocalizations.of(context)!.grossMeters} : ${context.read<StringVal>().grossMeter ?? text}',
+      '${AppLocalizations.of(context)!.netMeters} : ${context.read<StringVal>().netMeter ?? text}',
+      '${AppLocalizations.of(context)!.heating} : ${context.read<StringVal>().heating ?? text}',
+      '${AppLocalizations.of(context)!.front} : ${context.read<StringVal>().front ?? text}',
+      '${AppLocalizations.of(context)!.roomNum} : ${context.read<StringVal>().numOfRomms ?? text}',
+      '${AppLocalizations.of(context)!.buldingAge} : ${context.read<StringVal>().buildingAge ?? text}',
+      '${AppLocalizations.of(context)!.floorLocation} : ${context.read<StringVal>().floorLocation ?? text}',
+      '${AppLocalizations.of(context)!.numOfFloors} : ${context.read<StringVal>().numOfFloors ?? text}',
+      '${AppLocalizations.of(context)!.pathNum} : ${context.read<StringVal>().numOfPathRoom ?? text}',
+      '${AppLocalizations.of(context)!.balcony} : ${context.read<StringVal>().balcony ?? text}',
+      '${AppLocalizations.of(context)!.furnished} : ${context.read<StringVal>().furnished ?? text}',
+      '${AppLocalizations.of(context)!.usingStatus} : ${context.read<StringVal>().usingStatus ?? text}',
+      '${AppLocalizations.of(context)!.dues} : ${context.read<StringVal>().dues ?? text}',
+      '${AppLocalizations.of(context)!.deed} : ${context.read<StringVal>().deed ?? text}',
+      '${AppLocalizations.of(context)!.watching} : ${context.read<StringVal>().watching ?? text}',
+      '${AppLocalizations.of(context)!.bartered} : ${context.read<StringVal>().bartered ?? text}',
     ];
     listCheckInfoAds.addAll(list);
   }

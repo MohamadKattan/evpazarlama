@@ -1,11 +1,9 @@
 import 'dart:io';
 
-import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/state-maneg/booling_val.dart';
-import 'package:evpazarlama/state-maneg/string_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -120,7 +118,7 @@ class AddPhotos extends StatelessWidget {
                           customPositioned(
                               left: 0.0,
                               right: 0.0,
-                              child: customText(text: '(3/5)'))
+                              child: customText(text: '(3/4)'))
                         ],
                       ),
                       GestureDetector(
@@ -218,37 +216,18 @@ class AddPhotos extends StatelessWidget {
       context.read<BoolingVal>().loadingAuth(true);
       list.removeRange(10, list.length);
       Provider.of<ImageVal>(context, listen: false).updatImagePickerState(list);
-      navToPlanScreenOrPushAds(context);
+      navTocheckAdsInfo(context);
       context.read<BoolingVal>().loadingAuth(false);
     } else {
       context.read<BoolingVal>().loadingAuth(true);
-      navToPlanScreenOrPushAds(context);
+      navTocheckAdsInfo(context);
       context.read<BoolingVal>().loadingAuth(false);
     }
   }
 
   // this method to nav to plan screen if 0 or push ads
-  Future<void> navToPlanScreenOrPushAds(BuildContext context) async {
-    String text = AppLocalizations.of(context)!.unKnow;
-    final listOfItemsHousing = [
-      '${AppLocalizations.of(context)!.adress} \n${context.read<StringVal>().country ?? text} - ${context.read<StringVal>().city ?? text}\n'
-          '${context.read<StringVal>().area ?? text} - ${context.read<StringVal>().mainStraet ?? text}\n'
-          '${context.read<StringVal>().straet ?? text} - ${context.read<StringVal>().straetNo ?? text}'
-    ];
-    listCheckInfoAds.removeLast();
-    listCheckInfoAds.addAll(listOfItemsHousing);
-    await DataBaseSrv().getUserProfileInfo(context);
-    int planNo = userInfoProfile?.plan ?? 0;
-    if (planNo == 0) {
-      if (context.mounted) {
-        GlobalMethods()
-            .pushToNewScreen(context: context, routeName: toPlanScreen);
-      }
-    } else {
-      if (context.mounted) {
-        GlobalMethods()
-            .pushToNewScreen(context: context, routeName: toCheckInfoAds);
-      }
-    }
+  void navTocheckAdsInfo(BuildContext context) {
+    GlobalMethods()
+        .pushToNewScreen(context: context, routeName: toCheckInfoAds);
   }
 }
