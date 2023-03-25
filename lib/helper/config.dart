@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evpazarlama/models/ads_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +16,8 @@ CollectionReference usersProfileCollection =
     firestore.collection('users').doc(userId).collection('profile'); //cloud
 CollectionReference myAdsCollection =
     firestore.collection('users').doc(userId).collection('myAds');
-CollectionReference adsCollection = firestore.collection('Ads'); //cloud
+CollectionReference adsCollection = firestore.collection('ads'); //cloud
 UserInfoProfile? userInfoProfile;
-
 // 1_============proprty===================
 const Color mainColor = Color(0xFF00A3E0);
 const Color secondColor = Color(0xFFFBC408);
@@ -30,7 +30,6 @@ double? longitudeVal;
 //2_===========val for condtions============
 
 //for chose main catogry realEstate,Vehicle,Hotels,lastADS,UrgentUrgent
-
 int mainCatogry = 0; // Estate0,Vehicle1,Hotel2,last38Ads3,Urgent4
 int listOfItemVal = 0; // housItems0,workPlace1,Motor2,car3,Mini4....
 int saleRentElseVal = 0; // sale 0, rent 1, daily 2,trans 3 for send to data
@@ -41,6 +40,8 @@ int monthe = DateTime.now().month;
 int expirtMont = monthe != 12 ? DateTime.now().month + 1 : 1;
 int year = DateTime.now().year;
 int exPirtyear = monthe != 12 ? DateTime.now().year : DateTime.now().year + 1;
+List <AdsModel>listownerAdsOk = [];
+List <AdsModel>listownerAdsPandding = [];
 //3===============_root====================
 const toSplash = '/';
 const toHomeScreen = '/HomeScreen';
@@ -75,6 +76,3 @@ const toCheckInfoAds = '/CheckInfoAds';
 String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth
 String geocodingUrl =
     'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitudeVal,$longitudeVal&key=$mapKey';
-
-
-//https://maps.googleapis.com/maps/api/geocode/json?latlng=41.0205301,28.695434&key=AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY

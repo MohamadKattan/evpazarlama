@@ -31,7 +31,9 @@ class AdsMainCategory extends StatelessWidget {
           itemBuilder: (context, index) {
             if (list.isNotEmpty) {
               return ListTile(
-                onTap: () => navToPageOrShowDailogRenSaleList(context, index),
+                onTap: () {
+                  openDailog(context, index);
+                },
                 minVerticalPadding: 20.0,
                 trailing: customIcon(
                     iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -55,7 +57,7 @@ class AdsMainCategory extends StatelessWidget {
   }
 
   // this method for check if will nav to specifc screen or show dailog rent sale list
- void navToPageOrShowDailogRenSaleList(BuildContext context, int index) async {
+  void openDailog(BuildContext context, int index) async {
     int length = GlobalMethods().listCatogryAddNewAds(context).length;
     final list4Item = [
       AppLocalizations.of(context)!.sale,
@@ -160,8 +162,13 @@ class AdsMainCategory extends StatelessWidget {
           break;
         case 5:
           //damged car
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toResAllReal);
+          listOfItemVal = 7;
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (_) {
+                return CustomDailog().saleRentElseAdsNewAdd(context, list2Item);
+              });
           break;
         default:
           null;
@@ -171,7 +178,7 @@ class AdsMainCategory extends StatelessWidget {
       //main hotels
       switch (index) {
         case 0:
-          listOfItemVal = 7; // hotels
+          listOfItemVal = 8; // hotels
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -181,7 +188,7 @@ class AdsMainCategory extends StatelessWidget {
 
           break;
         case 1:
-          listOfItemVal = 8; // resorts
+          listOfItemVal = 9; // resorts
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -190,7 +197,7 @@ class AdsMainCategory extends StatelessWidget {
               });
           break;
         case 2:
-          listOfItemVal = 9; // touristCottages
+          listOfItemVal = 10; // touristCottages
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -199,7 +206,7 @@ class AdsMainCategory extends StatelessWidget {
               });
           break;
         case 3:
-          listOfItemVal = 10; //hotelAppartments
+          listOfItemVal = 11; //hotelAppartments
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -208,7 +215,7 @@ class AdsMainCategory extends StatelessWidget {
               });
           break;
         case 4:
-          listOfItemVal = 11; //touristVillas
+          listOfItemVal = 12; //touristVillas
           showDialog(
               context: context,
               barrierDismissible: false,

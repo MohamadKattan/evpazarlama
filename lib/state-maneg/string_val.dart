@@ -30,6 +30,17 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? _islandNo;
   String? _parcelNo;
   String? _sheetNo;
+  String? _model;
+  String? _yearMade;
+  String? _yearRigester;
+  String? _kilometers;
+  String? _color;
+  String? _motorClass;
+  String? _withinWarranty;
+  String? _view;
+  String? _services;
+  String? _additionalFeatures;
+
   //2
   String? _country;
   String? _city;
@@ -66,6 +77,16 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? get islandNo => _islandNo;
   String? get parcelNo => _parcelNo;
   String? get sheetNo => _sheetNo;
+  String? get model => _model;
+  String? get yearMade => _yearMade;
+  String? get yearRigester => _yearRigester;
+  String? get kilometers => _kilometers;
+  String? get color => _color;
+  String? get motorClass => _motorClass;
+  String? get withinWarranty => _withinWarranty;
+  String? get view => _view;
+  String? get services => _services;
+  String? get additionalFeatures => _additionalFeatures;
   //2
   String? get country => _country;
   String? get city => _city;
@@ -235,6 +256,66 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   // this method for update sheetNo
   void updateSheetNo(String state) {
     _sheetNo = state;
+    notifyListeners();
+  }
+
+  // this method for updateModel
+  void updateModel(String state) {
+    _model = state;
+    notifyListeners();
+  }
+
+  // this method for updateYearMade
+  void updateYearMade(String state) {
+    _yearMade = state;
+    notifyListeners();
+  }
+
+  // this method for updateYearRigester
+  void updateYearRigester(String state) {
+    _yearRigester = state;
+    notifyListeners();
+  }
+
+  // this method for updateKilometers
+  void updateKilometers(String state) {
+    _kilometers = state;
+    notifyListeners();
+  }
+
+  // this method for updateColor
+  void updateColor(String state) {
+    _color = state;
+    notifyListeners();
+  }
+
+  // this method for updateMotorType
+  void updateMotorType(String state) {
+    _motorClass = state;
+    notifyListeners();
+  }
+
+  // this method for updateWithinWarranty
+  void updateWithinWarranty(String state) {
+    _withinWarranty = state;
+    notifyListeners();
+  }
+
+  // this method for updateView
+  void updateView(String state) {
+    _view = state;
+    notifyListeners();
+  }
+
+  // this method for updateServices
+  void updateServices(String state) {
+    _services = state;
+    notifyListeners();
+  }
+
+  // this method for updateAdditionalFeatures
+  void updateAdditionalFeatures(String state) {
+    _additionalFeatures = state;
     notifyListeners();
   }
 

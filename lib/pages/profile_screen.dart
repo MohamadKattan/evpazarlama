@@ -5,6 +5,7 @@ import 'package:evpazarlama/helper/custom_container.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
+import 'package:evpazarlama/pages/my_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -115,6 +116,15 @@ class ProfileScreen extends StatelessWidget {
                           text: AppLocalizations.of(context)!.adsManger,
                           textColor: mainColor),
                       ListTile(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) {
+                            return MyAdsScreen(
+                                list: listownerAdsOk,
+                                title:
+                                    AppLocalizations.of(context)!.compliteAds);
+                          }));
+                        },
                         contentPadding: EdgeInsets.zero,
                         minLeadingWidth: 0.0,
                         minVerticalPadding: 0.0,
@@ -131,12 +141,22 @@ class ProfileScreen extends StatelessWidget {
                             textAlign: TextAlign.justify),
                         subtitle: customText(
                             text:
-                                '(${AppLocalizations.of(context)!.subCompliteAds})',
+                                '(${AppLocalizations.of(context)!.subCompliteAds} ${listownerAdsOk.length})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
                       ),
                       ListTile(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) {
+                            return MyAdsScreen(
+                              list: listownerAdsPandding,
+                              title:
+                                  AppLocalizations.of(context)!.notCompliteAds,
+                            );
+                          }));
+                        },
                         contentPadding: EdgeInsets.zero,
                         minLeadingWidth: 0.0,
                         minVerticalPadding: 0.0,
@@ -153,7 +173,7 @@ class ProfileScreen extends StatelessWidget {
                             textAlign: TextAlign.justify),
                         subtitle: customText(
                             text:
-                                '(${AppLocalizations.of(context)!.subNotCompliteAds})',
+                                '(${AppLocalizations.of(context)!.subNotCompliteAds} ${listownerAdsPandding.length})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),

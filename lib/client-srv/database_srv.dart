@@ -197,14 +197,24 @@ class DataBaseSrv {
 // this method for set all data to cloud all ads after uplod to storage and got list of url
   Future<void> setDataToAllAds(BuildContext context, List urlList) async {
     int randomId = Random().nextInt(10000);
-    Map<String, dynamic> map = AdsModel()
-        .toJson(context: context, adsNumber: randomId, urlImages: urlList);
-    await adsCollection.add(map).catchError((e) {
+    int adsIdDoc = Random().nextInt(10000);
+    Map<String, dynamic> map = AdsModel().toJson(
+        context: context,
+        adsNumber: randomId,
+        urlImages: urlList,
+        adsId: adsIdDoc.toString());
+    await adsCollection
+        .doc('${adsIdDoc.toString()}$userId')
+        .set(map)
+        .catchError((e) {
       CustomDailog().customSnackBar(
           context: context, text: AppLocalizations.of(context)!.someWrong);
       throw (e.toString());
     }).whenComplete(() async {
-      await myAdsCollection.add(map).catchError((e) {
+      await myAdsCollection
+          .doc('${adsIdDoc.toString()}$userId')
+          .set(map)
+          .catchError((e) {
         CustomDailog().customSnackBar(
             context: context, text: AppLocalizations.of(context)!.someWrong);
         throw (e.toString());
@@ -213,7 +223,35 @@ class DataBaseSrv {
       int? plan = userInfoProfile?.plan ?? 0;
       plan = plan - 1;
       usersProfileCollection.doc(userId).update({"plan": plan});
+    }).whenComplete(() {
+      getOwnerAds(context);
+      Navigator.pushNamedAndRemoveUntil(
+          context, toHomeScreen, (route) => false);
     });
   }
-}
 
+  // this method for got ads from owner ads  from his collection users => myAds
+  Future<void> getOwnerAds(BuildContext context) async {
+    listownerAdsOk.clear();
+    listownerAdsPandding.clear();
+    if (!userId.contains('null')) {
+      await myAdsCollection.get().then((QuerySnapshot querySnapshot) {
+        if (querySnapshot.docs.isNotEmpty) {
+          for (var ele in querySnapshot.docs) {
+            Map<String, dynamic> map = ele.data() as Map<String, dynamic>;
+            AdsModel adsModel = AdsModel.fromJson(map);
+            if (adsModel.status!.contains('ok')) {
+              listownerAdsOk.add(adsModel);
+            } else {
+              listownerAdsPandding.add(adsModel);
+            }
+          }
+        }
+      }).catchError((er) {
+        CustomDailog().customSnackBar(context: context, text: er);
+      });
+    } else {
+      return;
+    }
+  }
+}

@@ -69,13 +69,13 @@ class AdsListOfItem extends StatelessWidget {
   void navToDaitelsPage(BuildContext context) {
     if (listOfItemVal == 0) {
       // houseing item
-      GlobalMethods().pushReplaceToNewScreen(
+      GlobalMethods().pushToNewScreen(
           context: context, routeName: toAdsDetailsHoseing);
     } else if (listOfItemVal == 1) {
       // work place items
-      GlobalMethods().pushReplaceToNewScreen(
+      GlobalMethods().pushToNewScreen(
           context: context, routeName: toAdsDetailsWorkPlace);
-    } else if (listOfItemVal > 1 && listOfItemVal < 7) {
+    } else if (listOfItemVal > 1 && listOfItemVal < 8) {
       // motor and cars items
       GlobalMethods().pushReplaceToNewScreen(
           context: context, routeName: toAdsDetailsVehicles);

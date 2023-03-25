@@ -34,7 +34,7 @@ import 'pages/urgent_screen.dart';
 import 'state-maneg/booling_val.dart';
 import 'state-maneg/image_val.dart';
 import 'state-maneg/string_val.dart';
-
+// satrday at 18/3/2023 i got sallary for month 2 =>600$ from nizam
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -100,6 +100,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 /*
 git init
 git add README.md

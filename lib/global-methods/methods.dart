@@ -216,12 +216,6 @@ class GlobalMethods {
       case 2:
         list.addAll(listOfHotelCategory);
         break;
-      case 3:
-        null;
-        break;
-      case 4:
-        null;
-        break;
       default:
         null;
         break;
@@ -279,16 +273,16 @@ class GlobalMethods {
         popFromScreen(context);
         if (listOfItemVal == 20) {
           // lands
-          GlobalMethods().pushReplaceToNewScreen(
-              context: context, routeName: toAdsDetailsLand);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toAdsDetailsLand);
         } else if (listOfItemVal == 21) {
           // Bulding
-          GlobalMethods().pushReplaceToNewScreen(
+          GlobalMethods().pushToNewScreen(
               context: context, routeName: toAdsDetailsBulding);
-        } else if (listOfItemVal > 6 && listOfItemVal < 12) {
+        } else if (listOfItemVal > 7 && listOfItemVal < 13) {
           // hotoles
-          GlobalMethods().pushReplaceToNewScreen(
-              context: context, routeName: toAdsDetailsHotels);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toAdsDetailsHotels);
         } else {
           pushToNewScreen(context: context, routeName: toAdsListOfItems);
         }
@@ -298,16 +292,16 @@ class GlobalMethods {
         popFromScreen(context);
         if (listOfItemVal == 20) {
           // lands
-          GlobalMethods().pushReplaceToNewScreen(
-              context: context, routeName: toAdsDetailsLand);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toAdsDetailsLand);
         } else if (listOfItemVal == 21) {
           // Bulding
-          GlobalMethods().pushReplaceToNewScreen(
+          GlobalMethods().pushToNewScreen(
               context: context, routeName: toAdsDetailsBulding);
         } else if (listOfItemVal > 6 && listOfItemVal < 12) {
           // hotoles
-          GlobalMethods().pushReplaceToNewScreen(
-              context: context, routeName: toAdsDetailsHotels);
+          GlobalMethods()
+              .pushToNewScreen(context: context, routeName: toAdsDetailsHotels);
         } else {
           pushToNewScreen(context: context, routeName: toAdsListOfItems);
         }
@@ -361,7 +355,6 @@ class GlobalMethods {
       AppLocalizations.of(context)!.fullbuilding,
       AppLocalizations.of(context)!.parking,
     ];
-
     final listOfCars = [
       'Aion',
       'AlfaRomeo',
@@ -468,7 +461,7 @@ class GlobalMethods {
       'Yamaha',
     ];
 
-    const listNull = ['null'];
+    // const listNull = ['null'];
 
     switch (listOfItemVal) {
       case 0:
@@ -493,8 +486,11 @@ class GlobalMethods {
       case 6:
         list.addAll(listOfCars);
         break;
+      case 7:
+        list.addAll(listOfCars);
+        break;
       default:
-        list.addAll(listNull);
+        // list.addAll(listNull);
         break;
     }
     return list;

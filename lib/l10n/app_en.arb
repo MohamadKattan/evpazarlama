@@ -391,7 +391,7 @@
   "@subCompliteAds": {
     "description": "subCompliteAds"
   },
-  "notCompliteAds": "Not completed Ads",
+  "notCompliteAds": "Expired ads",
   "@notCompliteAds": {
     "description": "notCompliteAds"
   },
@@ -678,6 +678,82 @@
   "sheetNo": "sheet No",
   "@sheetNo": {
     "description": "sheetNo"
+  },
+  "model": "Model",
+  "@model": {
+    "description": "model"
+  },
+  "yearMade": "Year Made",
+  "@yearMade": {
+    "description": "yearMade"
+  },
+  "yearRigester": "Year Register",
+  "@yearRigester": {
+    "description": "yearRigester"
+  },
+  "kilometers": "Kilometers",
+  "@yearMade": {
+    "description": "yearMade"
+  },
+  "color": "Color",
+  "@color": {
+    "description": "color"
+  },
+  "withinWarranty": "Within warranty",
+  "@withinWarranty": {
+    "description": "withinWarranty"
+  },
+  "damages": "Damages",
+  "@damages": {
+    "description": "damages"
+  },
+  "binzin": "Gasoline",
+  "@binzin": {
+    "description": "binzin"
+  },
+  "diseal": "Diesel",
+  "@diseal": {
+    "description": "diseal"
+  },
+  "gaz": "Gaz",
+  "@gaz": {
+    "description": "gaz"
+  },
+  "hybrid": "Hybrid",
+  "@hybrid": {
+    "description": "hybrid"
+  },
+  "electrical": "Electrical",
+  "@electrical": {
+    "description": "electrical"
+  },
+  "motorClass": "Engine class",
+  "@motorClass": {
+    "description": "motorClass"
+  },
+  "view": "View",
+  "@view": {
+    "description": "view"
+  },
+  "services": "Services",
+  "@services": {
+    "description": "services"
+  },
+  "additionalFeatures": "Additional Features",
+  "@additionalFeatures": {
+    "description": "additionalFeatures"
+  },
+  "adNumber": "Ad Number",
+  "@adNumber": {
+    "description": "adNumber"
+  },
+  "startDate": "Date of ad",
+  "@startDate": {
+    "description": "startDate"
+  },
+  "expiryDate": "Date of expiry",
+  "@expiryDate": {
+    "description": "expiryDate"
   }
   
 }

@@ -509,7 +509,7 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
 
   // this is item for list in checkInfo add for push to database
   void listOfItemsHousing() {
-    // subCatToDtabase,
+    // sub2CatToDtabase,
     listCheckInfoAds.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
@@ -562,48 +562,4 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
           .pushToNewScreen(context: context, routeName: toStartPickLocation);
     }
   }
-
-// this method for set value to varbile dataBase
-  // void setAllVal() {
-  //   // String unKnowText = AppLocalizations.of(context)!.unKnow;
-  //   // mainCatToDtbase = mainCatogry.toString();
-  //   // operationtypeToDatBase = saleRentElseVal.toString();
-  //   // advTitleToDtbase = advertTitle.text;
-  //   // explanationToDtbase = explanation.text;
-  //   // priceToDtbase = price.text;
-  //   // frontToDtbase = front?.text != null ? front!.text : unKnowText;
-  //   // grossMetersToDtabase =
-  //   //     grossMeters?.text != null ? grossMeters!.text : unKnowText;
-  //   // netMetersToDtabase = netMeters?.text != null ? netMeters!.text : unKnowText;
-  //   // duesToDtabase = dues?.text != null ? dues!.text : unKnowText;
-  //   // deedToDtabase = deed?.text != null ? deed!.text : unKnowText;
-  //   // heatingToDtabase = heating?.text != null ? heating!.text : unKnowText;
-  //   // curencyToDtbase =
-  //   //     Provider.of<StringVal>(context, listen: false).currancyType ?? '\$';
-  //   // roomNumToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).numOfRomms ?? unKnowText;
-  //   // buldingAgeToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).buildingAge ??
-  //   //         unKnowText;
-  //   // flLocaToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).floorLocation ??
-  //   //         unKnowText;
-  //   // nFloorsToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).numOfFloors ??
-  //   //         unKnowText;
-  //   // nPathToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).numOfPathRoom ??
-  //   //         unKnowText;
-  //   // balconyToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).balcony ?? unKnowText;
-  //   // furnishedToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).furnished ?? unKnowText;
-  //   // usingStatToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).usingStatus ??
-  //   //         unKnowText;
-  //   // watchingToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).watching ?? unKnowText;
-  //   // barteredToDtabase =
-  //   //     Provider.of<StringVal>(context, listen: false).bartered ?? unKnowText;
-  // }
 }
