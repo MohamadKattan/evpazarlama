@@ -16,7 +16,7 @@ CollectionReference usersProfileCollection =
     firestore.collection('users').doc(userId).collection('profile'); //cloud
 CollectionReference myAdsCollection =
     firestore.collection('users').doc(userId).collection('myAds');
-CollectionReference adsCollection = firestore.collection('ads'); //cloud
+CollectionReference adsCollection = firestore.collection('allAds'); //cloud
 UserInfoProfile? userInfoProfile;
 // 1_============proprty===================
 const Color mainColor = Color(0xFF00A3E0);
@@ -40,8 +40,10 @@ int monthe = DateTime.now().month;
 int expirtMont = monthe != 12 ? DateTime.now().month + 1 : 1;
 int year = DateTime.now().year;
 int exPirtyear = monthe != 12 ? DateTime.now().year : DateTime.now().year + 1;
-List <AdsModel>listownerAdsOk = [];
-List <AdsModel>listownerAdsPandding = [];
+List<AdsModel> listownerAdsOk = [];
+List<AdsModel> listownerAdsPandding = [];
+List<AdsModel> listAllAds = [];
+List<AdsModel> listAds48Houer = [];
 //3===============_root====================
 const toSplash = '/';
 const toHomeScreen = '/HomeScreen';

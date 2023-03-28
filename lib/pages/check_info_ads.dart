@@ -106,6 +106,7 @@ class CheckInfoAds extends StatelessWidget {
                           child: customText(
                               text: listCheckInfoAds[index].toString(),
                               textColor: mainColor,
+                              overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.justify),
                         );
                       } else {

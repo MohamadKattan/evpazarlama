@@ -613,4 +613,19 @@ class GlobalMethods {
     latitudeVal = currentPosition?.latitude ?? 0.0;
     longitudeVal = currentPosition?.longitude ?? 0.0;
   }
+  //=====================================================================
+  //========================Filter list Ads==============================
+  //=====================================================================
+
+  // this method for filtter list last 48 houer
+  void filterList48HouerList() {
+    listAds48Houer.clear();
+    final timeNow = DateTime.now().millisecondsSinceEpoch;
+    for (var i in listAllAds) {
+      final res48Houer = i.dateStart!.millisecondsSinceEpoch + 1.728e+8;
+      if (res48Houer > timeNow) {
+        listAds48Houer.add(i);
+      }
+    }
+  }
 }

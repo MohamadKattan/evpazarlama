@@ -443,7 +443,7 @@
   "@basicInformation": {
     "description": "basicInformation"
   },
-  "advertTitle": "Advert title",
+  "advertTitle": "Advert  title",
   "@advertTitle": {
     "description": "advertTitle"
   },

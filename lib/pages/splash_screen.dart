@@ -27,6 +27,7 @@ void pushAftrer3Second(BuildContext context) async {
   GlobalMethods().requestPermission(context);
   await DataBaseSrv().getUserProfileInfo(context);
   if (context.mounted) await DataBaseSrv().getOwnerAds(context);
+  if (context.mounted) await DataBaseSrv().changeStatusAds(context);
   Future.delayed(const Duration(milliseconds: 2000)).whenComplete(() {
     GlobalMethods()
         .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
