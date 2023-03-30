@@ -1,4 +1,5 @@
 import 'package:evpazarlama/helper/custom_dailog.dart';
+import 'package:evpazarlama/models/ads_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -163,12 +164,6 @@ class GlobalMethods {
       case 2:
         list.addAll(listOfHotelCategory);
         break;
-      case 3:
-        null;
-        break;
-      case 4:
-        null;
-        break;
       default:
         null;
         break;
@@ -229,36 +224,36 @@ class GlobalMethods {
   after that will nav to ListOfIteam screen will display items if realEstatae
   or vichel or hotel ... 
   */
-  void switchToAnyTypeListItem(BuildContext context, int index) {
-    // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
-    switch (index) {
-      case 0:
-        saleRentElseVal = 0;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      case 1:
-        saleRentElseVal = 1;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      case 2:
-        saleRentElseVal = 2;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      case 3:
-        saleRentElseVal = 3;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-      default:
-        saleRentElseVal = 0;
-        popFromScreen(context);
-        pushToNewScreen(context: context, routeName: toListOfIteam);
-        break;
-    }
-  }
+  // void switchToAnyTypeListItem(BuildContext context, int index) {
+  //   // val = 0 sale , 1 rent , 2 dailyrent,3 tranfer sale
+  //   switch (index) {
+  //     case 0:
+  //       saleRentElseVal = 0;
+  //       popFromScreen(context);
+  //       pushToNewScreen(context: context, routeName: toListOfIteam);
+  //       break;
+  //     case 1:
+  //       saleRentElseVal = 1;
+  //       popFromScreen(context);
+  //       pushToNewScreen(context: context, routeName: toListOfIteam);
+  //       break;
+  //     case 2:
+  //       saleRentElseVal = 2;
+  //       popFromScreen(context);
+  //       pushToNewScreen(context: context, routeName: toListOfIteam);
+  //       break;
+  //     case 3:
+  //       saleRentElseVal = 3;
+  //       popFromScreen(context);
+  //       pushToNewScreen(context: context, routeName: toListOfIteam);
+  //       break;
+  //     default:
+  //       saleRentElseVal = 0;
+  //       popFromScreen(context);
+  //       pushToNewScreen(context: context, routeName: toListOfIteam);
+  //       break;
+  //   }
+  // }
 
   /* 
   this method to know user any type he is searching sale / rent / daily rent or else
@@ -617,15 +612,148 @@ class GlobalMethods {
   //========================Filter list Ads==============================
   //=====================================================================
 
-  // this method for filtter list last 48 houer
-  void filterList48HouerList() {
+  // this method for filtter genralAdsList to add to listt last48 houer
+  void filtterGenerlListToAddIn48List() {
     listAds48Houer.clear();
     final timeNow = DateTime.now().millisecondsSinceEpoch;
-    for (var i in listAllAds) {
+    for (var i in listGenarlAds) {
       final res48Houer = i.dateStart!.millisecondsSinceEpoch + 1.728e+8;
       if (res48Houer > timeNow) {
         listAds48Houer.add(i);
       }
     }
+  }
+
+  // filter listAds48Houer to list48AllRealEstate/list48AllVehicles/list48AllHotels
+  void filter48List() {
+    list48AllRealEstate.clear();
+    list48AllVehicles.clear();
+    list48AllHotels.clear();
+    for (var i in listAds48Houer) {
+      if (i.amainCatogry == '0') {
+        list48AllRealEstate.add(i);
+      } else if (i.amainCatogry == '1') {
+        list48AllVehicles.add(i);
+      } else if (i.amainCatogry == '2') {
+        list48AllHotels.add(i);
+      } else {
+        return;
+      }
+    }
+  }
+
+  // filter Genarllist Ads and add to listAllRealEstate/listAllVehicles/listAllHotels
+  void filterGenerlList() {
+    listAllRealEstate.clear();
+    listAllVehicles.clear();
+    listAllHotels.clear();
+    for (var i in listGenarlAds) {
+      if (i.amainCatogry == '0') {
+        listAllRealEstate.add(i);
+      } else if (i.amainCatogry == '1') {
+        listAllVehicles.add(i);
+      } else if (i.amainCatogry == '2') {
+        listAllHotels.add(i);
+      } else {
+        return;
+      }
+    }
+  }
+
+  // last filter after user chose sale or rent and chose land
+  Future<List<AdsModel>> lastFilterLand(List<AdsModel>? list) async {
+    listLand.clear();
+
+    for (var i in list!) {
+      if (i.asub2Catogry == sub2CatToDtabase &&
+          i.aoperation == saleRentElseVal.toString()) {
+        listLand.add(i);
+      }
+    }
+    return listLand;
+  }
+
+  //  last filter after user chose sale or rent and chose building
+  Future<List<AdsModel>> lastfilterBuilding(List<AdsModel> list) async {
+    listBuilding.clear();
+    for (var i in list) {
+      if (i.asub2Catogry == sub2CatToDtabase &&
+          i.aoperation == saleRentElseVal.toString()) {
+        listBuilding.add(i);
+      }
+    }
+    return listBuilding;
+  }
+
+  //last filter after user chose sale or rent and chose hoseing
+  Future<List<AdsModel>> lastFilterHousing(List<AdsModel> list) async {
+    listHousing.clear();
+    for (var i in list) {
+      if (i.asub2Catogry == sub2CatToDtabase &&
+          i.aoperation == saleRentElseVal.toString()) {
+        listHousing.add(i);
+      }
+    }
+    return listHousing;
+  }
+
+  //last filter after user chose sale or rent and chose workPlace
+  Future<List<AdsModel>> lastFilterWorkPlace(List<AdsModel> list) async {
+    listWorkPlace.clear();
+    for (var i in list) {
+      if (i.asub2Catogry == sub2CatToDtabase &&
+          i.aoperation == saleRentElseVal.toString()) {
+        listWorkPlace.add(i);
+      }
+    }
+    return listWorkPlace;
+  }
+
+  //last filter after user chose sale or rent and chose Motor
+  Future<List<AdsModel>> lastFilterMotor(List<AdsModel> list) async {
+    listMotor.clear();
+    for (var i in list) {
+      if (i.asub2Catogry == sub2CatToDtabase &&
+          i.aoperation == saleRentElseVal.toString()) {
+        listMotor.add(i);
+      }
+    }
+    return listMotor;
+  }
+
+  //last filter after user chose sale or rent and chose cars \ min bus \ else ...
+  Future<List<AdsModel>> lastFilterCars(List<AdsModel> list) async {
+    listCar.clear();
+    for (var i in list) {
+      if (i.asub2Catogry == sub2CatToDtabase &&
+          i.aoperation == saleRentElseVal.toString()) {
+        if (i.asubCatogry == listOfItemVal.toString()) {
+          listCar.add(i);
+        }
+      }
+    }
+    return listCar;
+  }
+
+  Future<List<AdsModel>> lastFilterDamgedCar(List<AdsModel> list) async {
+    listCar.clear();
+    for (var i in list) {
+      if (i.amainCatogry == listOfItemVal.toString()) {
+        listCar.add(i);
+      }
+    }
+
+    return listCar;
+  }
+
+  Future<List<AdsModel>> lastFilterHotels(List<AdsModel> list) async {
+    listHotel.clear();
+    for (var i in list) {
+      if (i.asubCatogry == listOfItemVal.toString() &&
+          i.aoperation == saleRentElseVal.toString()) {
+        listHotel.add(i);
+      }
+    }
+    return listHotel;
   }
 }

@@ -27,62 +27,169 @@ is searching as rent or sale or else then  mehtod switch any type
 of list item we will display to him as apratmant shop  motro
 car min bus
 */
-  Widget customDailogSaleRentElse(BuildContext context, List item) {
+  // Widget customDailogSaleRentElse(BuildContext context, List item) {
+  //   return Dialog(
+  //     elevation: 0.9,
+  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+  //     backgroundColor: Colors.transparent,
+  //     child: Column(mainAxisSize: MainAxisSize.min, children: [
+  //       customContainer(
+  //         colorBack: mainColor,
+  //         ridusl: 16.0,
+  //         ridusR: 16.0,
+  //         child: Row(
+  //           children: [
+  //             IconButton(
+  //                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+  //                 onPressed: () {
+  //                   GlobalMethods().popFromScreen(context);
+  //                 },
+  //                 icon: const Icon(Icons.arrow_back_ios),
+  //                 color: Colors.red),
+  //             customText(text: AppLocalizations.of(context)!.categorySelection),
+  //           ],
+  //         ),
+  //       ),
+  //       customContainer(
+  //         height: item.length > 2 ? 250 : 175,
+  //         width: double.infinity,
+  //         colorBack: Colors.white,
+  //         ridusBL: 16.0,
+  //         ridusBR: 16.0,
+  //         child: ListView.builder(
+  //             padding: EdgeInsets.zero,
+  //             shrinkWrap: true,
+  //             itemCount: item.length,
+  //             itemBuilder: (_, index) {
+  //               if (item.isNotEmpty) {
+  //                 return ListTile(
+  //                   onTap: () {
+  //                     GlobalMethods().switchToAnyTypeListItem(context, index);
+  //                   },
+  //                   minLeadingWidth: 10.0,
+  //                   trailing: customIcon(
+  //                       iconData: Icons.arrow_forward_ios, color: mainColor),
+  //                   title: customText(
+  //                       text: item[index],
+  //                       textAlign: TextAlign.justify,
+  //                       textFontSize: 18.0,
+  //                       textColor: mainColor,
+  //                       textWeight: FontWeight.bold),
+  //                 );
+  //               } else {
+  //                 const CircularProgressIndicator(color: mainColor);
+  //               }
+  //               return const CircularProgressIndicator(color: mainColor);
+  //             }),
+  //       ),
+  //     ]),
+  //   );
+  // }
+
+  Widget dailogSaleRent(BuildContext context) {
     return Dialog(
       elevation: 0.9,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
       backgroundColor: Colors.transparent,
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        customContainer(
-          colorBack: mainColor,
-          ridusl: 16.0,
-          ridusR: 16.0,
-          child: Row(
-            children: [
-              IconButton(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                  onPressed: () {
-                    GlobalMethods().popFromScreen(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios),
-                  color: Colors.red),
-              customText(text: AppLocalizations.of(context)!.categorySelection),
-            ],
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          customContainer(
+            colorBack: mainColor,
+            ridusl: 16.0,
+            ridusR: 16.0,
+            child: Row(
+              children: [
+                IconButton(
+                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    onPressed: () {
+                      GlobalMethods().popFromScreen(context);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios),
+                    color: Colors.red),
+                customText(
+                    text: AppLocalizations.of(context)!.categorySelection),
+              ],
+            ),
           ),
-        ),
-        customContainer(
-          height: item.length > 2 ? 250 : 175,
-          width: double.infinity,
-          colorBack: Colors.white,
-          ridusBL: 16.0,
-          ridusBR: 16.0,
-          child: ListView.builder(
+          customContainer(
+            height: 250,
+            width: double.infinity,
+            colorBack: Colors.white,
+            ridusBL: 16.0,
+            ridusBR: 16.0,
+            child: ListView(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
-              itemCount: item.length,
-              itemBuilder: (_, index) {
-                if (item.isNotEmpty) {
-                  return ListTile(
-                    onTap: () {
-                      GlobalMethods().switchToAnyTypeListItem(context, index);
-                    },
-                    minLeadingWidth: 10.0,
-                    trailing: customIcon(
-                        iconData: Icons.arrow_forward_ios, color: mainColor),
-                    title: customText(
-                        text: item[index],
-                        textAlign: TextAlign.justify,
-                        textFontSize: 18.0,
-                        textColor: mainColor,
-                        textWeight: FontWeight.bold),
-                  );
-                } else {
-                  const CircularProgressIndicator(color: mainColor);
-                }
-                return const CircularProgressIndicator(color: mainColor);
-              }),
-        ),
-      ]),
+              children: [
+                const LinearProgressIndicator(
+                  color: mainColor,
+                ),
+                ListTile(
+                  onTap: () {
+                    saleRentElseVal = 0;
+                    Navigator.pop(context, true);
+                  },
+                  minLeadingWidth: 10.0,
+                  trailing: customIcon(
+                      iconData: Icons.arrow_forward_ios, color: mainColor),
+                  title: customText(
+                      text: AppLocalizations.of(context)!.sale,
+                      textAlign: TextAlign.justify,
+                      textFontSize: 18.0,
+                      textColor: mainColor,
+                      textWeight: FontWeight.bold),
+                ),
+                ListTile(
+                  onTap: () {
+                    saleRentElseVal = 1;
+                    Navigator.pop(context, true);
+                  },
+                  minLeadingWidth: 10.0,
+                  trailing: customIcon(
+                      iconData: Icons.arrow_forward_ios, color: mainColor),
+                  title: customText(
+                      text: AppLocalizations.of(context)!.rent,
+                      textAlign: TextAlign.justify,
+                      textFontSize: 18.0,
+                      textColor: mainColor,
+                      textWeight: FontWeight.bold),
+                ),
+                ListTile(
+                  onTap: () {
+                    saleRentElseVal = 2;
+                    Navigator.pop(context, true);
+                  },
+                  minLeadingWidth: 10.0,
+                  trailing: customIcon(
+                      iconData: Icons.arrow_forward_ios, color: mainColor),
+                  title: customText(
+                      text: AppLocalizations.of(context)!.daylyRent,
+                      textAlign: TextAlign.justify,
+                      textFontSize: 18.0,
+                      textColor: mainColor,
+                      textWeight: FontWeight.bold),
+                ),
+                ListTile(
+                  onTap: () {
+                    saleRentElseVal = 3;
+                    Navigator.pop(context, true);
+                  },
+                  minLeadingWidth: 10.0,
+                  trailing: customIcon(
+                      iconData: Icons.arrow_forward_ios, color: mainColor),
+                  title: customText(
+                      text: AppLocalizations.of(context)!.transferSale,
+                      textAlign: TextAlign.justify,
+                      textFontSize: 18.0,
+                      textColor: mainColor,
+                      textWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

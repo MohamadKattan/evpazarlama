@@ -327,7 +327,8 @@ class DataBaseSrv {
 //============================got all ads for all users====================
 
   Widget streamGetAllAds() {
-    listAllAds.clear();
+    listGenarlAds.clear();
+
     return StreamBuilder<QuerySnapshot>(
       stream: adsCollection.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -357,8 +358,12 @@ class DataBaseSrv {
               Map<String, dynamic> map =
                   document.data()! as Map<String, dynamic>;
               AdsModel adsModel = AdsModel.fromJson(map);
-              listAllAds.add(adsModel);
-              GlobalMethods().filterList48HouerList();
+              if (adsModel.status == 'ok') {
+                // methods
+                listGenarlAds.add(adsModel);
+                GlobalMethods().filtterGenerlListToAddIn48List();
+                GlobalMethods().filterGenerlList();
+              }
               return Container(
                 decoration: BoxDecoration(
                   border: Border.all(width: 1.0, color: Colors.white),
@@ -366,7 +371,7 @@ class DataBaseSrv {
                 child: Stack(
                   children: [
                     Image.network(
-                      adsModel.images?[0],
+                      adsModel.images?[0] ?? '',
                       width: 200,
                       height: 145.0,
                       fit: BoxFit.cover,
@@ -378,7 +383,7 @@ class DataBaseSrv {
                       child: Container(
                         color: Colors.white.withOpacity(0.8),
                         child: customText(
-                            text: adsModel.details![0],
+                            text: adsModel.details![0] ?? 'null',
                             textAlign: TextAlign.justify,
                             overflow: TextOverflow.ellipsis,
                             textFontSize: 16,

@@ -1,3 +1,4 @@
+import 'package:evpazarlama/pages/main_category.dart';
 import 'package:flutter/material.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
@@ -13,8 +14,11 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ListTile(
         onTap: () async {
           mainCatogry = 0;
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toMainCategory);
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return MainCategory(
+              list: listAllRealEstate,
+            );
+          }));
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'home.png'),
@@ -36,8 +40,11 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ListTile(
         onTap: () {
           mainCatogry = 1;
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toMainCategory);
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return MainCategory(
+              list: listAllVehicles,
+            );
+          }));
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'steering-wheel.png'),
@@ -59,8 +66,11 @@ Widget mainItemsHomeDrawer(BuildContext context) {
       ListTile(
         onTap: () {
           mainCatogry = 2;
-          GlobalMethods()
-              .pushToNewScreen(context: context, routeName: toMainCategory);
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return MainCategory(
+              list: listAllHotels,
+            );
+          }));
         },
         minLeadingWidth: 10.0,
         leading: cutomImageIcon(imagePath: 'hotel.png'),

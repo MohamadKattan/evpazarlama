@@ -754,6 +754,9 @@
   "expiryDate": "Date of expiry",
   "@expiryDate": {
     "description": "expiryDate"
+  },
+  "all48houer": "All last 48 hour ads",
+  "@all48houer": {
+    "description": "all48houer"
   }
-  
 }

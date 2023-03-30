@@ -24,11 +24,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
-import 'pages/main_category.dart';
+
 import 'pages/home_screen.dart';
 import 'pages/last_ads.dart';
-import 'pages/list_of_item.dart';
-import 'pages/result_all_real.dart';
 import 'pages/splash_screen.dart';
 import 'pages/urgent_screen.dart';
 import 'state-maneg/booling_val.dart';
@@ -72,11 +70,11 @@ class MyApp extends StatelessWidget {
         routes: {
           toSplash: (context) => const SplashScreen(),
           toHomeScreen: (context) => const HomeScreen(),
-          toMainCategory: (context) => const MainCategory(),
+          // toMainCategory: (context) => const MainCategory(),
           toLastAds: (context) => const LastAds(),
           toUrgentScrren: (context) => const UrgentScrren(),
-          toResAllReal: (context) => const ResAllRealState(),
-          toListOfIteam: (context) => const ListOfIteam(),
+          // toResAllReal: (context) => const ResAllRealState(list:[],),
+          // toListOfIteam: (context) => const ListOfIteam(),
           toLoginScreen: (context) => const LoginScreen(),
           toProfileInfo: (context) => const ProfileInfo(),
           toProfileScreen: (context) => const ProfileScreen(),
