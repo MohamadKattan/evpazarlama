@@ -5,7 +5,6 @@ import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_grid.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
-import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/pages/main_category.dart';
 import 'package:evpazarlama/pages/result_all_real.dart';
 import 'package:flutter/material.dart';
@@ -163,17 +162,25 @@ class LastAds extends StatelessWidget {
                   textColor: mainColor),
             ),
             listAds48Houer.isEmpty
-                ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                 
-                    children: [
-                    customSpacer(height: 90.0),
-                      customText(
-                          text: AppLocalizations.of(context)!.noFound,
-                          textColor: mainColor),
-                        const  CircularProgressIndicator(color: mainColor,)
-                    ],
-                  )
+                ? Container(
+                 height: 300.0,
+                 color: Colors.blueGrey.shade100,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                   
+                      children: [
+                      // customSpacer(height: 90.0),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: customText(
+                              text: AppLocalizations.of(context)!.noFound,
+                              textColor: mainColor),
+                        ),
+                          const  CircularProgressIndicator(color: mainColor)
+                      ],
+                    ),
+                )
                 : CustomGrid().customGrid(context, listAds48Houer),
           ],
         ),

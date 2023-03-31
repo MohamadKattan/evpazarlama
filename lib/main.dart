@@ -66,11 +66,12 @@ class MyApp extends StatelessWidget {
           Locale('ar'), // ar
           Locale('tr'), // tr
         ],
+      
         initialRoute: '/',
         routes: {
           toSplash: (context) => const SplashScreen(),
           toHomeScreen: (context) => const HomeScreen(),
-          // toMainCategory: (context) => const MainCategory(),
+          // toMainCategory: (context) => const MainCategory(list: [],),
           toLastAds: (context) => const LastAds(),
           toUrgentScrren: (context) => const UrgentScrren(),
           // toResAllReal: (context) => const ResAllRealState(list:[],),
@@ -98,7 +99,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 /*
 git init
 git add README.md

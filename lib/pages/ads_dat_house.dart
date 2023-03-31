@@ -510,30 +510,55 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
   // this is item for list in checkInfo add for push to database
   void listOfItemsHousing() {
     // sub2CatToDtabase,
-    listCheckInfoAds.clear();
+    listDetailsAds.clear();
+    listTitleDetails.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
-      '${AppLocalizations.of(context)!.title} : ${context.read<StringVal>().advertTitle ?? text}',
-      '${AppLocalizations.of(context)!.explanation} : ${context.read<StringVal>().explanation ?? text}',
-      '${AppLocalizations.of(context)!.price} :  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
-      '${AppLocalizations.of(context)!.grossMeters} : ${context.read<StringVal>().grossMeter ?? text}',
-      '${AppLocalizations.of(context)!.netMeters} : ${context.read<StringVal>().netMeter ?? text}',
-      '${AppLocalizations.of(context)!.heating} : ${context.read<StringVal>().heating ?? text}',
-      '${AppLocalizations.of(context)!.front} : ${context.read<StringVal>().front ?? text}',
-      '${AppLocalizations.of(context)!.roomNum} : ${context.read<StringVal>().numOfRomms ?? text}',
-      '${AppLocalizations.of(context)!.buldingAge} : ${context.read<StringVal>().buildingAge ?? text}',
-      '${AppLocalizations.of(context)!.floorLocation} : ${context.read<StringVal>().floorLocation ?? text}',
-      '${AppLocalizations.of(context)!.numOfFloors} : ${context.read<StringVal>().numOfFloors ?? text}',
-      '${AppLocalizations.of(context)!.pathNum} : ${context.read<StringVal>().numOfPathRoom ?? text}',
-      '${AppLocalizations.of(context)!.balcony} : ${context.read<StringVal>().balcony ?? text}',
-      '${AppLocalizations.of(context)!.furnished} : ${context.read<StringVal>().furnished ?? text}',
-      '${AppLocalizations.of(context)!.usingStatus} : ${context.read<StringVal>().usingStatus ?? text}',
-      '${AppLocalizations.of(context)!.dues} : ${context.read<StringVal>().dues ?? text}',
-      '${AppLocalizations.of(context)!.deed} : ${context.read<StringVal>().deed ?? text}',
-      '${AppLocalizations.of(context)!.watching} : ${context.read<StringVal>().watching ?? text}',
-      '${AppLocalizations.of(context)!.bartered} : ${context.read<StringVal>().bartered ?? text}',
+      context.read<StringVal>().advertTitle ?? text,
+      context.read<StringVal>().explanation ?? text,
+      context.read<StringVal>().price ?? text,
+      context.read<StringVal>().currancyType ?? '\$',
+      context.read<StringVal>().grossMeter ?? text,
+      context.read<StringVal>().netMeter ?? text,
+      context.read<StringVal>().heating ?? text,
+      context.read<StringVal>().front ?? text,
+      context.read<StringVal>().numOfRomms ?? text,
+      context.read<StringVal>().buildingAge ?? text,
+      context.read<StringVal>().floorLocation ?? text,
+      context.read<StringVal>().numOfFloors ?? text,
+      context.read<StringVal>().numOfPathRoom ?? text,
+      context.read<StringVal>().balcony ?? text,
+      context.read<StringVal>().furnished ?? text,
+      context.read<StringVal>().usingStatus ?? text,
+      context.read<StringVal>().dues ?? text,
+      context.read<StringVal>().deed ?? text,
+      context.read<StringVal>().watching ?? text,
+      context.read<StringVal>().bartered ?? text,
     ];
-    listCheckInfoAds.addAll(list);
+    final listTilte = [
+      AppLocalizations.of(context)!.title,
+      AppLocalizations.of(context)!.explanation,
+      AppLocalizations.of(context)!.price,
+      AppLocalizations.of(context)!.currency,
+      AppLocalizations.of(context)!.grossMeters,
+      AppLocalizations.of(context)!.netMeters,
+      AppLocalizations.of(context)!.heating,
+      AppLocalizations.of(context)!.front,
+      AppLocalizations.of(context)!.roomNum,
+      AppLocalizations.of(context)!.buldingAge,
+      AppLocalizations.of(context)!.floorLocation,
+      AppLocalizations.of(context)!.numOfFloors,
+      AppLocalizations.of(context)!.pathNum,
+      AppLocalizations.of(context)!.balcony,
+      AppLocalizations.of(context)!.furnished,
+      AppLocalizations.of(context)!.usingStatus,
+      AppLocalizations.of(context)!.dues,
+      AppLocalizations.of(context)!.deed,
+      AppLocalizations.of(context)!.watching,
+      AppLocalizations.of(context)!.bartered
+    ];
+    listDetailsAds.addAll(list);
+    listTitleDetails.addAll(listTilte);
   }
 
   // this method for check required Field befor nav to next page

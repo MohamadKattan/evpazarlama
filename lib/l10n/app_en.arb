@@ -758,5 +758,9 @@
   "all48houer": "All last 48 hour ads",
   "@all48houer": {
     "description": "all48houer"
+  },
+  "currency": "Currency",
+  "@currency": {
+    "description": "currency"
   }
 }

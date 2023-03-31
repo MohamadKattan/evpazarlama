@@ -23,6 +23,7 @@ class AdsModel {
   List? owner;
   List? images;
   List? details;
+  List? title;
   Timestamp? dateExpired;
   Timestamp? dateStart;
   String? status;
@@ -45,6 +46,7 @@ class AdsModel {
       this.owner,
       this.images,
       this.details,
+      this.title,
       this.dateExpired,
       this.dateStart,
       this.status,
@@ -68,6 +70,7 @@ class AdsModel {
             longitude: map['adress']['longitude'],
             images: map['images'],
             details: map['details'],
+            title: map['title'],
             dateExpired: map['sitting']['dateExpired'],
             dateStart: map['sitting']['dateStart'],
             status: map['sitting']['status'],
@@ -100,7 +103,8 @@ class AdsModel {
           "longitude": context.read<DoubleVal>().longitude,
         },
         "images": urlImages,
-        "details": listCheckInfoAds,
+        "details": listDetailsAds,
+        "title": listTitleDetails,
         "sitting": {
           "userId": userId,
           "adsId": '$adsId$userId',

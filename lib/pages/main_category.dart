@@ -40,7 +40,7 @@ class MainCategory extends StatelessWidget {
               child: ListView(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 60 / 100,
+                    height: MediaQuery.of(context).size.height * 50 / 100,
                     child: ListView.builder(
                       padding: EdgeInsets.zero,
                       itemCount:
@@ -96,18 +96,28 @@ class MainCategory extends StatelessWidget {
                         textWeight: FontWeight.bold,
                         textColor: mainColor),
                   ),
-                  list == null
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            customSpacer(height: 90.0),
-                            customText(
-                                text: AppLocalizations.of(context)!.noFound,
-                                textColor: mainColor),
-                            const CircularProgressIndicator(
-                              color: mainColor,
-                            )
-                          ],
+                  list!.isEmpty
+                      ? Container(
+                          color: Colors.blueGrey.shade100,
+                          height: 300,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: customText(
+                                    text: AppLocalizations.of(context)!.noFound,
+                                    textColor: mainColor),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: CircularProgressIndicator(
+                                  color: mainColor,
+                                ),
+                              )
+                            ],
+                          ),
                         )
                       : CustomGrid().customGrid(context, list!),
                 ],

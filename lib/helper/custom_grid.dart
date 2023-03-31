@@ -27,7 +27,7 @@ class CustomGrid {
             child: Stack(
               children: [
                 Image.network(
-                  list[index].images?[0],
+                  list[index].images?[0] ?? urlHolder,
                   width: 200,
                   height: 145.0,
                   fit: BoxFit.cover,
@@ -38,13 +38,26 @@ class CustomGrid {
                   right: 0.0,
                   child: Container(
                     color: Colors.white.withOpacity(0.8),
-                    child: customText(
-                        text: list[index].details![0],
-                        textAlign: TextAlign.justify,
-                        overflow: TextOverflow.ellipsis,
-                        textFontSize: 16,
-                        textWeight: FontWeight.bold,
-                        textColor: mainColor),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        customText(
+                            text: list[index].details?[0]??'***',
+                            textAlign: TextAlign.justify,
+                            overflow: TextOverflow.ellipsis,
+                            textFontSize: 14,
+                            textWeight: FontWeight.bold,
+                            textColor: mainColor),
+                        customText(
+                            text: '${list[index].details?[2]??'***'} ${list[index].details?[3]??'***'}',
+                            textAlign: TextAlign.justify,
+                            overflow: TextOverflow.ellipsis,
+                            textFontSize: 10,
+                            textWeight: FontWeight.bold,
+                            textColor: Colors.black),
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -59,34 +59,43 @@ class ResultAds extends StatelessWidget {
                       const EdgeInsets.only(top: 8.0, left: 4.0, right: 4.0),
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                      color: Colors.blueGrey.shade100,
+                      color: Colors.white,
+                      border: Border.all(width: 1.0, color: mainColor),
                       borderRadius: BorderRadius.circular(8.0)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.network(
-                        list[index].images![0],
+                        list[index].images?[0] ?? urlHolder,
                         height: 120,
                         width: 100,
                         fit: BoxFit.cover,
                       ),
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            customText(
-                                text: list[index].details![0],
-                                textColor: mainColor,
-                                overflow: TextOverflow.ellipsis),
-                            customSpacer(height: 10.0),
-                            customText(
-                                text: list[index].details![1],
-                                textColor: mainColor,
-                                overflow: TextOverflow.ellipsis),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
+                              child: customText(
+                                  text: list[index].details?[0] ?? '***',
+                                  textColor: mainColor,
+                                  overflow: TextOverflow.ellipsis),
+                            ),
+                            customSpacer(height: 5.0),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 8.0, right: 8.0),
+                              child: customText(
+                                  text: list[index].details?[1] ?? '***',
+                                  textColor: Colors.grey,
+                                  overflow: TextOverflow.ellipsis),
+                            ),
                             customSpacer(height: 40.0),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 customIcon(
                                     iconData: Icons.location_on,
@@ -97,12 +106,15 @@ class ResultAds extends StatelessWidget {
                                         '${list[index].city}\n ${list[index].area}',
                                     textColor: mainColor,
                                     textFontSize: 12.0),
-                                customSpacer(width: 30.0),
-                                customText(
-                                    text: list[index].details?[2],
-                                    textColor: mainColor,
-                                    textFontSize: 12.0,
-                                    overflow: TextOverflow.ellipsis)
+                                customSpacer(width: 70.0),
+                                Expanded(
+                                  child: customText(
+                                      text:
+                                          '${list[index].details?[2] ?? '***'} ${list[index].details?[3] ?? '***'}',
+                                      textColor: mainColor,
+                                      textFontSize: 12.0,
+                                      overflow: TextOverflow.ellipsis),
+                                )
                               ],
                             ),
                           ],

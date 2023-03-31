@@ -274,22 +274,36 @@ class AdsDetailsBulding extends StatelessWidget {
   }
 
   // this is item for list in checkInfo add for push to database
-  void listOfItemsHousing(BuildContext context) {
-    // subCatToDtabase,
-    listCheckInfoAds.clear();
+  void listOfItems(BuildContext context) {
+    listDetailsAds.clear();
+    listTitleDetails.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
-      '${AppLocalizations.of(context)!.title} : ${context.read<StringVal>().advertTitle ?? text}',
-      '${AppLocalizations.of(context)!.explanation} : ${context.read<StringVal>().explanation ?? text}',
-      '${AppLocalizations.of(context)!.price} :  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
-      '${AppLocalizations.of(context)!.grossMeters} : ${context.read<StringVal>().grossMeter ?? text}',
-      '${AppLocalizations.of(context)!.netMeters} : ${context.read<StringVal>().netMeter ?? text}',
-      '${AppLocalizations.of(context)!.heating} : ${context.read<StringVal>().heating ?? text}',
-      '${AppLocalizations.of(context)!.buldingAge} : ${context.read<StringVal>().buildingAge ?? text}',
-      '${AppLocalizations.of(context)!.numOfFloors} : ${context.read<StringVal>().numOfFloors ?? text}',
-      '${AppLocalizations.of(context)!.bartered} : ${context.read<StringVal>().bartered ?? text}',
+      context.read<StringVal>().advertTitle ?? text,
+      context.read<StringVal>().explanation ?? text,
+      context.read<StringVal>().price ?? text,
+      context.read<StringVal>().currancyType ?? '\$',
+      context.read<StringVal>().grossMeter ?? text,
+      context.read<StringVal>().netMeter ?? text,
+      context.read<StringVal>().heating ?? text,
+      context.read<StringVal>().buildingAge ?? text,
+      context.read<StringVal>().numOfFloors ?? text,
+      context.read<StringVal>().bartered ?? text,
     ];
-    listCheckInfoAds.addAll(list);
+    final listTile = [
+      AppLocalizations.of(context)!.title,
+      AppLocalizations.of(context)!.explanation,
+      AppLocalizations.of(context)!.price,
+      AppLocalizations.of(context)!.currency,
+      AppLocalizations.of(context)!.grossMeters,
+      AppLocalizations.of(context)!.netMeters,
+      AppLocalizations.of(context)!.heating,
+      AppLocalizations.of(context)!.buldingAge,
+      AppLocalizations.of(context)!.numOfFloors,
+      AppLocalizations.of(context)!.bartered
+    ];
+    listDetailsAds.addAll(list);
+    listTitleDetails.addAll(listTile);
   }
 
   // this method for check required Field befor nav to next page
@@ -314,7 +328,7 @@ class AdsDetailsBulding extends StatelessWidget {
           color: Colors.red);
     } else {
       sub2CatToDtabase = 'building';
-      listOfItemsHousing(context);
+      listOfItems(context);
       GlobalMethods()
           .pushToNewScreen(context: context, routeName: toStartPickLocation);
     }

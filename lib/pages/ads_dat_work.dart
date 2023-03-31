@@ -300,18 +300,33 @@ class AdsDetailsWorkPlace extends StatelessWidget {
   // this is item for list in checkInfo add for push to database
   void listOfItemsHousing(BuildContext context) {
     // subCatToDtabase,
-    listCheckInfoAds.clear();
+    listDetailsAds.clear();
+    listTitleDetails.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
-      '${AppLocalizations.of(context)!.title} : ${context.read<StringVal>().advertTitle ?? text}',
-      '${AppLocalizations.of(context)!.explanation} : ${context.read<StringVal>().explanation ?? text}',
-      '${AppLocalizations.of(context)!.price} :  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
-      '${AppLocalizations.of(context)!.grossMeters} : ${context.read<StringVal>().grossMeter ?? text}',
-      '${AppLocalizations.of(context)!.netMeters} : ${context.read<StringVal>().netMeter ?? text}',
-      '${AppLocalizations.of(context)!.dailySale} : ${context.read<StringVal>().dailySale ?? text} ${context.read<StringVal>().dailyCurrancyT ?? '\$'}',
-      '${AppLocalizations.of(context)!.buldingAge} : ${context.read<StringVal>().buildingAge ?? text}',
+      context.read<StringVal>().advertTitle ?? text,
+      context.read<StringVal>().explanation ?? text,
+      context.read<StringVal>().price ?? text,
+      context.read<StringVal>().currancyType ?? '\$',
+      context.read<StringVal>().grossMeter ?? text,
+      context.read<StringVal>().netMeter ?? text,
+      context.read<StringVal>().dailySale ?? text,
+      context.read<StringVal>().dailyCurrancyT ?? '\$',
+      context.read<StringVal>().buildingAge ?? text,
     ];
-    listCheckInfoAds.addAll(list);
+    final listTille = [
+      AppLocalizations.of(context)!.title,
+      AppLocalizations.of(context)!.explanation,
+      AppLocalizations.of(context)!.price,
+      AppLocalizations.of(context)!.currency,
+      AppLocalizations.of(context)!.grossMeters,
+      AppLocalizations.of(context)!.netMeters,
+      AppLocalizations.of(context)!.dailySale,
+      AppLocalizations.of(context)!.currency,
+      AppLocalizations.of(context)!.buldingAge
+    ];
+    listDetailsAds.addAll(list);
+    listTitleDetails.addAll(listTille);
   }
 
   // this method for check requird field

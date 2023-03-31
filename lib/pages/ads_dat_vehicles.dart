@@ -263,22 +263,38 @@ class AdsDetailsVehicles extends StatelessWidget {
   }
 
   // this is item for list in checkInfo add for push to database
-  void listOfItemsHousing(BuildContext context) {
-    listCheckInfoAds.clear();
+  void listOfItems(BuildContext context) {
+    listDetailsAds.clear();
+    listTitleDetails.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
-      '${AppLocalizations.of(context)!.title} : ${context.read<StringVal>().advertTitle ?? text}',
-      '${AppLocalizations.of(context)!.explanation} : ${context.read<StringVal>().explanation ?? text}',
-      '${AppLocalizations.of(context)!.price} :  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
-      '${AppLocalizations.of(context)!.model} : ${context.read<StringVal>().model ?? text}',
-      '${AppLocalizations.of(context)!.yearMade} : ${context.read<StringVal>().yearMade ?? text}',
-      '${AppLocalizations.of(context)!.yearRigester} : ${context.read<StringVal>().yearRigester ?? text}',
-      '${AppLocalizations.of(context)!.kilometers} : ${context.read<StringVal>().kilometers ?? text}',
-      '${AppLocalizations.of(context)!.color} : ${context.read<StringVal>().color ?? text}',
-      '${AppLocalizations.of(context)!.motorClass} : ${context.read<StringVal>().motorClass ?? text}',
-      '${AppLocalizations.of(context)!.withinWarranty} : ${context.read<StringVal>().withinWarranty ?? text}',
+      context.read<StringVal>().advertTitle ?? text,
+      context.read<StringVal>().explanation ?? text,
+      context.read<StringVal>().price ?? text,
+      context.read<StringVal>().currancyType ?? '\$',
+      context.read<StringVal>().model ?? text,
+      context.read<StringVal>().yearMade ?? text,
+      context.read<StringVal>().yearRigester ?? text,
+      context.read<StringVal>().kilometers ?? text,
+      context.read<StringVal>().color ?? text,
+      context.read<StringVal>().motorClass ?? text,
+      context.read<StringVal>().withinWarranty ?? text,
     ];
-    listCheckInfoAds.addAll(list);
+    final listTitle = [
+      AppLocalizations.of(context)!.title,
+      AppLocalizations.of(context)!.explanation,
+      AppLocalizations.of(context)!.price,
+      AppLocalizations.of(context)!.currency,
+      AppLocalizations.of(context)!.model,
+      AppLocalizations.of(context)!.yearMade,
+      AppLocalizations.of(context)!.yearRigester,
+      AppLocalizations.of(context)!.kilometers,
+      AppLocalizations.of(context)!.color,
+      AppLocalizations.of(context)!.motorClass,
+      AppLocalizations.of(context)!.withinWarranty
+    ];
+    listDetailsAds.addAll(list);
+    listTitleDetails.addAll(listTitle);
   }
 
   void checkBefore(BuildContext context) {
@@ -302,7 +318,7 @@ class AdsDetailsVehicles extends StatelessWidget {
           color: Colors.red);
     } else {
       sub2CatToDtabase = context.read<StringVal>().subCategoryValue ?? 'null';
-      listOfItemsHousing(context);
+      listOfItems(context);
       GlobalMethods()
           .pushToNewScreen(context: context, routeName: toStartPickLocation);
     }

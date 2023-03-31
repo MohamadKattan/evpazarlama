@@ -187,5 +187,6 @@
     "adNumber": "İlan Numarası",
     "startDate": "ilan tarihi",
     "expiryDate": "bitiş tarihi",
-    "all48houer": "Tüm son 48 saatlik reklamlar"
+    "all48houer": "Tüm son 48 saatlik reklamlar",
+    "currency": "para birimi"
 }

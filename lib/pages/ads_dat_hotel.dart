@@ -286,22 +286,36 @@ class AdsDetailsHotels extends StatelessWidget {
   }
 
   // this is item for list in checkInfo add for push to database
-  void listOfItemsHousing(BuildContext context) {
-    // sub2CatToDtabase,
-    listCheckInfoAds.clear();
+  void listOfItems(BuildContext context) {
+    listDetailsAds.clear();
+    listTitleDetails.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
-      '${AppLocalizations.of(context)!.title} : ${context.read<StringVal>().advertTitle ?? text}',
-      '${AppLocalizations.of(context)!.explanation} : ${context.read<StringVal>().explanation ?? text}',
-      '${AppLocalizations.of(context)!.price} :  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
-      '${AppLocalizations.of(context)!.view} : ${context.read<StringVal>().view ?? text}',
-      '${AppLocalizations.of(context)!.additionalFeatures} : ${context.read<StringVal>().additionalFeatures ?? text}',
-      '${AppLocalizations.of(context)!.services} : ${context.read<StringVal>().services ?? text}',
-      '${AppLocalizations.of(context)!.roomNum} : ${context.read<StringVal>().numOfRomms ?? text}',
-      '${AppLocalizations.of(context)!.numOfFloors} : ${context.read<StringVal>().numOfFloors ?? text}',
-      '${AppLocalizations.of(context)!.buldingAge} : ${context.read<StringVal>().buildingAge ?? text}',
+      context.read<StringVal>().advertTitle ?? text,
+      context.read<StringVal>().explanation ?? text,
+      context.read<StringVal>().price ?? text,
+      context.read<StringVal>().currancyType ?? '\$',
+      context.read<StringVal>().view ?? text,
+      context.read<StringVal>().additionalFeatures ?? text,
+      context.read<StringVal>().services ?? text,
+      context.read<StringVal>().numOfRomms ?? text,
+      context.read<StringVal>().numOfFloors ?? text,
+      context.read<StringVal>().buildingAge ?? text,
     ];
-    listCheckInfoAds.addAll(list);
+    final listTitle = [
+      AppLocalizations.of(context)!.title,
+      AppLocalizations.of(context)!.explanation,
+      AppLocalizations.of(context)!.price,
+      AppLocalizations.of(context)!.currency,
+      AppLocalizations.of(context)!.view,
+      AppLocalizations.of(context)!.additionalFeatures,
+      AppLocalizations.of(context)!.services,
+      AppLocalizations.of(context)!.roomNum,
+      AppLocalizations.of(context)!.numOfFloors,
+      AppLocalizations.of(context)!.buldingAge
+    ];
+    listDetailsAds.addAll(list);
+    listTitleDetails.addAll(listTitle);
   }
 
   // this method for check required Field befor nav to next page
@@ -326,7 +340,7 @@ class AdsDetailsHotels extends StatelessWidget {
           color: Colors.red);
     } else {
       sub2CatToDtabase = 'hotelSub';
-      listOfItemsHousing(context);
+      listOfItems(context);
       GlobalMethods()
           .pushToNewScreen(context: context, routeName: toStartPickLocation);
     }

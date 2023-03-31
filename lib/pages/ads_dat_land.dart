@@ -258,23 +258,39 @@ class AdsDetailsLand extends StatelessWidget {
   }
 
   // this is item for list in checkInfo add for push to database
-  void listOfItemsHousing(BuildContext context) {
-       // subCatToDtabase,
-    listCheckInfoAds.clear();
+  void listOfItems(BuildContext context) {
+    // subCatToDtabase,
+    listDetailsAds.clear();
+    listTitleDetails.clear();
     String text = AppLocalizations.of(context)!.unKnow;
     final list = [
-      '${AppLocalizations.of(context)!.title} : ${context.read<StringVal>().advertTitle ?? text}',
-      '${AppLocalizations.of(context)!.explanation} : ${context.read<StringVal>().explanation ?? text}',
-      '${AppLocalizations.of(context)!.price} :  ${context.read<StringVal>().price ?? text} ${context.read<StringVal>().currancyType ?? '\$'}',
-      '${AppLocalizations.of(context)!.grossMeters} : ${context.read<StringVal>().grossMeter ?? text}',
-      '${AppLocalizations.of(context)!.netMeters} : ${context.read<StringVal>().netMeter ?? text}',
-      '${AppLocalizations.of(context)!.islandNo} : ${context.read<StringVal>().islandNo ?? text}',
-      '${AppLocalizations.of(context)!.parcelNo} : ${context.read<StringVal>().parcelNo ?? text}',
-      '${AppLocalizations.of(context)!.sheetNo} : ${context.read<StringVal>().sheetNo ?? text}',
-      '${AppLocalizations.of(context)!.deed} : ${context.read<StringVal>().deed ?? text}',
-      '${AppLocalizations.of(context)!.bartered} : ${context.read<StringVal>().bartered ?? text}',
+      context.read<StringVal>().advertTitle ?? text,
+      context.read<StringVal>().explanation ?? text,
+      context.read<StringVal>().price ?? text,
+      context.read<StringVal>().currancyType ?? '\$',
+      context.read<StringVal>().grossMeter ?? text,
+      context.read<StringVal>().netMeter ?? text,
+      context.read<StringVal>().islandNo ?? text,
+      context.read<StringVal>().parcelNo ?? text,
+      context.read<StringVal>().sheetNo ?? text,
+      context.read<StringVal>().deed ?? text,
+      context.read<StringVal>().bartered ?? text,
     ];
-    listCheckInfoAds.addAll(list);
+    final listTile = [
+      AppLocalizations.of(context)!.title,
+      AppLocalizations.of(context)!.explanation,
+      AppLocalizations.of(context)!.price,
+      AppLocalizations.of(context)!.currency,
+      AppLocalizations.of(context)!.grossMeters,
+      AppLocalizations.of(context)!.netMeters,
+      AppLocalizations.of(context)!.islandNo,
+      AppLocalizations.of(context)!.parcelNo,
+      AppLocalizations.of(context)!.sheetNo,
+      AppLocalizations.of(context)!.deed,
+      AppLocalizations.of(context)!.bartered
+    ];
+    listDetailsAds.addAll(list);
+    listTitleDetails.addAll(listTile);
   }
 
   void checkBefore(BuildContext context) {
@@ -298,7 +314,7 @@ class AdsDetailsLand extends StatelessWidget {
           color: Colors.red);
     } else {
       sub2CatToDtabase = 'land';
-      listOfItemsHousing(context);
+      listOfItems(context);
       GlobalMethods()
           .pushToNewScreen(context: context, routeName: toStartPickLocation);
     }

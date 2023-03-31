@@ -328,22 +328,62 @@ class DataBaseSrv {
 
   Widget streamGetAllAds() {
     listGenarlAds.clear();
-
     return StreamBuilder<QuerySnapshot>(
       stream: adsCollection.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return const Center(
-              child: CircularProgressIndicator(
-            color: mainColor,
-          ));
+          return Container(
+            color: Colors.blueGrey.shade100.withOpacity(0.6),
+            height: 300.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                customText(
+                    text: AppLocalizations.of(context)!.someWrong,
+                    textColor: Colors.red),
+                const CircularProgressIndicator(
+                  color: Colors.red,
+                ),
+              ],
+            ),
+          );
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-              child: CircularProgressIndicator(
-            color: mainColor,
-          ));
+          return Container(
+            color: Colors.blueGrey.shade100.withOpacity(0.6),
+            height: 300.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                customText(text: 'Wait...', textColor: Colors.amber),
+                const CircularProgressIndicator(
+                  color: Colors.amber,
+                ),
+              ],
+            ),
+          );
+        }
+
+        if (snapshot.data!.docs.isEmpty) {
+          return Container(
+            color: Colors.blueGrey.shade100.withOpacity(0.6),
+            height: 300.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                customText(
+                    text: AppLocalizations.of(context)!.noFound,
+                    textColor: mainColor),
+                const CircularProgressIndicator(
+                  color: mainColor,
+                ),
+              ],
+            ),
+          );
         }
         return Container(
           color: Colors.blueGrey.shade100.withOpacity(0.6),
@@ -359,7 +399,6 @@ class DataBaseSrv {
                   document.data()! as Map<String, dynamic>;
               AdsModel adsModel = AdsModel.fromJson(map);
               if (adsModel.status == 'ok') {
-                // methods
                 listGenarlAds.add(adsModel);
                 GlobalMethods().filtterGenerlListToAddIn48List();
                 GlobalMethods().filterGenerlList();
@@ -371,7 +410,7 @@ class DataBaseSrv {
                 child: Stack(
                   children: [
                     Image.network(
-                      adsModel.images?[0] ?? '',
+                      adsModel.images?[0] ?? urlHolder,
                       width: 200,
                       height: 145.0,
                       fit: BoxFit.cover,
@@ -382,13 +421,27 @@ class DataBaseSrv {
                       right: 0.0,
                       child: Container(
                         color: Colors.white.withOpacity(0.8),
-                        child: customText(
-                            text: adsModel.details![0] ?? 'null',
-                            textAlign: TextAlign.justify,
-                            overflow: TextOverflow.ellipsis,
-                            textFontSize: 16,
-                            textWeight: FontWeight.bold,
-                            textColor: mainColor),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            customText(
+                                text: adsModel.details?[0] ?? '***',
+                                textAlign: TextAlign.start,
+                                overflow: TextOverflow.ellipsis,
+                                textFontSize: 14,
+                                textWeight: FontWeight.bold,
+                                textColor: mainColor),
+                            customText(
+                                text:
+                                    '${adsModel.details?[2] ?? '***'}${adsModel.details?[3] ?? '***'}',
+                                textAlign: TextAlign.start,
+                                overflow: TextOverflow.ellipsis,
+                                textFontSize: 10,
+                                textWeight: FontWeight.bold,
+                                textColor: Colors.black),
+                          ],
+                        ),
                       ),
                     ),
                   ],

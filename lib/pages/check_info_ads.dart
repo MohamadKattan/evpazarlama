@@ -98,13 +98,13 @@ class CheckInfoAds extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
-                    itemCount: listCheckInfoAds.length,
+                    itemCount: listDetailsAds.length,
                     itemBuilder: (_, index) {
-                      if (listCheckInfoAds.isNotEmpty) {
+                      if (listDetailsAds.isNotEmpty) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: customText(
-                              text: listCheckInfoAds[index].toString(),
+                              text: listDetailsAds[index].toString(),
                               textColor: mainColor,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.justify),

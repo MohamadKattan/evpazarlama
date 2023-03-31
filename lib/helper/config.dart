@@ -23,6 +23,7 @@ const Color mainColor = Color(0xFF00A3E0);
 const Color secondColor = Color(0xFFFBC408);
 const Color defColor = Colors.white;
 final Color greyColor = Colors.grey.shade300;
+String urlHolder = 'https://placehold.jp/200x145.png';
 Position? currentPosition;
 double? latitudeVal;
 double? longitudeVal;
@@ -34,7 +35,8 @@ int mainCatogry = 0; // Estate0,Vehicle1,Hotel2,last38Ads3,Urgent4
 int listOfItemVal = 0; // housItems0,workPlace1,Motor2,car3,Mini4....
 int saleRentElseVal = 0; // sale 0, rent 1, daily 2,trans 3 for send to data
 String? sub2CatToDtabase;
-List listCheckInfoAds = [];
+List listDetailsAds = [];
+List listTitleDetails = [];
 int day = DateTime.now().day;
 int monthe = DateTime.now().month;
 int expirtMont = monthe != 12 ? DateTime.now().month + 1 : 1;
