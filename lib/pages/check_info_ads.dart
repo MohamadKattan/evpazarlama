@@ -22,7 +22,7 @@ class CheckInfoAds extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blueGrey.shade100,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: mainColor,
           centerTitle: false,
@@ -36,8 +36,8 @@ class CheckInfoAds extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.topCenter,
-                padding: const EdgeInsets.only(
-                    top: 12.0, left: 8.0, right: 8.0),
+                padding:
+                    const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
                 child: customText(
                     text: AppLocalizations.of(context)!.checkInfoAdsDce,
                     textAlign: TextAlign.center,
@@ -86,7 +86,7 @@ class CheckInfoAds extends StatelessWidget {
                 child: customContainer(
                     spaceAroundTopMargin: 8.0,
                     spaceAroundBottomMargin: 8.0,
-                    colorBack: Colors.grey,
+                    colorBack: const Color.fromARGB(108, 238, 194, 166),
                     width: MediaQuery.of(context).size.width,
                     height: 10),
               ),
@@ -101,13 +101,31 @@ class CheckInfoAds extends StatelessWidget {
                     itemCount: listDetailsAds.length,
                     itemBuilder: (_, index) {
                       if (listDetailsAds.isNotEmpty) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: customText(
-                              text: listDetailsAds[index].toString(),
-                              textColor: mainColor,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.justify),
+                        return Container(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              customText(
+                                  text: listTitleDetails[index].toString(),
+                                  textColor: mainColor,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.justify),
+                              customText(text: ' : ', textColor: mainColor),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0, right: 8.0),
+                                  child: customText(
+                                      text: listDetailsAds[index].toString(),
+                                      textColor: mainColor,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.justify),
+                                ),
+                              ),
+                            ],
+                          ),
                         );
                       } else {
                         return const Text('null');
@@ -204,8 +222,10 @@ class CheckInfoAds extends StatelessWidget {
             top: 50,
             child: Container(
               margin: const EdgeInsets.all(8),
-              color: const Color.fromARGB(108, 100, 95, 92),
               height: 90.0,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(108, 238, 194, 166),
+                  borderRadius: BorderRadius.circular(4.0)),
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.zero,

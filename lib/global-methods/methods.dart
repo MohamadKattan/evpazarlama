@@ -735,10 +735,11 @@ class GlobalMethods {
     return listCar;
   }
 
+  //last filter after user chose sale or rent and chose damged car
   Future<List<AdsModel>> lastFilterDamgedCar(List<AdsModel> list) async {
     listCar.clear();
     for (var i in list) {
-      if (i.amainCatogry == listOfItemVal.toString()) {
+      if (i.asubCatogry == listOfItemVal.toString()) {
         listCar.add(i);
       }
     }
@@ -746,6 +747,7 @@ class GlobalMethods {
     return listCar;
   }
 
+  //last filter after user chose sale or rent and chose hotel \ apatment Hotel \ else ...
   Future<List<AdsModel>> lastFilterHotels(List<AdsModel> list) async {
     listHotel.clear();
     for (var i in list) {
@@ -755,5 +757,11 @@ class GlobalMethods {
       }
     }
     return listHotel;
+  }
+
+  // filter result based on details as adress and price number of room and else ...
+  Future<List<AdsModel>> filterDetails(List<AdsModel>list) async {
+    listSmallDetails.clear();
+    return listSmallDetails;
   }
 }

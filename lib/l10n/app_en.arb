@@ -762,5 +762,26 @@
   "currency": "Currency",
   "@currency": {
     "description": "currency"
+  },
+  "oneData": "Ad deta",
+  "@oneData": {
+    "description": "oneData"
+  },
+  "adInfo": "Ad Info",
+  "@adInfo": {
+    "description": "adInfo"
+  },
+  "exPlainiNFO": "Explanation",
+  "@adInfo": {
+    "description": "adInfo"
+  },
+  "location": "Location",
+  "@location": {
+    "description": "location"
+  },
+  "ownerInfo": "Ad owner",
+  "@ownerInfo": {
+    "description": "ownerInfo"
   }
+
 }

@@ -154,7 +154,7 @@ class LastAds extends StatelessWidget {
               spaceAroundTopMargin: 20.0,
               borderColor: const Color.fromARGB(255, 161, 204, 226),
               borderWidth: 1.0,
-              colorBack: const Color.fromARGB(255, 230, 177, 160),
+              colorBack: const Color.fromARGB(255, 240, 214, 205),
               child: customText(
                   text: AppLocalizations.of(context)!.subNewstAds,
                   textAlign: TextAlign.justify,
@@ -163,24 +163,22 @@ class LastAds extends StatelessWidget {
             ),
             listAds48Houer.isEmpty
                 ? Container(
-                 height: 300.0,
-                 color: Colors.blueGrey.shade100,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                   
+                    height: 300.0,
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      // customSpacer(height: 90.0),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: customText(
                               text: AppLocalizations.of(context)!.noFound,
                               textColor: mainColor),
                         ),
-                          const  CircularProgressIndicator(color: mainColor)
+                        const CircularProgressIndicator(color: mainColor)
                       ],
                     ),
-                )
+                  )
                 : CustomGrid().customGrid(context, listAds48Houer),
           ],
         ),

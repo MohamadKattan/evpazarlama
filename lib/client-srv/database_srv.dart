@@ -386,7 +386,7 @@ class DataBaseSrv {
           );
         }
         return Container(
-          color: Colors.blueGrey.shade100.withOpacity(0.6),
+          color: Colors.white,
           height: 300.0,
           child: GridView.count(
             padding: const EdgeInsets.all(8.0),
@@ -405,7 +405,7 @@ class DataBaseSrv {
               }
               return Container(
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1.0, color: Colors.white),
+                  border: Border.all(width: 1.0, color: mainColor),
                 ),
                 child: Stack(
                   children: [
@@ -420,6 +420,7 @@ class DataBaseSrv {
                       left: 0.0,
                       right: 0.0,
                       child: Container(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                         color: Colors.white.withOpacity(0.8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

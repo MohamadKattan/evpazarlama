@@ -188,5 +188,11 @@
     "startDate": "ilan tarihi",
     "expiryDate": "bitiş tarihi",
     "all48houer": "Tüm son 48 saatlik reklamlar",
-    "currency": "para birimi"
+    "currency": "para birimi",
+    "oneData": "İlan detayı",
+    "adInfo": "İlan Bilgileri",
+    "exPlainiNFO": "Açıklama",
+    "location": "Konum",
+    "ownerInfo": "ilan sahibi"
+    
 }

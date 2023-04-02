@@ -1,20 +1,19 @@
 // this screen for display realSatae category
 
-import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/models/ads_model.dart';
 import 'package:evpazarlama/pages/result_all_real.dart';
+import 'package:evpazarlama/pages/sale_rent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../global-methods/methods.dart';
-import '../../helper/custom_icon.dart';
 import '../helper/custom_container.dart';
 import '../helper/custom_grid.dart';
+import '../helper/custom_icon.dart';
 import '../helper/custom_spacer.dart';
-import 'list_of_item.dart';
 
 class MainCategory extends StatelessWidget {
   final List<AdsModel>? list;
@@ -22,6 +21,7 @@ class MainCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listMainCatogry = GlobalMethods().typeOfListMainCatogry(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -43,26 +43,48 @@ class MainCategory extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 50 / 100,
                     child: ListView.builder(
                       padding: EdgeInsets.zero,
-                      itemCount:
-                          GlobalMethods().typeOfListMainCatogry(context).length,
+                      itemCount: listMainCatogry.length,
                       itemBuilder: (context, index) {
-                        if (GlobalMethods()
-                            .typeOfListMainCatogry(context)
-                            .isNotEmpty) {
+                        if (listMainCatogry.isNotEmpty) {
                           return ListTile(
                             onTap: () async {
-                              final res = await showDialog(
-                                  context: context,
-                                  barrierDismissible: false,
-                                  builder: (_) {
-                                    return CustomDailog()
-                                        .dailogSaleRent(context);
-                                  });
-                              if (res == true) {
-                                if (context.mounted) {
-                                  setItemandnav(context, index, list);
-                                }
+                              if (index == 0) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) {
+                                      return ResultAds(
+                                        list: list!,
+                                      );
+                                    },
+                                  ),
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) {
+                                      return SaleReantChose(
+                                          index: index,
+                                          list: list,
+                                          length: listMainCatogry.length);
+                                    },
+                                  ),
+                                );
                               }
+
+                              // final res = await showDialog(
+                              //     context: context,
+                              //     barrierDismissible: false,
+                              //     builder: (_) {
+                              //       return CustomDailog()
+                              //           .dailogSaleRent(context);
+                              //     });
+                              // if (res == true) {
+                              //   if (context.mounted) {
+                              //     setItemandnav(context, index, list);
+                              //   }
+                              // }
                             },
                             minLeadingWidth: 10.0,
                             trailing: customIcon(
@@ -89,7 +111,7 @@ class MainCategory extends StatelessWidget {
                     spaceAroundTopMargin: 20.0,
                     borderColor: const Color.fromARGB(255, 161, 204, 226),
                     borderWidth: 1.0,
-                    colorBack: const Color.fromARGB(255, 230, 177, 160),
+                    colorBack: const Color.fromARGB(255, 247, 214, 203),
                     child: customText(
                         text: AppLocalizations.of(context)!.allAdsVitrin,
                         textAlign: TextAlign.justify,
@@ -129,192 +151,191 @@ class MainCategory extends StatelessWidget {
     );
   }
 
-  // this method for check if will nav to specifc screen or show dailog rent sale list
-  Future<void> setItemandnav(
-      BuildContext context, int index, List<AdsModel>? list) async {
-    int length = GlobalMethods().typeOfListMainCatogry(context).length;
-    if (length == 5) {
-      //Estata
-      switch (index) {
-        case 0:
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ResultAds(
-              list: list!,
-            );
-          }));
-          break;
-        case 1:
-          listOfItemVal = 0;
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListOfIteam(list: list!);
-          }));
-          break;
-        case 2:
-          listOfItemVal = 1;
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListOfIteam(list: list!);
-          }));
-          break;
-        case 3:
-          listOfItemVal = 20;
-          sub2CatToDtabase = 'land';
-          final resList = await GlobalMethods().lastFilterLand(list);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
-          break;
-        case 4:
-          listOfItemVal = 21;
-          sub2CatToDtabase = 'building';
-          final resList = await GlobalMethods().lastfilterBuilding(list!);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
-          break;
-        default:
-          null;
-          break;
-      }
-    } else if (length == 7) {
-      //vehicle
-      switch (index) {
-        case 0:
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ResultAds(
-              list: list!,
-            );
-          }));
-          break;
-        case 1:
-          listOfItemVal = 2;
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListOfIteam(list: list!);
-          }));
+  // Future<void> setItemandnav(
+  //     BuildContext context, int index, List<AdsModel>? list) async {
+  //   int length = GlobalMethods().typeOfListMainCatogry(context).length;
+  //   if (length == 5) {
+  //     //Estata
+  //     switch (index) {
+  //       case 0:
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ResultAds(
+  //             list: list!,
+  //           );
+  //         }));
+  //         break;
+  //       case 1:
+  //         listOfItemVal = 0;
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ListOfIteam(list: list!);
+  //         }));
+  //         break;
+  //       case 2:
+  //         listOfItemVal = 1;
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ListOfIteam(list: list!);
+  //         }));
+  //         break;
+  //       case 3:
+  //         listOfItemVal = 20;
+  //         sub2CatToDtabase = 'land';
+  //         final resList = await GlobalMethods().lastFilterLand(list);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
+  //         break;
+  //       case 4:
+  //         listOfItemVal = 21;
+  //         sub2CatToDtabase = 'building';
+  //         final resList = await GlobalMethods().lastfilterBuilding(list!);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
+  //         break;
+  //       default:
+  //         null;
+  //         break;
+  //     }
+  //   } else if (length == 7) {
+  //     //vehicle
+  //     switch (index) {
+  //       case 0:
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ResultAds(
+  //             list: list!,
+  //           );
+  //         }));
+  //         break;
+  //       case 1:
+  //         listOfItemVal = 2;
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ListOfIteam(list: list!);
+  //         }));
 
-          break;
-        case 2:
-          listOfItemVal = 3;
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListOfIteam(list: list!);
-          }));
+  //         break;
+  //       case 2:
+  //         listOfItemVal = 3;
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ListOfIteam(list: list!);
+  //         }));
 
-          break;
-        case 3:
-          listOfItemVal = 4;
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListOfIteam(list: list!);
-          }));
+  //         break;
+  //       case 3:
+  //         listOfItemVal = 4;
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ListOfIteam(list: list!);
+  //         }));
 
-          break;
-        case 4:
-          listOfItemVal = 5;
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListOfIteam(list: list!);
-          }));
+  //         break;
+  //       case 4:
+  //         listOfItemVal = 5;
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ListOfIteam(list: list!);
+  //         }));
 
-          break;
-        case 5:
-          listOfItemVal = 6;
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ListOfIteam(list: list!);
-          }));
-          break;
-        case 6:
-          listOfItemVal = 7;
-          final resList = await GlobalMethods().lastFilterDamgedCar(list!);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
-          break;
-        default:
-          null;
-          break;
-      }
-    } else if (length == 6) {
-      //hotels
-      switch (index) {
-        case 0:
-          Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return ResultAds(
-              list: list!,
-            );
-          }));
-          break;
-        case 1:
-          listOfItemVal = 8;
-          final resList = await GlobalMethods().lastFilterHotels(list!);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
+  //         break;
+  //       case 5:
+  //         listOfItemVal = 6;
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ListOfIteam(list: list!);
+  //         }));
+  //         break;
+  //       case 6:
+  //         listOfItemVal = 7;
+  //         final resList = await GlobalMethods().lastFilterDamgedCar(list!);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
+  //         break;
+  //       default:
+  //         null;
+  //         break;
+  //     }
+  //   } else if (length == 6) {
+  //     //hotels
+  //     switch (index) {
+  //       case 0:
+  //         Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //           return ResultAds(
+  //             list: list!,
+  //           );
+  //         }));
+  //         break;
+  //       case 1:
+  //         listOfItemVal = 8;
+  //         final resList = await GlobalMethods().lastFilterHotels(list!);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
 
-          break;
-        case 2:
-          listOfItemVal = 9;
-          final resList = await GlobalMethods().lastFilterHotels(list!);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
+  //         break;
+  //       case 2:
+  //         listOfItemVal = 9;
+  //         final resList = await GlobalMethods().lastFilterHotels(list!);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
 
-          break;
-        case 3:
-          listOfItemVal = 10;
-          final resList = await GlobalMethods().lastFilterHotels(list!);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
+  //         break;
+  //       case 3:
+  //         listOfItemVal = 10;
+  //         final resList = await GlobalMethods().lastFilterHotels(list!);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
 
-          break;
-        case 4:
-          listOfItemVal = 11;
-          final resList = await GlobalMethods().lastFilterHotels(list!);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
+  //         break;
+  //       case 4:
+  //         listOfItemVal = 11;
+  //         final resList = await GlobalMethods().lastFilterHotels(list!);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
 
-          break;
-        case 5:
-          listOfItemVal = 12;
-          final resList = await GlobalMethods().lastFilterHotels(list!);
-          if (context.mounted) {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return ResultAds(
-                list: resList,
-              );
-            }));
-          }
+  //         break;
+  //       case 5:
+  //         listOfItemVal = 12;
+  //         final resList = await GlobalMethods().lastFilterHotels(list!);
+  //         if (context.mounted) {
+  //           Navigator.push(context, MaterialPageRoute(builder: (_) {
+  //             return ResultAds(
+  //               list: resList,
+  //             );
+  //           }));
+  //         }
 
-          break;
-      }
-    } else {
-      return;
-    }
-  }
+  //         break;
+  //     }
+  //   } else {
+  //     return;
+  //   }
+  // }
 }

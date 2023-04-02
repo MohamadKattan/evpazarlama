@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
               customContainer(
                 borderColor: const Color.fromARGB(255, 161, 204, 226),
                 borderWidth: 1.0,
-                colorBack: const Color.fromARGB(255, 230, 177, 160),
+                colorBack: const Color.fromARGB(255, 240, 214, 205),
                 child: customText(
                     text: AppLocalizations.of(context)!.allAdsVitrin,
                     textAlign: TextAlign.justify,
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
               customContainer(
                 borderColor: const Color.fromARGB(255, 161, 204, 226),
                 borderWidth: 1.0,
-                colorBack: const Color.fromARGB(255, 230, 177, 160),
+                colorBack: const Color.fromARGB(255, 240, 214, 205),
                 child: customText(
                     text: AppLocalizations.of(context)!.lastAdsVisted,
                     textColor: mainColor,
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
               customContainer(
                   spaceAroundTop: 300.0,
                   spaceAroundBottomMargin: 100.0,
-                  colorBack: Colors.blueGrey.shade100,
+                  colorBack: Colors.white,
                   child: customText(text: "dev")),
             ],
           ),

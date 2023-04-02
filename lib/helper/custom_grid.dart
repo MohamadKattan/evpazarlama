@@ -10,7 +10,7 @@ class CustomGrid {
     return Container(
       padding: const EdgeInsets.all(8.0),
       height: 300,
-      color: Colors.blueGrey.shade100,
+      color: Colors.white,
       child: GridView.builder(
         scrollDirection: Axis.horizontal,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -22,7 +22,7 @@ class CustomGrid {
         itemBuilder: (_, index) {
           return Container(
             decoration: BoxDecoration(
-              border: Border.all(width: 1.0, color: Colors.white),
+              border: Border.all(width: 1.0, color: mainColor),
             ),
             child: Stack(
               children: [
@@ -43,14 +43,15 @@ class CustomGrid {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         customText(
-                            text: list[index].details?[0]??'***',
+                            text: list[index].details?[0] ?? '***',
                             textAlign: TextAlign.justify,
                             overflow: TextOverflow.ellipsis,
                             textFontSize: 14,
                             textWeight: FontWeight.bold,
                             textColor: mainColor),
                         customText(
-                            text: '${list[index].details?[2]??'***'} ${list[index].details?[3]??'***'}',
+                            text:
+                                '${list[index].details?[2] ?? '***'} ${list[index].details?[3] ?? '***'}',
                             textAlign: TextAlign.justify,
                             overflow: TextOverflow.ellipsis,
                             textFontSize: 10,

@@ -18,12 +18,12 @@ import 'package:evpazarlama/pages/profile_screen.dart';
 import 'package:evpazarlama/pages/start_pick_location.dart';
 import 'package:evpazarlama/pages/start_write_location.dart';
 import 'package:evpazarlama/state-maneg/double_val.dart';
+import 'package:evpazarlama/state-maneg/int_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-
 
 import 'pages/home_screen.dart';
 import 'pages/last_ads.dart';
@@ -32,6 +32,7 @@ import 'pages/urgent_screen.dart';
 import 'state-maneg/booling_val.dart';
 import 'state-maneg/image_val.dart';
 import 'state-maneg/string_val.dart';
+
 // satrday at 18/3/2023 i got sallary for month 2 =>600$ from nizam
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => StringVal()),
         ChangeNotifierProvider(create: (_) => ImageVal()),
         ChangeNotifierProvider(create: (_) => DoubleVal()),
+        ChangeNotifierProvider(create: (_) => IntVal())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -66,7 +68,6 @@ class MyApp extends StatelessWidget {
           Locale('ar'), // ar
           Locale('tr'), // tr
         ],
-      
         initialRoute: '/',
         routes: {
           toSplash: (context) => const SplashScreen(),
@@ -93,7 +94,7 @@ class MyApp extends StatelessWidget {
           toStartMapLocation: (context) => const StartMapLocation(),
           toSatrtWriteLocation: (context) => const StartWriteLocation(),
           toPlanScreen: (context) => const PlanScreen(),
-          toCheckInfoAds: (context) => const CheckInfoAds()
+          toCheckInfoAds: (context) => const CheckInfoAds(),
         },
       ),
     );

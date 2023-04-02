@@ -177,7 +177,7 @@ class AdsDetailsVehicles extends StatelessWidget {
             context: context,
             width: 80.0,
             margin: 8.0,
-            fontSizeC: 24,
+            fontSizeC: 16,
             dropdownValue: context.watch<StringVal>().motorClass,
             list: [
               AppLocalizations.of(context)!.motorClass,
@@ -195,7 +195,7 @@ class AdsDetailsVehicles extends StatelessWidget {
             context: context,
             width: 80.0,
             margin: 8.0,
-            fontSizeC: 24,
+            fontSizeC: 16,
             dropdownValue: context.watch<StringVal>().withinWarranty,
             list: [
               AppLocalizations.of(context)!.withinWarranty,
