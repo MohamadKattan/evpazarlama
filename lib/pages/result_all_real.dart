@@ -7,6 +7,8 @@ import 'package:evpazarlama/helper/custom_flout.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/models/ads_model.dart';
+import 'package:evpazarlama/pages/filter_details.dart';
+import 'package:evpazarlama/pages/map_result_ads.dart';
 import 'package:evpazarlama/pages/one_ad_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,6 +21,7 @@ class ResultAds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalMethods().locatioServiceEnabled(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -33,7 +36,9 @@ class ResultAds extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  GlobalMethods().locatioServiceEnabled(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (_) {
+                    return FilterDetails(list: list);
+                  }));
                 },
                 child: Row(
                   children: [
@@ -52,8 +57,12 @@ class ResultAds extends StatelessWidget {
         ),
         drawer: customDrawer(context),
         floatingActionButton: customFloutButton(
-            function: () => null,
-            child: customIcon(iconData: Icons.location_pin)),
+            function: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) {
+                return MapResultads(list: list);
+              }));
+            },
+            child: customIcon(iconData: Icons.map_sharp)),
         body: list.isNotEmpty
             ? ListView.builder(
                 itemCount: list.length,
@@ -61,7 +70,7 @@ class ResultAds extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (_) {
-                        return OneAdsDetails(index: index, list: list);
+                        return OneAdsDetails(adsModel: list[index],);
                       }));
                     },
                     child: Container(

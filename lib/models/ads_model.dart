@@ -74,7 +74,7 @@ class AdsModel {
             dateExpired: map['sitting']['dateExpired'],
             dateStart: map['sitting']['dateStart'],
             status: map['sitting']['status'],
-            ownerId: map['sitting']['ownerId'],
+            ownerId: map['sitting']['userId'],
             adsId: map['sitting']['adsId']);
   Map<String, dynamic> toJson(
           {required BuildContext context,

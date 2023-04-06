@@ -1,4 +1,5 @@
 import 'package:evpazarlama/client-srv/database_srv.dart';
+import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/models/ads_model.dart';
 import 'package:flutter/material.dart';
@@ -109,13 +110,31 @@ class MyAdsScreen extends StatelessWidget {
                               child: ListView.builder(
                                 itemCount: list[index].details?.length,
                                 itemBuilder: (_, d) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: customText(
-                                        text: '${list[index].details![d]}',
-                                        textColor: mainColor,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.start),
+                                  return Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: customText(
+                                              text: '${list[index].title![d]}',
+                                              textColor: mainColor,
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.start),
+                                        ),
+                                      ),
+                                      customSpacer(width: 60.0),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: customText(
+                                              text:
+                                                  '${list[index].details![d]}',
+                                              textColor: mainColor,
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.start),
+                                        ),
+                                      ),
+                                    ],
                                   );
                                 },
                               ),

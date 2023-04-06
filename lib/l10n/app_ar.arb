@@ -193,6 +193,7 @@
     "adInfo": "معلومات الإعلان",
     "exPlainiNFO": "توضيح",
     "location": "الموقع",
-    "ownerInfo": "صاحب الإعلان"
+    "ownerInfo": "صاحب الإعلان",
+    "adTime": "تاريخ الإعلان"
     
 }

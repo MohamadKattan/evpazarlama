@@ -1,4 +1,5 @@
 import 'package:evpazarlama/models/ads_model.dart';
+import 'package:evpazarlama/pages/one_ad_details.dart';
 import 'package:flutter/material.dart';
 
 import 'config.dart';
@@ -26,11 +27,23 @@ class CustomGrid {
             ),
             child: Stack(
               children: [
-                Image.network(
-                  list[index].images?[0] ?? urlHolder,
-                  width: 200,
-                  height: 145.0,
-                  fit: BoxFit.cover,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) {
+                          return OneAdsDetails(adsModel: list[index]);
+                        },
+                      ),
+                    );
+                  },
+                  child: Image.network(
+                    list[index].images?[0] ?? urlHolder,
+                    width: 200,
+                    height: 145.0,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 customPositioned(
                   bottom: 0.0,

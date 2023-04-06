@@ -7,6 +7,7 @@ import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/helper/custom_positioned.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/models/ads_model.dart';
+import 'package:evpazarlama/pages/one_ad_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -324,7 +325,7 @@ class DataBaseSrv {
     }
   }
 
-//============================got all ads for all users====================
+//============================got aLL ADS FOR ALL USERS====================
 
   Widget streamGetAllAds() {
     listGenarlAds.clear();
@@ -409,11 +410,18 @@ class DataBaseSrv {
                 ),
                 child: Stack(
                   children: [
-                    Image.network(
-                      adsModel.images?[0] ?? urlHolder,
-                      width: 200,
-                      height: 145.0,
-                      fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) {
+                          return OneAdsDetails(adsModel: adsModel);
+                        }));
+                      },
+                      child: Image.network(
+                        adsModel.images?[0] ?? urlHolder,
+                        width: 200,
+                        height: 145.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     customPositioned(
                       bottom: 0.0,
@@ -453,6 +461,70 @@ class DataBaseSrv {
         );
       },
     );
+  }
+  //=======================================================================
+  //=============================Favori method=============================
+  //=======================================================================
+
+// this method for set my Favori collection
+  Future<void> setFavori(AdsModel list) async {
+    final map = <String, dynamic>{
+      "amainCatogry": list.amainCatogry,
+      "asubCatogry": list.asubCatogry,
+      "asub2Catogry": list.asub2Catogry,
+      "aoperation": list.aoperation,
+      "adsNumber": list.adsNumber,
+      "owner": [
+        list.owner?[0] ?? 'name',
+        list.owner?[1] ?? '+90..',
+        list.owner?[2] ?? 'Tax'
+      ],
+      "adress": {
+        "country": list.country,
+        "city": list.city,
+        "area": list.area,
+        "mainStreat": list.mainStreat,
+        "streat": list.streat,
+        "streatNo": list.streatNo,
+        "latitude": list.latitude,
+        "longitude": list.longitude,
+      },
+      "images": list.images,
+      "details": list.details,
+      "title": list.title,
+      "sitting": {
+        "userId": list.ownerId,
+        "adsId": list.adsId,
+        "status": "ok",
+        "dateStart": DateTime.utc(year, monthe, day),
+        "dateExpired": DateTime.utc(exPirtyear, expirtMont, day),
+      }
+    };
+    myFavori.doc(list.adsId).set(map);
+  }
+
+  // this method for get my favorit collection
+  Future<void> getMyFavori(BuildContext context) async {
+    listMyFavior.clear();
+    if (!userId.contains('null')) {
+      await myFavori.get().then((QuerySnapshot querySnapshot) {
+        if (querySnapshot.docs.isNotEmpty) {
+          for (var ele in querySnapshot.docs) {
+            Map<String, dynamic> map = ele.data() as Map<String, dynamic>;
+            AdsModel adsModel = AdsModel.fromJson(map);
+            listMyFavior.add(adsModel);
+          }
+        }
+      }).catchError((er) {
+        CustomDailog().customSnackBar(context: context, text: er);
+      });
+    } else {
+      return;
+    }
+  }
+
+  Future<void> deleteOneFavero(String? id) async {
+    await myFavori.doc(id).delete();
   }
 }
 

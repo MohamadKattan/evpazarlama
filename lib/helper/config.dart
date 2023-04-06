@@ -17,8 +17,11 @@ CollectionReference usersProfileCollection =
 CollectionReference myAdsCollection =
     firestore.collection('users').doc(userId).collection('myAds');
 CollectionReference adsCollection = firestore.collection('allAds'); //cloud
+CollectionReference myFavori =
+    firestore.collection('users').doc(userId).collection('Favori');
+
 UserInfoProfile? userInfoProfile;
-// 1_============proprty===================
+// 1_============proprty===================ÍÍÍ
 const Color mainColor = Color(0xFF00A3E0);
 const Color secondColor = Color(0xFFFBC408);
 const Color defColor = Colors.white;
@@ -60,6 +63,7 @@ List<AdsModel> listMotor = [];
 List<AdsModel> listCar = [];
 List<AdsModel> listHotel = [];
 List<AdsModel> listSmallDetails = [];
+List<AdsModel> listMyFavior = [];
 //3===============_root====================
 const toSplash = '/';
 const toHomeScreen = '/HomeScreen';
@@ -89,6 +93,7 @@ const toStartMapLocation = '/StartMapLocation';
 const toSatrtWriteLocation = "/StartWriteLocation";
 const toPlanScreen = '/PlanScreen';
 const toCheckInfoAds = '/CheckInfoAds';
+const toFavoriScreen = '/FavoriScreen';
 
 //================================GoogleApi================================
 String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth

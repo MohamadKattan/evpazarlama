@@ -179,6 +179,10 @@ class ProfileScreen extends StatelessWidget {
                             textFontSize: 14.0),
                       ),
                       ListTile(
+                        onTap: () {
+                          GlobalMethods().pushToNewScreen(
+                              context: context, routeName: toFavoriScreen);
+                        },
                         contentPadding: EdgeInsets.zero,
                         minLeadingWidth: 0.0,
                         minVerticalPadding: 0.0,
@@ -195,7 +199,8 @@ class ProfileScreen extends StatelessWidget {
                             textAlign: TextAlign.justify),
                         subtitle: customText(
                             text:
-                                '(${AppLocalizations.of(context)!.subfievort})',
+                                '(${AppLocalizations.of(context)!.subfievort} '
+                                '${listMyFavior.length} )',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),

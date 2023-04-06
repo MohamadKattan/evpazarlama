@@ -782,6 +782,9 @@
   "ownerInfo": "Ad owner",
   "@ownerInfo": {
     "description": "ownerInfo"
+  },
+  "adTime": "Ad date",
+  "@adTime": {
+    "description": "adTime"
   }
-
 }

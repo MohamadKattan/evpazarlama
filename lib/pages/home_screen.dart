@@ -6,6 +6,7 @@ import 'package:evpazarlama/custom-widgets/list_home_drawer.dart';
 import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
 import 'package:evpazarlama/helper/custom_container.dart';
+import 'package:evpazarlama/helper/custom_grid.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
@@ -110,17 +111,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderWidth: 1.0,
                 colorBack: const Color.fromARGB(255, 240, 214, 205),
                 child: customText(
-                    text: AppLocalizations.of(context)!.lastAdsVisted,
+                    text: AppLocalizations.of(context)!.fievort,
                     textColor: mainColor,
                     textWeight: FontWeight.bold,
                     textAlign: TextAlign.justify),
               ),
-              // grid from last visted ads
-              customContainer(
-                  spaceAroundTop: 300.0,
-                  spaceAroundBottomMargin: 100.0,
-                  colorBack: Colors.white,
-                  child: customText(text: "dev")),
+              // grid from last listMyFavior ads
+              CustomGrid().customGrid(context, listMyFavior),
             ],
           ),
         ),

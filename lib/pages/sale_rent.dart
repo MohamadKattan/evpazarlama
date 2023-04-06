@@ -2,14 +2,12 @@ import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/pages/result_all_real.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 import '../global-methods/methods.dart';
 import '../helper/config.dart';
 import '../helper/custom_icon.dart';
 import '../helper/custom_text.dart';
 import '../models/ads_model.dart';
-import '../state-maneg/booling_val.dart';
 import 'list_of_item.dart';
 
 class SaleReantChose extends StatelessWidget {
@@ -44,7 +42,6 @@ class SaleReantChose extends StatelessWidget {
                 children: [
                   ListTile(
                     onTap: () {
-                      context.read<BoolingVal>().loadingAuth(true);
                       saleRentElseVal = 0;
                       setItemandnav(context, index!, list, length);
                     },

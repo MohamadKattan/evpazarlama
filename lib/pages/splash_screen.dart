@@ -28,6 +28,7 @@ void pushAftrer3Second(BuildContext context) async {
   DataBaseSrv().getUserProfileInfo(context);
   DataBaseSrv().getOwnerAds(context);
   DataBaseSrv().changeStatusAds(context);
+  DataBaseSrv().getMyFavori(context);
   Future.delayed(const Duration(milliseconds: 2000)).whenComplete(() {
     GlobalMethods()
         .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);

@@ -5,11 +5,21 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../helper/config.dart';
 import '../state-maneg/image_val.dart';
 
 class GlobalMethods {
+  //=======================================================================
+  //==============================url luncher==============================
+  //=======================================================================
+  Future<void> startLaunchUrl(String phoneNumber) async {
+    final Uri url = Uri.parse('tel:$phoneNumber');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
   //=======================================================================
   //========================image picker method============================
   //=======================================================================
@@ -760,7 +770,7 @@ class GlobalMethods {
   }
 
   // filter result based on details as adress and price number of room and else ...
-  Future<List<AdsModel>> filterDetails(List<AdsModel>list) async {
+  Future<List<AdsModel>> filterDetails(List<AdsModel> list) async {
     listSmallDetails.clear();
     return listSmallDetails;
   }

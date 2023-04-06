@@ -193,6 +193,7 @@
     "adInfo": "İlan Bilgileri",
     "exPlainiNFO": "Açıklama",
     "location": "Konum",
-    "ownerInfo": "ilan sahibi"
+    "ownerInfo": "ilan sahibi",
+    "adTime": "ilan tarihi"
     
 }
