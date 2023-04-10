@@ -150,35 +150,21 @@ class LastAds extends StatelessWidget {
                   textAlign: TextAlign.justify),
             ),
             // titel all 48 houer ads
-            customContainer(
-              spaceAroundTopMargin: 20.0,
-              borderColor: const Color.fromARGB(255, 161, 204, 226),
-              borderWidth: 1.0,
-              colorBack: const Color.fromARGB(255, 240, 214, 205),
-              child: customText(
-                  text: AppLocalizations.of(context)!.subNewstAds,
-                  textAlign: TextAlign.justify,
-                  textWeight: FontWeight.bold,
-                  textColor: mainColor),
-            ),
             listAds48Houer.isEmpty
-                ? Container(
-                    height: 300.0,
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: customText(
-                              text: AppLocalizations.of(context)!.noFound,
-                              textColor: mainColor),
-                        ),
-                        const CircularProgressIndicator(color: mainColor)
-                      ],
-                    ),
-                  )
+                ? const SizedBox()
+                : customContainer(
+                    spaceAroundTopMargin: 20.0,
+                    borderColor: const Color.fromARGB(255, 161, 204, 226),
+                    borderWidth: 1.0,
+                    colorBack: const Color.fromARGB(255, 240, 214, 205),
+                    child: customText(
+                        text: AppLocalizations.of(context)!.subNewstAds,
+                        textAlign: TextAlign.justify,
+                        textWeight: FontWeight.bold,
+                        textColor: mainColor),
+                  ),
+            listAds48Houer.isEmpty
+                ? const SizedBox()
                 : CustomGrid().customGrid(context, listAds48Houer),
           ],
         ),

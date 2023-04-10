@@ -194,6 +194,12 @@
     "exPlainiNFO": "توضيح",
     "location": "الموقع",
     "ownerInfo": "صاحب الإعلان",
-    "adTime": "تاريخ الإعلان"
+    "adTime": "تاريخ الإعلان",
+    "autoLoactionExplain": "هل ترغب في عرض الإعلانات بالقرب من هذا الموقع؟",
+    "minPrice": "السعر الأدنى",
+    "maxPrice": "أعلى سعر",
+    "displayResult": "عرض النتيجة",
+    "or": "أو",
+    "mainuilSearch": "بحث يدوي"
     
 }

@@ -25,7 +25,6 @@ class AdsDetailsBulding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalMethods().locatioServiceEnabled(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.blueGrey.shade100,
@@ -307,7 +306,7 @@ class AdsDetailsBulding extends StatelessWidget {
   }
 
   // this method for check required Field befor nav to next page
-  void checkBefore(BuildContext context) {
+  Future<void> checkBefore(BuildContext context) async {
     if (advertTitle.text.isEmpty) {
       CustomDailog().customSnackBar(
           context: context,
@@ -327,10 +326,21 @@ class AdsDetailsBulding extends StatelessWidget {
               '${AppLocalizations.of(context)!.price} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
     } else {
-      sub2CatToDtabase = 'building';
-      listOfItems(context);
-      GlobalMethods()
-          .pushToNewScreen(context: context, routeName: toStartPickLocation);
+      bool? locationVal = await GlobalMethods().locatioServiceEnabled(context);
+      if (locationVal) {
+        sub2CatToDtabase = 'building';
+        if (context.mounted) {
+          listOfItems(context);
+          GlobalMethods().pushToNewScreen(
+              context: context, routeName: toStartPickLocation);
+        }
+      } else {
+        if (context.mounted) {
+          CustomDailog().customSnackBar(
+              context: context,
+              text: AppLocalizations.of(context)!.locationdisabled);
+        }
+      }
     }
   }
 }

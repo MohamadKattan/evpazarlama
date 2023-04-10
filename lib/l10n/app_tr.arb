@@ -194,6 +194,12 @@
     "exPlainiNFO": "Açıklama",
     "location": "Konum",
     "ownerInfo": "ilan sahibi",
-    "adTime": "ilan tarihi"
+    "adTime": "ilan tarihi",
+    "autoLoactionExplain": "Bu konumun yakınında reklam görüntülemek ister misiniz?",
+    "minPrice": "Minimum fiyat",
+    "maxPrice": "En yüksek fiyat",
+    "displayResult": "Sonucu Görüntüle",
+    "or": "VEYA",
+    "mainuilSearch": "Manuel Arama"
     
 }

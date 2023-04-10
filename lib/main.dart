@@ -56,48 +56,46 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => IntVal())
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Ev Pazarlama',
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'), // en
-            Locale('ar'), // ar
-            Locale('tr'), // tr
-          ],
-          initialRoute: '/',
-          routes: {
-            toSplash: (context) => const SplashScreen(),
-            toHomeScreen: (context) => const HomeScreen(),
-            // toMainCategory: (context) => const MainCategory(list: [],),
-            toLastAds: (context) => const LastAds(),
-            toUrgentScrren: (context) => const UrgentScrren(),
-            // toResAllReal: (context) => const ResAllRealState(list:[],),
-            // toListOfIteam: (context) => const ListOfIteam(),
-            toLoginScreen: (context) => const LoginScreen(),
-            toProfileInfo: (context) => const ProfileInfo(),
-            toProfileScreen: (context) => const ProfileScreen(),
-            toAddNewAds: (context) => const AddNewAds(),
-            toAdsMainCategory: (context) => const AdsMainCategory(),
-            toAdsListOfItems: (context) => const AdsListOfItem(),
-            toAdsDetailsHoseing: (context) => const AdsDetailsHoseing(),
-            toAdsDetailsWorkPlace: (context) => const AdsDetailsWorkPlace(),
-            toAdsDetailsLand: (context) => const AdsDetailsLand(),
-            toAdsDetailsBulding: (context) => const AdsDetailsBulding(),
-            toAdsDetailsVehicles: (context) => const AdsDetailsVehicles(),
-            toAdsDetailsHotels: (context) => const AdsDetailsHotels(),
-            toStartPickLocation: (context) => const StartPickLocation(),
-            toAddPhoto: (context) => const AddPhotos(),
-            toStartMapLocation: (context) => const StartMapLocation(),
-            toSatrtWriteLocation: (context) => const StartWriteLocation(),
-            toPlanScreen: (context) => const PlanScreen(),
-            toCheckInfoAds: (context) => const CheckInfoAds(),
-            toFavoriScreen: (context) => const FavoriScreen()
-          }),
+        debugShowCheckedModeBanner: false,
+        title: 'Ev Pazarlama',
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'), // en
+          Locale('ar'), // ar
+          Locale('tr'), // tr
+        ],
+        initialRoute: '/',
+        routes: {
+          toSplash: (context) => const SplashScreen(),
+          toHomeScreen: (context) => const HomeScreen(),
+          toLastAds: (context) => const LastAds(),
+          toUrgentScrren: (context) => const UrgentScrren(),
+          toLoginScreen: (context) => const LoginScreen(),
+          toProfileInfo: (context) => const ProfileInfo(),
+          toProfileScreen: (context) => const ProfileScreen(),
+          toAddNewAds: (context) => const AddNewAds(),
+          toAdsMainCategory: (context) => const AdsMainCategory(),
+          toAdsListOfItems: (context) => const AdsListOfItem(),
+          toAdsDetailsHoseing: (context) => const AdsDetailsHoseing(),
+          toAdsDetailsWorkPlace: (context) => const AdsDetailsWorkPlace(),
+          toAdsDetailsLand: (context) => const AdsDetailsLand(),
+          toAdsDetailsBulding: (context) => const AdsDetailsBulding(),
+          toAdsDetailsVehicles: (context) => const AdsDetailsVehicles(),
+          toAdsDetailsHotels: (context) => const AdsDetailsHotels(),
+          toStartPickLocation: (context) => const StartPickLocation(),
+          toAddPhoto: (context) => const AddPhotos(),
+          toStartMapLocation: (context) => const StartMapLocation(),
+          toSatrtWriteLocation: (context) => const StartWriteLocation(),
+          toPlanScreen: (context) => const PlanScreen(),
+          toCheckInfoAds: (context) => const CheckInfoAds(),
+          toFavoriScreen: (context) => const FavoriScreen()
+        },
+      ),
     );
   }
 }

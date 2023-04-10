@@ -27,7 +27,6 @@ class AdsDetailsVehicles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalMethods().locatioServiceEnabled(context);
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.blueGrey.shade100,
@@ -297,7 +296,7 @@ class AdsDetailsVehicles extends StatelessWidget {
     listTitleDetails.addAll(listTitle);
   }
 
-  void checkBefore(BuildContext context) {
+  Future<void> checkBefore(BuildContext context) async {
     if (advertTitle.text.isEmpty) {
       CustomDailog().customSnackBar(
           context: context,
@@ -317,10 +316,22 @@ class AdsDetailsVehicles extends StatelessWidget {
               '${AppLocalizations.of(context)!.price} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
     } else {
-      sub2CatToDtabase = context.read<StringVal>().subCategoryValue ?? 'null';
-      listOfItems(context);
-      GlobalMethods()
-          .pushToNewScreen(context: context, routeName: toStartPickLocation);
+      bool? locationVal = await GlobalMethods().locatioServiceEnabled(context);
+      if (locationVal) {
+        if (context.mounted) {
+          sub2CatToDtabase =
+              context.read<StringVal>().subCategoryValue ?? 'null';
+          listOfItems(context);
+          GlobalMethods().pushToNewScreen(
+              context: context, routeName: toStartPickLocation);
+        } else {
+          if (context.mounted) {
+            CustomDailog().customSnackBar(
+                context: context,
+                text: AppLocalizations.of(context)!.locationdisabled);
+          }
+        }
+      }
     }
   }
 }

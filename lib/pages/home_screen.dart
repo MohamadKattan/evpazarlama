@@ -10,21 +10,15 @@ import 'package:evpazarlama/helper/custom_grid.dart';
 import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
+import 'package:evpazarlama/helper/custom_text_field.dart';
+import 'package:evpazarlama/state-maneg/booling_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  static TextEditingController searchControler = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,23 +58,66 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               // search container
               customContainer(
-                spaceAroundTopMargin: 15.0,
-                spaceAroundBottomMargin: 15.0,
-                spaceAroundLeftMargin: 20.0,
-                spaceAroundRightMargin: 20.0,
-                borderColor: mainColor,
-                borderWidth: 1.5,
+                spaceAroundTopMargin: 10.0,
+                spaceAroundBottomMargin: 10.0,
+                spaceAroundLeftMargin: 10.0,
+                spaceAroundRightMargin: 10.0,
                 alignment: Alignment.centerLeft,
                 colorBack: defColor,
-                child: Row(
-                  children: [
-                    customIcon(
-                        iconData: Icons.search, color: Colors.grey, size: 30.0),
-                    customSpacer(width: 10.0),
-                    customText(
-                        text: AppLocalizations.of(context)!.serchAdsNum,
-                        textColor: Colors.grey),
-                  ],
+                child: Consumer<BoolingVal>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            context.read<BoolingVal>().updateSearchBtn(false);
+                            FocusManager.instance.primaryFocus?.unfocus();
+                            if (searchControler.text.isNotEmpty) {
+                              GlobalMethods()
+                                  .searachOneAd(searchControler.text, context);
+                              searchControler.clear();
+                            }
+                          },
+                          child: AnimatedContainer(
+                            padding: const EdgeInsets.all(10.0),
+                            duration: const Duration(milliseconds: 800),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50.0),
+                                color:
+                                    value.searchButton ? mainColor : greyColor),
+                            child: customIcon(
+                                iconData: Icons.search,
+                                color: defColor,
+                                size: 30.0),
+                          ),
+                        ),
+                        customSpacer(width: 10.0),
+                        Expanded(
+                          child: customTextFailed(
+                            margin: 0.0,
+                            controller: searchControler,
+                            lable: AppLocalizations.of(context)!.serchAdsNum,
+                            hintText: AppLocalizations.of(context)!.serchAdsNum,
+                            inputType: TextInputType.number,
+                            function: (String onChange) {
+                              if (onChange.isEmpty) {
+                                FocusManager.instance.primaryFocus?.unfocus();
+                                context
+                                    .read<BoolingVal>()
+                                    .updateSearchBtn(false);
+                              } else {
+                                context
+                                    .read<BoolingVal>()
+                                    .updateSearchBtn(true);
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
               //emptyContiner
@@ -106,18 +143,22 @@ class _HomeScreenState extends State<HomeScreen> {
               // grid 20 item from all ads
               DataBaseSrv().streamGetAllAds(),
               // title last visted ads
-              customContainer(
-                borderColor: const Color.fromARGB(255, 161, 204, 226),
-                borderWidth: 1.0,
-                colorBack: const Color.fromARGB(255, 240, 214, 205),
-                child: customText(
-                    text: AppLocalizations.of(context)!.fievort,
-                    textColor: mainColor,
-                    textWeight: FontWeight.bold,
-                    textAlign: TextAlign.justify),
-              ),
+              listMyFavior.isNotEmpty
+                  ? customContainer(
+                      borderColor: const Color.fromARGB(255, 161, 204, 226),
+                      borderWidth: 1.0,
+                      colorBack: const Color.fromARGB(255, 240, 214, 205),
+                      child: customText(
+                          text: AppLocalizations.of(context)!.fievort,
+                          textColor: mainColor,
+                          textWeight: FontWeight.bold,
+                          textAlign: TextAlign.justify),
+                    )
+                  : const SizedBox(),
               // grid from last listMyFavior ads
-              CustomGrid().customGrid(context, listMyFavior),
+              listMyFavior.isNotEmpty
+                  ? CustomGrid().customGrid(context, listMyFavior)
+                  : const SizedBox(),
             ],
           ),
         ),

@@ -5,11 +5,13 @@ class BoolingVal with ChangeNotifier, DiagnosticableTreeMixin {
   bool _adInfo = true;
   bool _explantion = false;
   bool _location = false;
+  bool _searchButton = false;
 
   bool get isLodingAuth => _isLodingAuth;
   bool get adInfo => _adInfo;
   bool get explantion => _explantion;
   bool get location => _location;
+  bool get searchButton => _searchButton;
 
   // this method for loading circelIndector while loading
   void loadingAuth(bool state) {
@@ -35,6 +37,11 @@ class BoolingVal with ChangeNotifier, DiagnosticableTreeMixin {
     _location = state;
     _explantion = false;
     _adInfo = false;
+    notifyListeners();
+  }
+
+  void updateSearchBtn(bool state) {
+    _searchButton = state;
     notifyListeners();
   }
 }

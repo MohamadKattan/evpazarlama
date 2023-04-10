@@ -93,12 +93,12 @@ class AdsModel {
           userInfoProfile?.userAccountType ?? 'Tax'
         ],
         "adress": {
-          "country": context.read<StringVal>().country,
-          "city": context.read<StringVal>().city,
-          "area": context.read<StringVal>().area,
-          "mainStreat": context.read<StringVal>().mainStraet,
-          "streat": context.read<StringVal>().straet,
-          "streatNo": context.read<StringVal>().straetNo,
+          "country": context.read<StringVal>().country?.toLowerCase().trim(),
+          "city": context.read<StringVal>().city?.toLowerCase().trim(),
+          "area": context.read<StringVal>().area?.toLowerCase().trim(),
+          "mainStreat": context.read<StringVal>().mainStraet?.toLowerCase(),
+          "streat": context.read<StringVal>().straet?.toLowerCase(),
+          "streatNo": context.read<StringVal>().straetNo?.toLowerCase(),
           "latitude": context.read<DoubleVal>().latitude,
           "longitude": context.read<DoubleVal>().longitude,
         },

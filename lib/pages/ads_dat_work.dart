@@ -27,7 +27,6 @@ class AdsDetailsWorkPlace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     checkValSubCategory(context);
-    GlobalMethods().locatioServiceEnabled(context);
     return SafeArea(
         child: Scaffold(
             backgroundColor: Colors.blueGrey.shade100,
@@ -330,7 +329,7 @@ class AdsDetailsWorkPlace extends StatelessWidget {
   }
 
   // this method for check requird field
-  void checkBefore(BuildContext context) {
+  Future<void> checkBefore(BuildContext context) async {
     if (advertTitle.text.isEmpty) {
       CustomDailog().customSnackBar(
           context: context,
@@ -350,9 +349,20 @@ class AdsDetailsWorkPlace extends StatelessWidget {
               '${AppLocalizations.of(context)!.price} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
     } else {
-      listOfItemsHousing(context);
-      GlobalMethods()
-          .pushToNewScreen(context: context, routeName: toStartPickLocation);
+      bool? locationVal = await GlobalMethods().locatioServiceEnabled(context);
+      if (locationVal) {
+        if (context.mounted) {
+          listOfItemsHousing(context);
+          GlobalMethods().pushToNewScreen(
+              context: context, routeName: toStartPickLocation);
+        }
+      } else {
+        if (context.mounted) {
+          CustomDailog().customSnackBar(
+              context: context,
+              text: AppLocalizations.of(context)!.locationDenied);
+        }
+      }
     }
   }
 }

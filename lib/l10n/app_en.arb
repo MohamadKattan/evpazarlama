@@ -786,5 +786,29 @@
   "adTime": "Ad date",
   "@adTime": {
     "description": "adTime"
+  },
+  "autoLoactionExplain": "Would you like to display ads near this location?",
+  "@autoLoactionExplain": {
+    "description": "autoLoactionExplain"
+  },
+  "minPrice": "The minimum price",
+  "@minPrice": {
+    "description": "minPrice"
+  },
+  "maxPrice": "the highest price",
+  "@maxPrice": {
+    "description": "maxPrice"
+  },
+  "displayResult": "Display Result",
+  "@displayResult": {
+    "description": "displayResult"
+  },
+  "or": "OR",
+  "@or": {
+    "description": "or"
+  },
+  "mainuilSearch": "Manual Search",
+  "@mainuilSearch": {
+    "description": "mainuilSearch"
   }
 }

@@ -334,7 +334,7 @@ class DataBaseSrv {
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Container(
-            color: Colors.blueGrey.shade100.withOpacity(0.6),
+            color: Colors.white,
             height: 300.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -353,7 +353,7 @@ class DataBaseSrv {
 
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
-            color: Colors.blueGrey.shade100.withOpacity(0.6),
+            color: Colors.white,
             height: 300.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -370,7 +370,7 @@ class DataBaseSrv {
 
         if (snapshot.data!.docs.isEmpty) {
           return Container(
-            color: Colors.blueGrey.shade100.withOpacity(0.6),
+            color: Colors.white,
             height: 300.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

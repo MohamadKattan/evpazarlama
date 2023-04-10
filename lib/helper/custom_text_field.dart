@@ -30,6 +30,9 @@ Widget customTextFailed({
         border: const OutlineInputBorder(
           borderSide: BorderSide(color: mainColor, width: 1.0),
         ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: mainColor, width: 1.0),
+        ),
       ),
     ),
   );

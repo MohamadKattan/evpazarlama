@@ -223,7 +223,7 @@ class StartPickLocation extends StatelessWidget {
           strestNo = listRes[1]['long_name'];
           for (var i = 0; i < listRes.length; i++) {
             if (listRes[i]['types'][0] == 'administrative_area_level_4') {
-              streat = listRes[1]['long_name'];
+              streat = listRes[i]['long_name'];
             } else if (listRes[i]['types'][0] ==
                 'administrative_area_level_3') {
               mainStreat = listRes[i]['long_name'];

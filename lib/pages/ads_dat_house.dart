@@ -32,7 +32,6 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
   TextEditingController? deed;
   @override
   void initState() {
-    GlobalMethods().locatioServiceEnabled(context);
     advertTitle = TextEditingController();
     explanation = TextEditingController();
     price = TextEditingController();
@@ -562,7 +561,7 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
   }
 
   // this method for check required Field befor nav to next page
-  checkBefore(BuildContext context) {
+  checkBefore(BuildContext context) async {
     if (advertTitle!.text.isEmpty) {
       CustomDailog().customSnackBar(
           context: context,
@@ -582,9 +581,20 @@ class _AdsDetailsHoseingState extends State<AdsDetailsHoseing> {
               '${AppLocalizations.of(context)!.price} ${AppLocalizations.of(context)!.requiredField}',
           color: Colors.red);
     } else {
-      listOfItemsHousing();
-      GlobalMethods()
-          .pushToNewScreen(context: context, routeName: toStartPickLocation);
+      bool? locationVal = await GlobalMethods().locatioServiceEnabled(context);
+      if (locationVal) {
+        if (context.mounted) {
+          listOfItemsHousing();
+          GlobalMethods().pushToNewScreen(
+              context: context, routeName: toStartPickLocation);
+        } else {
+          if (context.mounted) {
+            CustomDailog().customSnackBar(
+                context: context,
+                text: AppLocalizations.of(context)!.locationdisabled);
+          }
+        }
+      }
     }
   }
 }

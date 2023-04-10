@@ -62,8 +62,8 @@ List<AdsModel> listWorkPlace = [];
 List<AdsModel> listMotor = [];
 List<AdsModel> listCar = [];
 List<AdsModel> listHotel = [];
-List<AdsModel> listSmallDetails = [];
 List<AdsModel> listMyFavior = [];
+List<AdsModel> listOfFilter = [];
 //3===============_root====================
 const toSplash = '/';
 const toHomeScreen = '/HomeScreen';
