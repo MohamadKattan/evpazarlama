@@ -374,9 +374,9 @@ class _FilterDetailsState extends State<FilterDetails> {
     context.read<BoolingVal>().loadingAuth(true);
     listOfFilter.clear();
 
-    String? con = context.read<StringVal>().country?.toLowerCase().trim();
-    String? cit = context.read<StringVal>().city?.toLowerCase().trim();
-    String? area = context.read<StringVal>().area?.toLowerCase().trim();
+    String? con = context.read<StringVal>().country?.toLowerCase();
+    String? cit = context.read<StringVal>().city?.toLowerCase();
+    String? area = context.read<StringVal>().area?.toLowerCase();
 
     for (var i = 0; i < widget.list.length; i++) {
       if (widget.list[i].country!.contains(con!) &&

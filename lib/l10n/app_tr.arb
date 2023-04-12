@@ -200,6 +200,7 @@
     "maxPrice": "En yüksek fiyat",
     "displayResult": "Sonucu Görüntüle",
     "or": "VEYA",
-    "mainuilSearch": "Manuel Arama"
+    "mainuilSearch": "Manuel Arama",
+    "notRigister": "Bu hizmetten faydalanmak için kayıt olmalısınız."
     
 }

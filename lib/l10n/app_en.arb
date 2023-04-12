@@ -810,5 +810,9 @@
   "mainuilSearch": "Manual Search",
   "@mainuilSearch": {
     "description": "mainuilSearch"
+  },
+  "notRigister": "You must register in order to benefit from this service",
+  "@notRigister": {
+    "description": "notRigister"
   }
 }

@@ -20,6 +20,7 @@ import 'package:evpazarlama/pages/start_pick_location.dart';
 import 'package:evpazarlama/pages/start_write_location.dart';
 import 'package:evpazarlama/state-maneg/double_val.dart';
 import 'package:evpazarlama/state-maneg/int_val.dart';
+import 'package:evpazarlama/state-maneg/list_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
 // project start build at 17/2/2023
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -53,7 +55,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => StringVal()),
         ChangeNotifierProvider(create: (_) => ImageVal()),
         ChangeNotifierProvider(create: (_) => DoubleVal()),
-        ChangeNotifierProvider(create: (_) => IntVal())
+        ChangeNotifierProvider(create: (_) => IntVal()),
+        ChangeNotifierProvider(create: (_) => ListVal())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

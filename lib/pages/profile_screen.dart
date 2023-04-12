@@ -8,6 +8,9 @@ import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/pages/my_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../state-maneg/list_val.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -117,13 +120,17 @@ class ProfileScreen extends StatelessWidget {
                           textColor: mainColor),
                       ListTile(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) {
-                            return MyAdsScreen(
-                                list: listownerAdsOk,
-                                title:
-                                    AppLocalizations.of(context)!.compliteAds);
-                          }));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) {
+                                return MyAdsScreen(
+                                  title:
+                                      AppLocalizations.of(context)!.compliteAds,
+                                );
+                              },
+                            ),
+                          );
                         },
                         contentPadding: EdgeInsets.zero,
                         minLeadingWidth: 0.0,
@@ -141,21 +148,25 @@ class ProfileScreen extends StatelessWidget {
                             textAlign: TextAlign.justify),
                         subtitle: customText(
                             text:
-                                '(${AppLocalizations.of(context)!.subCompliteAds} ${listownerAdsOk.length})',
+                                '(${AppLocalizations.of(context)!.subCompliteAds} '
+                                '${context.read<ListVal>().myAdsOk.length})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
                       ),
                       ListTile(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) {
-                            return MyAdsScreen(
-                              list: listownerAdsPandding,
-                              title:
-                                  AppLocalizations.of(context)!.notCompliteAds,
-                            );
-                          }));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) {
+                                return MyAdsScreen(
+                                  title: AppLocalizations.of(context)!
+                                      .notCompliteAds,
+                                );
+                              },
+                            ),
+                          );
                         },
                         contentPadding: EdgeInsets.zero,
                         minLeadingWidth: 0.0,
@@ -173,7 +184,8 @@ class ProfileScreen extends StatelessWidget {
                             textAlign: TextAlign.justify),
                         subtitle: customText(
                             text:
-                                '(${AppLocalizations.of(context)!.subNotCompliteAds} ${listownerAdsPandding.length})',
+                                '(${AppLocalizations.of(context)!.subNotCompliteAds} '
+                                '${context.read<ListVal>().myAdsPanding.length})',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),
@@ -200,7 +212,7 @@ class ProfileScreen extends StatelessWidget {
                         subtitle: customText(
                             text:
                                 '(${AppLocalizations.of(context)!.subfievort} '
-                                '${listMyFavior.length} )',
+                                '${context.watch<ListVal>().listFavior.length} )',
                             textColor: Colors.grey,
                             textAlign: TextAlign.justify,
                             textFontSize: 14.0),

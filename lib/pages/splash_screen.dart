@@ -6,12 +6,24 @@ import 'package:flutter/material.dart';
 import '../../global-methods/methods.dart';
 import '../../helper/custom_icon.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      pushAftrer3Second(context);
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    pushAftrer3Second(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: mainColor,
@@ -23,14 +35,19 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
-void pushAftrer3Second(BuildContext context) async {
+Future<void> pushAftrer3Second(BuildContext context) async {
   GlobalMethods().requestPermission(context);
-  DataBaseSrv().getUserProfileInfo(context);
-  DataBaseSrv().getOwnerAds(context);
-  DataBaseSrv().changeStatusAds(context);
-  DataBaseSrv().getMyFavori(context);
-  Future.delayed(const Duration(milliseconds: 2000)).whenComplete(() {
+  await DataBaseSrv().getUserProfileInfo(context);
+  // await DataBaseSrv().getStreamAllAds();
+  if (context.mounted) {
+    DataBaseSrv().getOwnerAds(context);
+    DataBaseSrv().getMyFavori(context);
+    DataBaseSrv().changeStatusAds(context);
+  }
+
+  await Future.delayed(const Duration(milliseconds: 1000));
+  if (context.mounted) {
     GlobalMethods()
         .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
-  });
+  }
 }

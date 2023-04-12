@@ -12,6 +12,7 @@ import 'package:evpazarlama/pages/chat_owner.dart';
 import 'package:evpazarlama/pages/perviwe_image.dart';
 import 'package:evpazarlama/state-maneg/booling_val.dart';
 import 'package:evpazarlama/state-maneg/int_val.dart';
+import 'package:evpazarlama/state-maneg/list_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -115,8 +116,7 @@ class _OneAdsDetailsState extends State<OneAdsDetails> {
             // buttons perView Page
             buttons(height!, width!, context, controllerView!),
             // liner
-            customContainer(
-                colorBack: mainColor, height: 5.0, width: width),
+            customContainer(colorBack: mainColor, height: 5.0, width: width),
             SizedBox(
               height: height,
               child: PageView(
@@ -137,7 +137,8 @@ class _OneAdsDetailsState extends State<OneAdsDetails> {
 
 // this method for check it is faveort to me or not
   checkIffaveort(BuildContext context) {
-    for (var i in listMyFavior) {
+    final list = context.read<ListVal>().listFavior;
+    for (var i in list) {
       if (i.adsId == widget.adsModel.adsId) {
         setState(() => isFaverot = true);
         break;
@@ -166,7 +167,7 @@ class _OneAdsDetailsState extends State<OneAdsDetails> {
           builder: (_) {
             return CustomDailog().globalDailog(
                 context: context,
-                title: AppLocalizations.of(context)!.beforAddNewAds,
+                title: AppLocalizations.of(context)!.notRigister,
                 textBtn1: AppLocalizations.of(context)!.singup,
                 function: () {
                   GlobalMethods().pushToNewScreen(
@@ -180,7 +181,10 @@ class _OneAdsDetailsState extends State<OneAdsDetails> {
   void sendMessageToOwnerAd(BuildContext context) {
     if (!userId.contains('null')) {
       Navigator.push(context, MaterialPageRoute(builder: (_) {
-        return const ChatOwner();
+        return ChatOwner(
+          reciverId: widget.adsModel.ownerId ?? '1234546',
+          adsNumber: widget.adsModel.adsNumber ?? '00',
+        );
       }));
     } else {
       showDialog(
@@ -189,7 +193,7 @@ class _OneAdsDetailsState extends State<OneAdsDetails> {
           builder: (_) {
             return CustomDailog().globalDailog(
                 context: context,
-                title: AppLocalizations.of(context)!.beforAddNewAds,
+                title: AppLocalizations.of(context)!.notRigister,
                 textBtn1: AppLocalizations.of(context)!.singup,
                 function: () {
                   GlobalMethods().pushToNewScreen(

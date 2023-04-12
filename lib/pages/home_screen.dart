@@ -1,5 +1,4 @@
 // Home screen of app
-
 import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/custom-widgets/list_home_drawer.dart';
@@ -12,6 +11,7 @@ import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/helper/custom_text_field.dart';
 import 'package:evpazarlama/state-maneg/booling_val.dart';
+import 'package:evpazarlama/state-maneg/list_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -142,23 +142,31 @@ class HomeScreen extends StatelessWidget {
               ),
               // grid 20 item from all ads
               DataBaseSrv().streamGetAllAds(),
-              // title last visted ads
-              listMyFavior.isNotEmpty
-                  ? customContainer(
-                      borderColor: const Color.fromARGB(255, 161, 204, 226),
-                      borderWidth: 1.0,
-                      colorBack: const Color.fromARGB(255, 240, 214, 205),
-                      child: customText(
-                          text: AppLocalizations.of(context)!.fievort,
-                          textColor: mainColor,
-                          textWeight: FontWeight.bold,
-                          textAlign: TextAlign.justify),
-                    )
-                  : const SizedBox(),
-              // grid from last listMyFavior ads
-              listMyFavior.isNotEmpty
-                  ? CustomGrid().customGrid(context, listMyFavior)
-                  : const SizedBox(),
+              // title favvort visted ads
+              Consumer<ListVal>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return value.listFavior.isNotEmpty
+                      ? customContainer(
+                          borderColor: const Color.fromARGB(255, 161, 204, 226),
+                          borderWidth: 1.0,
+                          colorBack: const Color.fromARGB(255, 240, 214, 205),
+                          child: customText(
+                              text: AppLocalizations.of(context)!.fievort,
+                              textColor: mainColor,
+                              textWeight: FontWeight.bold,
+                              textAlign: TextAlign.justify),
+                        )
+                      : const SizedBox();
+                },
+              ),
+              // grid from list MyFavior ads
+              Consumer<ListVal>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return value.listFavior.isNotEmpty
+                      ? CustomGrid().customGrid(context, value.listFavior)
+                      : const SizedBox();
+                },
+              ),
             ],
           ),
         ),

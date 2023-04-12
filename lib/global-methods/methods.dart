@@ -771,7 +771,7 @@ class GlobalMethods {
   // this method for serach one ad by adNumber
   Future searachOneAd(String text, BuildContext context) async {
     for (var i = 0; i < listGenarlAds.length; i++) {
-      if (listGenarlAds[i].adsNumber!.contains(text.trim())) {
+      if (listGenarlAds[i].adsNumber!.contains(text)) {
         Navigator.push(context, MaterialPageRoute(builder: (_) {
           return OneAdsDetails(adsModel: listGenarlAds[i]);
         }));

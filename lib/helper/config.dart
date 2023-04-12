@@ -19,6 +19,8 @@ CollectionReference myAdsCollection =
 CollectionReference adsCollection = firestore.collection('allAds'); //cloud
 CollectionReference myFavori =
     firestore.collection('users').doc(userId).collection('Favori');
+CollectionReference messagesCol =
+    firestore.collection('messages').doc(userId).collection('allChat');
 
 UserInfoProfile? userInfoProfile;
 // 1_============proprty===================ÍÍÍ
@@ -45,8 +47,8 @@ int monthe = DateTime.now().month;
 int expirtMont = monthe != 12 ? DateTime.now().month + 1 : 1;
 int year = DateTime.now().year;
 int exPirtyear = monthe != 12 ? DateTime.now().year : DateTime.now().year + 1;
-List<AdsModel> listownerAdsOk = [];
-List<AdsModel> listownerAdsPandding = [];
+// List<AdsModel> listownerAdsOk = [];
+// List<AdsModel> listownerAdsPandding = [];
 List<AdsModel> listGenarlAds = [];
 List<AdsModel> listAds48Houer = [];
 List<AdsModel> list48AllRealEstate = [];
@@ -62,7 +64,7 @@ List<AdsModel> listWorkPlace = [];
 List<AdsModel> listMotor = [];
 List<AdsModel> listCar = [];
 List<AdsModel> listHotel = [];
-List<AdsModel> listMyFavior = [];
+// List<AdsModel> listMyFavior = [];
 List<AdsModel> listOfFilter = [];
 //3===============_root====================
 const toSplash = '/';
