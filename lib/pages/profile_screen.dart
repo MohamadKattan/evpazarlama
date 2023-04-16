@@ -1,3 +1,4 @@
+import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/custom-widgets/custom_drawer.dart';
 import 'package:evpazarlama/global-methods/methods.dart';
 import 'package:evpazarlama/helper/config.dart';
@@ -6,6 +7,7 @@ import 'package:evpazarlama/helper/custom_icon.dart';
 import 'package:evpazarlama/helper/custom_spacer.dart';
 import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/pages/my_ads.dart';
+import 'package:evpazarlama/state-maneg/string_val.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -18,302 +20,328 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
+      child: Scaffold(
+        backgroundColor: mainColor,
+        appBar: AppBar(
+            title: customText(
+                text: AppLocalizations.of(context)!.myProfile,
+                textWeight: FontWeight.bold),
             backgroundColor: mainColor,
-            appBar: AppBar(
-                title: customText(
-                    text: AppLocalizations.of(context)!.myProfile,
-                    textWeight: FontWeight.bold),
-                backgroundColor: mainColor,
-                centerTitle: false,
-                elevation: 0.0),
-            drawer: customDrawer(context),
-            body: SingleChildScrollView(
-              padding: EdgeInsets.zero,
-              child: Column(children: [
-                // user info
-                customContainer(
-                  alignment: Alignment.topLeft,
-                  colorBack: Colors.white,
-                  spaceAroundTopMargin: 10.0,
-                  spaceAroundLeftMargin: 10.0,
-                  spaceAroundRightMargin: 10.0,
-                  ridusBL: 12.0,
-                  ridusBR: 12.0,
-                  ridusR: 12.0,
-                  ridusl: 12.0,
-                  child: Column(
-                    children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: userInfoProfile?.userImage != 'null'
-                            ? CircleAvatar(
-                                radius: 25.0,
-                                backgroundColor: Colors.grey,
-                                backgroundImage: NetworkImage(
-                                    userInfoProfile?.userImage ?? 'null'),
-                              )
-                            : CircleAvatar(
-                                radius: 25.0,
-                                backgroundColor: Colors.grey,
-                                child: customIcon(iconData: Icons.person),
-                              ),
-                        title: customText(
-                            text: userInfoProfile?.userName ?? 'null',
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                        subtitle: customText(
-                            text:
-                                '(${userInfoProfile?.userAccountType ?? 'null'})',
-                            textColor: Colors.grey,
-                            textFontSize: 12.0,
-                            textAlign: TextAlign.justify),
-                      ),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: customIcon(
-                            iconData: Icons.mail,
-                            color: Colors.deepOrange.shade100,
-                            size: 30),
-                        title: customText(
-                            text: userInfoProfile?.userMail ?? 'null',
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                      ),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: customIcon(
-                            iconData: Icons.phone_android,
-                            color: Colors.blueGrey.shade200,
-                            size: 30.0),
-                        title: customText(
-                            text: userInfoProfile?.userPhone ?? 'null',
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                      )
-                    ],
-                  ),
-                ),
-                // ads manger
-                customSpacer(height: 15.0),
-                customContainer(
-                  alignment: Alignment.center,
-                  colorBack: Colors.white,
-                  spaceAroundTopMargin: 10.0,
-                  spaceAroundLeftMargin: 10.0,
-                  spaceAroundRightMargin: 10.0,
-                  ridusBL: 12.0,
-                  ridusBR: 12.0,
-                  ridusR: 12.0,
-                  ridusl: 12.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      customText(
-                          text: AppLocalizations.of(context)!.adsManger,
-                          textColor: mainColor),
-                      ListTile(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) {
-                                return MyAdsScreen(
-                                  title:
-                                      AppLocalizations.of(context)!.compliteAds,
-                                );
-                              },
+            centerTitle: false,
+            elevation: 0.0),
+        drawer: customDrawer(context),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.zero,
+          child: Column(
+            children: [
+              // user info
+              customContainer(
+                alignment: Alignment.topLeft,
+                colorBack: Colors.white,
+                spaceAroundTopMargin: 10.0,
+                spaceAroundLeftMargin: 10.0,
+                spaceAroundRightMargin: 10.0,
+                ridusBL: 12.0,
+                ridusBR: 12.0,
+                ridusR: 12.0,
+                ridusl: 12.0,
+                child: Column(
+                  children: [
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      minLeadingWidth: 0.0,
+                      minVerticalPadding: 0.0,
+                      leading: userInfoProfile?.userImage != 'null'
+                          ? CircleAvatar(
+                              radius: 25.0,
+                              backgroundColor: Colors.grey,
+                              backgroundImage: NetworkImage(
+                                  userInfoProfile?.userImage ?? 'null'),
+                            )
+                          : CircleAvatar(
+                              radius: 25.0,
+                              backgroundColor: Colors.grey,
+                              child: customIcon(iconData: Icons.person),
                             ),
-                          );
-                        },
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: customIcon(
-                            iconData: Icons.done_all,
-                            color: Colors.greenAccent.shade200,
-                            size: 30),
-                        trailing: customIcon(
-                            iconData: Icons.arrow_forward_ios,
-                            color: mainColor),
-                        title: customText(
-                            text: AppLocalizations.of(context)!.compliteAds,
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                        subtitle: customText(
-                            text:
-                                '(${AppLocalizations.of(context)!.subCompliteAds} '
-                                '${context.read<ListVal>().myAdsOk.length})',
-                            textColor: Colors.grey,
-                            textAlign: TextAlign.justify,
-                            textFontSize: 14.0),
-                      ),
-                      ListTile(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) {
-                                return MyAdsScreen(
-                                  title: AppLocalizations.of(context)!
-                                      .notCompliteAds,
-                                );
-                              },
-                            ),
-                          );
-                        },
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: customIcon(
-                            iconData: Icons.do_not_disturb_alt_outlined,
-                            color: Colors.red.shade200,
-                            size: 30),
-                        trailing: customIcon(
-                            iconData: Icons.arrow_forward_ios,
-                            color: mainColor),
-                        title: customText(
-                            text: AppLocalizations.of(context)!.notCompliteAds,
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                        subtitle: customText(
-                            text:
-                                '(${AppLocalizations.of(context)!.subNotCompliteAds} '
-                                '${context.read<ListVal>().myAdsPanding.length})',
-                            textColor: Colors.grey,
-                            textAlign: TextAlign.justify,
-                            textFontSize: 14.0),
-                      ),
-                      ListTile(
-                        onTap: () {
-                          GlobalMethods().pushToNewScreen(
-                              context: context, routeName: toFavoriScreen);
-                        },
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: customIcon(
-                            iconData: Icons.star,
-                            color: Colors.amber.shade200,
-                            size: 30),
-                        trailing: customIcon(
-                            iconData: Icons.arrow_forward_ios,
-                            color: mainColor),
-                        title: customText(
-                            text: AppLocalizations.of(context)!.fievort,
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                        subtitle: customText(
-                            text:
-                                '(${AppLocalizations.of(context)!.subfievort} '
-                                '${context.watch<ListVal>().listFavior.length} )',
-                            textColor: Colors.grey,
-                            textAlign: TextAlign.justify,
-                            textFontSize: 14.0),
-                      ),
-                    ],
-                  ),
+                      title: customText(
+                          text: userInfoProfile?.userName ?? 'null',
+                          textColor: mainColor,
+                          textAlign: TextAlign.justify),
+                      subtitle: customText(
+                          text:
+                              '(${userInfoProfile?.userAccountType ?? 'null'})',
+                          textColor: Colors.grey,
+                          textFontSize: 12.0,
+                          textAlign: TextAlign.justify),
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      minLeadingWidth: 0.0,
+                      minVerticalPadding: 0.0,
+                      leading: customIcon(
+                          iconData: Icons.mail,
+                          color: Colors.deepOrange.shade100,
+                          size: 30),
+                      title: customText(
+                          text: userInfoProfile?.userMail ?? 'null',
+                          textColor: mainColor,
+                          textAlign: TextAlign.justify),
+                    ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      minLeadingWidth: 0.0,
+                      minVerticalPadding: 0.0,
+                      leading: customIcon(
+                          iconData: Icons.phone_android,
+                          color: Colors.blueGrey.shade200,
+                          size: 30.0),
+                      title: customText(
+                          text: userInfoProfile?.userPhone ?? 'null',
+                          textColor: mainColor,
+                          textAlign: TextAlign.justify),
+                    )
+                  ],
                 ),
-                // messgaes
-                customSpacer(height: 15.0),
-                customContainer(
-                  alignment: Alignment.center,
-                  colorBack: Colors.white,
-                  spaceAroundTopMargin: 10.0,
-                  spaceAroundLeftMargin: 10.0,
-                  spaceAroundRightMargin: 10.0,
-                  ridusBL: 12.0,
-                  ridusBR: 12.0,
-                  ridusR: 12.0,
-                  ridusl: 12.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      customText(
-                          text: AppLocalizations.of(context)!.messagesNotif,
-                          textColor: mainColor),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: customIcon(
-                            iconData: Icons.chat,
-                            color: Colors.brown.shade100,
-                            size: 30),
-                        trailing: customIcon(
-                            iconData: Icons.arrow_forward_ios,
-                            color: mainColor),
-                        title: customText(
-                            text: AppLocalizations.of(context)!.myMessages,
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                        subtitle: customText(
-                            text:
-                                '(${AppLocalizations.of(context)!.submyMessages})',
-                            textColor: Colors.grey,
-                            textAlign: TextAlign.justify,
-                            textFontSize: 14.0),
-                      ),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0.0,
-                        minVerticalPadding: 0.0,
-                        leading: customIcon(
-                            iconData: Icons.notifications,
-                            color: Colors.grey,
-                            size: 30),
-                        trailing: customIcon(
-                            iconData: Icons.arrow_forward_ios,
-                            color: mainColor),
-                        title: customText(
-                            text: AppLocalizations.of(context)!.myNotifictions,
-                            textColor: mainColor,
-                            textAlign: TextAlign.justify),
-                        subtitle: customText(
-                            text:
-                                '(${AppLocalizations.of(context)!.subMyNotifictions})',
-                            textColor: Colors.grey,
-                            textAlign: TextAlign.justify,
-                            textFontSize: 14.0),
-                      ),
-                    ],
-                  ),
+              ),
+              // ads manger
+              customSpacer(height: 15.0),
+              customContainer(
+                alignment: Alignment.center,
+                colorBack: Colors.white,
+                spaceAroundTopMargin: 10.0,
+                spaceAroundLeftMargin: 10.0,
+                spaceAroundRightMargin: 10.0,
+                ridusBL: 12.0,
+                ridusBR: 12.0,
+                ridusR: 12.0,
+                ridusl: 12.0,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    customText(
+                        text: AppLocalizations.of(context)!.adsManger,
+                        textColor: mainColor),
+                    ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) {
+                              return MyAdsScreen(
+                                title:
+                                    AppLocalizations.of(context)!.compliteAds,
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      contentPadding: EdgeInsets.zero,
+                      minLeadingWidth: 0.0,
+                      minVerticalPadding: 0.0,
+                      leading: customIcon(
+                          iconData: Icons.done_all,
+                          color: Colors.greenAccent.shade200,
+                          size: 30),
+                      trailing: customIcon(
+                          iconData: Icons.arrow_forward_ios, color: mainColor),
+                      title: customText(
+                          text: AppLocalizations.of(context)!.compliteAds,
+                          textColor: mainColor,
+                          textAlign: TextAlign.justify),
+                      subtitle: customText(
+                          text:
+                              '(${AppLocalizations.of(context)!.subCompliteAds} '
+                              '${context.read<ListVal>().myAdsOk.length})',
+                          textColor: Colors.grey,
+                          textAlign: TextAlign.justify,
+                          textFontSize: 14.0),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) {
+                              return MyAdsScreen(
+                                title: AppLocalizations.of(context)!
+                                    .notCompliteAds,
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      contentPadding: EdgeInsets.zero,
+                      minLeadingWidth: 0.0,
+                      minVerticalPadding: 0.0,
+                      leading: customIcon(
+                          iconData: Icons.do_not_disturb_alt_outlined,
+                          color: Colors.red.shade200,
+                          size: 30),
+                      trailing: customIcon(
+                          iconData: Icons.arrow_forward_ios, color: mainColor),
+                      title: customText(
+                          text: AppLocalizations.of(context)!.notCompliteAds,
+                          textColor: mainColor,
+                          textAlign: TextAlign.justify),
+                      subtitle: customText(
+                          text:
+                              '(${AppLocalizations.of(context)!.subNotCompliteAds} '
+                              '${context.read<ListVal>().myAdsPanding.length})',
+                          textColor: Colors.grey,
+                          textAlign: TextAlign.justify,
+                          textFontSize: 14.0),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        GlobalMethods().pushToNewScreen(
+                            context: context, routeName: toFavoriScreen);
+                      },
+                      contentPadding: EdgeInsets.zero,
+                      minLeadingWidth: 0.0,
+                      minVerticalPadding: 0.0,
+                      leading: customIcon(
+                          iconData: Icons.star,
+                          color: Colors.amber.shade200,
+                          size: 30),
+                      trailing: customIcon(
+                          iconData: Icons.arrow_forward_ios, color: mainColor),
+                      title: customText(
+                          text: AppLocalizations.of(context)!.fievort,
+                          textColor: mainColor,
+                          textAlign: TextAlign.justify),
+                      subtitle: customText(
+                          text: '(${AppLocalizations.of(context)!.subfievort} '
+                              '${context.watch<ListVal>().listFavior.length} )',
+                          textColor: Colors.grey,
+                          textAlign: TextAlign.justify,
+                          textFontSize: 14.0),
+                    ),
+                  ],
                 ),
-                // SingOut
-                customSpacer(height: 25.0),
-                GestureDetector(
-                  onTap: () async {
-                    await authInstance.signOut().whenComplete(() {
-                      GlobalMethods().pushReplaceToNewScreen(
-                          context: context, routeName: toSplash);
-                    });
-                  },
-                  child: customContainer(
-                      spaceAroundRightMargin: 10.0,
-                      spaceAroundLeftMargin: 10.0,
-                      ridusBL: 12.0,
-                      ridusBR: 12.0,
-                      ridusR: 12.0,
-                      ridusl: 12.0,
-                      colorBack: Colors.red.shade300,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: customText(
-                            text: AppLocalizations.of(context)!.signOut,
-                            textColor: Colors.white,
-                            textFontSize: 20.0,
-                            textWeight: FontWeight.bold,
-                            textAlign: TextAlign.center),
-                      )),
+              ),
+              // messgaes
+              customSpacer(height: 15.0),
+              customContainer(
+                alignment: Alignment.center,
+                colorBack: Colors.white,
+                spaceAroundTopMargin: 10.0,
+                spaceAroundLeftMargin: 10.0,
+                spaceAroundRightMargin: 10.0,
+                ridusBL: 12.0,
+                ridusBR: 12.0,
+                ridusR: 12.0,
+                ridusl: 12.0,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    customText(
+                        text: AppLocalizations.of(context)!.messagesNotif,
+                        textColor: mainColor),
+                    Consumer<StringVal>(
+                      builder: (context, value, child) {
+                        return ListTile(
+                          onTap: () {
+                            DataBaseSrv().setValNewMessage(context);
+                            GlobalMethods().pushToNewScreen(
+                                context: context, routeName: toListOfChats);
+                          },
+                          contentPadding: EdgeInsets.zero,
+                          minLeadingWidth: 0.0,
+                          minVerticalPadding: 0.0,
+                          leading: customIcon(
+                              iconData: Icons.chat,
+                              color: Colors.brown.shade100,
+                              size: 30),
+                          trailing: value.isNewMessage == 'new'
+                              ? Stack(
+                                  children: [
+                                    customIcon(
+                                        iconData: Icons.notifications,
+                                        color: secondColor,
+                                        size: 35.0),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: CircleAvatar(
+                                        radius: 10,
+                                        backgroundColor: secondColor,
+                                        child: customText(text: '1'),
+                                      ),
+                                    )
+                                  ],
+                                )
+                              : customIcon(
+                                  iconData: Icons.arrow_forward_ios,
+                                  color: mainColor),
+                          title: customText(
+                              text: AppLocalizations.of(context)!.myMessages,
+                              textColor: mainColor,
+                              textAlign: TextAlign.justify),
+                          subtitle: customText(
+                              text:
+                                  '(${AppLocalizations.of(context)!.submyMessages})',
+                              textColor: Colors.grey,
+                              textAlign: TextAlign.justify,
+                              textFontSize: 14.0),
+                        );
+                      },
+                    ),
+                    // ListTile(
+                    //   contentPadding: EdgeInsets.zero,
+                    //   minLeadingWidth: 0.0,
+                    //   minVerticalPadding: 0.0,
+                    //   leading: customIcon(
+                    //       iconData: Icons.notifications,
+                    //       color: Colors.grey,
+                    //       size: 30),
+                    //   trailing: customIcon(
+                    //       iconData: Icons.arrow_forward_ios,
+                    //       color: mainColor),
+                    //   title: customText(
+                    //       text: AppLocalizations.of(context)!.myNotifictions,
+                    //       textColor: mainColor,
+                    //       textAlign: TextAlign.justify),
+                    //   subtitle: customText(
+                    //       text:
+                    //           '(${AppLocalizations.of(context)!.subMyNotifictions})',
+                    //       textColor: Colors.grey,
+                    //       textAlign: TextAlign.justify,
+                    //       textFontSize: 14.0),
+                    // ),
+                  ],
                 ),
-                customSpacer(height: 25.0),
-              ]),
-            )));
+              ),
+              // SingOut
+              customSpacer(height: 25.0),
+              GestureDetector(
+                onTap: () async {
+                  await authInstance.signOut().whenComplete(() {
+                    GlobalMethods().pushReplaceToNewScreen(
+                        context: context, routeName: toSplash);
+                  });
+                },
+                child: customContainer(
+                    spaceAroundRightMargin: 10.0,
+                    spaceAroundLeftMargin: 10.0,
+                    ridusBL: 12.0,
+                    ridusBR: 12.0,
+                    ridusR: 12.0,
+                    ridusl: 12.0,
+                    colorBack: Colors.red.shade300,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: customText(
+                          text: AppLocalizations.of(context)!.signOut,
+                          textColor: Colors.white,
+                          textFontSize: 20.0,
+                          textWeight: FontWeight.bold,
+                          textAlign: TextAlign.center),
+                    )),
+              ),
+              customSpacer(height: 25.0),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -5,11 +5,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../models/message_model.dart';
 import '../models/user_info.dart';
 
 //0==============UserConfig===============
 FirebaseAuth authInstance = FirebaseAuth.instance; //auth
 String userId = authInstance.currentUser?.uid ?? 'null'; //auth
+String? userToken;
 final storage = FirebaseStorage.instance.ref(); //storage
 FirebaseFirestore firestore = FirebaseFirestore.instance; //cloud
 CollectionReference usersProfileCollection =
@@ -66,6 +68,7 @@ List<AdsModel> listCar = [];
 List<AdsModel> listHotel = [];
 // List<AdsModel> listMyFavior = [];
 List<AdsModel> listOfFilter = [];
+List<MessageModle> listOfChats = [];
 //3===============_root====================
 const toSplash = '/';
 const toHomeScreen = '/HomeScreen';
@@ -96,8 +99,11 @@ const toSatrtWriteLocation = "/StartWriteLocation";
 const toPlanScreen = '/PlanScreen';
 const toCheckInfoAds = '/CheckInfoAds';
 const toFavoriScreen = '/FavoriScreen';
+const toListOfChats = '/ListOfChats';
 
 //================================GoogleApi================================
 String mapKey = 'AIzaSyDDWVGy2LEOWSMpnV8ov7xTXYsysthl8iY'; //googleMapAuth
 String geocodingUrl =
     'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitudeVal,$longitudeVal&key=$mapKey';
+String notivctionKey =
+    'key=AAAAtqnAOio:APA91bErRHBZU3V9ek8Yii8y7lJtpmEFSeXqc6S8R_GDesGgGVT2LbFFhtz1jRjyQEkKvHk3V3veAFtwBQBq64i99WVZKqjLDo8yemVML5_ygN4X1OLYyd1O5_D4TQZMJjgpHJ3DN9-I';

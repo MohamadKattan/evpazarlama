@@ -814,5 +814,57 @@
   "notRigister": "You must register in order to benefit from this service",
   "@notRigister": {
     "description": "notRigister"
+  },
+  "chatOnAd": "Ad inquiry",
+  "@chatOnAd": {
+    "description": "chatOnAd"
+  },
+  "goToAD": "Check the Ad",
+  "@goToAD": {
+    "description": "goToAD"
+  },
+  "typeAmessage": "type a message",
+  "@typeAmessage": {
+    "description": "typeAmessage"
+  },
+  "chosePlan": "choose plan that is good for you",
+  "@chosePlan": {
+    "description": "chosePlan"
+  },
+  "plan1": "One ad",
+  "@plan1": {
+    "description": "plan1"
+  },
+  "plan2": "Two ad",
+  "@plan2": {
+    "description": "plan2"
+  },
+  "plan3": "Three ad",
+  "@plan3": {
+    "description": "plan3"
+  },
+  "plan4": "Four ad",
+  "@plan4": {
+    "description": "plan4"
+  },
+  "cardNumber": "Card Number (16) number",
+  "@plan4": {
+    "description": "plan4"
+  },
+  "montheNo": "Card validity per month",
+  "@montheNo": {
+    "description": "montheNo"
+  },
+  "yearNo": "Card validity per year",
+  "@yearNo": {
+    "description": "yearNo"
+  },
+  "cardHolder": "Card Holder",
+  "@cardHolder": {
+    "description": "cardHolder"
+  },
+  "pay": "Pay",
+  "@pay": {
+    "description": "pay"
   }
 }

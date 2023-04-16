@@ -31,4 +31,12 @@ class ClintHttpSrv {
       return 'failed';
     }
   }
+
+  Future<void> postRequest(
+      {required String url,
+      required Map<String, String> header,
+      required Map<String, dynamic> body}) async {
+    var uriUrl = Uri.parse(url);
+    await http.post(uriUrl, headers: header, body: convert.jsonEncode(body));
+  }
 }

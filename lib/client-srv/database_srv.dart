@@ -7,6 +7,7 @@ import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/models/ads_model.dart';
 import 'package:evpazarlama/models/message_model.dart';
 import 'package:evpazarlama/state-maneg/list_val.dart';
+import 'package:evpazarlama/state-maneg/string_val.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -537,40 +538,92 @@ class DataBaseSrv {
 //==========================================================================
 
 // this method for sender send an mesage to reciver
-
   Future<void> sendAnMesaage(
-      String reciverId, String text, String adsNumber) async {
+      String reciverId, String text, String adsNumber,String? token) async {
     CollectionReference messageRecverdCol =
         firestore.collection('messages').doc(reciverId).collection('allChat');
 
-    // this is sendr
+    DocumentReference<Map<String, dynamic>> mainAlarmNewMessage =
+        firestore.collection('messages').doc(reciverId);
+
+    // datta will set to sender
     await messagesCol.doc(reciverId).collection('chat').add(MessageModle()
         .toJson(
             sendrId: userId,
             recevrdId: reciverId,
             text: text,
             adsNumber: adsNumber));
-    // this is recevrd
+    //data will set to recever
     await messageRecverdCol.doc(userId).collection('chat').add((MessageModle()
         .toJson(
             sendrId: userId,
             recevrdId: reciverId,
             text: text,
             adsNumber: adsNumber)));
+    /*
+    data will set to sender for got some info for use some
+     data as counter  and acceces to chat collection and 
+    */
+    await messagesCol.doc(reciverId).set({
+      "lastMessage": text,
+      "name": userInfoProfile?.userName ?? 'name',
+      "id": reciverId,
+      "adNo": adsNumber,
+      "count": 0,
+      "token":token
+    });
+    /*
+    data will set to recever for got some info for use some
+     data as counter  and acceces to chat collection and 
+    */
+    await messageRecverdCol.doc(userId).set({
+      "lastMessage": text,
+      "name": userInfoProfile?.userName ?? 'name',
+      "id": userId,
+      "adNo": adsNumber,
+      "count": 1,
+      "token":userToken
+    });
+// for alarm recever for new message
+    await mainAlarmNewMessage.set({"new": "new"});
+  }
 
-    await messagesCol.doc(reciverId).set({"lastMessage": text});
-    await messageRecverdCol.doc(userId).set(
-        {"lastMessage": text, "name": userInfoProfile?.userName ?? 'name'});
+  // this method for got val count and display on main btn notfiction if found new message
+  Future<void> getValNewMessage(BuildContext context) async {
+    DocumentReference<Map<String, dynamic>> mainAlarmNewMessage =
+        firestore.collection('messages').doc(userId);
+    if (!userId.contains('null')) {
+      mainAlarmNewMessage.get().then(
+        (value) {
+          if (value.exists) {
+            Map<String, dynamic> map = value.data() as Map<String, dynamic>;
+            final isNew = map['new'];
+
+            context.read<StringVal>().updateNewMessage(isNew);
+          }
+        },
+      );
+    }
+  }
+
+  // this method for got val count and display on main btn notfiction if found new message
+  Future<void> setValNewMessage(BuildContext context) async {
+    DocumentReference<Map<String, dynamic>> mainAlarmNewMessage =
+        firestore.collection('messages').doc(userId);
+    if (!userId.contains('null')) {
+      mainAlarmNewMessage.set({"new": "old"});
+      context.read<StringVal>().updateNewMessage('old');
+    }
   }
 
 // this widget of stream chat between sender and ricverd
-  Widget chatList(String reciverId, BuildContext context) {
+  Widget streamChatList(String reciverId, BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: messagesCol
           .doc(reciverId)
           .collection('chat')
           .orderBy('greatAt')
-          .limitToLast(10)
+          .limitToLast(6)
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
@@ -588,47 +641,49 @@ class DataBaseSrv {
           margin: const EdgeInsets.only(bottom: 100.0),
           child: ListView(
             padding: EdgeInsets.zero,
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data =
-                  document.data()! as Map<String, dynamic>;
-              MessageModle messageModle = MessageModle.fromMap(data);
+            children: snapshot.data!.docs.map(
+              (DocumentSnapshot document) {
+                Map<String, dynamic> data =
+                    document.data()! as Map<String, dynamic>;
+                MessageModle messageModle = MessageModle.fromMap(data);
 
-              return messageModle.sendrId == userId
-                  ? Container(
-                      margin: const EdgeInsets.only(
-                          left: 140.0, bottom: 8.0, top: 8.0, right: 8.0),
-                      padding: const EdgeInsets.all(16.0),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 243, 224, 199),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12.0),
-                          bottomLeft: Radius.circular(12.0),
-                          bottomRight: Radius.circular(16.0),
+                return messageModle.sendrId == userId
+                    ? Container(
+                        margin: const EdgeInsets.only(
+                            left: 140.0, bottom: 8.0, top: 8.0, right: 8.0),
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 243, 224, 199),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12.0),
+                            bottomLeft: Radius.circular(12.0),
+                            bottomRight: Radius.circular(16.0),
+                          ),
                         ),
-                      ),
-                      child: customText(
-                          text: messageModle.text ?? '',
-                          textAlign: TextAlign.justify,
-                          textColor: mainColor),
-                    )
-                  : Container(
-                      margin: const EdgeInsets.only(
-                          right: 140.0, bottom: 8.0, top: 8.0, left: 8.0),
-                      padding: const EdgeInsets.all(16.0),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 199, 238, 235),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(12.0),
-                          bottomLeft: Radius.circular(12.0),
-                          bottomRight: Radius.circular(16.0),
+                        child: customText(
+                            text: messageModle.text ?? '',
+                            textAlign: TextAlign.justify,
+                            textColor: mainColor),
+                      )
+                    : Container(
+                        margin: const EdgeInsets.only(
+                            right: 140.0, bottom: 8.0, top: 8.0, left: 8.0),
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 199, 238, 235),
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(12.0),
+                            bottomLeft: Radius.circular(12.0),
+                            bottomRight: Radius.circular(16.0),
+                          ),
                         ),
-                      ),
-                      child: customText(
-                          text: messageModle.text ?? '',
-                          textAlign: TextAlign.justify,
-                          textColor: Colors.black),
-                    );
-            }).toList(),
+                        child: customText(
+                            text: messageModle.text ?? '',
+                            textAlign: TextAlign.justify,
+                            textColor: Colors.black),
+                      );
+              },
+            ).toList(),
           ),
         );
       },

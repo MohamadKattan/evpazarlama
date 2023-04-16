@@ -11,6 +11,7 @@ import 'package:evpazarlama/pages/ads_listofitem.dart';
 import 'package:evpazarlama/pages/ads_main_cateegory.dart';
 import 'package:evpazarlama/pages/check_info_ads.dart';
 import 'package:evpazarlama/pages/favori.dart';
+import 'package:evpazarlama/pages/list_of_chats.dart';
 import 'package:evpazarlama/pages/plan_screen.dart';
 import 'package:evpazarlama/pages/start_map_location.dart';
 import 'package:evpazarlama/pages/login_screen.dart';
@@ -21,6 +22,7 @@ import 'package:evpazarlama/pages/start_write_location.dart';
 import 'package:evpazarlama/state-maneg/double_val.dart';
 import 'package:evpazarlama/state-maneg/int_val.dart';
 import 'package:evpazarlama/state-maneg/list_val.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -36,9 +38,20 @@ import 'state-maneg/image_val.dart';
 import 'state-maneg/string_val.dart';
 
 // satrday at 18/3/2023 i got sallary for month 2 =>600$ from nizam
+
+/* salary for month 3 {
+  1900 Tl by transfer to my banck in 14-4-2023
+} */
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -96,7 +109,8 @@ class MyApp extends StatelessWidget {
           toSatrtWriteLocation: (context) => const StartWriteLocation(),
           toPlanScreen: (context) => const PlanScreen(),
           toCheckInfoAds: (context) => const CheckInfoAds(),
-          toFavoriScreen: (context) => const FavoriScreen()
+          toFavoriScreen: (context) => const FavoriScreen(),
+          toListOfChats: (context) => const ListOfChats()
         },
       ),
     );

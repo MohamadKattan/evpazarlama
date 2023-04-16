@@ -2,19 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>sms</string>
-		<string>tel</string>
-	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Ev pazarlama Requests permission to access to your  location  always</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Ev pazarlama Requests permission to access to your  location  to when app open</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Ev pazarlama Requests permission to access the Camera to upload photos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Ev pazarlama Requests permission to access the photo gallery to upload photos</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -56,10 +43,28 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sms</string>
+		<string>tel</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Ev pazarlama Requests permission to access the Camera to upload photos</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Ev pazarlama Requests permission to access to your  location  always</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Ev pazarlama Requests permission to access to your  location  to when app open</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Ev pazarlama Requests permission to access the photo gallery to upload photos</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

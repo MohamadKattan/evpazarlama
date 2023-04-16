@@ -12,13 +12,43 @@ import 'package:evpazarlama/helper/custom_text.dart';
 import 'package:evpazarlama/helper/custom_text_field.dart';
 import 'package:evpazarlama/state-maneg/booling_val.dart';
 import 'package:evpazarlama/state-maneg/list_val.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   static TextEditingController searchControler = TextEditingController();
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Future<void> setupInteractedMessage() async {
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+
+    if (initialMessage != null) {
+      _handleMessage(initialMessage);
+    }
+
+    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+  }
+
+  void _handleMessage(RemoteMessage message) {
+    if (message.data['type'] == 'chat') {
+      GlobalMethods()
+          .pushToNewScreen(context: context, routeName: toListOfChats);
+    }
+  }
+
+  @override
+  void initState() {
+    setupInteractedMessage();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,10 +104,10 @@ class HomeScreen extends StatelessWidget {
                           onTap: () {
                             context.read<BoolingVal>().updateSearchBtn(false);
                             FocusManager.instance.primaryFocus?.unfocus();
-                            if (searchControler.text.isNotEmpty) {
-                              GlobalMethods()
-                                  .searachOneAd(searchControler.text, context);
-                              searchControler.clear();
+                            if (HomeScreen.searchControler.text.isNotEmpty) {
+                              GlobalMethods().searachOneAd(
+                                  HomeScreen.searchControler.text, context);
+                              HomeScreen.searchControler.clear();
                             }
                           },
                           child: AnimatedContainer(
@@ -97,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                         Expanded(
                           child: customTextFailed(
                             margin: 0.0,
-                            controller: searchControler,
+                            controller: HomeScreen.searchControler,
                             lable: AppLocalizations.of(context)!.serchAdsNum,
                             hintText: AppLocalizations.of(context)!.serchAdsNum,
                             inputType: TextInputType.number,

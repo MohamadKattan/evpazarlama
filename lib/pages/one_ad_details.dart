@@ -180,12 +180,19 @@ class _OneAdsDetailsState extends State<OneAdsDetails> {
 // this method for send message to owner ad
   void sendMessageToOwnerAd(BuildContext context) {
     if (!userId.contains('null')) {
-      Navigator.push(context, MaterialPageRoute(builder: (_) {
-        return ChatOwner(
-          reciverId: widget.adsModel.ownerId ?? '1234546',
-          adsNumber: widget.adsModel.adsNumber ?? '00',
-        );
-      }));
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) {
+            return ChatOwner(
+              reciverId: widget.adsModel.ownerId ?? '1234546',
+              adsNumber: widget.adsModel.adsNumber ?? '00',
+              isCanPop: true,
+              token: widget.adsModel.token ?? 'null',
+            );
+          },
+        ),
+      );
     } else {
       showDialog(
           context: context,

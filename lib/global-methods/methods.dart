@@ -1,6 +1,8 @@
+import 'package:evpazarlama/client-srv/https_srv.dart';
 import 'package:evpazarlama/helper/custom_dailog.dart';
 import 'package:evpazarlama/models/ads_model.dart';
 import 'package:evpazarlama/pages/one_ad_details.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,6 +12,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../helper/config.dart';
 import '../state-maneg/image_val.dart';
+
+FirebaseMessaging messaging = FirebaseMessaging.instance;
 
 class GlobalMethods {
   //=======================================================================
@@ -783,5 +787,54 @@ class GlobalMethods {
         }
       }
     }
+  }
+
+//=========================================================================
+//==============================FireBaseMessaging==========================
+//=========================================================================
+  Future<void> requestPermissionNotifiction() async {
+    await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+  }
+
+  Future<void> fcmGetToken() async {
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
+    if (!userId.contains('null')) {
+      usersProfileCollection.doc(userId).update({"token": fcmToken});
+    }
+    userToken = fcmToken;
+  }
+
+  Future postNotificationFcm(
+      {required String token, required String text}) async {
+    String url = 'https://fcm.googleapis.com/fcm/send';
+    Map<String, String> header = {
+      "Content-Type": "application/json",
+      "Authorization": notivctionKey
+    };
+    Map<String, dynamic> body = {
+      "to": token,
+      "direct_boot_ok": true,
+      "priority": "high",
+      "data": {
+        "click_action": "FLUTTER_NOTIFICATION_CLICK",
+        "id": "1",
+        "status": "done",
+        "type": "chat"
+      },
+      "notification": {
+        "title": 'Ev pazrlama',
+        "body": text,
+        "sound": "default"
+      },
+    };
+    ClintHttpSrv().postRequest(url: url, header: header, body: body);
   }
 }

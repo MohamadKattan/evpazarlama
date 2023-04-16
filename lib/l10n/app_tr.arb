@@ -201,6 +201,19 @@
     "displayResult": "Sonucu Görüntüle",
     "or": "VEYA",
     "mainuilSearch": "Manuel Arama",
-    "notRigister": "Bu hizmetten faydalanmak için kayıt olmalısınız."
+    "notRigister": "Bu hizmetten faydalanmak için kayıt olmalısınız.",
+    "chatOnAd": "ilan sorgusu",
+    "goToAD": "İlanı Kontrol Et",
+    "typeAmessage": "Mesaj yaz",
+    "chosePlan": "sizin için iyi olan planı seçin",
+    "plan1": "bir ilan",
+    "plan2": "iki ilan",
+    "plan3": "Üç ilan",
+    "plan4": "Dört ilan ",
+    "cardNumber": "Kart Numarası (16) numarası",
+    "montheNo": "Aylık kart geçerliliği",
+    "yearNo": "Yıllık kart geçerliliği",
+    "cardHolder": "kart sahibi",
+    "pay": "Ödemek"
     
 }

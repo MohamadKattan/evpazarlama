@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
-  //0
   String? _dropdownValue;
-  //1
   String? _subCategoryValue;
   String? _advertTitle;
   String? _explanation;
@@ -40,17 +38,15 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? _view;
   String? _services;
   String? _additionalFeatures;
-
-  //2
   String? _country;
   String? _city;
   String? _area;
   String? _mainStreat;
   String? _streat;
   String? _streatNo;
-  //0
+  String? _isNewMessage;
+
   String? get dropdownValue => _dropdownValue;
-  //1
   String? get subCategoryValue => _subCategoryValue;
   String? get advertTitle => _advertTitle;
   String? get explanation => _explanation;
@@ -87,13 +83,13 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
   String? get view => _view;
   String? get services => _services;
   String? get additionalFeatures => _additionalFeatures;
-  //2
   String? get country => _country;
   String? get city => _city;
   String? get area => _area;
   String? get mainStraet => _mainStreat;
   String? get straet => _streat;
   String? get straetNo => _streatNo;
+  String? get isNewMessage => _isNewMessage;
 
 //======================0========================
   // this method for got  dropdownValue
@@ -329,6 +325,11 @@ class StringVal with ChangeNotifier, DiagnosticableTreeMixin {
     _mainStreat = mainStratSt;
     _streat = streatST;
     _streatNo = straetNoSt;
+    notifyListeners();
+  }
+  // this method for notify user about new Messags in main btn message in drawer
+  void updateNewMessage(String state) {
+    _isNewMessage = state;
     notifyListeners();
   }
 }

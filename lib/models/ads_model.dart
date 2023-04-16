@@ -29,6 +29,7 @@ class AdsModel {
   String? status;
   String? ownerId;
   String? adsId;
+  String? token;
   AdsModel(
       {this.amainCatogry,
       this.asubCatogry,
@@ -51,7 +52,8 @@ class AdsModel {
       this.dateStart,
       this.status,
       this.ownerId,
-      this.adsId});
+      this.adsId,
+      this.token});
   AdsModel.fromJson(Map<String, dynamic> map)
       : this(
             amainCatogry: map['amainCatogry'],
@@ -75,7 +77,8 @@ class AdsModel {
             dateStart: map['sitting']['dateStart'],
             status: map['sitting']['status'],
             ownerId: map['sitting']['userId'],
-            adsId: map['sitting']['adsId']);
+            adsId: map['sitting']['adsId'],
+            token: map['sitting']['token']);
   Map<String, dynamic> toJson(
           {required BuildContext context,
           required int adsNumber,
@@ -109,6 +112,7 @@ class AdsModel {
           "userId": userId,
           "adsId": '$adsId$userId',
           "status": "ok",
+          "token": userToken ?? 'null',
           "dateStart": DateTime.utc(year, monthe, day),
           "dateExpired": DateTime.utc(exPirtyear, expirtMont, day),
         }

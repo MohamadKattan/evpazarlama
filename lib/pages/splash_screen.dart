@@ -2,6 +2,7 @@
 
 import 'package:evpazarlama/client-srv/database_srv.dart';
 import 'package:evpazarlama/helper/config.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import '../../global-methods/methods.dart';
 import '../../helper/custom_icon.dart';
@@ -43,11 +44,13 @@ Future<void> pushAftrer3Second(BuildContext context) async {
     DataBaseSrv().getOwnerAds(context);
     DataBaseSrv().getMyFavori(context);
     DataBaseSrv().changeStatusAds(context);
-  }
-
-  await Future.delayed(const Duration(milliseconds: 1000));
-  if (context.mounted) {
-    GlobalMethods()
-        .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
+    DataBaseSrv().getValNewMessage(context);
+    GlobalMethods().requestPermissionNotifiction();
+    GlobalMethods().fcmGetToken();
+    await FirebaseMessaging.instance.subscribeToTopic("users");
+    Future.delayed(const Duration(milliseconds: 1000)).whenComplete(() {
+      GlobalMethods()
+          .pushReplaceToNewScreen(context: context, routeName: toHomeScreen);
+    });
   }
 }
