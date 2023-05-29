@@ -1,12 +1,14 @@
 // for display list of item while start push ads
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../custom-widgets/custom_drawer.dart';
 import '../global-methods/methods.dart';
 import '../helper/config.dart';
 import '../helper/custom_icon.dart';
 import '../helper/custom_text.dart';
+import '../state-maneg/string_val.dart';
 
 class AdsListOfItem extends StatelessWidget {
   const AdsListOfItem({super.key});
@@ -34,14 +36,22 @@ class AdsListOfItem extends StatelessWidget {
     );
   }
 
+  Future updataStatusSubCatogry(BuildContext context, String val) async {
+    context.read<StringVal>().updateSubCatogryVal(val);
+  }
+
   Widget listOfHouseing(BuildContext context) {
     return ListView(
       padding: EdgeInsets.zero,
       children: [
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.apart1);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -55,8 +65,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.residence);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -70,8 +84,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.detachedHouse);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -85,8 +103,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.villa);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -100,8 +122,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.farmHouse);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -115,8 +141,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.mansion);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -130,8 +160,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.residence);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -145,8 +179,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.prefabricatedHouse);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -160,8 +198,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsHoseing);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.cooperative);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsHoseing);
+            }
           },
           minLeadingWidth: 10.0,
           trailing:
@@ -183,8 +225,12 @@ class AdsListOfItem extends StatelessWidget {
       children: [
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.gasStation);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -197,8 +243,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.apart1);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -211,8 +261,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.villa);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -225,8 +279,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.workshop);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -239,8 +297,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.mall);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -253,8 +315,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.buffet);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -267,8 +333,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.office);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -281,8 +351,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.cafe);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -295,8 +369,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.warehouse);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -309,8 +387,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.weddingHall);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -323,8 +405,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.store);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -337,8 +423,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.factory);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -351,8 +441,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.fullbuilding);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -365,8 +459,12 @@ class AdsListOfItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () async {
-            GlobalMethods().pushToNewScreen(
-                context: context, routeName: toAdsDetailsWorkPlace);
+            await updataStatusSubCatogry(
+                context, AppLocalizations.of(context)!.parking);
+            if (context.mounted) {
+              GlobalMethods().pushToNewScreen(
+                  context: context, routeName: toAdsDetailsWorkPlace);
+            }
           },
           trailing:
               customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -426,8 +524,11 @@ class AdsListOfItem extends StatelessWidget {
         itemBuilder: (_, index) {
           return ListTile(
             onTap: () async {
-              GlobalMethods().pushReplaceToNewScreen(
-                  context: context, routeName: toAdsDetailsVehicles);
+              await updataStatusSubCatogry(context, listOfMotor[index]);
+              if (context.mounted) {
+                GlobalMethods().pushToNewScreen(
+                    context: context, routeName: toAdsDetailsVehicles);
+              }
             },
             trailing:
                 customIcon(iconData: Icons.arrow_forward_ios, color: mainColor),
@@ -507,8 +608,11 @@ class AdsListOfItem extends StatelessWidget {
         itemBuilder: (_, index) {
           return ListTile(
             onTap: () async {
-              GlobalMethods().pushReplaceToNewScreen(
-                  context: context, routeName: toAdsDetailsVehicles);
+              await updataStatusSubCatogry(context, listOfCars[index]);
+              if (context.mounted) {
+                GlobalMethods().pushToNewScreen(
+                    context: context, routeName: toAdsDetailsVehicles);
+              }
             },
             minLeadingWidth: 10.0,
             leading: cutomImageIcon(imagePath: '${listOfCars[index]}.png'),
@@ -524,84 +628,3 @@ class AdsListOfItem extends StatelessWidget {
         });
   }
 }
-
-
-
-
-//=======================old oode ========================
-
-// class AdsListOfItem extends StatelessWidget {
-//   const AdsListOfItem({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     List list = GlobalMethods().typeOfListItem(context);
-//     return SafeArea(
-//       child: Scaffold(
-//         appBar: AppBar(
-//           backgroundColor: mainColor,
-//           centerTitle: false,
-//           title: customText(
-//             textAlign: TextAlign.start,
-//             text: AppLocalizations.of(context)!.categorySelection,
-//           ),
-//         ),
-//         drawer: customDrawer(context),
-//         body: ListView.builder(
-//             padding: EdgeInsets.zero,
-//             itemCount: list.length,
-//             itemBuilder: (_, index) {
-//               if (list.isNotEmpty) {
-//                 return ListTile(
-//                   onTap: () {
-//                     navToDaitelsPage(context);
-//                     context.read<StringVal>().updateSubCatogryVal(list[index]);
-//                   },
-//                   minLeadingWidth: 10.0,
-//                   leading: listOfItemVal > 2
-//                       ? cutomImageIcon(imagePath: '${list[index]}.png')
-//                       : const SizedBox(),
-//                   trailing: customIcon(
-//                       iconData: Icons.arrow_forward_ios, color: mainColor),
-//                   title: customText(
-//                       text: list[index],
-//                       textAlign: TextAlign.justify,
-//                       textFontSize: 18.0,
-//                       textColor: mainColor,
-//                       textWeight: FontWeight.bold),
-//                 );
-//               } else {
-//                 return const Center(
-//                     child: CircularProgressIndicator(color: mainColor));
-//               }
-//             }),
-//       ),
-//     );
-//   }
-
-  
-
-//   /* 
-//   this method for push to daitels page after check listOfItemVal 
-//   if listOfItemVal = 0 => houseing , if listOfItemVal = 1 => workPlace 
-//   if listOfItemVal = 2 motor , if listOfItemVal = 1 => cars ......
-//   */
-//   void navToDaitelsPage(BuildContext context) {
-//     if (listOfItemVal == 0) {
-//       // houseing item
-//       GlobalMethods().pushToNewScreen(
-//           context: context, routeName: toAdsDetailsHoseing);
-//     } else if (listOfItemVal == 1) {
-//       // work place items
-//       GlobalMethods().pushToNewScreen(
-//           context: context, routeName: toAdsDetailsWorkPlace);
-//     } else if (listOfItemVal > 1 && listOfItemVal < 8) {
-//       // motor and cars items
-//       GlobalMethods().pushReplaceToNewScreen(
-//           context: context, routeName: toAdsDetailsVehicles);
-//     } else {
-//       return;
-//     }
-//   }
-// }
-

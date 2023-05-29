@@ -41,15 +41,14 @@ import 'state-maneg/string_val.dart';
 
 /* salary for month 3 {
   1900 Tl by transfer to my banck in 14-4-2023
+  3900 tl by transfer to my banck in 17-4-2023
 } */
 
-@pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-}
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp();
+  await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   // await Firebase.initializeApp();
   runApp(const MyApp());
@@ -59,6 +58,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
 // project start build at 17/2/2023
+//SKU 1722023
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +116,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 /*
 git init
 git add README.md
